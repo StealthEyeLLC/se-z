@@ -99,7 +99,7 @@ const result = {
   schemaVersion: '1.0.0', capturedAt: new Date().toISOString(),
   nodeVersion: process.version,
   npmVersion: spawnSync('npm', ['--version'], { encoding: 'utf8' }).stdout.trim(),
-  materialization: materialization.materialized.map(({ component, repository, commit, tree, archiveSha256, checkout }) => ({ component, repository, commit, tree, archiveSha256, checkout })),
+  materialization: materialization.components.map(({ component, repository, commit, tree, archiveSha256, checkout }) => ({ component, repository, commit, tree, archiveSha256, checkout })),
   sourceTestFiles: sourceFiles,
   commands,
   summary: {

@@ -176,3 +176,74 @@ requirements:
     tests: [requirements_have_enforcement_and_evidence]
     evidence: [requirements-audit.json]
     releaseGate: mandatory
+
+  - id: INV-PHASE1-SOURCE-001
+    class: invariant
+    statement: Exact deployed Baby supervisor and gateway commits, trees, manifests, and source archives are pinned before extraction.
+    enforcedBy: [source-identity, materialize-source, phase1-verify]
+    tests: [source_identity_exact_commits_and_trees, pinned_source_materialization]
+    evidence: [evidence/phase1/source-identity-proof.json, evidence/phase1/source-materialization.json]
+    releaseGate: mandatory
+  - id: INV-PHASE1-PROVENANCE-001
+    class: invariant
+    statement: Every copied or substantially derived file has an exact source mapping and applicable notice classification.
+    enforcedBy: [provenance-map, phase1-verify]
+    tests: [provenance_complete_for_every_destination]
+    evidence: [vendor/baby-provenance/file-map.json, vendor/baby-provenance/license-map.json]
+    releaseGate: mandatory
+  - id: INV-PHASE1-PARITY-001
+    class: invariant
+    statement: Pinned source suites and mechanically ported target suites measure retained behavior, with every discrepancy explicitly classified.
+    enforcedBy: [source-test, extracted-test, parity, canonical-delta]
+    tests: [phase1_static_parity, phase1_behavioral_parity]
+    evidence: [evidence/phase1/source-test-results.json, evidence/phase1/extracted-test-results.json, evidence/phase1/parity-results.json]
+    releaseGate: mandatory
+  - id: INV-PHASE1-CAPABILITY-001
+    class: invariant
+    statement: Every installed source operation and meaningful internal capability is represented in the Phase 1 capability map; none disappears silently.
+    enforcedBy: [capability-map, phase1-verify]
+    tests: [capability_map_all_installed_operations, capability_map_no_silent_disappearances]
+    evidence: [contracts/phase1-capability-map.json]
+    releaseGate: mandatory
+  - id: INV-PHASE1-IDENTITY-001
+    class: invariant
+    statement: Active target runtime identity is se-z, call_sez, sez.*, and SEZ1; historical Baby identities remain only in allowed provenance, tests, and evidence.
+    enforcedBy: [dependency-scan, canonical-check]
+    tests: [active_identity_is_se_z, historical_identity_exemptions_are_bounded]
+    evidence: [evidence/phase1/dependency-scan.json]
+    releaseGate: mandatory
+  - id: INV-PHASE1-RUNTIME-DEPENDENCY-001
+    class: invariant
+    statement: Extracted target runtime code intentionally depends on no Baby checkout, service, socket, state, key, endpoint, public tool, operation namespace, or QRT1 product identity.
+    enforcedBy: [dependency-scan, phase1-verify]
+    tests: [zero_active_baby_runtime_dependency]
+    evidence: [evidence/phase1/dependency-scan.json]
+    releaseGate: mandatory
+  - id: INV-PHASE1-PRODUCTION-001
+    class: invariant
+    statement: Phase 1 leaves the deployed Baby services, pointers, socket, state, OAuth state, credentials, public endpoint, and ChatGPT app unchanged.
+    enforcedBy: [read-only-production-proof, phase1-report]
+    tests: [production_before_after_identity_equal]
+    evidence: [evidence/phase1/source-identity-proof.json, evidence/phase1/phase1-summary.json]
+    releaseGate: mandatory
+  - id: ANTI-PHASE1-REFACTOR-001
+    class: anti-invariant
+    statement: Proven implementation mechanics are not substantively redesigned before source pinning, provenance, build, tests, and measured parity.
+    enforcedBy: [commit-order, provenance-map, canonical-delta]
+    tests: [mechanical_extraction_precedes_refactor]
+    evidence: [docs/PROVENANCE.md, docs/PHASE1_CANONICAL_DELTA.md]
+    releaseGate: mandatory
+  - id: ANTI-PHASE1-SECRET-001
+    class: anti-invariant
+    statement: No production private key, token, OAuth secret, tunnel credential, backup credential, live environment file, or arbitrary credential payload enters the repository.
+    enforcedBy: [secret-scan, git-review]
+    tests: [phase1_repository_secret_scan]
+    evidence: [evidence/phase1/secret-scan.json]
+    releaseGate: mandatory
+  - id: ANTI-PHASE1-CLAIM-001
+    class: anti-invariant
+    statement: Phase 1 is never represented as standalone completion or as activation of call_sez, final SEZ1, nspawn, KVM, tunnel, recovery, or production cutover.
+    enforcedBy: [phase1-report, documentation-consistency]
+    tests: [phase1_claim_is_bounded]
+    evidence: [docs/PHASE1_REPORT.md, evidence/phase1/phase1-summary.json]
+    releaseGate: mandatory
