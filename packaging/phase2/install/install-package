@@ -1,0 +1,125 @@
+#!/bin/bash
+set -euo pipefail
+
+if [[ ${EUID} -ne 0 ]]; then echo 'install-package must run as root' >&2; exit 77; fi
+package_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+cd "$package_root"
+[[ -f manifest.json && -f SHA256SUMS && -x payload/runtime/bin/node ]] || { echo 'invalid se-z package layout' >&2; exit 65; }
+sha256sum -c SHA256SUMS
+node="$package_root/payload/runtime/bin/node"
+read_manifest() { "$node" -e "const m=require(process.argv[1]); const v=m[process.argv[2]]; if(v===undefined)process.exit(2); process.stdout.write(String(v));" "$package_root/manifest.json" "$1"; }
+release_id=$(read_manifest releaseId)
+source_commit=$(read_manifest sourceCommit)
+source_tree=$(read_manifest sourceTree)
+[[ $release_id =~ ^[0-9a-f]{64}$ && $source_commit =~ ^[0-9a-f]{40}$ && $source_tree =~ ^[0-9a-f]{40}$ ]] || { echo 'invalid package identity' >&2; exit 65; }
+
+for unit in se-z.service se-z-local.socket se-z-gateway.socket; do
+  existing="/etc/systemd/system/$unit"
+  if [[ -e $existing ]] && ! grep -q '^# se-z 0.1A managed unit$' "$existing"; then
+    echo "refusing to overwrite unmanaged unit: $existing" >&2
+    exit 73
+  fi
+done
+
+created_sez_group=false
+created_gateway_group=false
+created_gateway_user=false
+getent group se-z >/dev/null || { groupadd --system se-z; created_sez_group=true; }
+getent group se-z-gateway >/dev/null || { groupadd --system se-z-gateway; created_gateway_group=true; }
+if ! id se-z-gateway >/dev/null 2>&1; then
+  useradd --system --gid se-z-gateway --home-dir /var/lib/se-z-gateway --shell /usr/sbin/nologin se-z-gateway
+  created_gateway_user=true
+fi
+gateway_uid=$(id -u se-z-gateway)
+gateway_gid=$(id -g se-z-gateway)
+
+install -d -m 0755 /opt/se-z /opt/se-z/releases
+release_dir="/opt/se-z/releases/$release_id"
+if [[ ! -d $release_dir ]]; then
+  temporary="${release_dir}.tmp.$$"
+  rm -rf "$temporary"
+  install -d -m 0755 "$temporary"
+  cp -a payload/. "$temporary/"
+  cp manifest.json "$temporary/release-manifest.json"
+  chmod -R go-w "$temporary"
+  mv "$temporary" "$release_dir"
+else
+  cmp -s manifest.json "$release_dir/release-manifest.json" || { echo 'existing release identity has different manifest' >&2; exit 73; }
+fi
+
+old_current=$(readlink -f /opt/se-z/current 2>/dev/null || true)
+ln -s "releases/$release_id" /opt/se-z/current.next
+mv -Tf /opt/se-z/current.next /opt/se-z/current
+if [[ -n $old_current && $old_current != "$release_dir" && $old_current == /opt/se-z/releases/* ]]; then
+  ln -s "releases/${old_current##*/}" /opt/se-z/previous.next
+  mv -Tf /opt/se-z/previous.next /opt/se-z/previous
+fi
+
+install -d -m 0711 -o root -g root /etc/se-z
+install -d -m 0750 -o root -g se-z-gateway /etc/se-z/keys
+install -d -m 0750 -o root -g root /var/lib/se-z
+install -d -m 0750 -o se-z-gateway -g se-z-gateway /var/lib/se-z-gateway
+install -d -m 0700 -o root -g root /var/lib/se-z-recovery
+
+make_keypair() {
+  local private=$1 public=$2 owner=$3 group=$4
+  if [[ ! -f $private || ! -f $public ]]; then
+    rm -f "$private" "$public"
+    umask 077
+    openssl genpkey -algorithm ED25519 -out "$private"
+    openssl pkey -in "$private" -pubout -out "$public"
+  fi
+  chown "$owner:$group" "$private"
+  chmod 0600 "$private"
+  chown root:root "$public"
+  chmod 0644 "$public"
+}
+make_keypair /etc/se-z/keys/receipt.private.pem /etc/se-z/keys/receipt.public.pem root root
+make_keypair /etc/se-z/keys/gateway.private.pem /etc/se-z/keys/gateway.public.pem se-z-gateway se-z-gateway
+
+if [[ ! -f /var/lib/se-z-recovery/authority-generation.json ]]; then
+  initialized_at=$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)
+  printf '{"schemaVersion":1,"authorityGeneration":1,"owner":"se-z-recovery","initializedAt":"%s","bootstrapRole":"phase2-install"}\n' "$initialized_at" > /var/lib/se-z-recovery/authority-generation.json
+fi
+chown root:root /var/lib/se-z-recovery/authority-generation.json
+chmod 0600 /var/lib/se-z-recovery/authority-generation.json
+
+"$release_dir/runtime/bin/node" "$release_dir/libexec/install/render-config.mjs" \
+  "output=/etc/se-z/config.json" \
+  "releaseDir=$release_dir" \
+  "releaseId=$release_id" \
+  "sourceCommit=$source_commit" \
+  "sourceTree=$source_tree" \
+  "gatewayUid=$gateway_uid" \
+  "gatewayGid=$gateway_gid"
+chown root:se-z /etc/se-z/config.json
+chmod 0640 /etc/se-z/config.json
+
+install -m 0644 "$release_dir/share/systemd/se-z.service" /etc/systemd/system/se-z.service
+install -m 0644 "$release_dir/share/systemd/se-z-local.socket" /etc/systemd/system/se-z-local.socket
+install -m 0644 "$release_dir/share/systemd/se-z-gateway.socket" /etc/systemd/system/se-z-gateway.socket
+install -m 0644 "$release_dir/share/tmpfiles/se-z.conf" /usr/lib/tmpfiles.d/se-z.conf
+systemd-tmpfiles --create /usr/lib/tmpfiles.d/se-z.conf
+
+ln -sfn /opt/se-z/current/bin/se-z /usr/local/bin/se-z
+ln -sfn /opt/se-z/current/bin/se-z-gateway /usr/local/bin/se-z-gateway
+ln -sfn /opt/se-z/current/bin/se-z-verify-install /usr/local/sbin/se-z-verify-install
+ln -sfn /opt/se-z/current/bin/se-z-cleanup-candidate /usr/local/sbin/se-z-cleanup-candidate
+
+install_record=/var/lib/se-z-recovery/phase2-install.json
+"$release_dir/runtime/bin/node" - "$install_record" "$release_id" "$source_commit" "$source_tree" "$created_sez_group" "$created_gateway_group" "$created_gateway_user" <<'NODE'
+const fs=require('fs');
+const [output,releaseId,sourceCommit,sourceTree,createdSezGroup,createdGatewayGroup,createdGatewayUser]=process.argv.slice(2);
+const record={schemaVersion:1,releaseId,sourceCommit,sourceTree,installedAt:new Date().toISOString(),created:{sezGroup:createdSezGroup==='true',gatewayGroup:createdGatewayGroup==='true',gatewayUser:createdGatewayUser==='true'}};
+fs.writeFileSync(output,JSON.stringify(record,null,2)+'\n',{mode:0o600});
+NODE
+chmod 0600 "$install_record"
+
+systemctl daemon-reload
+systemctl enable se-z-local.socket se-z-gateway.socket se-z.service >/dev/null
+systemctl restart se-z-local.socket se-z-gateway.socket
+systemctl restart se-z.service
+for _ in $(seq 1 200); do [[ -S /run/se-z/local.sock && -S /run/se-z/gateway.sock ]] && break; sleep .05; done
+[[ -S /run/se-z/local.sock && -S /run/se-z/gateway.sock ]] || { systemctl status se-z.service se-z-local.socket se-z-gateway.socket --no-pager >&2 || true; exit 70; }
+SEZ_CONFIG=/etc/se-z/config.json /usr/local/bin/se-z health >/dev/null
+printf '{"installed":true,"releaseId":"%s","sourceCommit":"%s","sourceTree":"%s","releaseDir":"%s"}\n' "$release_id" "$source_commit" "$source_tree" "$release_dir"

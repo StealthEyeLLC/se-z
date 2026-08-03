@@ -1,0 +1,24 @@
+# se-z 0.1A managed unit
+[Unit]
+Description=se-z unrestricted owner supervisor
+Documentation=file:/opt/se-z/current/protocol/SEZ1.md
+Requires=se-z-local.socket se-z-gateway.socket
+After=local-fs.target se-z-local.socket se-z-gateway.socket
+
+[Service]
+Type=simple
+User=root
+Group=root
+Environment=SEZ_CONFIG=/etc/se-z/config.json
+ExecStart=/opt/se-z/current/runtime/bin/node /opt/se-z/current/libexec/bin/se-z-supervisor.mjs
+Restart=on-failure
+RestartSec=1s
+KillMode=process
+TimeoutStartSec=30s
+TimeoutStopSec=30s
+UMask=0022
+LimitNOFILE=1048576
+Sockets=se-z-local.socket se-z-gateway.socket
+
+[Install]
+WantedBy=multi-user.target

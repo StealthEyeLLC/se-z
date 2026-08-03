@@ -1,0 +1,16 @@
+# se-z 0.1A managed unit
+[Unit]
+Description=se-z local operator socket
+
+[Socket]
+ListenStream=/run/se-z/local.sock
+SocketUser=root
+SocketGroup=se-z
+SocketMode=0660
+DirectoryMode=0711
+FileDescriptorName=local
+Service=se-z.service
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target

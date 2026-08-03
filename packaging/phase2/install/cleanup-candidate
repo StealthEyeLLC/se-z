@@ -1,0 +1,35 @@
+#!/bin/bash
+set -euo pipefail
+if [[ ${EUID} -ne 0 ]]; then echo 'cleanup-candidate must run as root' >&2; exit 77; fi
+purge=false
+[[ ${1:-} == --purge ]] && purge=true
+for unit in $(systemctl list-units --all --no-legend 'se-z-job-*.service' 2>/dev/null | awk '{print $1}'); do
+  systemctl stop "$unit" 2>/dev/null || true
+  systemctl reset-failed "$unit" 2>/dev/null || true
+done
+systemctl disable --now se-z.service se-z-local.socket se-z-gateway.socket 2>/dev/null || true
+for unit in se-z.service se-z-local.socket se-z-gateway.socket; do
+  path="/etc/systemd/system/$unit"
+  if [[ -f $path ]] && grep -q '^# se-z 0.1A managed unit$' "$path"; then rm -f "$path"; fi
+done
+rm -f /usr/lib/tmpfiles.d/se-z.conf
+for link in /usr/local/bin/se-z /usr/local/bin/se-z-gateway /usr/local/sbin/se-z-verify-install /usr/local/sbin/se-z-cleanup-candidate; do
+  if [[ -L $link && $(readlink "$link") == /opt/se-z/current/* ]]; then rm -f "$link"; fi
+done
+systemctl daemon-reload
+systemctl reset-failed se-z.service se-z-local.socket se-z-gateway.socket 2>/dev/null || true
+rm -rf /run/se-z
+if $purge; then
+  record=/var/lib/se-z-recovery/phase2-install.json
+  created_sez=false; created_gateway_group=false; created_gateway_user=false
+  if [[ -f $record && -x /opt/se-z/current/runtime/bin/node ]]; then
+    created_sez=$(/opt/se-z/current/runtime/bin/node -e "const r=require(process.argv[1]);process.stdout.write(String(Boolean(r.created?.sezGroup)))" "$record" 2>/dev/null || echo false)
+    created_gateway_group=$(/opt/se-z/current/runtime/bin/node -e "const r=require(process.argv[1]);process.stdout.write(String(Boolean(r.created?.gatewayGroup)))" "$record" 2>/dev/null || echo false)
+    created_gateway_user=$(/opt/se-z/current/runtime/bin/node -e "const r=require(process.argv[1]);process.stdout.write(String(Boolean(r.created?.gatewayUser)))" "$record" 2>/dev/null || echo false)
+  fi
+  rm -rf /etc/se-z /var/lib/se-z /var/lib/se-z-gateway /var/lib/se-z-recovery /opt/se-z
+  [[ $created_gateway_user == true ]] && userdel se-z-gateway 2>/dev/null || true
+  [[ $created_gateway_group == true ]] && groupdel se-z-gateway 2>/dev/null || true
+  [[ $created_sez == true ]] && groupdel se-z 2>/dev/null || true
+fi
+printf '{"cleaned":true,"purged":%s}\n' "$purge"

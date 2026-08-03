@@ -1,0 +1,16 @@
+# se-z 0.1A managed unit
+[Unit]
+Description=se-z signed gateway socket
+
+[Socket]
+ListenStream=/run/se-z/gateway.sock
+SocketUser=root
+SocketGroup=se-z-gateway
+SocketMode=0660
+DirectoryMode=0711
+FileDescriptorName=gateway
+Service=se-z.service
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target
