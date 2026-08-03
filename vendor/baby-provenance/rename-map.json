@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0.0",
+  "directIdentityConversions": [
+    {"from":"Baby Quirt","to":"se-z"},
+    {"from":"baby-quirt","to":"se-z"},
+    {"from":"Baby Quirt MCP","to":"se-z gateway"},
+    {"from":"baby-quirt-mcp","to":"se-z-gateway"},
+    {"from":"call_quirt","to":"call_sez"},
+    {"from":"bbyquirt.call_quirt","to":"call_sez"},
+    {"from":"baby.*","to":"sez.*"},
+    {"from":"QRT1","to":"SEZ1"},
+    {"from":"baby.apply","to":"sez.root"}
+  ],
+  "pathConversions": [
+    {"from":"/etc/baby-quirt/","to":"/etc/se-z/"},
+    {"from":"/etc/baby-quirt-mcp/","to":"/etc/se-z-gateway/"},
+    {"from":"/var/lib/baby-quirt/","to":"/var/lib/se-z/"},
+    {"from":"/var/lib/baby-quirt-mcp/","to":"/var/lib/se-z-gateway/"},
+    {"from":"/opt/baby-quirt/","to":"/opt/se-z/"},
+    {"from":"/opt/baby-quirt-mcp/","to":"unified /opt/se-z/ release layout"}
+  ],
+  "serviceConversions": [
+    {"from":"baby-quirt.service","to":"se-z.service"},
+    {"from":"baby-quirt-mcp.service","to":"se-z-gateway.service"}
+  ],
+  "identityConversions": [
+    {"from":"fix-mcp","to":"se-z-gateway","kind":"gateway user/group"},
+    {"from":"horsey","to":"se-z","kind":"local operator group"}
+  ],
+  "canonicalAdaptations": [
+    {
+      "from":"/run/horsey/baby-quirt.sock",
+      "to":["/run/se-z/gateway.sock","/run/se-z/local.sock"],
+      "reason":"one source peer class becomes two canonical peer classes; not a blind text replacement",
+      "phase":"0.1A"
+    },
+    {
+      "from":"https://baby-quirt.stealtheye.io/mcp",
+      "to":"exact OpenAI Secure MCP Tunnel protected-resource URI",
+      "reason":"final resource is tunnel assigned and must propagate through OAuth resource/audience validation",
+      "phase":"0.1B"
+    },
+    {
+      "from":"source OAuth issuer",
+      "to":"https://auth.se-z.stealtheye.io",
+      "reason":"final issuer is canonical and separate from the protected resource",
+      "phase":"0.1B"
+    },
+    {
+      "from":"source gateway state root",
+      "to":"/var/lib/se-z-gateway/slots/{blue,green}",
+      "reason":"blue/green OAuth state isolation is a state-model adaptation",
+      "phase":"0.1B"
+    }
+  ],
+  "keyReferenceConversions": [
+    "gateway request-signing key",
+    "supervisor receipt-signing key",
+    "OAuth JWT-signing key",
+    "GitHub OAuth client credential",
+    "GitHub App credential",
+    "tunnel runtime credential",
+    "backup credential"
+  ],
+  "historicalExemptions": [
+    "NOTICE",
+    "docs/PROVENANCE.md",
+    "docs/MIGRATION.md",
+    "vendor/baby-provenance/",
+    "test/parity/",
+    "evidence/phase1/",
+    "historical fixtures",
+    "legal records"
+  ],
+  "secretValuesRenamedOrCopied": false
+}

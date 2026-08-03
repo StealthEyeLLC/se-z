@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-03T11:18:00Z",
+  "repositories": [
+    {
+      "repository": "StealthEyeLLC/baby-quirt",
+      "commit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+      "tree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+      "licenseFilesPresent": [],
+      "noticeFilesPresent": [],
+      "classification": "StealthEye LLC proprietary source owned by the same organization as the target repository",
+      "applicableNotice": "Target NOTICE and docs/PROVENANCE.md preserve StealthEye ownership; exact file lineage is in file-map.json",
+      "copyPermissionBasis": "owner-directed same-organization migration",
+      "noticeRemovalPermitted": false
+    },
+    {
+      "repository": "StealthEyeLLC/baby-quirt-mcp",
+      "commit": "0bfcd99757afe198151e96b18771626388914205",
+      "tree": "d0598af304c8cda8df3bb538d703d9db6c7dcb04",
+      "licenseFilesPresent": [],
+      "noticeFilesPresent": [
+        {"path":"NOTICE.md","sha256":"f5de30a1934db0cca8b34b8ba17531ee49a0670848137969ae7d98bc6dbd6907"}
+      ],
+      "classification": "StealthEye LLC proprietary source; all rights reserved",
+      "applicableNotice": "Copyright 2026 StealthEye LLC. All rights reserved.",
+      "copyPermissionBasis": "owner-directed same-organization migration",
+      "noticeRemovalPermitted": false
+    }
+  ],
+  "target": {
+    "repository": "StealthEyeLLC/se-z",
+    "noticePath": "NOTICE",
+    "provenancePath": "docs/PROVENANCE.md",
+    "fileMapPath": "vendor/baby-provenance/file-map.json"
+  }
+}
