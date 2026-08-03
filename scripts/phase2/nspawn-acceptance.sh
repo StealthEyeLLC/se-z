@@ -83,21 +83,26 @@ const result={schemaVersion:1,kind:'phase2-nspawn-post-reboot',passed:true,check
 NODE
 
 systemd-run --unit="$outer_unit" --property=Delegate=yes --collect /usr/bin/systemd-nspawn --quiet --boot --register=yes --settings=no --machine="$name" --directory="$rootfs"
-for _ in $(seq 1 600); do
+ready=false
+for _ in $(seq 1 900); do
   state=$(machinectl show "$name" -p State --value 2>/dev/null || true)
-  [[ $state == running ]] && break
+  if [[ $state == running ]] && machinectl shell --quiet "$name" /bin/test -S /run/dbus/system_bus_socket >/dev/null 2>&1; then
+    ready=true
+    break
+  fi
   sleep .1
 done
-[[ $(machinectl show "$name" -p State --value 2>/dev/null || true) == running ]] || { journalctl -u "$outer_unit" --no-pager -n 200 >&2; exit 70; }
-boot_before=$(machinectl shell "$name" /bin/cat /proc/sys/kernel/random/boot_id 2>/dev/null | tr -d '\r\n')
+[[ $ready == true ]] || { journalctl -u "$outer_unit" --no-pager -n 200 >&2; exit 70; }
+boot_before=$(machinectl shell --quiet "$name" /bin/cat /proc/sys/kernel/random/boot_id 2>/dev/null | tr -d '\r\n')
+[[ $boot_before =~ ^[0-9a-f-]{36}$ ]] || { echo "invalid initial boot ID: $boot_before" >&2; exit 70; }
 machinectl shell "$name" /bin/bash -lc 'set -euo pipefail; rm -rf /root/candidate/unpacked; mkdir -p /root/candidate/unpacked; tar -xzf /root/candidate/candidate.tar.gz -C /root/candidate/unpacked; /root/candidate/unpacked/install/install-package'
 machinectl shell "$name" /usr/local/sbin/se-z-verify-install --evidence /root/install-verify-before.json
 machinectl shell "$name" /opt/se-z/current/runtime/bin/node /root/candidate/pre.mjs
 machinectl reboot "$name"
 for _ in $(seq 1 900); do
   state=$(machinectl show "$name" -p State --value 2>/dev/null || true)
-  boot_after=$(machinectl shell "$name" /bin/cat /proc/sys/kernel/random/boot_id 2>/dev/null | tr -d '\r\n' || true)
-  [[ $state == running && -n $boot_after && $boot_after != "$boot_before" ]] && break
+  boot_after=$(machinectl shell --quiet "$name" /bin/cat /proc/sys/kernel/random/boot_id 2>/dev/null | tr -d '\r\n' || true)
+  [[ $state == running && $boot_after =~ ^[0-9a-f-]{36}$ && $boot_after != "$boot_before" ]] && break
   sleep .2
 done
 [[ -n ${boot_after:-} && $boot_after != "$boot_before" ]] || { echo 'nspawn reboot did not complete' >&2; exit 70; }
