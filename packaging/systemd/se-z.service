@@ -1,0 +1,30 @@
+# Provenance: exact pinned source and transformation are recorded in vendor/baby-provenance/file-map.json.
+[Unit]
+Description=se-z private host-control runtime
+Documentation=https://github.com/StealthEyeLLC/se-z
+After=network.target
+Requires=se-z.socket
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/opt/se-z/current/bin/se-z-daemon
+Environment=NODE_ENV=production
+EnvironmentFile=-/etc/se-z/environment
+LoadCredentialEncrypted=github-se-z-app-private-key:/etc/credstore.encrypted/github-se-z-app-private-key.cred
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+KillMode=mixed
+KillSignal=SIGTERM
+
+# Security hardening (runtime operates as root by design)
+NoNewPrivileges=false
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/se-z /run/sez /opt/se-z /etc/se-z /tmp
+PrivateTmp=false
+
+[Install]
+WantedBy=multi-user.target

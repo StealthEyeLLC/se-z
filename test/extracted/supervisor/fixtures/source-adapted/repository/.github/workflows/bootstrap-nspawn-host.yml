@@ -1,0 +1,375 @@
+name: One-time nspawn host bootstrap
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: se-z-one-time-nspawn-bootstrap
+  cancel-in-progress: false
+
+jobs:
+  bootstrap-and-certify:
+    if: github.event.pull_request.head.ref == 'build/standalone-deployment-system-v2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout exact authorization commit
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate the isolated authorization commit
+        id: authorization
+        run: |
+          set -euo pipefail
+          test "$(git diff-tree --no-commit-id --name-only -r HEAD | sed '/^$/d')" = '.github/nspawn-bootstrap-authorization.json'
+          python3 - <<'PY'
+          import datetime
+          import json
+          import os
+          import re
+          import subprocess
+
+          with open('.github/nspawn-bootstrap-authorization.json', encoding='utf-8') as handle:
+              record = json.load(handle)
+          expected = {
+              'recordVersion', 'action', 'sezCommit', 'sezTree', 'gatewayCommit',
+              'gatewayTree', 'expiresAt', 'hostMachineIdSha256',
+          }
+          assert set(record) == expected
+          assert record['recordVersion'] == '1.0.0'
+          assert record['action'] == 'create-sezcert-v1-and-run-first-certification'
+          parent = subprocess.check_output(['git', 'rev-parse', 'HEAD^'], text=True).strip()
+          tree = subprocess.check_output(['git', 'rev-parse', 'HEAD^^{tree}'], text=True).strip()
+          assert record['sezCommit'] == parent
+          assert record['sezTree'] == tree
+          assert re.fullmatch(r'[a-f0-9]{40}', record['gatewayCommit'])
+          assert re.fullmatch(r'[a-f0-9]{40}', record['gatewayTree'])
+          assert re.fullmatch(r'[a-f0-9]{64}', record['hostMachineIdSha256'])
+          expires = datetime.datetime.fromisoformat(record['expiresAt'].replace('Z', '+00:00'))
+          now = datetime.datetime.now(datetime.timezone.utc)
+          assert now < expires <= now + datetime.timedelta(hours=24)
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+              output.write(f"sez_commit={record['sezCommit']}\n")
+              output.write(f"sez_tree={record['sezTree']}\n")
+              output.write(f"gateway_commit={record['gatewayCommit']}\n")
+              output.write(f"gateway_tree={record['gatewayTree']}\n")
+              output.write(f"machine_id={record['hostMachineIdSha256']}\n")
+          PY
+
+      - name: Checkout exact gateway source
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.0
+        with:
+          repository: StealthEyeLLC/se-z-gateway
+          ref: ${{ steps.authorization.outputs.gateway_commit }}
+          fetch-depth: 0
+          path: gateway
+          token: ${{ secrets.sez_all_gh_token }}
+          persist-credentials: false
+
+      - name: Checkout exact Sez implementation source
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.0
+        with:
+          repository: StealthEyeLLC/se-z
+          ref: ${{ steps.authorization.outputs.sez_commit }}
+          fetch-depth: 0
+          path: sez-source
+          persist-credentials: false
+
+      - name: Verify exact source identities
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD^)" = '${{ steps.authorization.outputs.sez_commit }}'
+          test "$(git rev-parse HEAD^^{tree})" = '${{ steps.authorization.outputs.sez_tree }}'
+          test "$(git -C sez-source rev-parse HEAD)" = '${{ steps.authorization.outputs.sez_commit }}'
+          test "$(git -C sez-source rev-parse HEAD^{tree})" = '${{ steps.authorization.outputs.sez_tree }}'
+          test "$(git -C gateway rev-parse HEAD)" = '${{ steps.authorization.outputs.gateway_commit }}'
+          test "$(git -C gateway rev-parse HEAD^{tree})" = '${{ steps.authorization.outputs.gateway_tree }}'
+          git diff --quiet
+          git diff --cached --quiet
+          test -z "$(git -C sez-source status --porcelain=v1 --untracked-files=all)"
+          test -z "$(git -C gateway status --porcelain=v1 --untracked-files=all)"
+
+      - name: Install host-build dependencies
+        run: |
+          sudo DEBIAN_FRONTEND=noninteractive apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            build-essential gcc g++ make python3 python3-dev pkg-config git openssh-client tar
+
+      - name: Setup pinned Node 24.18
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24.18.0'
+          cache: npm
+
+      - name: Build and verify the exact runner payload
+        run: |
+          set -euo pipefail
+          npm ci --include=dev --no-audit --no-fund
+          npm run lint
+          node --import tsx --test \
+            test/extracted/supervisor/unit/nspawn-bootstrap.test.ts \
+            test/extracted/supervisor/unit/nspawn-input.test.ts
+          sudo "$(command -v node)" --import tsx --test \
+            test/extracted/supervisor/unit/nspawn-rehearsal.test.ts
+          npm run build
+          bash -n packaging/rehearsal/bootstrap-nspawn-host.sh packaging/rehearsal/se-z-nspawn-runner
+          node --check packaging/rehearsal/se-z-host-certification.mjs
+          PYTHONPYCACHEPREFIX=/tmp/se-z-nspawn-pycache \
+            python3 -m py_compile packaging/rehearsal/se-z-peer-cred-probe.py
+          npm --prefix gateway ci --include=dev --no-audit --no-fund
+
+      - name: Assemble offline dependency cache and bootstrap payload
+        run: |
+          set -euo pipefail
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner \
+            -C "$HOME/.npm" -cf /tmp/npm-cache.tar _cacache
+          mkdir -p /tmp/se-z-nspawn-payload/dist/src/rehearsal
+          mkdir -p /tmp/se-z-nspawn-payload/dist/src/crypto
+          mkdir -p /tmp/se-z-nspawn-payload/dist/scripts
+          mkdir -p /tmp/se-z-nspawn-payload/ops
+          cp dist/src/rehearsal/*.js /tmp/se-z-nspawn-payload/dist/src/rehearsal/
+          cp dist/src/crypto/canonical.js dist/src/crypto/signing.js \
+            /tmp/se-z-nspawn-payload/dist/src/crypto/
+          cp dist/scripts/prepare-nspawn-input.js /tmp/se-z-nspawn-payload/dist/scripts/
+          cp -R ops/rehearsal /tmp/se-z-nspawn-payload/ops/rehearsal
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner \
+            -C /tmp/se-z-nspawn-payload -czf /tmp/se-z-nspawn-payload.tar.gz .
+          (cd /tmp && sha256sum se-z-nspawn-payload.tar.gz > se-z-nspawn-payload.sha256)
+
+      - name: Validate SSH configuration
+        env:
+          VPS_HOST: ${{ vars.SEZ_VPS_HOST }}
+          EXPECTED_HOSTNAME: ${{ vars.SEZ_EXPECTED_HOSTNAME }}
+          EXPECTED_MACHINE_ID: ${{ vars.SEZ_EXPECTED_MACHINE_ID_SHA256 }}
+          SSH_PRIVATE_KEY: ${{ secrets.SEZ_VPS_SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SEZ_VPS_SSH_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$VPS_HOST"
+          test -n "$EXPECTED_HOSTNAME"
+          test "$EXPECTED_MACHINE_ID" = '${{ steps.authorization.outputs.machine_id }}'
+          test -n "$SSH_PRIVATE_KEY"
+          test -n "$SSH_KNOWN_HOSTS"
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/nspawn_bootstrap_key
+          chmod 0600 ~/.ssh/nspawn_bootstrap_key
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Read-only VPS identity and capacity gate
+        env:
+          EXPECTED_HOSTNAME: ${{ vars.SEZ_EXPECTED_HOSTNAME }}
+          EXPECTED_MACHINE_ID: ${{ steps.authorization.outputs.machine_id }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+            "test \"\$(hostname)\" = '$EXPECTED_HOSTNAME' && \
+             test \"\$(tr -d '\\r\\n' </etc/machine-id | sha256sum | awk '{print \$1}')\" = '$EXPECTED_MACHINE_ID' && \
+             test \"\$(ps -p 1 -o comm= | tr -d ' ')\" = systemd && \
+             test \"\$(stat -fc %T /sys/fs/cgroup)\" = cgroup2fs && \
+             test \"\$(/opt/node-v24.18.0-linux-x64/bin/node --version)\" = v24.18.0 && \
+             sudo -n true && \
+             { sudo -n test -f /etc/se-z-nspawn/bootstrap.json || \
+               test \"\$(df -B1 --output=avail / | awk 'NR==2 {print \$1}')\" -ge 27917287424; }"
+
+      - name: Upload and execute exact one-time bootstrap
+        env:
+          REMOTE_STAGE: /tmp/se-z-nspawn-bootstrap-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+            "umask 077; mkdir '$REMOTE_STAGE'"
+          scp -i ~/.ssh/nspawn_bootstrap_key -P '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            /tmp/se-z-nspawn-payload.tar.gz /tmp/se-z-nspawn-payload.sha256 \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}':"$REMOTE_STAGE/"
+          ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+            "cd '$REMOTE_STAGE' && sha256sum -c se-z-nspawn-payload.sha256 && \
+             mkdir payload && tar -xzf se-z-nspawn-payload.tar.gz -C payload && \
+             sudo -n /bin/bash payload/packaging/rehearsal/bootstrap-nspawn-host.sh --confirm-create-sezcert-v1 && \
+             sudo -n cat /etc/se-z-nspawn/bootstrap.json" \
+            | tee /tmp/bootstrap-output.log
+          ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+            'sudo -n cat /etc/se-z-nspawn/bootstrap.json' > /tmp/bootstrap.json
+
+      - name: Build exact offline certification inputs
+        run: |
+          set -euo pipefail
+          RUN_ID="cert-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          REQUESTED_AT=$(date -u +'%Y-%m-%dT%H:%M:%S.000Z')
+          DEADLINE=$(date -u -d '+5 hours' +'%Y-%m-%dT%H:%M:%S.000Z')
+          printf 'RUN_ID=%s\n' "$RUN_ID" >> "$GITHUB_ENV"
+          node \
+            dist/scripts/prepare-nspawn-input.js \
+            --run-id "$RUN_ID" \
+            --requested-at "$REQUESTED_AT" \
+            --deadline "$DEADLINE" \
+            --sez-repo "$GITHUB_WORKSPACE/sez-source" \
+            --sez-commit '${{ steps.authorization.outputs.sez_commit }}' \
+            --gateway-repo "$GITHUB_WORKSPACE/gateway" \
+            --gateway-commit '${{ steps.authorization.outputs.gateway_commit }}' \
+            --dependency-cache /tmp/npm-cache.tar \
+            --bootstrap-record /tmp/bootstrap.json \
+            --harness "$GITHUB_WORKSPACE/sez-source/packaging/rehearsal/se-z-host-certification.mjs" \
+            --output-root "/tmp/$RUN_ID"
+
+      - name: Install inputs and run first standalone certification
+        run: |
+          set -euo pipefail
+          REMOTE_INPUT="/tmp/$RUN_ID-input"
+          ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+            "umask 077; mkdir '$REMOTE_INPUT'"
+          scp -i ~/.ssh/nspawn_bootstrap_key -P '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            "/tmp/$RUN_ID/"* \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}':"$REMOTE_INPUT/"
+          ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+            "sudo -n test ! -e '/var/lib/se-z-nspawn/inputs/$RUN_ID' && \
+             sudo -n install -d -o root -g root -m 0700 '/var/lib/se-z-nspawn/inputs/$RUN_ID' && \
+             sudo -n install -o root -g root -m 0600 '$REMOTE_INPUT/plan.json' '/var/lib/se-z-nspawn/inputs/$RUN_ID/plan.json' && \
+             sudo -n install -o root -g root -m 0600 '$REMOTE_INPUT/se-z.bundle' '/var/lib/se-z-nspawn/inputs/$RUN_ID/se-z.bundle' && \
+             sudo -n install -o root -g root -m 0600 '$REMOTE_INPUT/se-z-gateway.bundle' '/var/lib/se-z-nspawn/inputs/$RUN_ID/se-z-gateway.bundle' && \
+             sudo -n install -o root -g root -m 0600 '$REMOTE_INPUT/npm-cache.tar' '/var/lib/se-z-nspawn/inputs/$RUN_ID/npm-cache.tar' && \
+             sudo -n install -o root -g root -m 0600 '$REMOTE_INPUT/se-z-host-certification.mjs' '/var/lib/se-z-nspawn/inputs/$RUN_ID/se-z-host-certification.mjs' && \
+             sudo -n /usr/local/sbin/se-z-nspawn-runner preflight '$RUN_ID' && \
+             sudo -n /usr/local/sbin/se-z-nspawn-runner run '$RUN_ID'" \
+            | tee /tmp/nspawn-receipt.json
+
+      - name: Collect signed host evidence
+        if: always() && env.RUN_ID != ''
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+            'sudo -n cat /etc/se-z-nspawn/evidence-public.pem' \
+            > /tmp/se-z-nspawn-evidence-public.pem
+          if ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+            -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+            "sudo -n test -d '/var/lib/se-z-nspawn/evidence/$RUN_ID'"; then
+            ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+              -o BatchMode=yes -o StrictHostKeyChecking=yes \
+              '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+              "sudo -n tar -C '/var/lib/se-z-nspawn/evidence/$RUN_ID' -czf - ." \
+              > /tmp/se-z-nspawn-evidence.tar.gz
+          fi
+
+      - name: Independently verify signed host evidence
+        if: always() && env.RUN_ID != ''
+        run: |
+          set -euo pipefail
+          test -s /tmp/nspawn-receipt.json
+          test -s /tmp/se-z-nspawn-evidence-public.pem
+          test -s /tmp/se-z-nspawn-evidence.tar.gz
+          mkdir -p /tmp/se-z-nspawn-evidence-verify
+          tar -xzf /tmp/se-z-nspawn-evidence.tar.gz \
+            -C /tmp/se-z-nspawn-evidence-verify
+          node --input-type=module <<'NODE' | tee /tmp/nspawn-receipt-verification.json
+          import { createHash } from 'node:crypto';
+          import { lstatSync, readFileSync, readdirSync } from 'node:fs';
+          import { join } from 'node:path';
+          import { loadPublicKey } from './dist/src/crypto/signing.js';
+          import { verifySignedNspawnRunReceipt } from './dist/src/rehearsal/nspawn-contract.js';
+
+          const root = '/tmp/se-z-nspawn-evidence-verify';
+          const outputLines = readFileSync('/tmp/nspawn-receipt.json', 'utf8')
+            .trim().split('\n').filter(Boolean);
+          const receipt = JSON.parse(outputLines.at(-1));
+          const verified = verifySignedNspawnRunReceipt(
+            receipt,
+            loadPublicKey('/tmp/se-z-nspawn-evidence-public.pem'),
+          );
+          const stored = JSON.parse(readFileSync(join(root, 'receipt.json'), 'utf8'));
+          if (stored.recordDigest !== verified.recordDigest || stored.signature !== verified.signature) {
+            throw new Error('stored receipt differs from signed runner output');
+          }
+          const actualFiles = [];
+          const visit = (directory, prefix = '') => {
+            for (const name of readdirSync(directory).sort()) {
+              const relative = prefix ? `${prefix}/${name}` : name;
+              const path = join(directory, name);
+              const stat = lstatSync(path);
+              if (stat.isSymbolicLink()) throw new Error(`linked evidence entry: ${relative}`);
+              if (stat.isDirectory()) visit(path, relative);
+              else if (stat.isFile()) actualFiles.push(relative);
+              else throw new Error(`special evidence entry: ${relative}`);
+            }
+          };
+          visit(root);
+          const expectedFiles = verified.evidenceFiles.map((entry) => entry.path).sort();
+          const unsignedActualFiles = actualFiles.filter((path) => path !== 'receipt.json').sort();
+          if (JSON.stringify(unsignedActualFiles) !== JSON.stringify(expectedFiles)) {
+            throw new Error('evidence file set differs from signed receipt');
+          }
+          for (const entry of verified.evidenceFiles) {
+            if (!/^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))(?!.*\\)[A-Za-z0-9._@/-]+$/.test(entry.path)) {
+              throw new Error(`unsafe signed evidence path: ${entry.path}`);
+            }
+            const bytes = readFileSync(join(root, entry.path));
+            if (bytes.length !== entry.size) throw new Error(`evidence size differs: ${entry.path}`);
+            const digest = createHash('sha256').update(bytes).digest('hex');
+            if (digest !== entry.digest) throw new Error(`evidence digest differs: ${entry.path}`);
+          }
+          const result = JSON.parse(readFileSync(join(root, 'guest/certification-result.json'), 'utf8'));
+          if (
+            result.runId !== verified.runId ||
+            result.planDigest !== verified.planDigest ||
+            result.outcome !== verified.outcome
+          ) throw new Error('guest result differs from signed receipt');
+          console.log(JSON.stringify({
+            verified: true,
+            signatureAlgorithm: verified.signatureAlgorithm,
+            signingKeyId: verified.signingKeyId,
+            recordDigest: verified.recordDigest,
+            evidenceFiles: verified.evidenceFiles.length,
+            outcome: verified.outcome,
+          }));
+          NODE
+
+      - name: Upload certification evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: se-z-nspawn-bootstrap-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            /tmp/bootstrap-output.log
+            /tmp/bootstrap.json
+            /tmp/nspawn-receipt.json
+            /tmp/se-z-nspawn-evidence.tar.gz
+            /tmp/se-z-nspawn-evidence-public.pem
+            /tmp/nspawn-receipt-verification.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Remove ephemeral SSH and staging material
+        if: always()
+        env:
+          REMOTE_STAGE: /tmp/se-z-nspawn-bootstrap-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          if test -f ~/.ssh/nspawn_bootstrap_key; then
+            ssh -i ~/.ssh/nspawn_bootstrap_key -p '${{ vars.SEZ_VPS_PORT || 22 }}' \
+              -o BatchMode=yes -o StrictHostKeyChecking=yes \
+              '${{ vars.SEZ_VPS_USER || 'ubuntu' }}@${{ vars.SEZ_VPS_HOST }}' \
+              "sudo -n rm -rf -- '$REMOTE_STAGE' '/tmp/${RUN_ID:-not-created}-input'" || true
+          fi
+          rm -f ~/.ssh/nspawn_bootstrap_key

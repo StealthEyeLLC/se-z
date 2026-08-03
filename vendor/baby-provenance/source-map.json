@@ -112,14 +112,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/repository/.github/workflows/bootstrap-nspawn-host.yml",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -159,14 +159,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/repository/.github/workflows/ci.yml",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -231,14 +231,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/auth.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -269,14 +269,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/cancellation.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -309,14 +309,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/deployment.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -349,14 +349,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/filesystem.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -379,14 +379,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/fixtures/local-fixture-pkg/index.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -407,14 +407,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/fixtures/local-fixture-pkg/package.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "NOT_REQUIRED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -447,14 +447,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/helpers/protocol.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -488,14 +488,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/jobs.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -529,14 +529,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/process-identity.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -569,14 +569,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/pty.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -616,14 +616,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/release.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -653,14 +653,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/restart.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -695,14 +695,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/secret-redaction.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -741,14 +741,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/self-hosting-full.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -782,14 +782,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/self-hosting.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -820,14 +820,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/acceptance/systemd.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -857,10 +857,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "src/native/peercred/binding.gyp",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -909,14 +909,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/contracts/baby-quirt-contracts-v1.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/contracts/baby-quirt-contracts-v1.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -1322,14 +1322,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/integration/server.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -1361,10 +1361,10 @@
         "test/release-manifest-v2.test.ts"
       ],
       "destinationPath": "src/native/peercred/src/peer_cred.cc",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1391,10 +1391,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/bootstrap/se-z-ci-deploy.pub",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1419,10 +1419,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/bootstrap/gateway-authority-public.pem",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1449,10 +1449,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/bootstrap/README.md",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "source-reference verification",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1481,10 +1481,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/controller/bin/se-z-deploy-guard",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1512,10 +1512,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/controller/README.md",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1574,10 +1574,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/rehearsal/se-z-host-certification.mjs",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1606,10 +1606,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/rehearsal/se-z-host-certification.service",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1637,10 +1637,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/rehearsal/se-z-nspawn-runner",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1671,10 +1671,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/rehearsal/se-z-peer-cred-probe.py",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "source-reference verification",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1721,10 +1721,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/rehearsal/bootstrap-nspawn-host.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1755,10 +1755,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/systemd/se-z-deploy-guard@.service",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1786,10 +1786,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/systemd/se-z-deploy-guard@.timer",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1817,10 +1817,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/systemd/se-z.service",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1848,10 +1848,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/systemd/se-z.socket",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -1876,10 +1876,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/tmpfiles/se-z.conf",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2010,14 +2010,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/schemas/baby-quirt-protocol-v1.schema.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/schemas/baby-quirt-protocol-v1.schema.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2040,14 +2040,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/schemas/deployment-v2/compatibility-declaration.schema.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/schemas/deployment-v2/compatibility-declaration.schema.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2070,14 +2070,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/schemas/deployment-v2/deployment-evidence.schema.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/schemas/deployment-v2/deployment-evidence.schema.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2100,14 +2100,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/schemas/deployment-v2/deployment-request.schema.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/schemas/deployment-v2/deployment-request.schema.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2131,14 +2131,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/schemas/deployment-v2/deployment-state.schema.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/schemas/deployment-v2/deployment-state.schema.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2166,14 +2166,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/schemas/deployment-v2/release-manifest.schema.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/schemas/deployment-v2/release-manifest.schema.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2198,14 +2198,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/schemas/deployment-v2/rollback-snapshot.schema.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/schemas/deployment-v2/rollback-snapshot.schema.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2228,14 +2228,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/parity/fixtures/source-contracts/supervisor/schemas/deployment-v2/success-marker.schema.json",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "destinationPath": "test/extracted/supervisor/fixtures/source-adapted/schemas/deployment-v2/success-marker.schema.json",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2257,10 +2257,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/bootstrap-safe-extract.py",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2295,10 +2295,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/build-bundle.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2332,10 +2332,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/build-controller-bundle.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2368,10 +2368,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/build-release.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2400,10 +2400,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/build.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2431,10 +2431,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/configure-github.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2478,10 +2478,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/create-package-spec.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2514,10 +2514,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/finalize-release.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2559,10 +2559,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/package-controller.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2594,10 +2594,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/package-release.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2629,10 +2629,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/prepare-nspawn-input.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2665,10 +2665,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/release.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2696,10 +2696,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/remote-install.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2727,10 +2727,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/remote-rollback.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2765,10 +2765,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/validate-contracts.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2809,10 +2809,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/verify-candidate.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2842,10 +2842,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/verify-controller-candidate.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2878,10 +2878,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/supervisor/verify-runtime-deps.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2934,10 +2934,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/artifacts/manager.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -2976,10 +2976,10 @@
         "test/operations-discovery.test.ts"
       ],
       "destinationPath": "src/supervisor/dispatch/auth/authenticator.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "source-reference verification",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3016,10 +3016,10 @@
         "test/skill-loader.test.ts"
       ],
       "destinationPath": "src/supervisor/dispatch/auth/errors.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "source-reference verification",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3057,10 +3057,10 @@
         "test/operations-discovery.test.ts"
       ],
       "destinationPath": "src/supervisor/dispatch/auth/principal.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "source-reference verification",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3113,10 +3113,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/supervisor/cli/install.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3162,10 +3162,10 @@
         "test/skill-loader.test.ts"
       ],
       "destinationPath": "src/supervisor/cli/main.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3199,10 +3199,10 @@
         "test/standalone-architecture.test.ts"
       ],
       "destinationPath": "src/supervisor/cli/repair.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3247,10 +3247,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/supervisor/cli/rollback.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3303,10 +3303,10 @@
         "test/standalone-architecture.test.ts"
       ],
       "destinationPath": "src/supervisor/cli/verify.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3388,10 +3388,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/supervisor/configuration/config.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "source-reference verification",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3444,10 +3444,10 @@
         "test/nspawn-input.test.ts"
       ],
       "destinationPath": "src/selfhost/controller/bootstrap.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3512,10 +3512,10 @@
         "test/skill-loader.test.ts"
       ],
       "destinationPath": "src/selfhost/controller/cli.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3576,10 +3576,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/selfhost/controller/contract.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3623,10 +3623,10 @@
         "test/standalone-architecture.test.ts"
       ],
       "destinationPath": "src/selfhost/controller/controller.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3681,10 +3681,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/selfhost/controller/filesystem-host.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3724,10 +3724,10 @@
         "test/controller-guard.test.ts"
       ],
       "destinationPath": "src/selfhost/controller/fixture-host.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3779,10 +3779,10 @@
         "test/standalone-architecture.test.ts"
       ],
       "destinationPath": "src/selfhost/controller/package.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3823,10 +3823,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "src/selfhost/controller/storage.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3885,10 +3885,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/selfhost/controller/types.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -3950,10 +3950,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/protocol/canonical/canonical.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4021,10 +4021,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/protocol/signatures/signing.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4068,10 +4068,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/releases/deployment/activation.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4112,10 +4112,10 @@
         "test/deployment-database.test.ts"
       ],
       "destinationPath": "src/releases/deployment/database.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4162,10 +4162,10 @@
         "test/inactive-install.test.ts"
       ],
       "destinationPath": "src/releases/deployment/inactive-install.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4231,10 +4231,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/releases/deployment/permissions.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4280,10 +4280,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/releases/deployment/service.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4392,10 +4392,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/releases/deployment/snapshot.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4437,10 +4437,10 @@
         "test/deployment-state-machine-v2.test.ts"
       ],
       "destinationPath": "src/releases/deployment/state-machine.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4499,10 +4499,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/releases/deployment/types.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4564,10 +4564,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/files/manager.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4615,10 +4615,10 @@
         "test/skill-loader.test.ts"
       ],
       "destinationPath": "src/github/app-authority.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4653,10 +4653,10 @@
         "test/standalone-architecture.test.ts"
       ],
       "destinationPath": "src/supervisor/server/index.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4699,10 +4699,10 @@
         "test/safe-extract.test.ts"
       ],
       "destinationPath": "src/selfhost/install/safe-extract.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4752,10 +4752,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/selfhost/install/symlinks.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4811,10 +4811,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/jobs/manager.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4856,10 +4856,10 @@
         "test/peer-cred.test.ts"
       ],
       "destinationPath": "src/supervisor/peers/peer-cred.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "source-reference verification",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4895,10 +4895,10 @@
         "acceptance/systemd.test.ts"
       ],
       "destinationPath": "src/supervisor/sockets/socket-activation.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4945,10 +4945,10 @@
         "test/skill-loader.test.ts"
       ],
       "destinationPath": "src/operations/definitions.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -4986,10 +4986,10 @@
         "test/skill-loader.test.ts"
       ],
       "destinationPath": "src/operations/errors.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5031,10 +5031,10 @@
         "test/operations-discovery.test.ts"
       ],
       "destinationPath": "src/operations/registry.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5092,10 +5092,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/execution/process/identity.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5151,10 +5151,10 @@
         "test/helpers/client.ts"
       ],
       "destinationPath": "src/protocol/framing/frame.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5212,10 +5212,10 @@
         "test/symlinks.test.ts"
       ],
       "destinationPath": "src/pty/manager.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5276,10 +5276,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/protocol/receipts/receipt.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5332,10 +5332,10 @@
         "test/standalone-architecture.test.ts"
       ],
       "destinationPath": "src/protocol/receipts/verify.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5373,10 +5373,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "src/releases/rehearsal/nspawn-cli.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5429,10 +5429,10 @@
         "test/nspawn-rehearsal.test.ts"
       ],
       "destinationPath": "src/releases/rehearsal/nspawn-contract.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5476,10 +5476,10 @@
         "test/nspawn-rehearsal.test.ts"
       ],
       "destinationPath": "src/releases/rehearsal/nspawn-executor.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5525,10 +5525,10 @@
         "test/nspawn-input.test.ts"
       ],
       "destinationPath": "src/releases/rehearsal/nspawn-input.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5590,10 +5590,10 @@
         "test/nspawn-rehearsal.test.ts"
       ],
       "destinationPath": "src/releases/rehearsal/nspawn-runner.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5642,10 +5642,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/releases/archive-contract.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5690,10 +5690,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/releases/deterministic-archive.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5734,10 +5734,10 @@
         "test/release-manifest-v2.test.ts"
       ],
       "destinationPath": "src/releases/package-release.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5786,10 +5786,10 @@
         "test/release-manifest-v2.test.ts"
       ],
       "destinationPath": "src/releases/release-manifest.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5834,10 +5834,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/releases/strict-extractor.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5881,10 +5881,10 @@
         "test/secrets.test.ts"
       ],
       "destinationPath": "src/supervisor/configuration/credentials/provider.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5938,10 +5938,10 @@
         "test/peer-cred.test.ts"
       ],
       "destinationPath": "src/supervisor/server/server.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -5981,10 +5981,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "src/skills/activate-cli.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6033,10 +6033,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/skills/activation.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6100,10 +6100,10 @@
         "test/skill-loader.test.ts"
       ],
       "destinationPath": "src/skills/loader.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6136,10 +6136,10 @@
         "test/skill-loader.test.ts"
       ],
       "destinationPath": "src/skills/preload-cli.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6185,10 +6185,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/skills/schema.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6253,10 +6253,10 @@
         "test/strict-release-archive.test.ts"
       ],
       "destinationPath": "src/skills/service.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6308,10 +6308,10 @@
         "test/snapshot-rollback.test.ts"
       ],
       "destinationPath": "src/skills/types.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6354,10 +6354,10 @@
         "test/operations-discovery.test.ts"
       ],
       "destinationPath": "src/state/replay/store.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6412,10 +6412,10 @@
         "test/state-store.test.ts"
       ],
       "destinationPath": "src/state/store/store.ts",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -6453,14 +6453,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/artifacts.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6495,14 +6495,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/bootstrap-safe-extract.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6533,14 +6533,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/canonical.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6577,14 +6577,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/controller-bootstrap.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6640,14 +6640,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/controller-guard.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6682,14 +6682,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/deployment-database.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6729,14 +6729,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/deployment-lane.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6771,14 +6771,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/deployment-operations.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6812,14 +6812,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/deployment-schemas.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6849,14 +6849,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6890,14 +6890,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/files.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6926,14 +6926,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/frame.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -6968,14 +6968,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/github-app-authority.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7013,14 +7013,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/helpers/client.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7057,14 +7057,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/helpers/server.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7102,14 +7102,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/idempotency.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7155,14 +7155,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/inactive-install.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7195,14 +7195,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/jobs.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7233,14 +7233,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/machine-id.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7281,14 +7281,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/nspawn-bootstrap.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7327,14 +7327,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/nspawn-input.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7380,14 +7380,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/nspawn-rehearsal.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7421,14 +7421,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/operations-discovery.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7463,14 +7463,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/peer-cred.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7519,14 +7519,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/permissions-v2.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7562,14 +7562,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/receipts.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7605,14 +7605,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7646,14 +7646,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/safe-extract.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7683,14 +7683,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/secrets.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7722,14 +7722,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/signing.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7775,14 +7775,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/skill-loader.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7871,14 +7871,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/snapshot-rollback.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7914,10 +7914,10 @@
       "copyStatus": "SOURCE_REFERENCE_ONLY",
       "renameStatus": "NOT_APPLICABLE",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "SOURCE_HARNESS_CANONICAL_SUPERSEDED",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Source-only architecture assertions are executed by the exact source harness; target architecture follows higher-precedence se-z canonicals."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7949,14 +7949,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/state-store.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -7999,14 +7999,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/strict-release-archive.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -8045,14 +8045,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/supervisor/unit/symlinks.test.ts",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -8206,10 +8206,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "src/gateway/cli/se-z-gateway",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8429,10 +8429,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/bootstrap/gateway/gateway-authority-public.pem",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8459,10 +8459,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/caddy/se-z-gateway.Caddyfile",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8490,10 +8490,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "packaging/systemd/se-z-gateway.service",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8631,10 +8631,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/create-package-spec.mjs",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8666,10 +8666,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/enable-github-login.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8696,10 +8696,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/install-caddy-site.py",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8729,10 +8729,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/live-smoke.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8763,10 +8763,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/oauth-github-preflight.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8798,10 +8798,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/release.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8843,10 +8843,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/remote-install.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8876,10 +8876,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/remote-rollback.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8910,10 +8910,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "scripts/extracted/gateway/verify-install.sh",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically renamed copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -8987,10 +8987,10 @@
         "test/integration.test.js"
       ],
       "destinationPath": "src/gateway/signing/canonical.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9025,10 +9025,10 @@
         "test/contract.test.js"
       ],
       "destinationPath": "src/gateway/mcp/catalog.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9072,10 +9072,10 @@
         "test/server.test.js"
       ],
       "destinationPath": "src/gateway/transport/client.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9120,10 +9120,10 @@
         "test/server.test.js"
       ],
       "destinationPath": "src/gateway/configuration/config.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "source-reference verification",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9154,10 +9154,10 @@
         "test/release-v2.test.js"
       ],
       "destinationPath": "src/gateway/mcp/main.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9201,10 +9201,10 @@
         "test/oauth-server.test.js"
       ],
       "destinationPath": "src/auth/oauth/server.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9239,10 +9239,10 @@
       ],
       "sourceTests": [],
       "destinationPath": "src/auth/oauth/state-durable.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9282,10 +9282,10 @@
         "test/server.test.js"
       ],
       "destinationPath": "src/auth/oauth/tokens.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9330,10 +9330,10 @@
         "test/server.test.js"
       ],
       "destinationPath": "src/gateway/transport/protocol.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9376,10 +9376,10 @@
         "test/server.test.js"
       ],
       "destinationPath": "src/gateway/mcp/server.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9419,10 +9419,10 @@
         "test/standalone-architecture.test.js"
       ],
       "destinationPath": "src/gateway/mcp/tool.js",
-      "copyStatus": "PLANNED",
-      "renameStatus": "PLANNED",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "PLANNED",
+      "parityTestStatus": "PENDING_EXECUTION",
       "transformationType": "mechanically adapted copy",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
       "notes": "Destination is se-z-owned; imports and active identities require mechanical adaptation."
@@ -9457,14 +9457,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/caddy.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "mechanic traceability and focused parity; activation deferred",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9493,14 +9493,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/config.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9529,14 +9529,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/contract.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9577,14 +9577,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/deployment.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9621,14 +9621,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/entrypoint.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9661,14 +9661,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/github-login.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9705,14 +9705,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/integration.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9744,14 +9744,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/oauth-server.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9783,14 +9783,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/release-v2.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9820,14 +9820,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/server.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "CANONICAL_DELTA_RECORDED",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9856,14 +9856,18 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": null,
-      "copyStatus": "SOURCE_REFERENCE_ONLY",
-      "renameStatus": "NOT_APPLICABLE",
+      "destinationPath": "test/extracted/gateway/standalone-architecture.test.js",
+      "copyStatus": "COPIED",
+      "renameStatus": "APPLIED",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "SOURCE_HARNESS",
-      "transformationType": "historical reference only",
+      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Retained through the pinned source-reference harness and provenance records."
+      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
     }
-  ]
+  ],
+  "extractedAt": "2026-08-03T11:44:04.643Z",
+  "extractedRecordCount": 199,
+  "portedTestRecordCount": 74,
+  "testsPortedAt": "2026-08-03T11:46:54.361Z"
 }

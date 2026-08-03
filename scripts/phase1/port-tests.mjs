@@ -94,6 +94,11 @@ function rewriteRootPaths(component,sourcePath,destinationPath,text) {
     const mappings=sourceMap.records.filter((r)=>r.sourceRepository===SOURCE_IDENTITIES.supervisor.repository && r.destinationPath);
     for (const record of mappings.sort((a,b)=>b.sourcePath.length-a.sourcePath.length)) output=output.split(record.sourcePath).join(record.destinationPath);
     output=output.split("join(root, 'binding.gyp')").join("join(root, 'src', 'native', 'peercred', 'binding.gyp')");
+    if (sourcePath === 'test/deployment-lane.test.ts') {
+      output = output
+        .replace('/test -d dist\\/src/u', '/test -d dist-extracted\\/supervisor/u')
+        .replace('/cp -R dist\\/src\\/\\. \"\\$RELEASE_DIR\\/lib\\/dist\\/\"/u', '/cp -R dist-extracted\\/\\. \"\\$RELEASE_DIR\\/lib\\/dist\\/\"/u');
+    }
     output=output.split("join(REPO_ROOT, 'acceptance/fixtures/").join("join(REPO_ROOT, 'test/extracted/supervisor/acceptance/fixtures/");
   }
   if (component==='gateway') {

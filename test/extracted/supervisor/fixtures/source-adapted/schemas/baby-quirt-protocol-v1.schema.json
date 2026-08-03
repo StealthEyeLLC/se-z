@@ -1,0 +1,389 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stealtheye.io/test/extracted/supervisor/fixtures/source-adapted/schemas/se-z-protocol-v1.schema.json",
+  "title": "se-z Protocol v1",
+  "type": "object",
+  "description": "Wire protocol schema for se-z private Unix-socket host-control runtime",
+  "definitions": {
+    "frameHeader": {
+      "type": "object",
+      "required": [
+        "magic",
+        "protocolVersion",
+        "frameType",
+        "requestId",
+        "payloadLength",
+        "flags"
+      ],
+      "properties": {
+        "magic": {
+          "type": "string",
+          "const": "SEZ1"
+        },
+        "protocolVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "frameType": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payloadLength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16777216
+        },
+        "flags": {
+          "type": "integer"
+        }
+      }
+    },
+    "principal": {
+      "type": "object",
+      "required": [
+        "subject",
+        "authorityClass",
+        "issuer"
+      ],
+      "properties": {
+        "subject": {
+          "type": "string",
+          "const": "stealtheye-owner"
+        },
+        "authorityClass": {
+          "type": "string",
+          "const": "unrestricted-owner"
+        },
+        "issuer": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "gatewayId",
+        "nonce",
+        "signature"
+      ],
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "const": "ed25519"
+        },
+        "gatewayId": {
+          "type": "string"
+        },
+        "nonce": {
+          "type": "string",
+          "minLength": 16
+        },
+        "signature": {
+          "type": "string"
+        },
+        "keyId": {
+          "type": "string"
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "required": [
+        "protocolVersion",
+        "requestId",
+        "operation",
+        "principal",
+        "authority",
+        "targetHost",
+        "timestamp",
+        "payload",
+        "binaryLength"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "type": "string",
+          "const": "1.0.0"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operation": {
+          "type": "string",
+          "pattern": "^sez\\."
+        },
+        "principal": {
+          "$ref": "#/definitions/principal"
+        },
+        "authority": {
+          "$ref": "#/definitions/authority"
+        },
+        "targetHost": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "payload": {},
+        "binaryLength": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "response": {
+      "type": "object",
+      "required": [
+        "requestId",
+        "operation",
+        "result"
+      ],
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "result": {},
+        "receipt": {
+          "$ref": "#/definitions/receipt"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "requestId",
+        "code",
+        "message",
+        "retryable"
+      ],
+      "properties": {
+        "requestId": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "details": {
+          "type": "object"
+        }
+      }
+    },
+    "receipt": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/receiptV1"
+        },
+        {
+          "$ref": "#/definitions/receiptV2"
+        }
+      ]
+    },
+    "receiptV1": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "receiptSchemaVersion",
+        "protocolVersion",
+        "receiptId",
+        "requestId",
+        "operation",
+        "subject",
+        "authorityClass",
+        "resultDigest",
+        "timestamp",
+        "machineIdSha256",
+        "hostname",
+        "signature",
+        "keyId"
+      ],
+      "properties": {
+        "receiptSchemaVersion": {
+          "type": "string",
+          "const": "1.0.0"
+        },
+        "protocolVersion": {
+          "type": "string"
+        },
+        "receiptId": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "authorityClass": {
+          "type": "string"
+        },
+        "resultDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "machineIdSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        },
+        "keyId": {
+          "type": "string"
+        }
+      }
+    },
+    "receiptV2": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "receiptSchemaVersion",
+        "protocolVersion",
+        "receiptId",
+        "requestId",
+        "operation",
+        "subject",
+        "authorityClass",
+        "requestDigest",
+        "requestFingerprint",
+        "resultDigest",
+        "timestamp",
+        "startedAt",
+        "completedAt",
+        "machineIdSha256",
+        "hostname",
+        "release",
+        "signature",
+        "keyId"
+      ],
+      "properties": {
+        "receiptSchemaVersion": {
+          "type": "string",
+          "const": "2.0.0"
+        },
+        "protocolVersion": {
+          "type": "string"
+        },
+        "receiptId": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "authorityClass": {
+          "type": "string"
+        },
+        "requestDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "requestFingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "resultDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "machineIdSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "release": {
+          "type": "object",
+          "required": [
+            "status",
+            "manifestPath"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "installed",
+                "unknown"
+              ]
+            },
+            "manifestPath": {
+              "type": "string"
+            },
+            "manifestSha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "version": {
+              "type": "string"
+            },
+            "commit": {
+              "type": "string"
+            },
+            "tree": {
+              "type": "string"
+            },
+            "sourceDateEpoch": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          }
+        },
+        "signature": {
+          "type": "string"
+        },
+        "keyId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

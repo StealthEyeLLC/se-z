@@ -1,0 +1,19 @@
+# Provenance: exact pinned source and transformation are recorded in vendor/baby-provenance/file-map.json.
+[Unit]
+Description=se-z disposable host certification
+After=local-fs.target
+SuccessAction=poweroff
+FailureAction=poweroff-force
+
+[Service]
+Type=oneshot
+Environment=SEZ_CERTIFICATION_PLAN=/run/se-z-certification/input/plan.json
+ExecStart=/opt/node-v24.18.0-linux-x64/bin/node /usr/local/libexec/se-z-host-certification.mjs
+StandardInput=null
+StandardOutput=journal+console
+StandardError=journal+console
+TimeoutStartSec=96h
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

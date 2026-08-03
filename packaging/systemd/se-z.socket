@@ -1,0 +1,18 @@
+# Provenance: exact pinned source and transformation are recorded in vendor/baby-provenance/file-map.json.
+[Unit]
+Description=se-z private Unix socket
+Documentation=https://github.com/StealthEyeLLC/se-z
+
+[Socket]
+ListenStream=/run/se-z/gateway.sock
+SocketUser=root
+SocketGroup=sez
+SocketMode=0660
+DirectoryMode=0750
+Accept=no
+RemoveOnStop=yes
+Service=se-z.service
+Backlog=128
+
+[Install]
+WantedBy=sockets.target

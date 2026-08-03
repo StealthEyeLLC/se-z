@@ -1,0 +1,26 @@
+# Provenance: exact pinned source and transformation are recorded in vendor/baby-provenance/file-map.json.
+[Unit]
+Description=se-z standalone deployment rollback guard for %i
+Documentation=https://github.com/StealthEyeLLC/se-z
+DefaultDependencies=no
+After=local-fs.target
+Before=se-z.service se-z-gateway.service
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0077
+ExecStart=/usr/bin/flock --exclusive --nonblock /run/se-z/deploy.lock /usr/libexec/se-z-deploy/current/bin/se-z-deploy-guard evaluate --deployment-id %i
+Environment=NODE_ENV=production
+NoNewPrivileges=false
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+LockPersonality=true
+ReadWritePaths=/var/lib/se-z/deployments /run/se-z /opt/se-z /opt/se-z/gateway /etc/se-z /etc/se-z-gateway /etc/systemd/system /run/sez

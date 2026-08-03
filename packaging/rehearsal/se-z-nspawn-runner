@@ -1,0 +1,5 @@
+#!/bin/sh
+# Provenance: exact pinned source and transformation are recorded in vendor/baby-provenance/file-map.json.
+set -eu
+exec /opt/node-v24.18.0-linux-x64/bin/node \
+  /usr/local/lib/se-z-nspawn/dist/src/rehearsal/nspawn-cli.js "$@"

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Provenance: exact pinned source and transformation are recorded in vendor/baby-provenance/file-map.json.
+set -euo pipefail
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+RELEASE_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+NODE_BIN=${SEZ_NODE_BIN:-/opt/node-v24.18.0-linux-x64/bin/node}
+exec "$NODE_BIN" "$RELEASE_ROOT/lib/dist/controller/cli.js" "$@"
