@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Standalone owner-only unrestricted UID-0 control system for the authorized StealthEye VPS.",
   "engines": {
-    "node": ">=22"
+    "node": "24.18.0"
   },
   "bin": {
     "se-z": "./src/cli.mjs"
@@ -14,5 +14,14 @@
     "check": "node scripts/check.mjs",
     "test": "node --test",
     "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "node-addon-api": "8.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "node-gyp": "11.5.0",
+    "tsx": "4.23.1",
+    "typescript": "5.9.3"
   }
 }
