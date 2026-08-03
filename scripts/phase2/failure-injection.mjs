@@ -522,7 +522,7 @@ async function runFailureSuite() {
     tamperedDigest.resultDigest = '0'.repeat(64);
     assert.equal(verifyReceipt(tamperedDigest, receiptKeys).valid, false);
     const tamperedSignature = clone(validReceiptResponse.receipt);
-    tamperedSignature.signature = `${tamperedSignature.signature.slice(0, -1)}A`;
+    tamperedSignature.signature = `${tamperedSignature.signature.slice(0, -1)}${tamperedSignature.signature.endsWith('A') ? 'B' : 'A'}`;
     assert.equal(verifyReceipt(tamperedSignature, receiptKeys).valid, false);
     const tamperedId = clone(validReceiptResponse.receipt);
     tamperedId.receiptId = 'f'.repeat(64);

@@ -38,7 +38,7 @@
     "phase2:audits": "node scripts/phase2/audits.mjs",
     "phase2:baby-readback": "node scripts/phase2/baby-protected-readback.mjs",
     "phase2:cleanup": "bash scripts/phase2/cleanup-tests.sh",
-    "phase2:failure": "npm run phase2:failure-injection",
+    "phase2:failure": "node scripts/phase2/failure-injection.mjs",
     "phase2:failure-injection": "node scripts/phase2/failure-injection.mjs",
     "phase2:host-candidate": "bash scripts/phase2/host-candidate.sh",
     "phase2:integration": "node scripts/phase2/integration.mjs",
