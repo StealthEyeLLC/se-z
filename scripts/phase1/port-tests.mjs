@@ -26,9 +26,18 @@ function readBytes(sourceRoot,sourcePath) {
   const stat=fs.lstatSync(full);
   return stat.isSymbolicLink()?Buffer.from(fs.readlinkSync(full)):fs.readFileSync(full);
 }
+function isSourceOnlyTest(component, sourcePath) {
+  if (component === 'supervisor') return sourcePath === 'test/standalone-architecture.test.ts';
+  if (component === 'gateway') return [
+    'test/deployment.test.js',
+    'test/release-v2.test.js',
+    'test/standalone-architecture.test.js',
+  ].includes(sourcePath);
+  return false;
+}
 function testDestination(component,sourcePath) {
+  if (isSourceOnlyTest(component, sourcePath)) return null;
   if (component==='supervisor') {
-    if (sourcePath === 'test/standalone-architecture.test.ts') return null;
     if (sourcePath.startsWith('test/')) return `test/extracted/supervisor/unit/${sourcePath.slice(5)}`;
     if (sourcePath.startsWith('integration/')) return `test/extracted/supervisor/integration/${sourcePath.slice(12)}`;
     if (sourcePath.startsWith('acceptance/')) return `test/extracted/supervisor/acceptance/${sourcePath.slice(11)}`;
@@ -103,6 +112,24 @@ function rewriteRootPaths(component,sourcePath,destinationPath,text) {
   }
   if (component==='gateway') {
     output=output.replaceAll("join(import.meta.dirname, '..')", "join(import.meta.dirname, '..', '..', '..')");
+    output=output.replaceAll("new URL('../', import.meta.url)", "new URL('../../../', import.meta.url)");
+  }
+  return output;
+}
+
+function applyTargetTestAdaptations(component, sourcePath, text) {
+  let output = text;
+  if (component === 'gateway' && sourcePath === 'test/config.test.js') {
+    output = output.replaceAll('must equal sez\\.apply', 'must equal sez\\.root');
+  }
+  if (component === 'gateway' && sourcePath === 'test/contract.test.js') {
+    const oldAssertion = "assert.throws(() => validateArguments({ operation: 'sez.exec', payload: {}, idempotencyKey: 'health-001' }), /operation is invalid/u);";
+    const newAssertion = "assert.deepEqual(validateArguments({ operation: 'sez.exec', payload: {}, idempotencyKey: 'health-001' }), { operation: 'sez.exec', payload: {}, idempotencyKey: 'health-001' });\n    assert.throws(() => validateArguments({ operation: 'baby.exec', payload: {}, idempotencyKey: 'health-001' }), /operation is invalid/u);";
+    if (!output.includes(oldAssertion)) throw new Error('gateway contract canonical adapter anchor not found');
+    output = output.replace(oldAssertion, newAssertion);
+  }
+  if (component === 'gateway' && sourcePath === 'test/entrypoint.test.js') {
+    output = output.replaceAll("join(current, 'src/main.js')", "join(current, 'src/gateway/mcp/main.js')");
   }
   return output;
 }
@@ -110,12 +137,13 @@ function rewriteRootPaths(component,sourcePath,destinationPath,text) {
 const selectedRepos = new Set(selected.map((component) => componentRepo[component]));
 for (const record of sourceMap.records) {
   if (!selectedRepos.has(record.sourceRepository) || record.transformationType !== 'test fixture derived from source') continue;
-  if (record.sourcePath === 'test/standalone-architecture.test.ts') {
+  const component = record.sourceRepository === SOURCE_IDENTITIES.supervisor.repository ? 'supervisor' : 'gateway';
+  if (isSourceOnlyTest(component, record.sourcePath)) {
     record.destinationPath = null;
     record.copyStatus = 'SOURCE_REFERENCE_ONLY';
     record.renameStatus = 'NOT_APPLICABLE';
     record.parityTestStatus = 'SOURCE_HARNESS_CANONICAL_SUPERSEDED';
-    record.notes = 'Source-only architecture assertions are executed by the exact source harness; target architecture follows higher-precedence se-z canonicals.';
+    record.notes = 'Source-only repository architecture or release-layout assertions are executed by the exact source harness; target paths and architecture follow higher-precedence se-z canonicals and receive dedicated target tests.';
   }
 }
 fileMap.records = fileMap.records.filter((entry) => {
@@ -146,6 +174,7 @@ for (const component of selected) {
       text=rewriteImports(component,sourcePath,destinationPath,text);
       text=rewriteRootPaths(component,sourcePath,destinationPath,text);
       text=applyMechanicalIdentity(text);
+      text=applyTargetTestAdaptations(component,sourcePath,text);
       text=header(destinationPath,text,component,sourcePath);
       targetBytes=Buffer.from(text);
     }

@@ -1,0 +1,45 @@
+# Provenance: exact pinned source and transformation are recorded in vendor/baby-provenance/file-map.json.
+[Unit]
+Description=se-z gateway single-action gateway
+Documentation=https://github.com/StealthEyeLLC/se-z-gateway
+After=network-online.target se-z.socket
+Wants=network-online.target
+Requires=se-z.socket
+
+[Service]
+Type=simple
+User=se-z-gateway
+Group=sez
+WorkingDirectory=/opt/se-z/gateway/current
+ExecStart=/opt/se-z/gateway/current/bin/se-z-gateway
+Environment=NODE_ENV=production
+EnvironmentFile=/etc/se-z-gateway/environment
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+KillMode=mixed
+KillSignal=SIGTERM
+UMask=0077
+StateDirectory=se-z-gateway
+StateDirectoryMode=0700
+ReadWritePaths=/var/lib/se-z-gateway
+
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target

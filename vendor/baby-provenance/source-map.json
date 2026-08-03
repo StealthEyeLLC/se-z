@@ -7917,7 +7917,7 @@
       "parityTestStatus": "SOURCE_HARNESS_CANONICAL_SUPERSEDED",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Source-only architecture assertions are executed by the exact source harness; target architecture follows higher-precedence se-z canonicals."
+      "notes": "Source-only repository architecture or release-layout assertions are executed by the exact source harness; target paths and architecture follow higher-precedence se-z canonicals and receive dedicated target tests."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -9577,14 +9577,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/extracted/gateway/deployment.test.js",
-      "copyStatus": "COPIED",
-      "renameStatus": "APPLIED",
+      "destinationPath": null,
+      "copyStatus": "SOURCE_REFERENCE_ONLY",
+      "renameStatus": "NOT_APPLICABLE",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "parityTestStatus": "SOURCE_HARNESS_CANONICAL_SUPERSEDED",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
+      "notes": "Source-only repository architecture or release-layout assertions are executed by the exact source harness; target paths and architecture follow higher-precedence se-z canonicals and receive dedicated target tests."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9783,14 +9783,14 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/extracted/gateway/release-v2.test.js",
-      "copyStatus": "COPIED",
-      "renameStatus": "APPLIED",
+      "destinationPath": null,
+      "copyStatus": "SOURCE_REFERENCE_ONLY",
+      "renameStatus": "NOT_APPLICABLE",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "parityTestStatus": "SOURCE_HARNESS_CANONICAL_SUPERSEDED",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "behavioral parity required with explicit canonical normalization",
-      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
+      "notes": "Source-only repository architecture or release-layout assertions are executed by the exact source harness; target paths and architecture follow higher-precedence se-z canonicals and receive dedicated target tests."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt-mcp",
@@ -9856,18 +9856,18 @@
         "Node.js 24.18.0"
       ],
       "sourceTests": [],
-      "destinationPath": "test/extracted/gateway/standalone-architecture.test.js",
-      "copyStatus": "COPIED",
-      "renameStatus": "APPLIED",
+      "destinationPath": null,
+      "copyStatus": "SOURCE_REFERENCE_ONLY",
+      "renameStatus": "NOT_APPLICABLE",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "parityTestStatus": "SOURCE_HARNESS_CANONICAL_SUPERSEDED",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
+      "notes": "Source-only repository architecture or release-layout assertions are executed by the exact source harness; target paths and architecture follow higher-precedence se-z canonicals and receive dedicated target tests."
     }
   ],
-  "extractedAt": "2026-08-03T11:44:04.643Z",
-  "extractedRecordCount": 199,
-  "portedTestRecordCount": 74,
-  "testsPortedAt": "2026-08-03T11:46:54.361Z"
+  "extractedAt": "2026-08-03T11:52:33.059Z",
+  "extractedRecordCount": 196,
+  "portedTestRecordCount": 71,
+  "testsPortedAt": "2026-08-03T11:54:37.372Z"
 }

@@ -1,0 +1,54 @@
+# Provenance: exact pinned source and transformation are recorded in vendor/baby-provenance/file-map.json.
+se-z.stealtheye.io {
+  encode zstd gzip
+
+  @mcp path /mcp
+  handle @mcp {
+    request_body {
+      max_size 1MB
+    }
+    reverse_proxy 127.0.0.1:2096 {
+      header_up Host 127.0.0.1
+      flush_interval -1
+      transport http {
+        dial_timeout 5s
+        response_header_timeout 130s
+      }
+    }
+  }
+
+  @oauth path /.well-known/oauth-protected-resource /.well-known/oauth-protected-resource/mcp /.well-known/oauth-authorization-server /.well-known/openid-configuration /oauth/*
+  handle @oauth {
+    request_body {
+      max_size 128KB
+    }
+    reverse_proxy 127.0.0.1:2096 {
+      header_up Host 127.0.0.1
+    }
+  }
+
+  @health path /healthz
+  handle @health {
+    reverse_proxy 127.0.0.1:2096 {
+      header_up Host 127.0.0.1
+    }
+  }
+
+  handle {
+    respond "not found" 404
+  }
+
+  header {
+    X-Content-Type-Options nosniff
+    Referrer-Policy no-referrer
+    -Server
+  }
+
+  log {
+    output file /var/log/caddy/se-z-gateway-access.log {
+      roll_size 10MiB
+      roll_keep 5
+    }
+    format json
+  }
+}
