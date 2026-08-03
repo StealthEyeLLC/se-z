@@ -36,7 +36,8 @@
     "phase1:dependency-scan": "node scripts/phase1/dependency-scan.mjs",
     "phase1:secret-scan": "node scripts/phase1/secret-scan.mjs",
     "test:scaffold": "node --test test/canonical.test.mjs",
-    "test:parity:static": "node --test $(find test/parity -type f -name \"*.test.mjs\" | sort)"
+    "test:parity:static": "node --test $(find test/parity -type f -name \"*.test.mjs\" | sort)",
+    "phase1:verify": "node scripts/phase1/verify.mjs"
   },
   "dependencies": {
     "node-addon-api": "8.9.0"
