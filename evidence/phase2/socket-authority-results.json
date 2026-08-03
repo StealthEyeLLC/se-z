@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-socket-authority-results",
+  "capturedAt": "2026-08-03T17:59:21.913Z",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "checks": [
+    {
+      "name": "dual socket modes and groups",
+      "passed": true,
+      "localGid": 988,
+      "gatewayGid": 65534
+    },
+    {
+      "name": "genuine non-root local group peer accepted",
+      "passed": true,
+      "uid": 995,
+      "gid": 988
+    },
+    {
+      "name": "unrelated local user rejected",
+      "passed": true
+    },
+    {
+      "name": "expected gateway UID/GID executable and Ed25519 signature accepted",
+      "passed": true
+    },
+    {
+      "name": "wrong gateway UID rejected",
+      "passed": true
+    },
+    {
+      "name": "invalid gateway signature rejected",
+      "passed": true
+    },
+    {
+      "name": "valid gateway class rejected on local socket",
+      "passed": true
+    }
+  ],
+  "nspawnSocketMetadata": [
+    "/run/se-z/local.sock root se-z 660 socket",
+    "/run/se-z/gateway.sock root se-z-gateway 660 socket"
+  ],
+  "hostKernelProof": true
+}

@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-nspawn-acceptance",
+  "startedAt": "2026-08-03T17:58:48.104Z",
+  "completedAt": "2026-08-03T17:59:05.316881+00:00",
+  "passed": true,
+  "machine": "sez-p2-194822-25223",
+  "machineImageIdentity": "e543063f873a853a1a219cbcd765c8759db23693890ecf4a560703dd945ef605",
+  "osRelease": "PRETTY_NAME=\"Ubuntu 24.04 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo",
+  "hostKernel": "6.8.0-9001-generic",
+  "systemdVersion": "\u001b[0;1;39msystemd 255\u001b[0m (255.4-1ubuntu8)",
+  "nodeVersion": "v24.18.0",
+  "candidateSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "unitStatus": [
+    "active",
+    "active",
+    "active"
+  ],
+  "socketMetadata": [
+    "/run/se-z/local.sock root se-z 660 socket",
+    "/run/se-z/gateway.sock root se-z-gateway 660 socket"
+  ],
+  "bootBefore": "4983b7ec-9263-4d82-aa1e-77c2cb1949b9",
+  "bootAfter": "34bb2301-f0a4-4732-a017-82b5c5f72a76",
+  "reboots": 1,
+  "components": {
+    "install-verify-before.json": {
+      "schemaVersion": 1,
+      "kind": "phase2-install-verification",
+      "startedAt": "2026-08-03T17:58:51.309Z",
+      "completedAt": "2026-08-03T17:58:52.084Z",
+      "passed": true,
+      "checks": [
+        {
+          "name": "production service and both socket units are active with UID-0 supervisor",
+          "passed": true,
+          "detail": {
+            "mainPid": 241
+          }
+        },
+        {
+          "name": "strict installed configuration is production-shaped and fault injection is disabled",
+          "passed": true,
+          "detail": {
+            "release": {
+              "product": "se-z",
+              "releaseMilestone": "0.1A",
+              "candidate": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+              "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+              "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a"
+            }
+          }
+        },
+        {
+          "name": "local and gateway sockets have exact path, owner, group and mode",
+          "passed": true,
+          "detail": {}
+        },
+        {
+          "name": "installed discovery is signed SEZ1 with exact 0.1A catalog",
+          "passed": true,
+          "detail": {
+            "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9"
+          }
+        },
+        {
+          "name": "installed supervisor executes exact argv as UID 0 and receipt verifies",
+          "passed": true,
+          "detail": {
+            "jobId": "1d36d1bd-2a9b-43be-8ee0-752fafef2d8d",
+            "receiptId": "46ac7ea3d7429a0702d78a58731e5bd18c602c4b3ed8fe14d1c3ddda86e33c34"
+          }
+        },
+        {
+          "name": "genuine non-root supplementary se-z group member is authorized",
+          "passed": true,
+          "detail": {
+            "uid": 996,
+            "gid": 65534
+          }
+        },
+        {
+          "name": "unrelated non-root local peer is rejected",
+          "passed": true,
+          "detail": {
+            "uid": 995,
+            "gid": 65534
+          }
+        },
+        {
+          "name": "expected unprivileged gateway UID/GID/executable and Ed25519 signature are authorized",
+          "passed": true,
+          "detail": {
+            "uid": 997,
+            "gid": 996,
+            "receiptId": "730ae4062f9a3e87d0d164c66a8f68e97adea5351af8afe083578bf084176e08"
+          }
+        },
+        {
+          "name": "local and gateway peer classes cannot cross sockets by physical ACL or protocol rejection",
+          "passed": true,
+          "detail": {}
+        }
+      ],
+      "checkCount": 9,
+      "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+      "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+      "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+      "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9"
+    },
+    "nspawn-pre.json": {
+      "schemaVersion": 1,
+      "kind": "phase2-nspawn-pre",
+      "passed": true,
+      "checks": [
+        {
+          "name": "exact installed catalog",
+          "passed": true,
+          "detail": {
+            "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9"
+          }
+        },
+        {
+          "name": "uid-0 execution",
+          "passed": true,
+          "detail": {
+            "requestId": "64878d63-0d10-4010-9451-b3f1670b04e6",
+            "jobId": "af0db7ad-eb3b-4b95-b9ad-82b99a49c42f",
+            "receiptId": "c670ad3ee3244bb29421a0a0c6482ef9892899248a15fc1faced74ffee3a2f75"
+          }
+        },
+        {
+          "name": "file lifecycle",
+          "passed": true,
+          "detail": {
+            "sha256": "6ede572cd2c3b2d60ebefa206ae7d5813149bca9f747ef86ae54f7897760a3d8"
+          }
+        },
+        {
+          "name": "artifact finalized",
+          "passed": true,
+          "detail": {
+            "artifactId": "ac532605-c811-42a1-b1af-70113fc5ca39",
+            "sha256": "271dfb9e321488aacf8da61803aabcb31e54e5f67e513c33e8b97eb25278c119"
+          }
+        },
+        {
+          "name": "PTY survives supervisor restart",
+          "passed": true,
+          "detail": {
+            "sessionId": "e38b371b-74c9-441f-8d9d-0d39b913add8"
+          }
+        },
+        {
+          "name": "durable job across supervisor restart",
+          "passed": true,
+          "detail": {
+            "jobId": "48bf4fbb-0519-4a25-9e77-362e8dae5134"
+          }
+        },
+        {
+          "name": "response loss resumes exactly",
+          "passed": true,
+          "detail": {
+            "requestId": "4e89b707-5b31-4225-b939-745558296a9d",
+            "jobId": "efd82926-e66b-4c61-9a52-ee5901e807bc"
+          }
+        },
+        {
+          "name": "more than 64 MiB output read and hashed",
+          "passed": true,
+          "detail": {
+            "jobId": "61d4a6fa-3ef1-4cbc-b8d6-9c50b579557d",
+            "stdout": {
+              "bytes": 70254623,
+              "sha256": "41641f4d8b5cf97ae53ba73d7eef26a07787ac164759073f97da3ca56bcd67b8",
+              "pages": 68
+            },
+            "stderr": {
+              "bytes": 20,
+              "sha256": "c2771893166bd75db2d2b2372b8da5463c855d4df5451bcf96dc726ff9c279e1",
+              "pages": 1
+            }
+          }
+        }
+      ],
+      "checkCount": 8,
+      "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+      "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+      "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+      "rootProof": {
+        "requestId": "64878d63-0d10-4010-9451-b3f1670b04e6",
+        "jobId": "af0db7ad-eb3b-4b95-b9ad-82b99a49c42f",
+        "receiptId": "c670ad3ee3244bb29421a0a0c6482ef9892899248a15fc1faced74ffee3a2f75",
+        "exitCode": 0,
+        "stdout": "0\\n",
+        "stderr": ""
+      },
+      "artifactId": "ac532605-c811-42a1-b1af-70113fc5ca39",
+      "artifactSha256": "271dfb9e321488aacf8da61803aabcb31e54e5f67e513c33e8b97eb25278c119",
+      "ptySessionId": "e38b371b-74c9-441f-8d9d-0d39b913add8",
+      "completedJobId": "af0db7ad-eb3b-4b95-b9ad-82b99a49c42f",
+      "completedRequestId": "64878d63-0d10-4010-9451-b3f1670b04e6",
+      "responseLossRequestId": "4e89b707-5b31-4225-b939-745558296a9d",
+      "responseLossJobId": "efd82926-e66b-4c61-9a52-ee5901e807bc",
+      "largeOutput": {
+        "jobId": "61d4a6fa-3ef1-4cbc-b8d6-9c50b579557d",
+        "stdout": {
+          "bytes": 70254623,
+          "sha256": "41641f4d8b5cf97ae53ba73d7eef26a07787ac164759073f97da3ca56bcd67b8",
+          "pages": 68
+        },
+        "stderr": {
+          "bytes": 20,
+          "sha256": "c2771893166bd75db2d2b2372b8da5463c855d4df5451bcf96dc726ff9c279e1",
+          "pages": 1
+        }
+      },
+      "supervisorRestarts": 2
+    },
+    "nspawn-post.json": {
+      "schemaVersion": 1,
+      "kind": "phase2-nspawn-post-reboot",
+      "passed": true,
+      "checks": [
+        {
+          "name": "completed job persists across reboot",
+          "passed": true,
+          "detail": {
+            "jobId": "af0db7ad-eb3b-4b95-b9ad-82b99a49c42f"
+          }
+        },
+        {
+          "name": "request and idempotency state persist across reboot",
+          "passed": true,
+          "detail": {
+            "requestId": "64878d63-0d10-4010-9451-b3f1670b04e6"
+          }
+        },
+        {
+          "name": "artifact persists and independently hashes",
+          "passed": true,
+          "detail": {
+            "artifactId": "ac532605-c811-42a1-b1af-70113fc5ca39",
+            "sha256": "271dfb9e321488aacf8da61803aabcb31e54e5f67e513c33e8b97eb25278c119"
+          }
+        },
+        {
+          "name": "PTY reboot boundary reconciles honestly",
+          "passed": true,
+          "detail": {
+            "sessionId": "e38b371b-74c9-441f-8d9d-0d39b913add8",
+            "state": "lost"
+          }
+        },
+        {
+          "name": "service and sockets healthy after reboot",
+          "passed": true,
+          "detail": {}
+        }
+      ],
+      "checkCount": 5,
+      "previous": {
+        "schemaVersion": 1,
+        "kind": "phase2-nspawn-pre",
+        "passed": true,
+        "checks": [
+          {
+            "name": "exact installed catalog",
+            "passed": true,
+            "detail": {
+              "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9"
+            }
+          },
+          {
+            "name": "uid-0 execution",
+            "passed": true,
+            "detail": {
+              "requestId": "64878d63-0d10-4010-9451-b3f1670b04e6",
+              "jobId": "af0db7ad-eb3b-4b95-b9ad-82b99a49c42f",
+              "receiptId": "c670ad3ee3244bb29421a0a0c6482ef9892899248a15fc1faced74ffee3a2f75"
+            }
+          },
+          {
+            "name": "file lifecycle",
+            "passed": true,
+            "detail": {
+              "sha256": "6ede572cd2c3b2d60ebefa206ae7d5813149bca9f747ef86ae54f7897760a3d8"
+            }
+          },
+          {
+            "name": "artifact finalized",
+            "passed": true,
+            "detail": {
+              "artifactId": "ac532605-c811-42a1-b1af-70113fc5ca39",
+              "sha256": "271dfb9e321488aacf8da61803aabcb31e54e5f67e513c33e8b97eb25278c119"
+            }
+          },
+          {
+            "name": "PTY survives supervisor restart",
+            "passed": true,
+            "detail": {
+              "sessionId": "e38b371b-74c9-441f-8d9d-0d39b913add8"
+            }
+          },
+          {
+            "name": "durable job across supervisor restart",
+            "passed": true,
+            "detail": {
+              "jobId": "48bf4fbb-0519-4a25-9e77-362e8dae5134"
+            }
+          },
+          {
+            "name": "response loss resumes exactly",
+            "passed": true,
+            "detail": {
+              "requestId": "4e89b707-5b31-4225-b939-745558296a9d",
+              "jobId": "efd82926-e66b-4c61-9a52-ee5901e807bc"
+            }
+          },
+          {
+            "name": "more than 64 MiB output read and hashed",
+            "passed": true,
+            "detail": {
+              "jobId": "61d4a6fa-3ef1-4cbc-b8d6-9c50b579557d",
+              "stdout": {
+                "bytes": 70254623,
+                "sha256": "41641f4d8b5cf97ae53ba73d7eef26a07787ac164759073f97da3ca56bcd67b8",
+                "pages": 68
+              },
+              "stderr": {
+                "bytes": 20,
+                "sha256": "c2771893166bd75db2d2b2372b8da5463c855d4df5451bcf96dc726ff9c279e1",
+                "pages": 1
+              }
+            }
+          }
+        ],
+        "checkCount": 8,
+        "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+        "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+        "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+        "rootProof": {
+          "requestId": "64878d63-0d10-4010-9451-b3f1670b04e6",
+          "jobId": "af0db7ad-eb3b-4b95-b9ad-82b99a49c42f",
+          "receiptId": "c670ad3ee3244bb29421a0a0c6482ef9892899248a15fc1faced74ffee3a2f75",
+          "exitCode": 0,
+          "stdout": "0\\n",
+          "stderr": ""
+        },
+        "artifactId": "ac532605-c811-42a1-b1af-70113fc5ca39",
+        "artifactSha256": "271dfb9e321488aacf8da61803aabcb31e54e5f67e513c33e8b97eb25278c119",
+        "ptySessionId": "e38b371b-74c9-441f-8d9d-0d39b913add8",
+        "completedJobId": "af0db7ad-eb3b-4b95-b9ad-82b99a49c42f",
+        "completedRequestId": "64878d63-0d10-4010-9451-b3f1670b04e6",
+        "responseLossRequestId": "4e89b707-5b31-4225-b939-745558296a9d",
+        "responseLossJobId": "efd82926-e66b-4c61-9a52-ee5901e807bc",
+        "largeOutput": {
+          "jobId": "61d4a6fa-3ef1-4cbc-b8d6-9c50b579557d",
+          "stdout": {
+            "bytes": 70254623,
+            "sha256": "41641f4d8b5cf97ae53ba73d7eef26a07787ac164759073f97da3ca56bcd67b8",
+            "pages": 68
+          },
+          "stderr": {
+            "bytes": 20,
+            "sha256": "c2771893166bd75db2d2b2372b8da5463c855d4df5451bcf96dc726ff9c279e1",
+            "pages": 1
+          }
+        },
+        "supervisorRestarts": 2
+      }
+    },
+    "install-verify-after.json": {
+      "schemaVersion": 1,
+      "kind": "phase2-install-verification",
+      "startedAt": "2026-08-03T17:59:04.273Z",
+      "completedAt": "2026-08-03T17:59:05.001Z",
+      "passed": true,
+      "checks": [
+        {
+          "name": "production service and both socket units are active with UID-0 supervisor",
+          "passed": true,
+          "detail": {
+            "mainPid": 45
+          }
+        },
+        {
+          "name": "strict installed configuration is production-shaped and fault injection is disabled",
+          "passed": true,
+          "detail": {
+            "release": {
+              "product": "se-z",
+              "releaseMilestone": "0.1A",
+              "candidate": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+              "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+              "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a"
+            }
+          }
+        },
+        {
+          "name": "local and gateway sockets have exact path, owner, group and mode",
+          "passed": true,
+          "detail": {}
+        },
+        {
+          "name": "installed discovery is signed SEZ1 with exact 0.1A catalog",
+          "passed": true,
+          "detail": {
+            "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9"
+          }
+        },
+        {
+          "name": "installed supervisor executes exact argv as UID 0 and receipt verifies",
+          "passed": true,
+          "detail": {
+            "jobId": "5bffac75-68f5-4bd5-b13b-2ed36c2a8aef",
+            "receiptId": "30e670d56b1658e14c5c3d92d4f374f812d11656fd4e97ef773567e55a259052"
+          }
+        },
+        {
+          "name": "genuine non-root supplementary se-z group member is authorized",
+          "passed": true,
+          "detail": {
+            "uid": 996,
+            "gid": 65534
+          }
+        },
+        {
+          "name": "unrelated non-root local peer is rejected",
+          "passed": true,
+          "detail": {
+            "uid": 995,
+            "gid": 65534
+          }
+        },
+        {
+          "name": "expected unprivileged gateway UID/GID/executable and Ed25519 signature are authorized",
+          "passed": true,
+          "detail": {
+            "uid": 997,
+            "gid": 996,
+            "receiptId": "2dde60b20cd4e082eb8e065acb3a1663d8403cbfc57930d77651906a5f8ff787"
+          }
+        },
+        {
+          "name": "local and gateway peer classes cannot cross sockets by physical ACL or protocol rejection",
+          "passed": true,
+          "detail": {}
+        }
+      ],
+      "checkCount": 9,
+      "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+      "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+      "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+      "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9"
+    }
+  },
+  "cleanup": {
+    "passed": true,
+    "machine": "sez-p2-194822-25223",
+    "rootRemoved": true
+  }
+}

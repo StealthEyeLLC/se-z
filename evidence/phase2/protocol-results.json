@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-protocol-results",
+  "capturedAt": "2026-08-03T17:59:21.912Z",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "checks": [
+    {
+      "name": "core discovery health version doctor",
+      "passed": true,
+      "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+      "operationCount": 41
+    },
+    {
+      "name": "exact replay resumes and changed-content nonce replay rejects",
+      "passed": true
+    },
+    {
+      "name": "all active 0.1A operations exercised through real Unix sockets",
+      "passed": true,
+      "covered": 41
+    }
+  ],
+  "protocolVersion": "1.0.0",
+  "testVectors": [
+    "sez1-request-v1",
+    "sez1-response-v1",
+    "sez1-receipt-v1"
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-release-manifest",
+  "capturedAt": "2026-08-03T17:59:21.918Z",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "packagePath": "/root/se-z-phase1-work/final-b9b6cadb5c2b/package/release/se-z-0.1A-b9b6cadb5c2b.tar.gz",
+  "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "protocolVersion": "1.0.0",
+  "stateSchemaVersion": "0.1A.1",
+  "nodeVersion": "v24.18.0",
+  "nativeAddonSha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7",
+  "manifest": {
+    "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+    "files": [
+      {
+        "bytes": 6435,
+        "mode": "0755",
+        "path": "install/install-package",
+        "sha256": "f5b3c875346c80aa64917aaf702c9a3f7febbf01510dc98cd4f19e689797015c"
+      },
+      {
+        "bytes": 298,
+        "mode": "0644",
+        "path": "payload/LICENSE",
+        "sha256": "c076369a48a95bd7aade62b74e89529d3bdee3ae0915870e5396cdfa5cbc5a32"
+      },
+      {
+        "bytes": 702,
+        "mode": "0644",
+        "path": "payload/NOTICE",
+        "sha256": "13ba9c4760ea1c792c0832d7795cb0ba0121f72c796fd859a2eeee2faa618003"
+      },
+      {
+        "bytes": 185,
+        "mode": "0755",
+        "path": "payload/bin/se-z",
+        "sha256": "04d03fdef89599f3e5403612d74d3884e85dfc4e0ec2b20fd97973309025aea9"
+      },
+      {
+        "bytes": 170,
+        "mode": "0755",
+        "path": "payload/bin/se-z-cleanup-candidate",
+        "sha256": "df91c931a608889e6476c5d713625f3cd06574d0da7e1c27e27e8bb16b6532db"
+      },
+      {
+        "bytes": 193,
+        "mode": "0755",
+        "path": "payload/bin/se-z-gateway",
+        "sha256": "2e2275aa802a975768956900edea631b07fa5f57a987d92f4d8ea761771cc8e5"
+      },
+      {
+        "bytes": 199,
+        "mode": "0755",
+        "path": "payload/bin/se-z-verify-install",
+        "sha256": "a7778ec092339613e821d756e0d27a4e220aa40ce9a8b89cc86a6db1061cea72"
+      },
+      {
+        "bytes": 11452,
+        "mode": "0644",
+        "path": "payload/contracts/errors-0.1a.json",
+        "sha256": "bb95bfc1e635f701700e05414679f7e91a66b2d49c993e59f8f971ebd2d8dc41"
+      },
+      {
+        "bytes": 70207,
+        "mode": "0644",
+        "path": "payload/contracts/operations-0.1a.json",
+        "sha256": "58f9e7177e1818f54ef18b173d88758738265c94c6ea5afc45ed752e437c2fe6"
+      },
+      {
+        "bytes": 23143,
+        "mode": "0644",
+        "path": "payload/contracts/requirements.yaml",
+        "sha256": "8f01993d2fe5902f2b938ead13d0d1b607d778a2590bcb746503b2ce39334741"
+      },
+      {
+        "bytes": 1461,
+        "mode": "0644",
+        "path": "payload/contracts/state-schema-0.1a.json",
+        "sha256": "aa4df27b2e648f5531c8259df9e7025b5a3277accbb1c26df17679610bd6b4b1"
+      },
+      {
+        "bytes": 650,
+        "mode": "0644",
+        "path": "payload/contracts/tool-schema.json",
+        "sha256": "e01408c93fe446fe601b4afc4bdde69a5a5d32135b12ef87e09b26bc8b4d1daa"
+      },
+      {
+        "bytes": 2621,
+        "mode": "0755",
+        "path": "payload/libexec/bin/se-z-gateway.mjs",
+        "sha256": "554dd2c5f671dac08d737c8313aa0efc372bbd72420110f8fb6113ccae1242a5"
+      },
+      {
+        "bytes": 1528,
+        "mode": "0755",
+        "path": "payload/libexec/bin/se-z-supervisor.mjs",
+        "sha256": "4040e338613b2117fd1d391099e5a90f1e5d09d7e93e5b3e07289106ed45cbdd"
+      },
+      {
+        "bytes": 11135,
+        "mode": "0755",
+        "path": "payload/libexec/bin/se-z.mjs",
+        "sha256": "1fb59bc2c6e52ae7af0654c34c7c320f55996467f3e249a7a0b75896a3af271a"
+      },
+      {
+        "bytes": 2258,
+        "mode": "0755",
+        "path": "payload/libexec/install/cleanup-candidate",
+        "sha256": "6eb97dd9a48746898f93024f5077b80c3dd91fffd5b272e02f7dc52dfcd5c146"
+      },
+      {
+        "bytes": 2287,
+        "mode": "0755",
+        "path": "payload/libexec/install/render-config.mjs",
+        "sha256": "8c33407ccfd7ab18f9978375373dc92d5357473583c0d2343fbb7c857335a1bc"
+      },
+      {
+        "bytes": 10446,
+        "mode": "0755",
+        "path": "payload/libexec/install/verify-install.mjs",
+        "sha256": "342e3e8c3fa55ad591d9e91c847066ab1894d477e0e92c90b7bbdd82a636a60e"
+      },
+      {
+        "bytes": 14147,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/artifacts.mjs",
+        "sha256": "2388c5891b0a2d15d6268a5023e55fae994f8730796117b8982c87671e9b703a"
+      },
+      {
+        "bytes": 5280,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/client.mjs",
+        "sha256": "b4f7060742aa10bd0eb09e6ad318c2d58b1a854190368d2b2697438f1a2f198f"
+      },
+      {
+        "bytes": 9507,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/config.mjs",
+        "sha256": "1d6dd3aeb3817658edf0573ac11af37712dacc86dceecabca3228f4332f115f0"
+      },
+      {
+        "bytes": 4843,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/crypto.mjs",
+        "sha256": "312124d646474dcaa4544b7c93bbe429c118352646e39ea48b4368ec3f1ba4af"
+      },
+      {
+        "bytes": 15842,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/definitions.mjs",
+        "sha256": "3fb3949d8727fd0574a84bc7e3a5fe05f0eb2e3e96354b3efdf7c2a79c7f2af1"
+      },
+      {
+        "bytes": 20144,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/files.mjs",
+        "sha256": "30686d5730cf3f0df855c68492c39e836bfeb900e90eecc901fc8745472f6cd6"
+      },
+      {
+        "bytes": 6694,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/identity.mjs",
+        "sha256": "628e1420940bf2e903436173a5b7c8d6d364004ecb89b6a946a0d17c25b94ede"
+      },
+      {
+        "bytes": 8007,
+        "mode": "0755",
+        "path": "payload/libexec/kernel/job-runner.mjs",
+        "sha256": "d9addfe47271cb6127cd8b638b3b2911f02246dd1c3c0d27e1d0c307fa135d4a"
+      },
+      {
+        "bytes": 25190,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/jobs.mjs",
+        "sha256": "a9db2fa385f3d055d14e58d09d85849de315241f33a976963f3797307fa454f0"
+      },
+      {
+        "bytes": 26026,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/operations.mjs",
+        "sha256": "7c7ee10b2a2799dbe3564c17b3b61f6e806b318088eb146d5b92ee0a3cae3271"
+      },
+      {
+        "bytes": 8198,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/protocol.mjs",
+        "sha256": "10e8fbe06a589c3963097162a264bcb7bdc860c8f1196076dc25d73f77b92455"
+      },
+      {
+        "bytes": 10855,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/pty.mjs",
+        "sha256": "fe0ec41a6e769003bdf50083c8e60399ccb4604cabea8f2862823b76373256b8"
+      },
+      {
+        "bytes": 8434,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/server.mjs",
+        "sha256": "6043aeb4106b368549b14514c55fb335a650e578728eb09fdc95405c5b3af10f"
+      },
+      {
+        "bytes": 14478,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/state.mjs",
+        "sha256": "476339edc87805d176c7d5cb3a6223384dc7860f2b0d975ec85aff1e620a9a70"
+      },
+      {
+        "bytes": 14693,
+        "mode": "0644",
+        "path": "payload/libexec/kernel/util.mjs",
+        "sha256": "b408b1d0e9d01b6dec96c4dec81379a650ff7e0a07b59fce9f005761e1d8c523"
+      },
+      {
+        "bytes": 76712,
+        "mode": "0755",
+        "path": "payload/libexec/native/peer_cred.node",
+        "sha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7"
+      },
+      {
+        "bytes": 6125,
+        "mode": "0644",
+        "path": "payload/protocol/SEZ1.md",
+        "sha256": "d43b1217283f601a6aba0d4743b3acc145c0472d44cc3c7720d696039a85cec4"
+      },
+      {
+        "bytes": 1499,
+        "mode": "0644",
+        "path": "payload/protocol/schemas/handshake.schema.json",
+        "sha256": "5c5e3fa42484c448fae6ec80b080bdf4c7a5eae37f3d728201237e3297d0a615"
+      },
+      {
+        "bytes": 2069,
+        "mode": "0644",
+        "path": "payload/protocol/schemas/receipt.schema.json",
+        "sha256": "c37949427005da2b988ccd848d037f440ec7bd9d0a306d7db50de48b1c7265b2"
+      },
+      {
+        "bytes": 1800,
+        "mode": "0644",
+        "path": "payload/protocol/schemas/request.schema.json",
+        "sha256": "415a842c5f5953f5afb4b8e6825abc0373defd173c951f93b8c940252186c09f"
+      },
+      {
+        "bytes": 3148,
+        "mode": "0644",
+        "path": "payload/protocol/schemas/result.schema.json",
+        "sha256": "9db17301ec2a90135b31b01e8f4d197c9cf2c7f47fb41623547964f495c1f989"
+      },
+      {
+        "bytes": 1747,
+        "mode": "0644",
+        "path": "payload/protocol/test-vectors/sez1-receipt-v1.json",
+        "sha256": "87267f934307e7c6bf92b0f9bdb0e81c04871546ec398b2a00255606d8f97a5f"
+      },
+      {
+        "bytes": 13444,
+        "mode": "0644",
+        "path": "payload/protocol/test-vectors/sez1-request-v1.json",
+        "sha256": "3ced02d71cf85603fc9d5cc31175c6be9102c0ceb6b5a111fbb98235b71f2073"
+      },
+      {
+        "bytes": 970,
+        "mode": "0644",
+        "path": "payload/protocol/test-vectors/sez1-response-v1.json",
+        "sha256": "c498b62b8640750517e16b58be016cdcc850a70d057ae378e365a77d6fc6589f"
+      },
+      {
+        "bytes": 157606,
+        "mode": "0644",
+        "path": "payload/runtime/LICENSE",
+        "sha256": "148eacf7863ef4329224a29398623077200a27194aa075569faf4a0a85566ca5"
+      },
+      {
+        "bytes": 123655872,
+        "mode": "0755",
+        "path": "payload/runtime/bin/node",
+        "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+      },
+      {
+        "bytes": 293,
+        "mode": "0644",
+        "path": "payload/share/systemd/se-z-gateway.socket",
+        "sha256": "881072d187ef78f2368e6d4e4ca2bc234fba7deedcc7c17d65cca2ac72884c7e"
+      },
+      {
+        "bytes": 281,
+        "mode": "0644",
+        "path": "payload/share/systemd/se-z-local.socket",
+        "sha256": "d3edc35ea9408af5c4555eb53dec5f1c9526efb908c80993976283d7db42e83b"
+      },
+      {
+        "bytes": 628,
+        "mode": "0644",
+        "path": "payload/share/systemd/se-z.service",
+        "sha256": "db0f78b135f0670184b638eb336ec7ef18bbfb47d57c082a58dc0d03b0b0c937"
+      },
+      {
+        "bytes": 325,
+        "mode": "0644",
+        "path": "payload/share/tmpfiles/se-z.conf",
+        "sha256": "fc39b4ab281b5a6a6a077312641582af70295346a15d98e5914218de5d759afe"
+      }
+    ],
+    "nativeAddonSha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7",
+    "nativeCompilerIdentity": {
+      "executable": "/usr/bin/c++",
+      "target": "x86_64-linux-gnu",
+      "version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+    },
+    "nodeSha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "nodeVersion": "v24.18.0",
+    "operationDefinitionSha256": "58f9e7177e1818f54ef18b173d88758738265c94c6ea5afc45ed752e437c2fe6",
+    "product": "se-z",
+    "protocol": "SEZ1",
+    "protocolSchemaDigests": {
+      "protocol/schemas/handshake.schema.json": "5c5e3fa42484c448fae6ec80b080bdf4c7a5eae37f3d728201237e3297d0a615",
+      "protocol/schemas/receipt.schema.json": "c37949427005da2b988ccd848d037f440ec7bd9d0a306d7db50de48b1c7265b2",
+      "protocol/schemas/request.schema.json": "415a842c5f5953f5afb4b8e6825abc0373defd173c951f93b8c940252186c09f",
+      "protocol/schemas/result.schema.json": "9db17301ec2a90135b31b01e8f4d197c9cf2c7f47fb41623547964f495c1f989"
+    },
+    "protocolVersion": "1.0.0",
+    "provenanceIdentities": {
+      "babyGateway": {
+        "archiveSha256": "5867084e488a4f5d2b8ebaf316007661fd2a775527848e4bb09cb8c942ad1308",
+        "commit": "0bfcd99757afe198151e96b18771626388914205",
+        "deployedRelease": "/opt/baby-quirt-mcp/releases/0.2.3",
+        "manifestPath": "/opt/baby-quirt-mcp/current/release.json",
+        "manifestSha256": "f116ea7012a1bc8a4c40ca3993a02fb26544badca0c47454c47181fdb3622f4e",
+        "releaseDirectoryVersion": "0.2.3",
+        "repository": "StealthEyeLLC/baby-quirt-mcp",
+        "sourceDateEpoch": 1784784328,
+        "trackedFileCount": 48,
+        "tree": "d0598af304c8cda8df3bb538d703d9db6c7dcb04",
+        "version": "0.1.0"
+      },
+      "babySupervisor": {
+        "archiveSha256": "539dc742bbd832cb5644674da19b19261d2ae373f3929d50331e1cc1e27a22bf",
+        "commit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+        "deployedRelease": "/opt/baby-quirt/releases/b3a7119fb9321d74fee9a730517f519ed0d351c4",
+        "manifestPath": "/opt/baby-quirt/current/manifest.json",
+        "manifestSha256": "315606a6e6c0738b39387cb5cccae1ec1d79834a576da6c46c0099eaa8992f1d",
+        "repository": "StealthEyeLLC/baby-quirt",
+        "sourceDateEpoch": 1785157347,
+        "trackedFileCount": 182,
+        "tree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+        "version": "0.1.0"
+      },
+      "capturedAt": "2026-08-03T11:15:56Z",
+      "target": {
+        "baseCommit": "4a7c0865b606958f6dca2d9e5b928f47d5e3b45c",
+        "baseTree": "d9b7cdbadbc29e79a8a2799377f276b665035155",
+        "branch": "build/standalone-0.1",
+        "repository": "StealthEyeLLC/se-z"
+      }
+    },
+    "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+    "releaseMilestone": "0.1A",
+    "runtimeDependencies": {
+      "architecture": "x86_64",
+      "glibc": {
+        "buildHostIdentity": "ldd (Ubuntu GLIBC 2.39-0ubuntu8.8) 2.39",
+        "bundled": false
+      },
+      "node": {
+        "bundled": true,
+        "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+        "version": "v24.18.0"
+      },
+      "systemd": {
+        "buildHostIdentity": "systemd 255 (255.4-1ubuntu8.16)",
+        "bundled": false,
+        "requiredFeatures": [
+          "socket-activation",
+          "transient-services",
+          "credentials"
+        ]
+      },
+      "tmux": {
+        "buildHostIdentity": "tmux 3.4",
+        "bundled": false,
+        "purpose": "test and compatibility utility; PTY broker is native forkpty"
+      }
+    },
+    "schemaVersion": 1,
+    "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+    "sourceDateEpoch": 1785779457,
+    "sourceDirty": false,
+    "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+    "stateSchemaSha256": "aa4df27b2e648f5531c8259df9e7025b5a3277accbb1c26df17679610bd6b4b1",
+    "stateSchemaVersion": "0.1A.1",
+    "typescriptVersion": "5.9.3"
+  }
+}

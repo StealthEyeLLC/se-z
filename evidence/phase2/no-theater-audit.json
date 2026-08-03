@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-no-theater-audit",
+  "capturedAt": "2026-08-03T17:59:20.792Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "production and acceptance paths contain no placeholder markers",
+      "passed": true,
+      "detail": {
+        "findings": []
+      }
+    },
+    {
+      "name": "package is clean-source and immutable-identity bound",
+      "passed": true,
+      "detail": {
+        "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+        "sourceDirty": false
+      }
+    },
+    {
+      "name": "package exposes real executable runtime, native addon and production units",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "all mandatory machine-readable acceptance evidence exists and passes",
+      "passed": true,
+      "detail": {
+        "evidenceStatus": [
+          {
+            "name": "unit.json",
+            "exists": true,
+            "passed": true,
+            "kind": "phase2-unit"
+          },
+          {
+            "name": "integration.json",
+            "exists": true,
+            "passed": true,
+            "kind": "phase2-integration"
+          },
+          {
+            "name": "failure-injection.json",
+            "exists": true,
+            "passed": true,
+            "kind": "phase2-failure-injection"
+          },
+          {
+            "name": "large-output.json",
+            "exists": true,
+            "passed": true,
+            "kind": "phase2-large-output"
+          },
+          {
+            "name": "package-reproducibility.json",
+            "exists": true,
+            "passed": true,
+            "kind": "phase2-package-reproducibility"
+          },
+          {
+            "name": "nspawn-acceptance.json",
+            "exists": true,
+            "passed": true,
+            "kind": "phase2-nspawn-acceptance"
+          },
+          {
+            "name": "host-candidate.json",
+            "exists": true,
+            "passed": true,
+            "kind": "phase2-host-candidate"
+          },
+          {
+            "name": "baby-protected-readback.json",
+            "exists": true,
+            "passed": true,
+            "kind": "phase2-baby-protected-configuration-readback"
+          }
+        ]
+      }
+    },
+    {
+      "name": "active operation catalog has no invented or inactive entries",
+      "passed": true,
+      "detail": {
+        "operationCount": 41
+      }
+    }
+  ],
+  "checkCount": 5,
+  "candidateCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "candidateTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+  "evidenceRequired": true,
+  "evidenceStatus": [
+    {
+      "name": "unit.json",
+      "exists": true,
+      "passed": true,
+      "kind": "phase2-unit"
+    },
+    {
+      "name": "integration.json",
+      "exists": true,
+      "passed": true,
+      "kind": "phase2-integration"
+    },
+    {
+      "name": "failure-injection.json",
+      "exists": true,
+      "passed": true,
+      "kind": "phase2-failure-injection"
+    },
+    {
+      "name": "large-output.json",
+      "exists": true,
+      "passed": true,
+      "kind": "phase2-large-output"
+    },
+    {
+      "name": "package-reproducibility.json",
+      "exists": true,
+      "passed": true,
+      "kind": "phase2-package-reproducibility"
+    },
+    {
+      "name": "nspawn-acceptance.json",
+      "exists": true,
+      "passed": true,
+      "kind": "phase2-nspawn-acceptance"
+    },
+    {
+      "name": "host-candidate.json",
+      "exists": true,
+      "passed": true,
+      "kind": "phase2-host-candidate"
+    },
+    {
+      "name": "baby-protected-readback.json",
+      "exists": true,
+      "passed": true,
+      "kind": "phase2-baby-protected-configuration-readback"
+    }
+  ],
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "unresolvedHighSeverity": 0
+}

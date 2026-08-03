@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-execution-results",
+  "capturedAt": "2026-08-03T17:59:21.914Z",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "checks": [
+    {
+      "name": "exact argv and binary-safe separate streams",
+      "passed": true,
+      "jobId": "fcaf308a-aaa3-4072-b742-ecdf8bc60d04",
+      "receiptId": "2383471ef5aaa9b562078d80c219f5c8ab390cdb69fca35ca617bc694def78c1"
+    },
+    {
+      "name": "arbitrary shell exact default invocation",
+      "passed": true,
+      "jobId": "05206235-0064-4875-9f53-872da12fe401"
+    },
+    {
+      "name": "explicit user and group execution",
+      "passed": true
+    },
+    {
+      "name": "unsupported targets fail without host fallback",
+      "passed": true
+    }
+  ],
+  "rootProof": {
+    "command": "/usr/bin/id -u",
+    "exitCode": 0,
+    "stdout": "0\\n",
+    "stderr": "",
+    "requestId": "d86165d2-4b80-490a-a79c-a703d278e626",
+    "jobId": "53ecb930-7a2a-467b-9e78-0ef0b40fba73",
+    "receiptId": "c690a78d00c6774427dc0600e69382b74c96215e66f9a9d879ca0647c84251a6",
+    "receiptVerified": true
+  }
+}

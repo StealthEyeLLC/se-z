@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-stream-results",
+  "capturedAt": "2026-08-03T17:59:21.914Z",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "checks": [
+    {
+      "name": "at least 80 MiB stdout plus stderr retrieved after restart through bounded deterministic pages",
+      "passed": true,
+      "jobId": "7597dcb9-82fd-4bac-bbcc-97ec661d4df6",
+      "requestId": "9aacb86f-735f-49e4-b2a2-2fc0d65d3811",
+      "stdoutBytes": 83886203,
+      "stderrBytes": 27,
+      "stdoutPages": 81,
+      "stderrPages": 1,
+      "stdoutSha256": "9483bb8949156c7c3e196e6b16608b4c7981ab967b1c180eaee39bc52406e33d",
+      "stderrSha256": "b1a483957b67429ab7409ba4f91951ef342fee4c8ec67a8db66be1550d9a2510",
+      "receiptId": "a85f95ae8a4d2569f516b489d73eb89f5dfea7774be2799bdf992ac337031c9a"
+    }
+  ],
+  "stdoutBytes": 83886203,
+  "stderrBytes": 27,
+  "stdoutPages": 81,
+  "stderrPages": 1,
+  "stdoutSha256": "9483bb8949156c7c3e196e6b16608b4c7981ab967b1c180eaee39bc52406e33d",
+  "stderrSha256": "b1a483957b67429ab7409ba4f91951ef342fee4c8ec67a8db66be1550d9a2510"
+}

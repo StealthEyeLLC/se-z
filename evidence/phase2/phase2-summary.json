@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-summary",
+  "capturedAt": "2026-08-03T17:59:21.918Z",
+  "passed": true,
+  "result": "PHASE 2 COMPLETE — RELEASE MILESTONE 0.1A ACCEPTED",
+  "repository": "StealthEyeLLC/se-z",
+  "branch": "build/standalone-0.1",
+  "startingCommit": "f8a065b26e74e9447013809c4b41f662d0a5647b",
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "headAtSummary": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "packagePath": "/root/se-z-phase1-work/final-b9b6cadb5c2b/package/release/se-z-0.1A-b9b6cadb5c2b.tar.gz",
+  "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "releaseMilestone": "0.1A",
+  "protocolVersion": "1.0.0",
+  "stateSchemaVersion": "0.1A.1",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "nativeAddonSha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7",
+  "operationCount": 41,
+  "tests": {
+    "unit": {
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "skipped": 0
+    },
+    "integration": {
+      "checks": 23,
+      "operations": 41,
+      "failed": 0,
+      "skipped": 0
+    },
+    "failureInjection": {
+      "checks": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    "nspawn": {
+      "passed": true,
+      "reboots": 1,
+      "cleanup": {
+        "passed": true,
+        "machine": "sez-p2-194822-25223",
+        "rootRemoved": true
+      }
+    },
+    "hostCandidate": {
+      "passed": true,
+      "cleanup": {
+        "passed": true,
+        "unit": "se-z-phase2-candidate-195997.service",
+        "rootRemoved": true
+      }
+    }
+  },
+  "largeOutput": {
+    "stdoutBytes": 83886203,
+    "stderrBytes": 27,
+    "stdoutSha256": "9483bb8949156c7c3e196e6b16608b4c7981ab967b1c180eaee39bc52406e33d",
+    "stderrSha256": "b1a483957b67429ab7409ba4f91951ef342fee4c8ec67a8db66be1550d9a2510",
+    "stdoutPages": 81,
+    "stderrPages": 1
+  },
+  "rootProof": {
+    "command": "/usr/bin/id -u",
+    "exitCode": 0,
+    "stdout": "0\\n",
+    "stderr": "",
+    "requestId": "d86165d2-4b80-490a-a79c-a703d278e626",
+    "jobId": "53ecb930-7a2a-467b-9e78-0ef0b40fba73",
+    "receiptId": "c690a78d00c6774427dc0600e69382b74c96215e66f9a9d879ca0647c84251a6",
+    "receiptVerified": true
+  },
+  "production": {
+    "babyProtectedConfigurationUnchanged": true,
+    "publicSezEndpointActivated": false,
+    "candidateCleanupPassed": true
+  },
+  "audits": {
+    "dependency": {
+      "passed": true,
+      "checkCount": 9
+    },
+    "identity": {
+      "passed": true,
+      "checkCount": 9
+    },
+    "secret": {
+      "passed": true,
+      "checkCount": 4
+    },
+    "noTheater": {
+      "passed": true,
+      "checkCount": 5
+    }
+  },
+  "resolvedPhase1Deltas": [
+    "DELTA-PROTOCOL-001",
+    "DELTA-AUTHORITY-001",
+    "DELTA-PEERS-001",
+    "DELTA-OUTPUT-001",
+    "DELTA-CATALOG-001",
+    "DELTA-STATE-OWNERSHIP-001",
+    "DELTA-SECRET-001",
+    "DELTA-RESUME-001",
+    "DELTA-RELEASE-IDENTITY-001",
+    "DELTA-GATEWAY-OWNERSHIP-001"
+  ],
+  "reassignedPhase1Delta": {
+    "id": "DELTA-GITHUB-001",
+    "phase": 3,
+    "releaseMilestone": "0.1B"
+  }
+}

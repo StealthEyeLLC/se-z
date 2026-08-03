@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-identity-audit",
+  "capturedAt": "2026-08-03T17:59:20.636Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "release ID is canonical manifest identity digest",
+      "passed": true,
+      "detail": {
+        "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3"
+      }
+    },
+    {
+      "name": "package source commit matches candidate",
+      "passed": true,
+      "detail": {
+        "expected": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+        "actual": "b9b6cadb5c2b87d066526348c86cb6bba88f9832"
+      }
+    },
+    {
+      "name": "package source tree matches candidate",
+      "passed": true,
+      "detail": {
+        "expected": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+        "actual": "a3ff38894a31cdb608551c334dd7be76b98a576a"
+      }
+    },
+    {
+      "name": "package was built from a clean tree",
+      "passed": true,
+      "detail": {
+        "sourceDirty": false
+      }
+    },
+    {
+      "name": "product and release identity are exact",
+      "passed": true,
+      "detail": {
+        "product": "se-z",
+        "releaseMilestone": "0.1A",
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "catalog digest and active operation count are exact",
+      "passed": true,
+      "detail": {
+        "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+        "operationCount": 41
+      }
+    },
+    {
+      "name": "every payload byte, size and mode is manifest-bound",
+      "passed": true,
+      "detail": {
+        "recordCount": 48,
+        "failures": []
+      }
+    },
+    {
+      "name": "package checksum manifest verifies",
+      "passed": true,
+      "detail": {
+        "outputSha256": "0740b55cbf494333752cdf78272e19216ee7a58beb7cf3f7838784e073522f95"
+      }
+    },
+    {
+      "name": "owner authority identity is exact",
+      "passed": true,
+      "detail": {
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner"
+      }
+    }
+  ],
+  "checkCount": 9,
+  "candidateCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "candidateTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+  "packageBytes": 44061124,
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "activeOperationCount": 41
+}

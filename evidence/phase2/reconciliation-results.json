@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-reconciliation-results",
+  "capturedAt": "2026-08-03T17:59:21.917Z",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "checks": [
+    {
+      "name": "persistent PTY input resize read close and restart rediscovery",
+      "passed": true,
+      "sessionId": "8a999045-2fd9-48e5-9763-a23fbeb85ec1"
+    },
+    {
+      "name": "job completes during supervisor outage and reconciles",
+      "passed": true,
+      "jobId": "fdc6cf0a-5183-4855-8f82-84ef01782323",
+      "requestId": "1a1790ff-48b2-4672-ac23-fda8af988f3e"
+    }
+  ],
+  "nspawnReboots": 1,
+  "hostSupervisorRestarts": 1,
+  "failureChecks": [
+    {
+      "name": "supervisor SIGKILL does not terminate durable job and restart reconciles truth",
+      "passed": true,
+      "jobId": "e406fe94-9d2d-4e22-b967-5183ca4c65a9"
+    },
+    {
+      "name": "missing process and stale PID/start-time identity reconcile lost without false success",
+      "passed": true,
+      "missingJobId": "3ace7e85-e262-4521-af0a-27e2fc3ab340",
+      "staleJobId": "c298fc97-3f8a-4c26-b1d8-78203139a49b"
+    },
+    {
+      "name": "corrupted mandatory state schema fails closed and restored state recovers cleanly",
+      "passed": true,
+      "path": "/var/tmp/se-z-p2-integration-5wh0rA/state/state-schema.json"
+    }
+  ]
+}

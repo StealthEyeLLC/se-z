@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-file-results",
+  "capturedAt": "2026-08-03T17:59:21.915Z",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "checks": [
+    {
+      "name": "complete paged binary file lifecycle and metadata",
+      "passed": true
+    }
+  ],
+  "atomicReplaceFailure": {
+    "name": "atomic replace failure before rename preserves original bytes",
+    "passed": true
+  }
+}

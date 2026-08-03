@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-unit",
+  "startedAt": "2026-08-03T17:53:54.160Z",
+  "completedAt": "2026-08-03T17:53:54.530Z",
+  "passed": true,
+  "exitCode": 0,
+  "signal": null,
+  "durationMs": 368.940736,
+  "tests": 17,
+  "pass": 17,
+  "fail": 0,
+  "outputBytes": 1612,
+  "outputSha256": "5b4ccf15cc2ea081d828853812f9b4325ccbe7971190e4829d63e45be9fdf6ba"
+}

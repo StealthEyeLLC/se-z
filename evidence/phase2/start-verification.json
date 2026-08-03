@@ -1,30 +1,109 @@
 {
   "schemaVersion": 1,
-  "testedCommit": "f8a065b26e74e9447013809c4b41f662d0a5647b",
-  "testedTree": "828a71f1b117da16e8f7cef80e1fbe6092be0493",
-  "startedAt": "2026-08-03T13:47:34Z",
-  "completedAt": "2026-08-03T13:49:14Z",
-  "commands": {
-    "npmCi": 0,
-    "phase1Verify": 0,
-    "check": 0,
-    "test": 0,
-    "build": 0,
-    "gitDiffCheck": 0,
-    "gitStatusShort": 0
-  },
-  "nodeVersion": "v24.18.0",
-  "nodeExactRequiredVersion": "v24.18.0",
-  "nodeExactMatch": true,
-  "nativeAddonSha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7",
-  "phase1EvidenceAggregateSha256": "62011f33cc12f4f617d5f5bb4d39f42577abd07fb77cdd810d5a0b166dcb4192",
-  "gateLog": {
-    "committed": false,
-    "localPath": "/tmp/se-z-phase2-start-gate/gate.log",
-    "sha256": "6346394243275620fd858642426a60f5c50b72e66562dfef5abc3faef4914b93",
-    "bytes": 33447
-  },
-  "workingTreeBefore": "clean",
-  "workingTreeAfter": "clean",
-  "passed": true
+  "kind": "phase2-clean-implementation-gate",
+  "capturedAt": "2026-08-03T17:55:54.699447+00:00",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "results": [
+    {
+      "name": "npm-ci",
+      "exitCode": 0,
+      "durationMs": 1327,
+      "stdoutBytes": 143,
+      "stderrBytes": 582,
+      "stdoutSha256": "a4b5605133f030d7dc812593d991012fe3e1995ac3eb629f0cf56dfc2554f424",
+      "stderrSha256": "1a1fee62164fcb802890d6c39faca2fcfb0a38075ebdec9b6372599f35ce679f"
+    },
+    {
+      "name": "phase1-verify",
+      "exitCode": 0,
+      "durationMs": 273,
+      "stdoutBytes": 223,
+      "stderrBytes": 0,
+      "stdoutSha256": "9383e21cea2e2c0653bfd606ffe92acce329f91cecadfac89ee16a2c90c6cfe5",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "check",
+      "exitCode": 0,
+      "durationMs": 5923,
+      "stdoutBytes": 243,
+      "stderrBytes": 0,
+      "stdoutSha256": "34ad86339c773b0ebfc33b018233d2c025953560a6d0df0776599a1768ea34cf",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "test",
+      "exitCode": 0,
+      "durationMs": 86344,
+      "stdoutBytes": 28392,
+      "stderrBytes": 1547,
+      "stdoutSha256": "aada0bb41e4edee2bd06b00206b30a336874a21294d3a06186e436cecaaaae9b",
+      "stderrSha256": "792c522d145e9d15fe840d2ee3e9168ff50dee253adc65b575255afe7c926dd1"
+    },
+    {
+      "name": "build",
+      "exitCode": 0,
+      "durationMs": 6567,
+      "stdoutBytes": 660,
+      "stderrBytes": 1547,
+      "stdoutSha256": "41a5fe467085811fda5c0318642a07b0dc85158bb7f766bfe5c58c1dc6b5cce6",
+      "stderrSha256": "792c522d145e9d15fe840d2ee3e9168ff50dee253adc65b575255afe7c926dd1"
+    },
+    {
+      "name": "phase2-unit",
+      "exitCode": 0,
+      "durationMs": 556,
+      "stdoutBytes": 2063,
+      "stderrBytes": 0,
+      "stdoutSha256": "4d66019208828ac4d0206bf01e9c2c050c76b9935f03a748d15faf860fa5b444",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "phase2-integration",
+      "exitCode": 0,
+      "durationMs": 46977,
+      "stdoutBytes": 5134,
+      "stderrBytes": 0,
+      "stdoutSha256": "0537e5a12114d0b733ef72c8e0c68053b9cbc527459e8d828b5d3da61051dece",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "phase2-failure",
+      "exitCode": 0,
+      "durationMs": 52563,
+      "stdoutBytes": 3718,
+      "stderrBytes": 0,
+      "stdoutSha256": "add98253104507a9181813476407d19f1ea2ca62e870306a7053c7473e79c3d2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "phase2-large-output",
+      "exitCode": 0,
+      "durationMs": 20539,
+      "stdoutBytes": 1424,
+      "stderrBytes": 0,
+      "stdoutSha256": "9f90ac1bde6a9acd8f04ce5019e840b8f967eb3efe6f025c81fb04e21086d9ab",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "diff-check",
+      "exitCode": 0,
+      "durationMs": 5,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "status-clean",
+      "exitCode": 0,
+      "durationMs": 14,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
 }

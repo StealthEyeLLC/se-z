@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-host-candidate",
+  "startedAt": "2026-08-03T17:59:17.895Z",
+  "completedAt": "2026-08-03T17:59:17.895Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "candidate describe",
+      "passed": true,
+      "detail": {
+        "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9"
+      }
+    },
+    {
+      "name": "uid-0 exact execution and receipt",
+      "passed": true,
+      "detail": {
+        "requestId": "d86165d2-4b80-490a-a79c-a703d278e626",
+        "jobId": "53ecb930-7a2a-467b-9e78-0ef0b40fba73",
+        "receiptId": "c690a78d00c6774427dc0600e69382b74c96215e66f9a9d879ca0647c84251a6",
+        "stdoutSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "name": "arbitrary shell",
+      "passed": true,
+      "detail": {
+        "jobId": "6d1f181c-bf1a-444a-8dda-5eee0e09354f"
+      }
+    },
+    {
+      "name": "temporary file lifecycle",
+      "passed": true,
+      "detail": {
+        "sha256": "5d44f6fe02228af5c4859cf0fc95638c3ec046a917fe4f5c92f3135fb00031e3"
+      }
+    },
+    {
+      "name": "durable job across supervisor restart",
+      "passed": true,
+      "detail": {
+        "jobId": "8ae128fc-5c2c-44d8-92ac-51086302a07c",
+        "sha256": "d244a571b7f1ae4aaf31b9d9e2c5b6ebe5dc45cbd0d79a11aade05cc052460aa"
+      }
+    },
+    {
+      "name": "deterministic response-loss resume",
+      "passed": true,
+      "detail": {
+        "requestId": "ddf21b2a-0dd6-4d8a-a608-6639c04cd972",
+        "jobId": "fe718451-835c-45d8-88d7-b75f85221f15"
+      }
+    },
+    {
+      "name": "large output paged and independently hashed",
+      "passed": true,
+      "detail": {
+        "jobId": "05287cc7-b968-4fbc-bcfa-d7b1b5db679a",
+        "stdout": {
+          "bytes": 73400337,
+          "sha256": "784937d56ae9c8227fd6437678a01493582cb69ad645075da73d9fcc7195edba",
+          "pages": 71
+        },
+        "stderr": {
+          "bytes": 18,
+          "sha256": "779003f5aa3bdc492b492962cc31fb605a0ad5b27c9a54f842555f54b5ceca45",
+          "pages": 1
+        }
+      }
+    }
+  ],
+  "checkCount": 7,
+  "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "kernel": "linux",
+  "rootProof": {
+    "command": "/usr/bin/id -u",
+    "exitCode": 0,
+    "stdout": "0\\n",
+    "stderr": "",
+    "requestId": "d86165d2-4b80-490a-a79c-a703d278e626",
+    "jobId": "53ecb930-7a2a-467b-9e78-0ef0b40fba73",
+    "receiptId": "c690a78d00c6774427dc0600e69382b74c96215e66f9a9d879ca0647c84251a6",
+    "receiptVerified": true
+  },
+  "supervisorRestarts": 1,
+  "largeOutputBytes": 73400337,
+  "largeOutputSha256": "784937d56ae9c8227fd6437678a01493582cb69ad645075da73d9fcc7195edba",
+  "cleanup": {
+    "passed": true,
+    "unit": "se-z-phase2-candidate-195997.service",
+    "rootRemoved": true
+  }
+}

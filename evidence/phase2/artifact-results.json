@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-artifact-results",
+  "capturedAt": "2026-08-03T17:59:21.916Z",
+  "passed": true,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "checks": [
+    {
+      "name": "resumable immutable artifact lifecycle across restart",
+      "passed": true,
+      "artifactId": "9096dab3-cb93-4950-94f8-58095051a047",
+      "digest": "c520cc204a79a7416cbe33a1f538ee09eb7798e841ca939dcc5063911104f9a6"
+    }
+  ],
+  "interruptedUpload": {
+    "name": "interrupted artifact upload resumes at exact committed offset after supervisor loss",
+    "passed": true,
+    "artifactId": "07894517-2b25-41da-b786-ea34b1637b41"
+  }
+}

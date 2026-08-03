@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-package-reproducibility",
+  "startedAt": "2026-08-03T17:55:56.350Z",
+  "completedAt": "2026-08-03T17:56:41.925Z",
+  "passed": true,
+  "conditions": {
+    "firstPassed": true,
+    "secondPassed": true,
+    "sourceClean": true,
+    "samePackageName": true,
+    "sameByteLength": true,
+    "samePackageSha256": true,
+    "byteForByteIdentical": true,
+    "sameReleaseId": true,
+    "sameSourceCommit": true,
+    "sameSourceTree": true,
+    "sameCatalogDigest": true,
+    "sameNodeIdentity": true,
+    "sameNativeAddon": true,
+    "sameFileCount": true
+  },
+  "packageName": "se-z-0.1A-b9b6cadb5c2b.tar.gz",
+  "packagePath": "/root/se-z-phase1-work/final-b9b6cadb5c2b/package/release/se-z-0.1A-b9b6cadb5c2b.tar.gz",
+  "packageBytes": 44061124,
+  "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+  "sourceCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "sourceTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "sourceDateEpoch": 1785779457,
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "nodeVersion": "v24.18.0",
+  "nodeSha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+  "nativeAddonSha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7",
+  "fileCount": 48,
+  "buildA": {
+    "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+    "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+    "resultSha256": "ffb0764239faea7bfee0978593848c28eabda9776c0f32c786a9debb375c4a9c"
+  },
+  "buildB": {
+    "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+    "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+    "resultSha256": "4473022d6f82216b3c8e5865d48f0b2bb94cd73b68edf07962db6883da62c8c1"
+  }
+}

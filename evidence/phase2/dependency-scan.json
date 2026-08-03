@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-dependency-audit",
+  "capturedAt": "2026-08-03T17:59:19.913Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "production npm dependency set is empty",
+      "passed": true,
+      "detail": {
+        "dependencies": {}
+      }
+    },
+    {
+      "name": "node-addon-api is build-only",
+      "passed": true,
+      "detail": {
+        "version": "8.9.0"
+      }
+    },
+    {
+      "name": "runtime imports are builtin or relative",
+      "passed": true,
+      "detail": {
+        "bareImports": []
+      }
+    },
+    {
+      "name": "immutable package contains no node_modules",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "Node and project licenses are included",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "bundled Node is exact v24.18.0",
+      "passed": true,
+      "detail": {
+        "actual": "v24.18.0"
+      }
+    },
+    {
+      "name": "bundled Node dynamic dependencies resolve",
+      "passed": true,
+      "detail": {
+        "sha256": "0ccdf83d8ff50b0405673e092959d7b47a09c7812152140726fdf94c48276812"
+      }
+    },
+    {
+      "name": "native SO_PEERCRED addon dynamic dependencies resolve",
+      "passed": true,
+      "detail": {
+        "sha256": "dfc5ca552fcacd319fb76d6fb0ceda1369c5129d3c03183694f71f71a2527087"
+      }
+    },
+    {
+      "name": "manifest binds Node and native addon bytes",
+      "passed": true,
+      "detail": {
+        "nodeSha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+        "nativeAddonSha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7"
+      }
+    }
+  ],
+  "checkCount": 9,
+  "candidateCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "candidateTree": "a3ff38894a31cdb608551c334dd7be76b98a576a",
+  "packageSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "releaseId": "0d2ffea634aec9779b5998f98e7488e08021516093e76374e9d92cb210dda4b3",
+  "runtimeFileCount": 18,
+  "implementationCommit": "b9b6cadb5c2b87d066526348c86cb6bba88f9832",
+  "implementationTree": "a3ff38894a31cdb608551c334dd7be76b98a576a"
+}
