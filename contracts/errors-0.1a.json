@@ -1,0 +1,287 @@
+{
+  "product": "se-z",
+  "releaseMilestone": "0.1A",
+  "errorCount": 35,
+  "errors": [
+    {
+      "code": "invalid_frame",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": false,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "frame_too_large",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": false,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "invalid_utf8",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": false,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "invalid_json",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": false,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "invalid_request",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "unsupported_protocol",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "unsupported_version",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "handshake_required",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": false,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "unknown_operation",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "invalid_payload",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "unauthorized_peer",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "peer_class_mismatch",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "unknown_gateway",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "unknown_key",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "invalid_signature",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "stale_generation",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "future_generation",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "request_expired",
+      "retryable": true,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "replay_detected",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "idempotency_conflict",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "target_not_supported",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "not_found",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "conflict",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "digest_mismatch",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "offset_out_of_range",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "job_not_terminal",
+      "retryable": true,
+      "terminal": false,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "job_lost",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "job_ambiguous",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "state_corrupt",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "repair_required",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "disk_full",
+      "retryable": true,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "timeout",
+      "retryable": true,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "cancelled",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "operation_failed",
+      "retryable": false,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    },
+    {
+      "code": "internal_error",
+      "retryable": true,
+      "terminal": true,
+      "requestCorrelatedReceipt": true,
+      "httpLayer": "irrelevant-local-SEZ1",
+      "safeDiagnosticDetails": "bounded structured metadata with managed credential fields omitted; raw command stderr remains operation output"
+    }
+  ]
+}

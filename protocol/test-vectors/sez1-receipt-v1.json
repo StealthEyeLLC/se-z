@@ -1,0 +1,37 @@
+{
+  "format": "SEZ1 receipt test vector v1",
+  "signingAlgorithm": "Ed25519",
+  "digestAlgorithm": "SHA-256",
+  "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA+DWrFmaxjY59/6W4VNEhg63tMHbxGTDHvglF++HE0AE=\n-----END PUBLIC KEY-----\n",
+  "receipt": {
+    "receiptFormatVersion": "1.0.0",
+    "requestDigest": "b68e65828c6f4e024622ab64d8341597e4fdb49ef9a736d32ed1eb4dac7d28c4",
+    "resultDigest": "f56db2bf7bafbdb4aa129d845311af462ce97961d5e3baa2658a973d7495cc78",
+    "requestId": "01234567-89ab-4def-8123-456789abcdef",
+    "operation": "sez.exec",
+    "subject": "stealtheye-owner",
+    "authorityClass": "unrestricted-owner",
+    "authorityGeneration": 7,
+    "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+    "hostIdentity": {
+      "hostname": "vector-host",
+      "machineIdSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "releaseIdentity": {
+      "product": "se-z",
+      "releaseMilestone": "0.1A",
+      "sourceCommit": "1111111111111111111111111111111111111111",
+      "sourceTree": "2222222222222222222222222222222222222222"
+    },
+    "acceptedAt": "2026-08-03T12:00:00.000Z",
+    "terminalAt": "2026-08-03T12:00:01.000Z",
+    "state": "completed",
+    "jobId": "51234567-89ab-4def-8123-456789abcdef",
+    "stdoutDigest": "3333333333333333333333333333333333333333333333333333333333333333",
+    "stderrDigest": "4444444444444444444444444444444444444444444444444444444444444444",
+    "artifactDigests": [],
+    "receiptKeyId": "receipt-vector-v1",
+    "receiptId": "705cdc16b9c8b24acb044a085aeb0f17bc62b3c88b50f79b55d7426dbcebd315",
+    "signature": "atJDtMBudDRyIWyAPcajsx0F_GAojjZM-LwoBg-a7Acrw4wlfIDEMt4ZbW3_bLmGkOD2aw61cb9ln8C1Up4XCQ"
+  }
+}

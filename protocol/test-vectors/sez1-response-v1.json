@@ -1,0 +1,20 @@
+{
+  "format": "SEZ1 response test vector v1",
+  "responseWithoutDigestOrReceipt": {
+    "requestId": "01234567-89ab-4def-8123-456789abcdef",
+    "operation": "sez.exec",
+    "state": "completed",
+    "terminal": true,
+    "authorityGeneration": 7,
+    "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+    "result": {
+      "exitCode": 0
+    },
+    "error": null,
+    "jobId": "51234567-89ab-4def-8123-456789abcdef",
+    "stdout": null,
+    "stderr": null
+  },
+  "resultDigest": "f56db2bf7bafbdb4aa129d845311af462ce97961d5e3baa2658a973d7495cc78",
+  "canonicalJson": "{\"authorityGeneration\":7,\"catalogDigest\":\"d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9\",\"error\":null,\"jobId\":\"51234567-89ab-4def-8123-456789abcdef\",\"operation\":\"sez.exec\",\"requestId\":\"01234567-89ab-4def-8123-456789abcdef\",\"result\":{\"exitCode\":0},\"state\":\"completed\",\"stderr\":null,\"stdout\":null,\"terminal\":true}"
+}

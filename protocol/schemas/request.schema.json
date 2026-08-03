@@ -1,35 +1,39 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://se-z.stealtheye.io/schemas/sez1-request.json",
-  "title": "SEZ1 request",
+  "$id": "https://se-z.stealtheye.io/schemas/sez1-request-v1.json",
+  "title": "SEZ1 operation request",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "protocol", "protocolVersion", "requestId", "operation", "payload",
-    "idempotencyKey", "subject", "authorityClass", "authorityGeneration",
-    "issuedAt", "nonce", "peerClass"
-  ],
+  "required": ["protocol", "protocolVersion", "requestId", "operation", "payload", "idempotencyKey", "subject", "authorityClass", "authorityGeneration", "issuedAt", "nonce", "peerClass"],
   "properties": {
     "protocol": {"const": "SEZ1"},
-    "protocolVersion": {"type": "string"},
+    "protocolVersion": {"const": "1.0.0"},
     "requestId": {"type": "string", "format": "uuid"},
-    "operation": {"type": "string", "pattern": "^sez\\.[a-z0-9._-]+$"},
+    "operation": {"type": "string", "pattern": "^sez\\.[a-z0-9._-]+$", "maxLength": 160},
     "payload": {"type": "object"},
-    "idempotencyKey": {"type": "string", "minLength": 8, "maxLength": 256},
-    "subject": {"type": "string"},
+    "idempotencyKey": {"type": "string", "minLength": 1, "maxLength": 256},
+    "subject": {"const": "stealtheye-owner"},
     "authorityClass": {"const": "unrestricted-owner"},
-    "authorityGeneration": {"type": "integer", "minimum": 1},
+    "authorityGeneration": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
     "issuedAt": {"type": "string", "format": "date-time"},
-    "nonce": {"type": "string", "minLength": 16},
-    "peerClass": {"enum": ["gateway-signed", "local-peer"]},
-    "gatewayId": {"type": "string"},
-    "gatewayKeyId": {"type": "string"},
-    "signature": {"type": "string"}
+    "nonce": {"type": "string", "minLength": 32, "maxLength": 256, "pattern": "^[A-Za-z0-9_-]+$"},
+    "peerClass": {"enum": ["local-peer", "gateway-signed"]},
+    "gatewayId": {"type": "string", "minLength": 1, "maxLength": 128},
+    "gatewayKeyId": {"type": "string", "minLength": 1, "maxLength": 128},
+    "signature": {"type": "string", "minLength": 80, "maxLength": 128, "pattern": "^[A-Za-z0-9_-]+$"}
   },
-  "allOf": [
+  "oneOf": [
     {
-      "if": {"properties": {"peerClass": {"const": "gateway-signed"}}},
-      "then": {"required": ["gatewayId", "gatewayKeyId", "signature"]}
+      "properties": {"peerClass": {"const": "local-peer"}},
+      "not": {"anyOf": [
+        {"required": ["gatewayId"]},
+        {"required": ["gatewayKeyId"]},
+        {"required": ["signature"]}
+      ]}
+    },
+    {
+      "properties": {"peerClass": {"const": "gateway-signed"}},
+      "required": ["gatewayId", "gatewayKeyId", "signature"]
     }
   ]
 }

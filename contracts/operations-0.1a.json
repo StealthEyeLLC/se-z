@@ -1,0 +1,2676 @@
+{
+  "product": "se-z",
+  "releaseMilestone": "0.1A",
+  "protocol": "SEZ1",
+  "protocolVersion": "1.0.0",
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "operationCount": 41,
+  "activeOperations": [
+    {
+      "name": "sez.describe",
+      "operationVersion": "1.0.0",
+      "description": "Publish the complete active 0.1A operation catalog and interpretation limits.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.health",
+      "operationVersion": "1.0.0",
+      "description": "Report operational health after checking state, generation, keys, catalog, sockets, reconciliation, and stream storage.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "repair_required",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.version",
+      "operationVersion": "1.0.0",
+      "description": "Return exact kernel, release, source, protocol, catalog, state-schema, and native-addon identities.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.doctor",
+      "operationVersion": "1.0.0",
+      "description": "Return non-mutating diagnostic detail without secret material.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "repair_required",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.request.resume",
+      "operationVersion": "1.0.0",
+      "description": "Recover an original durable request by requestId or exact idempotency identity.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "requestId": {
+            "type": "string"
+          },
+          "operation": {
+            "type": "string"
+          },
+          "idempotencyKey": {
+            "type": "string"
+          },
+          "payload": {
+            "type": "object"
+          },
+          "target": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.exec",
+      "operationVersion": "1.0.0",
+      "description": "Execute exact argv on the host with no shell interpretation.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "argv": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "cwd": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "environment": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "stdin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "type": "string",
+                "description": "Encoded bytes according to the adjacent encoding field."
+              },
+              "encoding": {
+                "enum": [
+                  "base64",
+                  "utf8"
+                ]
+              }
+            },
+            "required": [
+              "data"
+            ]
+          },
+          "user": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "group": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "umask": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "timeoutMs": {
+            "type": "integer"
+          },
+          "detached": {
+            "type": "boolean"
+          },
+          "target": {
+            "type": "string"
+          },
+          "lane": {
+            "const": "fast"
+          }
+        },
+        "required": [
+          "argv"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "always creates a durable job before launch",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "separate durable binary stdout/stderr; bounded inline descriptors; unlimited paged retrieval",
+      "typedErrors": [
+        "cancelled",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "target_not_supported",
+        "timeout",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.shell",
+      "operationVersion": "1.0.0",
+      "description": "Execute arbitrary shell text using /bin/bash -lc by default or an explicit shell/argument vector.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "shell": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "shellArgs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cwd": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "environment": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "stdin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "type": "string",
+                "description": "Encoded bytes according to the adjacent encoding field."
+              },
+              "encoding": {
+                "enum": [
+                  "base64",
+                  "utf8"
+                ]
+              }
+            },
+            "required": [
+              "data"
+            ]
+          },
+          "user": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "group": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "umask": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "timeoutMs": {
+            "type": "integer"
+          },
+          "detached": {
+            "type": "boolean"
+          },
+          "target": {
+            "type": "string"
+          },
+          "lane": {
+            "const": "fast"
+          }
+        },
+        "required": [
+          "command"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "always creates a durable job before launch",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "separate durable binary stdout/stderr; bounded inline descriptors; unlimited paged retrieval",
+      "typedErrors": [
+        "cancelled",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "target_not_supported",
+        "timeout",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.job.get",
+      "operationVersion": "1.0.0",
+      "description": "Read and reconcile one durable job.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "jobId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "job_ambiguous",
+        "job_lost",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.job.list",
+      "operationVersion": "1.0.0",
+      "description": "List durable jobs ordered by durable local sequence.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "state": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.job.wait",
+      "operationVersion": "1.0.0",
+      "description": "Wait for a bounded duration and return actual current or terminal state without inventing completion.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string"
+          },
+          "waitMs": {
+            "type": "integer"
+          },
+          "stdoutOffset": {
+            "type": "integer"
+          },
+          "stderrOffset": {
+            "type": "integer"
+          },
+          "streamLength": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "jobId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "optional bounded stdout/stderr pages from exact offsets",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "job_ambiguous",
+        "job_lost",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.job.cancel",
+      "operationVersion": "1.0.0",
+      "description": "Cancel the exact durable process identity and report observed state.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string"
+          },
+          "signal": {
+            "enum": [
+              "SIGTERM",
+              "SIGINT",
+              "SIGHUP"
+            ]
+          },
+          "waitMs": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "jobId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "cancelled",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "job_ambiguous",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.job.stream.read",
+      "operationVersion": "1.0.0",
+      "description": "Read exact binary stdout/stderr pages from a stable stream handle or job identity.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string"
+          },
+          "handle": {
+            "type": "string"
+          },
+          "stream": {
+            "enum": [
+              "stdout",
+              "stderr"
+            ]
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "length": {
+            "type": "integer"
+          }
+        },
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "binary-safe base64 page with offsets, byte counts, page digest, committed/final digest",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "offset_out_of_range",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.stat",
+      "operationVersion": "1.0.0",
+      "description": "Return lstat by default or explicit followed stat metadata.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "followSymlinks": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.read",
+      "operationVersion": "1.0.0",
+      "description": "Read a bounded binary-safe page from any absolute host path.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "length": {
+            "type": "integer"
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "utf8",
+              "hex"
+            ]
+          },
+          "followSymlinks": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "bounded page; repeated offsets deterministic",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "offset_out_of_range",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.write",
+      "operationVersion": "1.0.0",
+      "description": "Create/truncate/overwrite or write at an explicit offset with optional fsync.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "data": {
+            "type": "string",
+            "description": "Encoded bytes according to the adjacent encoding field."
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "utf8",
+              "hex"
+            ]
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "create": {
+            "type": "boolean"
+          },
+          "truncate": {
+            "type": "boolean"
+          },
+          "mode": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "flush": {
+            "type": "boolean"
+          },
+          "followSymlinks": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path",
+          "data"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.replace",
+      "operationVersion": "1.0.0",
+      "description": "Atomically replace a regular file on the same filesystem with fsync and optional compare-and-swap digest.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "data": {
+            "type": "string",
+            "description": "Encoded bytes according to the adjacent encoding field."
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "utf8",
+              "hex"
+            ]
+          },
+          "mode": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "uid": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "gid": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "preserveMetadata": {
+            "type": "boolean"
+          },
+          "expectedSha256": {
+            "type": "string"
+          },
+          "expectedAbsent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path",
+          "data"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "digest_mismatch",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.patch",
+      "operationVersion": "1.0.0",
+      "description": "Apply exact offset/remove/insert patches bound to the expected source SHA-256.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "expectedSha256": {
+            "type": "string"
+          },
+          "patches": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "offset": {
+                  "type": "integer"
+                },
+                "removeLength": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "string",
+                  "description": "Encoded bytes according to the adjacent encoding field."
+                },
+                "encoding": {
+                  "enum": [
+                    "base64",
+                    "utf8",
+                    "hex"
+                  ]
+                }
+              },
+              "required": [
+                "offset",
+                "removeLength",
+                "data"
+              ]
+            }
+          },
+          "mode": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "uid": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "gid": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "expectedSha256",
+          "patches"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "digest_mismatch",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "offset_out_of_range",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.copy",
+      "operationVersion": "1.0.0",
+      "description": "Copy a file, symlink, or explicitly recursive directory without a root allowlist.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "destination": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "overwrite": {
+            "type": "boolean"
+          },
+          "recursive": {
+            "type": "boolean"
+          },
+          "preserveTimestamps": {
+            "type": "boolean"
+          },
+          "dereference": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source",
+          "destination"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.move",
+      "operationVersion": "1.0.0",
+      "description": "Rename atomically or explicitly perform copy-delete across filesystems.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "destination": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "overwrite": {
+            "type": "boolean"
+          },
+          "crossFilesystem": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source",
+          "destination"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.remove",
+      "operationVersion": "1.0.0",
+      "description": "Remove a path; recursive removal requires recursive=true.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "recursive": {
+            "type": "boolean"
+          },
+          "force": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.list",
+      "operationVersion": "1.0.0",
+      "description": "List bounded directory pages with explicit symlink behavior.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "integer"
+          },
+          "includeHidden": {
+            "type": "boolean"
+          },
+          "followSymlinks": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.mkdir",
+      "operationVersion": "1.0.0",
+      "description": "Create a directory with explicit recursive and mode behavior.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "recursive": {
+            "type": "boolean"
+          },
+          "mode": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.chmod",
+      "operationVersion": "1.0.0",
+      "description": "Change mode with explicit symlink-following behavior.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "mode": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "followSymlinks": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path",
+          "mode"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.chown",
+      "operationVersion": "1.0.0",
+      "description": "Change UID/GID by numeric ID or system name with explicit symlink behavior.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "uid": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "gid": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "followSymlinks": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.link",
+      "operationVersion": "1.0.0",
+      "description": "Create a hard link.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "existingPath": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "newPath": {
+            "type": "string",
+            "pattern": "^/"
+          }
+        },
+        "required": [
+          "existingPath",
+          "newPath"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.symlink",
+      "operationVersion": "1.0.0",
+      "description": "Create a symbolic link; the target may be relative or absolute and the link path is absolute.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "target",
+          "path"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.file.truncate",
+      "operationVersion": "1.0.0",
+      "description": "Truncate a regular file to an exact length with explicit symlink behavior.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "length": {
+            "type": "integer"
+          },
+          "followSymlinks": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path",
+          "length"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.pty.create",
+      "operationVersion": "1.0.0",
+      "description": "Create a durable tmux-backed PTY session with stable ID and output offset store.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "shell": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "shellArgs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cwd": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "cols": {
+            "type": "integer"
+          },
+          "rows": {
+            "type": "integer"
+          },
+          "environment": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "persistent tmux process survives supervisor restart; after host reboot the session reconciles honestly",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "binary-safe persistent PTY output pages",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "job_lost",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.pty.input",
+      "operationVersion": "1.0.0",
+      "description": "Deliver exact base64 or UTF-8 bytes to a persistent PTY.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "description": "Encoded bytes according to the adjacent encoding field."
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "utf8"
+            ]
+          }
+        },
+        "required": [
+          "sessionId",
+          "data"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "job_lost",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.pty.resize",
+      "operationVersion": "1.0.0",
+      "description": "Resize a persistent PTY window.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "cols": {
+            "type": "integer"
+          },
+          "rows": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sessionId",
+          "cols",
+          "rows"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "job_lost",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.pty.read",
+      "operationVersion": "1.0.0",
+      "description": "Read deterministic PTY output from an exact byte offset.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "length": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sessionId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "binary-safe base64 page with exact offsets and final digest",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "job_lost",
+        "not_found",
+        "offset_out_of_range",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.pty.close",
+      "operationVersion": "1.0.0",
+      "description": "Close a persistent PTY session and finalize its output digest.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "sessionId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.create",
+      "operationVersion": "1.0.0",
+      "description": "Create and atomically finalize an immutable artifact from an existing host file.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sourcePath": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "name": {
+            "type": "string"
+          },
+          "mediaType": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "sourcePath"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "artifact data remains external and paged",
+      "typedErrors": [
+        "digest_mismatch",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.begin",
+      "operationVersion": "1.0.0",
+      "description": "Begin a resumable artifact upload with declared size and SHA-256.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "mediaType": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "size",
+          "sha256"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.upload",
+      "operationVersion": "1.0.0",
+      "description": "Upload an exact-offset artifact chunk; exact duplicate retries are idempotent and conflicts fail.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "string",
+            "description": "Encoded bytes according to the adjacent encoding field."
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "hex"
+            ]
+          }
+        },
+        "required": [
+          "artifactId",
+          "offset",
+          "data"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "bounded binary-safe chunk upload",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "offset_out_of_range",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.finalize",
+      "operationVersion": "1.0.0",
+      "description": "Verify size/digest and atomically finalize an immutable artifact.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifactId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "digest_mismatch",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.abort",
+      "operationVersion": "1.0.0",
+      "description": "Abort an interrupted artifact upload.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifactId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.download",
+      "operationVersion": "1.0.0",
+      "description": "Download a bounded exact artifact page with page and full digests.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "length": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "artifactId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "binary-safe base64 pages with deterministic offsets",
+      "typedErrors": [
+        "conflict",
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "offset_out_of_range",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.get",
+      "operationVersion": "1.0.0",
+      "description": "Read artifact metadata without raw data.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifactId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.list",
+      "operationVersion": "1.0.0",
+      "description": "List bounded artifact metadata pages.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "state": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": false,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request response",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    },
+    {
+      "name": "sez.artifact.remove",
+      "operationVersion": "1.0.0",
+      "description": "Explicitly delete artifact data and retain a removed metadata tombstone.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifactId"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "mutating": true,
+      "durableJobBehavior": "none",
+      "supportedTargets": [
+        "host"
+      ],
+      "defaultTarget": "host",
+      "defaultLane": "fast",
+      "idempotencySemantics": "same semantic identity reuses the durable request; changed semantics conflict",
+      "requiredPeerAuthority": [
+        "local-peer",
+        "gateway-signed"
+      ],
+      "streamBehavior": "none",
+      "typedErrors": [
+        "disk_full",
+        "future_generation",
+        "idempotency_conflict",
+        "internal_error",
+        "invalid_payload",
+        "not_found",
+        "operation_failed",
+        "replay_detected",
+        "stale_generation",
+        "state_corrupt",
+        "unauthorized_peer"
+      ],
+      "implementationStatus": "active-tested-0.1A"
+    }
+  ],
+  "excludedActiveFamilies": [
+    "sez.github.*",
+    "sez.machine.*",
+    "sez.skill.*",
+    "sez.release.*",
+    "sez.recovery.*",
+    "sez.backup.*",
+    "sez.evidence.*",
+    "sez.selfhost.*"
+  ]
+}

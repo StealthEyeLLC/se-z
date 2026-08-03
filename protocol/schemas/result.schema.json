@@ -1,47 +1,58 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://se-z.stealtheye.io/schemas/sez1-result.json",
-  "title": "SEZ1 result",
+  "$id": "https://se-z.stealtheye.io/schemas/sez1-result-v1.json",
+  "title": "SEZ1 operation response",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "requestId", "operation", "state", "terminal", "authorityGeneration",
-    "catalogDigest", "resultDigest", "streams", "receipt"
-  ],
+  "required": ["requestId", "operation", "state", "terminal", "authorityGeneration", "catalogDigest", "result", "error", "jobId", "stdout", "stderr", "resultDigest", "receipt"],
   "properties": {
     "requestId": {"type": "string", "format": "uuid"},
-    "operation": {"type": "string"},
+    "operation": {"type": "string", "pattern": "^sez\\."},
     "state": {"enum": ["accepted", "running", "completed", "failed", "cancelled", "lost", "ambiguous", "reconciled"]},
     "terminal": {"type": "boolean"},
     "authorityGeneration": {"type": "integer", "minimum": 1},
-    "catalogDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "catalogDigest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "result": {},
-    "error": {"type": ["object", "null"]},
-    "jobId": {"type": ["string", "null"]},
-    "resultDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-    "streams": {
+    "error": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/error"}]},
+    "jobId": {"oneOf": [{"type": "null"}, {"type": "string", "format": "uuid"}]},
+    "stdout": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/stream"}]},
+    "stderr": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/stream"}]},
+    "resultDigest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "receipt": {"$ref": "receipt.schema.json"}
+  },
+  "allOf": [
+    {"if": {"properties": {"terminal": {"const": false}}}, "then": {"properties": {"state": {"enum": ["accepted", "running"]}}}},
+    {"if": {"properties": {"terminal": {"const": true}}}, "then": {"properties": {"state": {"enum": ["completed", "failed", "cancelled", "lost", "ambiguous", "reconciled"]}}},
+    {"if": {"properties": {"error": {"type": "object"}}}, "then": {"properties": {"result": {"type": "null"}}}}
+  ],
+  "$defs": {
+    "error": {
       "type": "object",
-      "required": ["stdout", "stderr"],
+      "additionalProperties": false,
+      "required": ["code", "retryable", "message"],
       "properties": {
-        "stdout": {"$ref": "#/$defs/stream"},
-        "stderr": {"$ref": "#/$defs/stream"}
+        "code": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "retryable": {"type": "boolean"},
+        "message": {"type": "string", "maxLength": 4096},
+        "details": {"type": "object"}
       }
     },
-    "receipt": {"type": "object"}
-  },
-  "$defs": {
     "stream": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["handle", "inline", "inlineEncoding", "offset", "nextOffset", "sha256", "complete"],
+      "required": ["handle", "streamIdentity", "encoding", "inlineData", "inlineBytes", "startingOffset", "nextOffset", "committedBytes", "totalSize", "committedSha256", "finalSha256", "complete"],
       "properties": {
         "handle": {"type": "string"},
-        "inline": {"type": "string"},
-        "inlineEncoding": {"enum": ["utf8", "base64"]},
-        "offset": {"type": "integer", "minimum": 0},
+        "streamIdentity": {"enum": ["stdout", "stderr"]},
+        "encoding": {"const": "base64"},
+        "inlineData": {"type": "string"},
+        "inlineBytes": {"type": "integer", "minimum": 0},
+        "startingOffset": {"type": "integer", "minimum": 0},
         "nextOffset": {"type": "integer", "minimum": 0},
-        "size": {"type": ["integer", "null"], "minimum": 0},
-        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "committedBytes": {"type": "integer", "minimum": 0},
+        "totalSize": {"oneOf": [{"type": "null"}, {"type": "integer", "minimum": 0}]},
+        "committedSha256": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^[0-9a-f]{64}$"}]},
+        "finalSha256": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^[0-9a-f]{64}$"}]},
         "complete": {"type": "boolean"}
       }
     }

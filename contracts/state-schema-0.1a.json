@@ -1,0 +1,23 @@
+{
+  "product": "se-z",
+  "releaseMilestone": "0.1A",
+  "stateSchemaVersion": "0.1A.1",
+  "root": "/var/lib/se-z",
+  "authorityGenerationOwner": "recovery",
+  "authorityGenerationPath": "/var/lib/se-z-recovery/authority-generation.json",
+  "directories": {
+    "requests": {"owner": "supervisor", "purpose": "durable request identity and bound interpretation"},
+    "idempotency": {"owner": "supervisor", "purpose": "semantic idempotency reservations"},
+    "replay": {"owner": "supervisor", "purpose": "durable nonce replay records"},
+    "jobs": {"owner": "supervisor", "purpose": "durable job and runner records"},
+    "streams": {"owner": "supervisor", "purpose": "binary stdout, stderr, and committed stream state"},
+    "ptys": {"owner": "supervisor", "purpose": "persistent PTY metadata and offsets"},
+    "artifacts": {"owner": "supervisor", "purpose": "artifact metadata, uploads, and immutable data"},
+    "receipts": {"owner": "supervisor", "purpose": "signed result receipts"},
+    "catalog": {"owner": "supervisor", "purpose": "complete active operation definitions and digest"},
+    "reconciliation": {"owner": "supervisor", "purpose": "ordered restart reconciliation events"},
+    "locks": {"owner": "supervisor", "purpose": "atomic reservation and state transition locks"}
+  },
+  "durability": "temporary write, file sync, atomic rename, parent-directory sync",
+  "corruptionOutcomes": ["state_corrupt", "repair_required", "lost", "ambiguous"]
+}

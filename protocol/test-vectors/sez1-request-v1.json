@@ -1,0 +1,297 @@
+{
+  "format": "SEZ1 request test vectors v1",
+  "signingAlgorithm": "Ed25519",
+  "digestAlgorithm": "SHA-256",
+  "canonicalization": "UTF-8 canonical JSON with recursively sorted object keys; arrays retain order; finite JSON values only; negative zero becomes zero",
+  "invariants": {
+    "payloadReorderingMatchesLocal": true,
+    "generationChangeDiffers": true,
+    "idempotencyChangeDiffers": true,
+    "peerClassChangeDiffers": true,
+    "gatewayKeyChangeDiffers": true
+  },
+  "vectors": [
+    {
+      "id": "local",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "01234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "argv": [
+            "/usr/bin/printf",
+            "%s",
+            "hello"
+          ],
+          "cwd": "/root",
+          "target": "host"
+        },
+        "idempotencyKey": "vector-local-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYX",
+        "peerClass": "local-peer"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"01234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"argv\":[\"/usr/bin/printf\",\"%s\",\"hello\"],\"cwd\":\"/root\",\"target\":\"host\"},\"vector-local-001\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX\",\"local-peer\",\"\",\"\"]",
+      "requestDigest": "b68e65828c6f4e024622ab64d8341597e4fdb49ef9a736d32ed1eb4dac7d28c4",
+      "semanticDigest": "8d685e643ae97f4af24789bfcdc20d891afa5f0b6e1b67f9f1f2665cc75bd8aa"
+    },
+    {
+      "id": "gateway",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "11234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "argv": [
+            "/usr/bin/printf",
+            "%s",
+            "hello"
+          ],
+          "cwd": "/root",
+          "target": "host"
+        },
+        "idempotencyKey": "vector-gateway-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY",
+        "peerClass": "gateway-signed",
+        "gatewayId": "se-z-gateway",
+        "gatewayKeyId": "gateway-test-v1",
+        "signature": "nwn9Ml_buxHa4PIw6mFTfyW0_4bD9bF4e5-GG2tWW1DaVhY7UT0oHUrZyp9zl4rHuTscjHyim3BBbd4L3v-4Cg"
+      },
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA+DWrFmaxjY59/6W4VNEhg63tMHbxGTDHvglF++HE0AE=\n-----END PUBLIC KEY-----\n",
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"11234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"argv\":[\"/usr/bin/printf\",\"%s\",\"hello\"],\"cwd\":\"/root\",\"target\":\"host\"},\"vector-gateway-001\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY\",\"gateway-signed\",\"se-z-gateway\",\"gateway-test-v1\"]",
+      "requestDigest": "cdfee4505cb1f66ee7cb380eb9b2bf6c9ad8f87a69409d4bbbb4d9088f5db112",
+      "semanticDigest": "340e3c4b9498593f6c8af30350b90a94d9d3e7221816cb8980f5a25a8930345f"
+    },
+    {
+      "id": "nested",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "21234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "z": [
+            3,
+            {
+              "beta": true,
+              "alpha": null
+            }
+          ],
+          "a": {
+            "d": 4,
+            "c": 3
+          }
+        },
+        "idempotencyKey": "vector-nested-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AgMEBQYHCAkKCwwNDg8QERITFBUWFxgZ",
+        "peerClass": "local-peer"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"21234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"a\":{\"c\":3,\"d\":4},\"z\":[3,{\"alpha\":null,\"beta\":true}]},\"vector-nested-001\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"AgMEBQYHCAkKCwwNDg8QERITFBUWFxgZ\",\"local-peer\",\"\",\"\"]",
+      "requestDigest": "48cc8a1fdb1d1702a27b7a8bf6bbad4f6407066228146203e0bf6649226d57a3",
+      "semanticDigest": "2bcc6a26efa1e41662b146cbd46234d9051fbd0a99011c2e549f7676d18e76ef"
+    },
+    {
+      "id": "unicode",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "31234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "text": "雪 é𝄞",
+          "escaped": "\\\"\\n"
+        },
+        "idempotencyKey": "vector-unicode-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AwQFBgcICQoLDA0ODxAREhMUFRYXGBka",
+        "peerClass": "local-peer"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"31234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"escaped\":\"\\\\\\\"\\\\n\",\"text\":\"雪 é𝄞\"},\"vector-unicode-001\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"AwQFBgcICQoLDA0ODxAREhMUFRYXGBka\",\"local-peer\",\"\",\"\"]",
+      "requestDigest": "b803fed73036edbeaa7dcdbd81aca2dc796709bea862b5f7a5fb35991c09a4e9",
+      "semanticDigest": "588c0d968e432410ed19a100a49b9b10a1ede6d085f190665952513bb5f176c9"
+    },
+    {
+      "id": "binary-base64",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "41234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "encoding": "base64",
+          "data": "AAECf4D//g=="
+        },
+        "idempotencyKey": "vector-binary-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "BAUGBwgJCgsMDQ4PEBESExQVFhcYGRob",
+        "peerClass": "local-peer"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"41234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"data\":\"AAECf4D//g==\",\"encoding\":\"base64\"},\"vector-binary-001\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"BAUGBwgJCgsMDQ4PEBESExQVFhcYGRob\",\"local-peer\",\"\",\"\"]",
+      "requestDigest": "da65c20785f7ebba229b34627bd281c90230169c886f9087d80a0e6d30c33d73",
+      "semanticDigest": "bb0f9a31a497b2843f9836a7a6297a74ba442990881a0ff144fbfe5fb90a52e7"
+    },
+    {
+      "id": "generation-change",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "01234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "argv": [
+            "/usr/bin/printf",
+            "%s",
+            "hello"
+          ],
+          "cwd": "/root",
+          "target": "host"
+        },
+        "idempotencyKey": "vector-local-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 8,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYX",
+        "peerClass": "local-peer"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"01234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"argv\":[\"/usr/bin/printf\",\"%s\",\"hello\"],\"cwd\":\"/root\",\"target\":\"host\"},\"vector-local-001\",\"stealtheye-owner\",\"unrestricted-owner\",8,\"2026-08-03T12:00:00.000Z\",\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX\",\"local-peer\",\"\",\"\"]",
+      "requestDigest": "52ad8c8a7553cde2055f841b3bd5c32bc502e229b4bbec0f9e7e6887cee7c56a",
+      "semanticDigest": "75d31b23e5624749870c2167b84ac848507fd9f223ff320df1c4df9e7b0a4015"
+    },
+    {
+      "id": "payload-reordered",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "01234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "target": "host",
+          "cwd": "/root",
+          "argv": [
+            "/usr/bin/printf",
+            "%s",
+            "hello"
+          ]
+        },
+        "idempotencyKey": "vector-local-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYX",
+        "peerClass": "local-peer"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"01234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"argv\":[\"/usr/bin/printf\",\"%s\",\"hello\"],\"cwd\":\"/root\",\"target\":\"host\"},\"vector-local-001\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX\",\"local-peer\",\"\",\"\"]",
+      "requestDigest": "b68e65828c6f4e024622ab64d8341597e4fdb49ef9a736d32ed1eb4dac7d28c4",
+      "semanticDigest": "8d685e643ae97f4af24789bfcdc20d891afa5f0b6e1b67f9f1f2665cc75bd8aa"
+    },
+    {
+      "id": "idempotency-change",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "01234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "argv": [
+            "/usr/bin/printf",
+            "%s",
+            "hello"
+          ],
+          "cwd": "/root",
+          "target": "host"
+        },
+        "idempotencyKey": "vector-local-002",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYX",
+        "peerClass": "local-peer"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"01234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"argv\":[\"/usr/bin/printf\",\"%s\",\"hello\"],\"cwd\":\"/root\",\"target\":\"host\"},\"vector-local-002\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX\",\"local-peer\",\"\",\"\"]",
+      "requestDigest": "f37594540c99feda2c842b04a839a98380878a72068ceb9d118558c2585f8e3a",
+      "semanticDigest": "6ff5e13fda20dbe40fac505636b370b7da40147dd865f38bac823341ba580269"
+    },
+    {
+      "id": "peer-class-change",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "01234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "argv": [
+            "/usr/bin/printf",
+            "%s",
+            "hello"
+          ],
+          "cwd": "/root",
+          "target": "host"
+        },
+        "idempotencyKey": "vector-local-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYX",
+        "peerClass": "gateway-signed",
+        "gatewayId": "se-z-gateway",
+        "gatewayKeyId": "gateway-test-v1"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"01234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"argv\":[\"/usr/bin/printf\",\"%s\",\"hello\"],\"cwd\":\"/root\",\"target\":\"host\"},\"vector-local-001\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX\",\"gateway-signed\",\"se-z-gateway\",\"gateway-test-v1\"]",
+      "requestDigest": "49d9b1f54593f3fe4c911b696e83b52b1bc9cf928cf6ba7ef3a02674c59c20f8",
+      "semanticDigest": "8d685e643ae97f4af24789bfcdc20d891afa5f0b6e1b67f9f1f2665cc75bd8aa"
+    },
+    {
+      "id": "gateway-key-change",
+      "request": {
+        "protocol": "SEZ1",
+        "protocolVersion": "1.0.0",
+        "requestId": "11234567-89ab-4def-8123-456789abcdef",
+        "operation": "sez.exec",
+        "payload": {
+          "argv": [
+            "/usr/bin/printf",
+            "%s",
+            "hello"
+          ],
+          "cwd": "/root",
+          "target": "host"
+        },
+        "idempotencyKey": "vector-gateway-001",
+        "subject": "stealtheye-owner",
+        "authorityClass": "unrestricted-owner",
+        "authorityGeneration": 7,
+        "issuedAt": "2026-08-03T12:00:00.000Z",
+        "nonce": "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY",
+        "peerClass": "gateway-signed",
+        "gatewayId": "se-z-gateway",
+        "gatewayKeyId": "gateway-test-v2"
+      },
+      "canonicalSignatureInput": "[\"SEZ1\",\"1.0.0\",\"11234567-89ab-4def-8123-456789abcdef\",\"sez.exec\",{\"argv\":[\"/usr/bin/printf\",\"%s\",\"hello\"],\"cwd\":\"/root\",\"target\":\"host\"},\"vector-gateway-001\",\"stealtheye-owner\",\"unrestricted-owner\",7,\"2026-08-03T12:00:00.000Z\",\"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY\",\"gateway-signed\",\"se-z-gateway\",\"gateway-test-v2\"]",
+      "requestDigest": "d3cf8b3a292585d75ceb3f932ab1ee789e939f99b4ac6f4d7f88bb31ca81813e",
+      "semanticDigest": "340e3c4b9498593f6c8af30350b90a94d9d3e7221816cb8980f5a25a8930345f"
+    }
+  ]
+}

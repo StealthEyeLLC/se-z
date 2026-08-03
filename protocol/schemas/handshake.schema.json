@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://se-z.stealtheye.io/schemas/sez1-handshake.json",
+  "title": "SEZ1 connection handshake",
+  "oneOf": [
+    {
+      "title": "client hello",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "protocol", "protocolVersion", "clientId", "peerClass"],
+      "properties": {
+        "type": {"const": "hello"},
+        "protocol": {"const": "SEZ1"},
+        "protocolVersion": {"const": "1.0.0"},
+        "clientId": {"type": "string", "minLength": 1, "maxLength": 128},
+        "peerClass": {"enum": ["local-peer", "gateway-signed"]}
+      }
+    },
+    {
+      "title": "server welcome",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "protocol", "protocolVersion", "serverId", "authorityGeneration", "catalogDigest", "hostIdentity", "releaseIdentity", "signingAlgorithm", "maximumFrameSize"],
+      "properties": {
+        "type": {"const": "welcome"},
+        "protocol": {"const": "SEZ1"},
+        "protocolVersion": {"const": "1.0.0"},
+        "serverId": {"type": "string", "minLength": 1},
+        "authorityGeneration": {"type": "integer", "minimum": 1},
+        "catalogDigest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "hostIdentity": {"type": "object"},
+        "releaseIdentity": {"type": "object"},
+        "signingAlgorithm": {"const": "Ed25519"},
+        "maximumFrameSize": {"const": 16777216}
+      }
+    }
+  ]
+}
