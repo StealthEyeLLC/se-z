@@ -32,9 +32,9 @@ const result = await command(process.execPath, ['--test', ...unitFiles]);
 const durationMs = Number(process.hrtime.bigint() - start) / 1e6;
 const combined = Buffer.concat([result.stdout, result.stderr]);
 const text = combined.toString('utf8');
-const passMatches = [...text.matchAll(/^# pass (\d+)$/gm)];
-const failMatches = [...text.matchAll(/^# fail (\d+)$/gm)];
-const testsMatches = [...text.matchAll(/^# tests (\d+)$/gm)];
+const passMatches = [...text.matchAll(/^(?:#|ℹ) pass (\d+)$/gm)];
+const failMatches = [...text.matchAll(/^(?:#|ℹ) fail (\d+)$/gm)];
+const testsMatches = [...text.matchAll(/^(?:#|ℹ) tests (\d+)$/gm)];
 const evidence = {
   schemaVersion: 1,
   kind: 'phase2-unit',

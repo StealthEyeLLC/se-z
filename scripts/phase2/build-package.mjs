@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
-import { canonicalJson, sha256Hex } from '../../src/kernel/util.mjs';
+import { canonicalJson, sha256Hex, STATE_SCHEMA_VERSION } from '../../src/kernel/util.mjs';
 import { CATALOG_DIGEST } from '../../src/kernel/definitions.mjs';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -133,6 +133,25 @@ for (const directory of [stage, payload]) {
 const initialFiles = (await filesUnder(stage)).filter((relative) => !['manifest.json', 'SHA256SUMS'].includes(relative));
 const records = [];
 for (const relative of initialFiles) records.push(await fileRecord(stage, relative));
+
+const protocolSchemaPaths = [
+  'protocol/schemas/request.schema.json',
+  'protocol/schemas/result.schema.json',
+  'protocol/schemas/receipt.schema.json',
+  'protocol/schemas/handshake.schema.json',
+];
+const protocolSchemaDigests = {};
+for (const relative of protocolSchemaPaths) protocolSchemaDigests[relative] = sha256Hex(await fsp.readFile(path.join(repo, relative)));
+const operationDefinitionSha256 = sha256Hex(await fsp.readFile(path.join(repo, 'contracts/operations-0.1a.json')));
+const stateSchemaSha256 = sha256Hex(await fsp.readFile(path.join(repo, 'contracts/state-schema-0.1a.json')));
+const typescriptVersion = JSON.parse(await fsp.readFile(path.join(repo, 'node_modules/typescript/package.json'), 'utf8')).version;
+const compilerVersion = (await command('/usr/bin/c++', ['--version'])).stdout.toString().split('\n')[0].trim();
+const compilerTarget = (await command('/usr/bin/c++', ['-dumpmachine'])).stdout.toString().trim();
+const systemdVersion = (await command('/usr/bin/systemd', ['--version'])).stdout.toString().split('\n')[0].trim();
+const tmuxVersion = (await command('/usr/bin/tmux', ['-V'])).stdout.toString().trim();
+const glibcVersion = (await command('/usr/bin/ldd', ['--version'])).stdout.toString().split('\n')[0].trim();
+const architecture = (await command('/usr/bin/uname', ['-m'])).stdout.toString().trim();
+const provenanceIdentities = JSON.parse(await fsp.readFile(path.join(repo, 'vendor/baby-provenance/source-identities.json'), 'utf8'));
 const identity = {
   schemaVersion: 1,
   product: 'se-z',
@@ -143,7 +162,21 @@ const identity = {
   sourceDirty: dirty,
   protocol: 'SEZ1',
   protocolVersion: '1.0.0',
+  stateSchemaVersion: STATE_SCHEMA_VERSION,
   catalogDigest: CATALOG_DIGEST,
+  protocolSchemaDigests,
+  operationDefinitionSha256,
+  stateSchemaSha256,
+  typescriptVersion,
+  nativeCompilerIdentity: { executable: '/usr/bin/c++', version: compilerVersion, target: compilerTarget },
+  runtimeDependencies: {
+    node: { bundled: true, version: nodeVersion, sha256: sha256Hex(await fsp.readFile(nodePath)) },
+    systemd: { bundled: false, buildHostIdentity: systemdVersion, requiredFeatures: ['socket-activation', 'transient-services', 'credentials'] },
+    tmux: { bundled: false, buildHostIdentity: tmuxVersion, purpose: 'test and compatibility utility; PTY broker is native forkpty' },
+    glibc: { bundled: false, buildHostIdentity: glibcVersion },
+    architecture,
+  },
+  provenanceIdentities,
   nodeVersion,
   nodeSha256: sha256Hex(await fsp.readFile(nodePath)),
   nativeAddonSha256: sha256Hex(await fsp.readFile(nativePath)),
@@ -190,6 +223,14 @@ const result = {
   sourceDateEpoch,
   sourceDirty: dirty,
   catalogDigest: CATALOG_DIGEST,
+  stateSchemaVersion: STATE_SCHEMA_VERSION,
+  protocolSchemaDigests,
+  operationDefinitionSha256,
+  stateSchemaSha256,
+  typescriptVersion,
+  nativeCompilerIdentity: manifest.nativeCompilerIdentity,
+  runtimeDependencies: manifest.runtimeDependencies,
+  provenanceIdentities,
   nodeVersion,
   nodeSha256: manifest.nodeSha256,
   nativeAddonSha256: manifest.nativeAddonSha256,
