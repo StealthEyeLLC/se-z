@@ -40,7 +40,7 @@ try {
       ? [
           'bin/se-z',
           'bin/se-z-daemon',
-          'lib/dist/index.js',
+          'lib/dist/supervisor/server/index.js',
           'lib/build/Release/peer_cred.node',
           'lib/package.json',
           'lib/node_modules',
@@ -64,7 +64,7 @@ try {
 
   if (build.product === 'se-z') {
     const nativePath = join(releaseRoot, 'lib', 'build', 'Release', 'peer_cred.node');
-    const require = createRequire(join(releaseRoot, 'lib', 'dist', 'index.js'));
+    const require = createRequire(join(releaseRoot, 'lib', 'dist', 'supervisor', 'server', 'index.js'));
     const native = require(nativePath) as { getPeerCred?: unknown };
     if (typeof native.getPeerCred !== 'function') throw new Error('Packaged native addon cannot load');
     const packageJson = JSON.parse(readFileSync(join(releaseRoot, 'lib', 'package.json'), 'utf8')) as {

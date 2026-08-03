@@ -907,10 +907,10 @@
       "sourceDigest": "96bc0b2c2327d6117c9a9d62bbb931096a376cb34bb09494ce756a52019106b0",
       "destinationPath": "scripts/extracted/supervisor/verify-candidate.ts",
       "transformationType": "mechanically renamed copy",
-      "targetDigest": "89f0aeb6fdc08cdf14284a2634701716d04debc3d8c2bcc188cc6fee4bb77545",
+      "targetDigest": "c560984bb83ed06441897a73154b3fdb783dd014ea0d50ed036c1f3a7bf7bd89",
       "applicableLicense": "StealthEye LLC proprietary; no separate license file in pinned tree; target NOTICE and provenance apply",
       "extractionStatus": "EXTRACTED",
-      "extractedAt": "2026-08-03T11:44:04.587Z"
+      "extractedAt": "2026-08-03T12:04:55.859Z"
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -2668,7 +2668,7 @@
       "extractedAt": "2026-08-03T11:54:37.371Z"
     }
   ],
-  "extractedAt": "2026-08-03T11:52:33.059Z",
+  "extractedAt": "2026-08-03T12:04:55.859Z",
   "extractedRecordCount": 205,
   "portedTestRecordCount": 80,
   "testsPortedAt": "2026-08-03T11:54:37.372Z"

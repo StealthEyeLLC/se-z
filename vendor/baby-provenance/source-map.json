@@ -9866,7 +9866,7 @@
       "notes": "Source-only repository architecture or release-layout assertions are executed by the exact source harness; target paths and architecture follow higher-precedence se-z canonicals and receive dedicated target tests."
     }
   ],
-  "extractedAt": "2026-08-03T11:52:33.059Z",
+  "extractedAt": "2026-08-03T12:04:55.859Z",
   "extractedRecordCount": 196,
   "portedTestRecordCount": 71,
   "testsPortedAt": "2026-08-03T11:54:37.372Z"

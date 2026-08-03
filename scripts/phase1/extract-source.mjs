@@ -119,6 +119,11 @@ function applyRelocationAdaptations(destinationPath, text) {
       .replaceAll("'lib/dist/cli/rollback.js'", "'lib/dist/supervisor/cli/rollback.js'")
       .replaceAll("'lib/dist/cli/verify.js'", "'lib/dist/supervisor/cli/verify.js'");
   }
+  if (destinationPath === 'scripts/extracted/supervisor/verify-candidate.ts') {
+    output = output
+      .replaceAll("'lib/dist/index.js'", "'lib/dist/supervisor/server/index.js'")
+      .replaceAll("join(releaseRoot, 'lib', 'dist', 'index.js')", "join(releaseRoot, 'lib', 'dist', 'supervisor', 'server', 'index.js')");
+  }
   if (destinationPath === 'scripts/extracted/supervisor/release.sh') {
     output = output
       .replace('ROOT="$(cd "$(dirname "$0")/.." && pwd)"', 'ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"')
@@ -134,10 +139,12 @@ function applyRelocationAdaptations(destinationPath, text) {
   return output;
 }
 
+const extractionRunAt = new Date().toISOString();
 const extracted = [];
 for (const record of sourceMap.records) {
   const component = componentForRepo.get(record.sourceRepository);
   if (!component || !components.includes(component) || !record.destinationPath) continue;
+  if (record.destinationPath.startsWith('test/extracted/')) continue;
   if (selectedFamilies && !selectedFamilies.has(record.componentFamily)) continue;
   const sourceRoot = sourceRoots[component];
   const bytes = sourceBytes(sourceRoot,record.sourcePath);
@@ -161,17 +168,18 @@ for (const record of sourceMap.records) {
   const targetDigest = sha256(targetBytes);
   const mapEntry = fileMap.records.find((entry) => entry.sourceRepository===record.sourceRepository && entry.sourcePath===record.sourcePath && entry.destinationPath===record.destinationPath);
   if (!mapEntry) throw new Error(`missing file-map entry: ${record.sourcePath}`);
+  const mappingChanged = mapEntry.targetDigest !== targetDigest || mapEntry.extractionStatus !== 'EXTRACTED';
   mapEntry.targetDigest = targetDigest;
   mapEntry.extractionStatus = 'EXTRACTED';
-  mapEntry.extractedAt = new Date().toISOString();
+  if (mappingChanged || !mapEntry.extractedAt) mapEntry.extractedAt = extractionRunAt;
   record.copyStatus = 'COPIED';
   record.renameStatus = targetDigest === record.sourceDigest ? 'NOT_REQUIRED' : 'APPLIED';
   record.parityTestStatus = 'PENDING_EXECUTION';
-  extracted.push({component,family:record.componentFamily,sourcePath:record.sourcePath,destinationPath:record.destinationPath,sourceDigest:record.sourceDigest,targetDigest,transformationType:record.transformationType});
+  extracted.push({component,family:record.componentFamily,sourcePath:record.sourcePath,destinationPath:record.destinationPath,sourceDigest:record.sourceDigest,targetDigest,transformationType:record.transformationType,mappingChanged});
 }
-sourceMap.extractedAt = new Date().toISOString();
+if (extracted.some((entry) => entry.mappingChanged) || !sourceMap.extractedAt) sourceMap.extractedAt = extractionRunAt;
 sourceMap.extractedRecordCount = sourceMap.records.filter((record) => record.copyStatus==='COPIED').length;
-fileMap.extractedAt = sourceMap.extractedAt;
+if (extracted.some((entry) => entry.mappingChanged) || !fileMap.extractedAt) fileMap.extractedAt = extractionRunAt;
 fileMap.extractedRecordCount = fileMap.records.filter((record) => record.extractionStatus==='EXTRACTED').length;
 fs.writeFileSync(sourceMapPath,JSON.stringify(sourceMap,null,2)+'\n');
 fs.writeFileSync(fileMapPath,JSON.stringify(fileMap,null,2)+'\n');
