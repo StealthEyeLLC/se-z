@@ -6,7 +6,7 @@ import path from 'node:path';
 import process from 'node:process';
 
 const root = process.cwd();
-const worktree = path.join(root, '.phase1-sources/target-reference');
+const worktree = path.join(root, `.phase1-sources/target-reference-${process.pid}`);
 const sourceSupervisor = path.resolve(process.env.SEZ_PHASE1_SUPERVISOR_SOURCE ?? path.join(root, '.phase1-sources/baby-quirt'));
 const sourceGateway = path.resolve(process.env.SEZ_PHASE1_GATEWAY_SOURCE ?? path.join(root, '.phase1-sources/baby-quirt-mcp'));
 for (const [name, location] of [['supervisor', sourceSupervisor], ['gateway', sourceGateway]]) {
@@ -49,7 +49,7 @@ function capture(name, command, args, kind) {
   fs.writeFileSync(stdoutPath, stdout, { mode: 0o600 });
   fs.writeFileSync(stderrPath, stderr, { mode: 0o600 });
   return {
-    name, kind, command: [command, ...args], cwd: '.phase1-sources/target-reference',
+    name, kind, command: [command, ...args], cwd: path.relative(root, worktree),
     startedAt, completedAt: new Date().toISOString(),
     durationMs: Number(process.hrtime.bigint() - start) / 1_000_000,
     exitStatus: result.status, signal: result.signal ?? null,

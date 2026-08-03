@@ -44,7 +44,7 @@
     "phase1:requirements-audit:check": "node scripts/phase1/requirements-audit.mjs --no-write",
     "phase1:production-readback": "node scripts/phase1/production-readback.mjs",
     "phase1:summarize": "node scripts/phase1/summarize.mjs",
-    "phase1:evidence": "npm run phase1:source-test && npm run phase1:extracted-test && npm run phase1:parity && npm run phase1:dependency-scan && npm run phase1:requirements-audit && npm run phase1:production-readback && npm run phase1:secret-scan && npm run phase1:summarize"
+    "phase1:evidence": "node scripts/phase1/evidence.mjs"
   },
   "dependencies": {
     "node-addon-api": "8.9.0"
