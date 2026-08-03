@@ -42,6 +42,8 @@ async function main() {
   let timedOut = false;
   let timeoutHandle;
   let finalized = false;
+  let stdoutPump = Promise.resolve(null);
+  let stderrPump = Promise.resolve(null);
 
   const writeRunnerState = async (extra = {}) => {
     await atomicWriteJson(spec.runnerStatePath, {
@@ -71,6 +73,12 @@ async function main() {
 
   const pump = async (stream, readable, handle) => {
     for await (const chunk of readable) {
+      const failAfter = spec.faultInjection?.streamWriteFailAfterBytes;
+      if (Number.isSafeInteger(failAfter) && failAfter >= 0 && counts[stream] + chunk.length > failAfter) {
+        const error = new Error(`Injected ${stream} stream write failure after ${failAfter} bytes`);
+        error.code = 'EIO';
+        throw error;
+      }
       hashes[stream].update(chunk);
       let offset = 0;
       while (offset < chunk.length) {
@@ -94,15 +102,14 @@ async function main() {
     // Register terminal observation immediately. A fast process can close between
     // the spawn event and later setup; a Promise added afterward would never
     // resolve and Node could exit with no durable runner result.
-    const closePromise = new Promise((resolve, reject) => {
+    const closePromise = new Promise((resolve) => {
       child.once('close', (code, signal) => resolve({ code, signal }));
-      child.once('error', reject);
     });
     // Attach stream consumers before waiting for the spawn event. Linux can run
     // and close a tiny process before later setup; unread pipe bytes are then
     // discarded when Node destroys the closed child streams.
-    const stdoutPump = pump('stdout', child.stdout, stdoutHandle);
-    const stderrPump = pump('stderr', child.stderr, stderrHandle);
+    stdoutPump = pump('stdout', child.stdout, stdoutHandle).then(() => null, (error) => error);
+    stderrPump = pump('stderr', child.stderr, stderrHandle).then(() => null, (error) => error);
     await new Promise((resolve, reject) => {
       child.once('spawn', resolve);
       child.once('error', reject);
@@ -126,7 +133,9 @@ async function main() {
     }
 
     const exit = await closePromise;
-    await Promise.all([stdoutPump, stderrPump]);
+    const [stdoutError, stderrError] = await Promise.all([stdoutPump, stderrPump]);
+    if (stdoutError) throw stdoutError;
+    if (stderrError) throw stderrError;
     finalized = true;
     if (timeoutHandle) clearTimeout(timeoutHandle);
     const terminalAt = new Date().toISOString();
@@ -157,6 +166,9 @@ async function main() {
   } catch (error) {
     finalized = true;
     if (timeoutHandle) clearTimeout(timeoutHandle);
+    // Consume any stream-pump terminal errors before publishing the primary
+    // failure so no unhandled rejection can preempt the durable result write.
+    await Promise.all([stdoutPump, stderrPump]);
     const normalized = normalizeError(error);
     await updateStream('stdout', true).catch(() => {});
     await updateStream('stderr', true).catch(() => {});
@@ -166,7 +178,12 @@ async function main() {
       state: 'failed',
       exitCode: null,
       signal: null,
-      error: { code: normalized.code, retryable: normalized.retryable, message: normalized.message, details: normalized.details },
+      error: {
+        code: normalized.code,
+        retryable: normalized.retryable,
+        message: normalized.message,
+        ...(normalized.details === undefined ? {} : { details: normalized.details }),
+      },
       startedAt,
       terminalAt: new Date().toISOString(),
       stdout: { bytes: counts.stdout, sha256: hashes.stdout.copy().digest('hex') },

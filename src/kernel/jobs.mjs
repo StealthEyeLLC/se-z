@@ -248,6 +248,9 @@ export class JobManager {
       },
       runnerStatePath: path.join(this.state.jobs, `${jobId}.runner-state.json`),
       runnerResultPath: this.state.runnerResultPath(jobId),
+      faultInjection: this.config.testMode ? {
+        streamWriteFailAfterBytes: this.config.faultInjection.streamWriteFailAfterBytes ?? null,
+      } : {},
     };
     await atomicWriteJson(this.state.runnerSpecPath(jobId), runnerSpec);
     await this.state.bindRequestJob(requestRecord.requestId, jobId, 'running');
@@ -333,7 +336,7 @@ export class JobManager {
 
   async refresh(jobId) {
     let job = await this.state.getJob(jobId);
-    const runnerResult = await readJsonIfExists(this.state.runnerResultPath(jobId), 'runner result');
+    let runnerResult = await readJsonIfExists(this.state.runnerResultPath(jobId), 'runner result');
     const streamStates = {};
     for (const stream of ['stdout', 'stderr']) {
       const state = await readJsonIfExists(this.state.streamStatePath(jobId, stream), 'stream state');
@@ -346,23 +349,24 @@ export class JobManager {
         complete: Boolean(state?.complete),
       };
     }
-    if (runnerResult) {
+    const applyRunnerResult = async (result) => {
       job = await this.state.updateJob(jobId, (record) => ({
         ...record,
-        state: runnerResult.state,
+        state: result.state,
         terminal: true,
-        terminalAt: runnerResult.terminalAt,
-        startedAt: runnerResult.startedAt ?? record.startedAt,
-        exitCode: runnerResult.exitCode,
-        signal: runnerResult.signal,
-        error: runnerResult.error,
+        terminalAt: result.terminalAt,
+        startedAt: result.startedAt ?? record.startedAt,
+        exitCode: result.exitCode,
+        signal: result.signal,
+        error: result.error,
         streams: {
-          stdout: { ...streamStates.stdout, committedBytes: runnerResult.stdout.bytes, finalSha256: runnerResult.stdout.sha256, complete: true },
-          stderr: { ...streamStates.stderr, committedBytes: runnerResult.stderr.bytes, finalSha256: runnerResult.stderr.sha256, complete: true },
+          stdout: { ...streamStates.stdout, committedBytes: result.stdout.bytes, finalSha256: result.stdout.sha256, complete: true },
+          stderr: { ...streamStates.stderr, committedBytes: result.stderr.bytes, finalSha256: result.stderr.sha256, complete: true },
         },
       }));
       return job;
-    }
+    };
+    if (runnerResult) return await applyRunnerResult(runnerResult);
     if (terminalState(job.state)) return job;
     const runnerAlive = await identityAlive(job.runnerIdentity);
     let systemd = null;
@@ -370,6 +374,15 @@ export class JobManager {
     if (runnerAlive || ['active', 'activating'].includes(systemd?.ActiveState)) {
       if (JSON.stringify(job.streams) !== JSON.stringify(streamStates)) job = await this.state.updateJob(jobId, (record) => ({ ...record, streams: streamStates, state: 'running', terminal: false }));
       return job;
+    }
+    // A transient unit can become inactive a few scheduler turns before its
+    // runner atomically publishes the terminal result. Give that durable write
+    // a bounded grace period before declaring the job lost or ambiguous.
+    const publicationDeadline = Date.now() + 1000;
+    while (Date.now() < publicationDeadline) {
+      runnerResult = await readJsonIfExists(this.state.runnerResultPath(jobId), 'runner result');
+      if (runnerResult) return await applyRunnerResult(runnerResult);
+      await sleep(20);
     }
     const state = job.cancellationRequestedAt ? 'ambiguous' : 'lost';
     job = await this.state.updateJob(jobId, (record) => ({

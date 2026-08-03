@@ -581,6 +581,13 @@ async function run() {
         if (unit) await execFileAsync('/usr/bin/systemctl', ['reset-failed', unit]).catch(() => {});
       }
     }
+    if (h) {
+      const tmuxDirectory = path.join(h.config.stateRoot, 'ptys', 'tmux');
+      for (const entry of await fsp.readdir(tmuxDirectory).catch(() => [])) {
+        const socket = path.join(tmuxDirectory, entry);
+        await execFileAsync('/usr/bin/tmux', ['-S', socket, 'kill-server']).catch(() => {});
+      }
+    }
     await removeLinuxIdentities();
   }
 }

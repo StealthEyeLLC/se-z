@@ -52,6 +52,9 @@ cp src/native/peercred/build/Release/peer_cred.node "$RELEASE_DIR/lib/build/Rele
 
 cp package.json package-lock.json "$PRODUCTION_DEPS/"
 npm ci --omit=dev --ignore-scripts --no-audit --no-fund --bin-links=false --prefix "$PRODUCTION_DEPS"
+# npm does not create node_modules when the production dependency set is empty.
+# Preserve a deterministic empty directory so the release layout and copy step remain valid.
+mkdir -p "$PRODUCTION_DEPS/node_modules"
 if find "$PRODUCTION_DEPS/node_modules" -type l -print -quit | grep -q .; then
   echo "ERROR: production dependency graph contains a link and is not packageable" >&2
   exit 1
