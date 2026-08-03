@@ -22,7 +22,7 @@
   },
   "allOf": [
     {"if": {"properties": {"terminal": {"const": false}}}, "then": {"properties": {"state": {"enum": ["accepted", "running"]}}}},
-    {"if": {"properties": {"terminal": {"const": true}}}, "then": {"properties": {"state": {"enum": ["completed", "failed", "cancelled", "lost", "ambiguous", "reconciled"]}}},
+    {"if": {"properties": {"terminal": {"const": true}}}, "then": {"properties": {"state": {"enum": ["completed", "failed", "cancelled", "lost", "ambiguous", "reconciled"]}}}},
     {"if": {"properties": {"error": {"type": "object"}}}, "then": {"properties": {"result": {"type": "null"}}}}
   ],
   "$defs": {
