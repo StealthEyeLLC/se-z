@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baby-quirt.stealtheye.io/schemas/deployment-v2/success-marker.schema.json",
+  "title": "Baby Quirt Generation-Bound Success Marker v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "deploymentId",
+    "generation",
+    "machineId",
+    "planDigest",
+    "snapshotDigest",
+    "babyManifestDigest",
+    "gatewayManifestDigest",
+    "compatibilityDigest",
+    "evidenceIndexDigest",
+    "guardRecordDigest",
+    "deadline",
+    "acceptedAt",
+    "markerDigest",
+    "signatureAlgorithm",
+    "signingKeyId",
+    "signature"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "2.0.0" },
+    "deploymentId": { "$ref": "#/$defs/identifier" },
+    "generation": { "type": "integer", "minimum": 1 },
+    "machineId": { "$ref": "#/$defs/identifier" },
+    "planDigest": { "$ref": "#/$defs/digest" },
+    "snapshotDigest": { "$ref": "#/$defs/digest" },
+    "babyManifestDigest": { "$ref": "#/$defs/digest" },
+    "gatewayManifestDigest": { "$ref": "#/$defs/digest" },
+    "compatibilityDigest": { "$ref": "#/$defs/digest" },
+    "evidenceIndexDigest": { "$ref": "#/$defs/digest" },
+    "guardRecordDigest": { "$ref": "#/$defs/digest" },
+    "deadline": { "type": "string", "format": "date-time" },
+    "acceptedAt": { "type": "string", "format": "date-time" },
+    "markerDigest": { "$ref": "#/$defs/digest" },
+    "signatureAlgorithm": { "const": "ed25519" },
+    "signingKeyId": { "$ref": "#/$defs/identifier" },
+    "signature": { "$ref": "#/$defs/signature" }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$" },
+    "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "signature": { "type": "string", "minLength": 32, "pattern": "^[A-Za-z0-9+/]+={0,2}$" }
+  }
+}

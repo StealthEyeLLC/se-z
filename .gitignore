@@ -11,3 +11,8 @@ coverage/
 .phase1-sources/
 .phase1-logs/
 evidence/phase1/local-logs/
+
+# Extracted build products
+dist-extracted/
+src/native/peercred/build/
+release/

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baby-quirt.stealtheye.io/schemas/deployment-v2/deployment-request.schema.json",
+  "title": "Baby Quirt Standalone Deployment Request v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "deploymentId",
+    "generation",
+    "machineId",
+    "planDigest",
+    "requestDigest",
+    "requestedAt",
+    "deadline",
+    "requestedBy",
+    "idempotencyKey",
+    "products"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "2.0.0" },
+    "deploymentId": { "$ref": "#/$defs/identifier" },
+    "generation": { "type": "integer", "minimum": 1 },
+    "machineId": { "$ref": "#/$defs/identifier" },
+    "planDigest": { "$ref": "#/$defs/digest" },
+    "requestDigest": { "$ref": "#/$defs/digest" },
+    "requestedAt": { "type": "string", "format": "date-time" },
+    "deadline": { "type": "string", "format": "date-time" },
+    "requestedBy": { "$ref": "#/$defs/identifier" },
+    "idempotencyKey": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "products": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/source" },
+      "allOf": [
+        { "contains": { "properties": { "product": { "const": "baby-quirt" } }, "required": ["product"] }, "minContains": 1, "maxContains": 1 },
+        { "contains": { "properties": { "product": { "const": "baby-quirt-mcp" } }, "required": ["product"] }, "minContains": 1, "maxContains": 1 }
+      ]
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "gitObject": { "type": "string", "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["product", "repository", "commit", "tree"],
+      "properties": {
+        "product": { "enum": ["baby-quirt", "baby-quirt-mcp"] },
+        "repository": {
+          "enum": ["StealthEyeLLC/baby-quirt", "StealthEyeLLC/baby-quirt-mcp"]
+        },
+        "commit": { "$ref": "#/$defs/gitObject" },
+        "tree": { "$ref": "#/$defs/gitObject" }
+      }
+    }
+  }
+}

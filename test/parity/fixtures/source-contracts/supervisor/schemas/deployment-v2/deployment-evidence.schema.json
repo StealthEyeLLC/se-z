@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baby-quirt.stealtheye.io/schemas/deployment-v2/deployment-evidence.schema.json",
+  "title": "Baby Quirt Standalone Deployment Evidence v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "deploymentId",
+    "generation",
+    "machineId",
+    "indexDigest",
+    "entries",
+    "signatureAlgorithm",
+    "signingKeyId",
+    "signature",
+    "createdAt"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "2.0.0" },
+    "deploymentId": { "$ref": "#/$defs/identifier" },
+    "generation": { "type": "integer", "minimum": 1 },
+    "machineId": { "$ref": "#/$defs/identifier" },
+    "indexDigest": { "$ref": "#/$defs/digest" },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" },
+      "maxItems": 10000
+    },
+    "nextOffset": { "type": ["integer", "null"], "minimum": 0 },
+    "signatureAlgorithm": { "const": "ed25519" },
+    "signingKeyId": { "$ref": "#/$defs/identifier" },
+    "signature": { "$ref": "#/$defs/signature" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "signature": { "type": "string", "minLength": 32, "pattern": "^[A-Za-z0-9+/]+={0,2}$" },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "digest",
+        "contentLength",
+        "artifactReference",
+        "redacted",
+        "signatureAlgorithm",
+        "signingKeyId",
+        "signature",
+        "createdAt"
+      ],
+      "properties": {
+        "kind": { "$ref": "#/$defs/identifier" },
+        "digest": { "$ref": "#/$defs/digest" },
+        "contentLength": { "type": "integer", "minimum": 0 },
+        "artifactReference": { "type": "string", "pattern": "^artifact:sha256:[a-f0-9]{64}$" },
+        "redacted": { "const": true },
+        "signatureAlgorithm": { "const": "ed25519" },
+        "signingKeyId": { "$ref": "#/$defs/identifier" },
+        "signature": { "$ref": "#/$defs/signature" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

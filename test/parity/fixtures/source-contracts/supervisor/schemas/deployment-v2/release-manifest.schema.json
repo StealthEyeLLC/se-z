@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baby-quirt.stealtheye.io/schemas/deployment-v2/release-manifest.schema.json",
+  "title": "Baby Quirt Immutable Release Manifest v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "recordVersion",
+    "product",
+    "repository",
+    "releaseVersion",
+    "commit",
+    "tree",
+    "sourceDateEpoch",
+    "lockfileDigest",
+    "nodeVersion",
+    "buildCommandDigest",
+    "environmentIdentity",
+    "archive",
+    "internalManifestDigest",
+    "files",
+    "sbom",
+    "testEvidenceIndexDigest",
+    "reproducibility",
+    "manifestDigest",
+    "compatibilityDigest",
+    "stateMigration",
+    "rollback",
+    "peerCompatibility",
+    "signatureAlgorithm",
+    "signingKeyId",
+    "signature"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "2.0.0" },
+    "recordVersion": { "const": "2.0.0" },
+    "product": { "enum": ["baby-quirt", "baby-quirt-mcp"] },
+    "repository": { "enum": ["StealthEyeLLC/baby-quirt", "StealthEyeLLC/baby-quirt-mcp"] },
+    "releaseVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[A-Za-z0-9.-]+)?$",
+      "not": { "enum": ["0.2.1", "0.2.2"] }
+    },
+    "commit": { "$ref": "#/$defs/gitObject" },
+    "tree": { "$ref": "#/$defs/gitObject" },
+    "sourceDateEpoch": { "type": "integer", "minimum": 0 },
+    "lockfileDigest": { "$ref": "#/$defs/digest" },
+    "nodeVersion": { "const": "24.18.0" },
+    "buildCommandDigest": { "$ref": "#/$defs/digest" },
+    "environmentIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["os", "architecture", "locale", "timezone", "umask", "toolchainDigest"],
+      "properties": {
+        "os": { "type": "string", "minLength": 1 },
+        "architecture": { "type": "string", "minLength": 1 },
+        "locale": { "const": "C.UTF-8" },
+        "timezone": { "const": "UTC" },
+        "umask": { "const": "0022" },
+        "toolchainDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "digest",
+        "compressedSize",
+        "decompressedSize",
+        "memberCount",
+        "topLevelPrefix",
+        "strictProfile"
+      ],
+      "properties": {
+        "format": { "const": "tar.gz" },
+        "digest": { "$ref": "#/$defs/digest" },
+        "compressedSize": { "type": "integer", "minimum": 1 },
+        "decompressedSize": { "type": "integer", "minimum": 1 },
+        "memberCount": { "type": "integer", "minimum": 1 },
+        "topLevelPrefix": { "type": "string", "pattern": "^[A-Za-z0-9._-]+/$" },
+        "strictProfile": { "const": "baby-quirt-bounded-link-free-v2" }
+      }
+    },
+    "internalManifestDigest": { "$ref": "#/$defs/digest" },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/file" }
+    },
+    "nativeAddon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest", "nodeAbi", "loadEvidenceDigest"],
+      "properties": {
+        "path": { "const": "lib/build/Release/peer_cred.node" },
+        "digest": { "$ref": "#/$defs/digest" },
+        "nodeAbi": { "type": "string", "minLength": 1 },
+        "loadEvidenceDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "sbom": { "$ref": "#/$defs/artifact" },
+    "testEvidenceIndexDigest": { "$ref": "#/$defs/digest" },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstDigest", "secondDigest", "byteIdentical", "evidenceDigest"],
+      "properties": {
+        "firstDigest": { "$ref": "#/$defs/digest" },
+        "secondDigest": { "$ref": "#/$defs/digest" },
+        "byteIdentical": { "const": true },
+        "evidenceDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "manifestDigest": { "$ref": "#/$defs/digest" },
+    "compatibilityDigest": { "$ref": "#/$defs/digest" },
+    "stateMigration": { "$ref": "#/$defs/declaration" },
+    "rollback": { "$ref": "#/$defs/declaration" },
+    "peerCompatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimumRelease", "maximumRelease", "protocolVersions", "receiptVersions", "catalogVersions"],
+      "properties": {
+        "minimumRelease": { "type": "string", "minLength": 1 },
+        "maximumRelease": { "type": "string", "minLength": 1 },
+        "protocolVersions": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
+        "receiptVersions": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
+        "catalogVersions": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "signatureAlgorithm": { "const": "ed25519" },
+    "signingKeyId": { "$ref": "#/$defs/identifier" },
+    "signature": { "$ref": "#/$defs/signature" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "product": { "const": "baby-quirt" } }, "required": ["product"] },
+      "then": { "required": ["nativeAddon"] }
+    }
+  ],
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$" },
+    "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "gitObject": { "type": "string", "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$" },
+    "signature": { "type": "string", "minLength": 32, "pattern": "^[A-Za-z0-9+/]+={0,2}$" },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "type", "mode", "size", "digest"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)[A-Za-z0-9._/-]+$" },
+        "type": { "enum": ["file", "directory"] },
+        "mode": { "type": "string", "pattern": "^0[0-7]{3}$" },
+        "size": { "type": "integer", "minimum": 0 },
+        "digest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["digest", "artifactReference", "format"],
+      "properties": {
+        "digest": { "$ref": "#/$defs/digest" },
+        "artifactReference": { "type": "string", "pattern": "^artifact:sha256:[a-f0-9]{64}$" },
+        "format": { "type": "string", "minLength": 1 }
+      }
+    },
+    "declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supported", "strategy", "evidenceDigest"],
+      "properties": {
+        "supported": { "type": "boolean" },
+        "strategy": { "type": "string", "minLength": 1 },
+        "evidenceDigest": { "$ref": "#/$defs/digest" }
+      }
+    }
+  }
+}

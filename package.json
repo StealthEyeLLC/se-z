@@ -13,7 +13,9 @@
   "scripts": {
     "check": "node scripts/check.mjs",
     "test": "node --test",
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "build:extracted": "tsc -p tsconfig.extracted.json",
+    "build:native": "node-gyp rebuild --directory src/native/peercred"
   },
   "dependencies": {
     "node-addon-api": "8.9.0"

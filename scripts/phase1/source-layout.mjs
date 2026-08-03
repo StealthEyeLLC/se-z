@@ -156,36 +156,54 @@ export function parityExpectationFor(family) {
 
 export function applyMechanicalIdentity(text) {
   const replacements = [
-    ['bbyquirt.call_quirt', 'call_sez'],
-    ['Baby Quirt MCP', 'se-z gateway'],
-    ['baby-quirt-mcp', 'se-z-gateway'],
-    ['BABY_QUIRT_MCP', 'SEZ_GATEWAY'],
-    ['BabyQuirt', 'Sez'],
-    ['BABY_QUIRT', 'SEZ'],
-    ['Baby Quirt', 'se-z'],
-    ['baby-quirt', 'se-z'],
-    ['call_quirt', 'call_sez'],
-    ['baby.apply', 'sez.root'],
-    ['QRT1', 'SEZ1'],
-    ['Qrt1', 'Sez1'],
     ['/etc/baby-quirt-mcp/', '/etc/se-z-gateway/'],
     ['/etc/baby-quirt/', '/etc/se-z/'],
     ['/var/lib/baby-quirt-mcp/', '/var/lib/se-z-gateway/'],
     ['/var/lib/baby-quirt/', '/var/lib/se-z/'],
-    ['/opt/baby-quirt-mcp/', '/opt/se-z/'],
+    ['/opt/baby-quirt-mcp/', '/opt/se-z/gateway/'],
     ['/opt/baby-quirt/', '/opt/se-z/'],
     ['/run/horsey/baby-quirt.sock', '/run/se-z/gateway.sock'],
     ['baby-quirt-mcp.service', 'se-z-gateway.service'],
     ['baby-quirt.service', 'se-z.service'],
     ['baby-quirt.socket', 'se-z.socket'],
+    ['bbyquirt.call_quirt', 'call_sez'],
+    ['Baby Quirt MCP', 'se-z gateway'],
+    ['baby-quirt-mcp', 'se-z-gateway'],
+    ['BABY_QUIRT_MCP', 'SEZ_GATEWAY'],
+    ['describeBabyQuirt', 'describeSez'],
+    ['BabyQuirt', 'Sez'],
+    ['babyQuirt', 'sez'],
+    ['callQuirt', 'callSez'],
+    ['QuirtError', 'SezError'],
+    ['call_quirt', 'call_sez'],
+    ['baby.apply', 'sez.root'],
+    ['QRT1', 'SEZ1'],
+    ['Qrt1', 'Sez1'],
+    ['BABY_QUIRT', 'SEZ'],
+    ['Baby Quirt', 'se-z'],
+    ['baby-quirt', 'se-z'],
+    ['BBY', 'SEZ'],
+    ['Bby', 'Sez'],
+    ['bby', 'sez'],
+    ['QUIRT', 'SEZ'],
+    ['Quirt', 'Sez'],
+    ['quirt', 'sez'],
     ['fix-mcp', 'se-z-gateway'],
-    ['horsey', 'se-z'],
-    ['https://baby-quirt.stealtheye.io', 'https://auth.se-z.stealtheye.io']
+    ["'horsey'", "'se-z'"],
+    ['"horsey"', '"se-z"'],
+    ['/run/horsey/', '/run/se-z/'],
+    ['/etc/horsey/', '/etc/se-z/'],
+    ['Horsey', 'Sez'],
+    ['horsey', 'sez']
   ];
   let output = text;
   for (const [from, to] of replacements) output = output.split(from).join(to);
   output = output.replace(/\bbaby\./gu, 'sez.');
   output = output.replace(/\bBABY_/gu, 'SEZ_');
+  output = output.split('\\/opt\\/se-z-gateway\\/').join('\\/opt\\/se-z\\/gateway\\/');
+  output = output.split('/opt/se-z-gateway').join('/opt/se-z/gateway');
+  output = output.split('Baby').join('Sez');
+  output = output.split('baby').join('sez');
   return output;
 }
 

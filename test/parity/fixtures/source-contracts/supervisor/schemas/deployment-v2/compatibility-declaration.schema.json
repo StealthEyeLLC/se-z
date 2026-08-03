@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baby-quirt.stealtheye.io/schemas/deployment-v2/compatibility-declaration.schema.json",
+  "title": "Baby Quirt Coordinated Compatibility Declaration v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "declarationId",
+    "babyManifestDigest",
+    "gatewayManifestDigest",
+    "activationOrder",
+    "legacyWindow",
+    "targetWindow",
+    "stateMigration",
+    "rollback",
+    "digest",
+    "signatureAlgorithm",
+    "signingKeyId",
+    "signature"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "2.0.0" },
+    "declarationId": { "$ref": "#/$defs/identifier" },
+    "babyManifestDigest": { "$ref": "#/$defs/digest" },
+    "gatewayManifestDigest": { "$ref": "#/$defs/digest" },
+    "activationOrder": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "baby-quirt-mcp" },
+        { "const": "baby-quirt" }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "legacyWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["babyRelease", "operationCount", "receiptVersions", "gatewayAccepts"],
+      "properties": {
+        "babyRelease": { "const": "0.1.3" },
+        "operationCount": { "const": 26 },
+        "receiptVersions": { "type": "array", "contains": { "const": "1.0.0" }, "minContains": 1 },
+        "gatewayAccepts": { "const": true }
+      }
+    },
+    "targetWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtimeNativeDiscovery", "receiptVersions", "registryDigest"],
+      "properties": {
+        "runtimeNativeDiscovery": { "const": true },
+        "receiptVersions": {
+          "type": "array",
+          "uniqueItems": true,
+          "allOf": [
+            { "contains": { "const": "1.0.0" }, "minContains": 1 },
+            { "contains": { "const": "2.0.0" }, "minContains": 1 }
+          ]
+        },
+        "registryDigest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "stateMigration": { "$ref": "#/$defs/declaration" },
+    "rollback": { "$ref": "#/$defs/declaration" },
+    "digest": { "$ref": "#/$defs/digest" },
+    "signatureAlgorithm": { "const": "ed25519" },
+    "signingKeyId": { "$ref": "#/$defs/identifier" },
+    "signature": { "$ref": "#/$defs/signature" }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$" },
+    "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "signature": { "type": "string", "minLength": 32, "pattern": "^[A-Za-z0-9+/]+={0,2}$" },
+    "declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compatible", "strategy", "evidenceDigest"],
+      "properties": {
+        "compatible": { "const": true },
+        "strategy": { "type": "string", "minLength": 1 },
+        "evidenceDigest": { "$ref": "#/$defs/digest" }
+      }
+    }
+  }
+}

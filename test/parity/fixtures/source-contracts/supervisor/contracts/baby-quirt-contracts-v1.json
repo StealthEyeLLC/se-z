@@ -1,0 +1,1554 @@
+{
+  "schemaVersion": "1.2.0",
+  "contractVersion": "1.2.0",
+  "product": {
+    "name": "baby-quirt",
+    "description": "Standalone private Unix-socket host-control runtime for bootstrapping Quirt",
+    "repository": "StealthEyeLLC/baby-quirt",
+    "ownerSubject": "stealtheye-owner",
+    "authorityClass": "unrestricted-owner"
+  },
+  "architecture": {
+    "contract": "architecture",
+    "version": "1.2.0",
+    "topology": [
+      "Authorized Horsey gateway client",
+      "Signed private Baby Quirt protocol (QRT1)",
+      "/run/horsey/baby-quirt.sock",
+      "Standalone UID-0 Baby Quirt daemon"
+    ],
+    "babyQuirtOwns": [
+      "privileged_local_machine_authority",
+      "job_lifecycle",
+      "process_execution",
+      "pty_sessions",
+      "file_operations",
+      "artifact_storage",
+      "release_installation",
+      "rollback_and_repair",
+      "capability_discovery",
+      "strict_semantic_idempotency",
+      "atomic_compare_and_swap_file_replacement",
+      "content_addressed_artifact_finalization",
+      "request_bound_signed_receipts",
+      "trusted_first_party_skill_loading",
+      "content_addressed_skill_bundles",
+      "atomic_skill_package_set_activation"
+    ],
+    "babyQuirtMustNotBecome": [
+      "public_control_plane",
+      "oauth_server",
+      "public_mcp_server",
+      "objective_scheduler"
+    ]
+  },
+  "authority": {
+    "contract": "authority",
+    "version": "1.2.0",
+    "ownerSubject": "stealtheye-owner",
+    "authorityClass": "unrestricted-owner",
+    "issuerMatching": "exact_required",
+    "subjectMatching": "exact_required",
+    "gatewayId": "stealtheye-horsey-gateway",
+    "algorithms": [
+      "ed25519"
+    ],
+    "securityMechanisms": [
+      "exact_issuer",
+      "exact_subject",
+      "authority_class",
+      "ed25519_signatures",
+      "canonical_encoding",
+      "nonces",
+      "replay_protection",
+      "idempotency",
+      "peer_credentials",
+      "private_socket_access",
+      "signed_receipts",
+      "secret_redaction",
+      "semantic_request_fingerprints",
+      "idempotency_conflict_detection",
+      "pre_execution_idempotency_reservations"
+    ]
+  },
+  "protocol": {
+    "contract": "protocol",
+    "version": "1.0.0",
+    "wireVersion": "1.0.0",
+    "framing": "QRT1",
+    "transport": "unix_socket",
+    "socketPath": "/run/horsey/baby-quirt.sock",
+    "maxFrameSize": 16777216,
+    "compression": [
+      "none"
+    ],
+    "frameTypes": [
+      "hello",
+      "welcome",
+      "request",
+      "response",
+      "error",
+      "event",
+      "cancel",
+      "ping",
+      "pong"
+    ]
+  },
+  "operations": [
+    {
+      "operation": "baby.describe",
+      "description": "Describe the installed Baby Quirt protocol, limits, operations, schemas, release identity, and canonical invocation rules.",
+      "family": "discovery",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    },
+    {
+      "operation": "baby.health",
+      "description": "Return bounded runtime health and exact host identity.",
+      "family": "health",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    },
+    {
+      "operation": "baby.github.app.verify",
+      "description": "Verify the exact Baby GitHub Authority App, StealthEyeLLC installation, encrypted credential, and single-repository read access using an ephemeral token.",
+      "family": "github",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string",
+            "pattern": "^StealthEyeLLC\\/[A-Za-z0-9_.-]{1,100}$"
+          }
+        }
+      }
+    },
+    {
+      "operation": "baby.github.app.proof",
+      "description": "Create, read back, and positively delete one ephemeral proof branch through the exact Baby GitHub Authority installation.",
+      "family": "github",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string",
+            "pattern": "^StealthEyeLLC\\/[A-Za-z0-9_.-]{1,100}$"
+          }
+        },
+        "required": [
+          "repository"
+        ]
+      }
+    },
+    {
+      "operation": "baby.exec",
+      "description": "Execute an exact executable and argv as a durable job.",
+      "family": "execution",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "argv": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "cwd": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "array"
+          },
+          "env": {
+            "type": "object"
+          },
+          "detached": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "argv"
+        ]
+      }
+    },
+    {
+      "operation": "baby.shell",
+      "description": "Execute a shell command or script as a durable job.",
+      "family": "execution",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "shell": {
+            "type": "string"
+          },
+          "command": {
+            "type": "string"
+          },
+          "script": {
+            "type": "string"
+          },
+          "cwd": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "array"
+          },
+          "env": {
+            "type": "object"
+          },
+          "detached": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    {
+      "operation": "baby.job.get",
+      "description": "Get one durable job by ID.",
+      "family": "job",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "jobId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.job.list",
+      "description": "List durable jobs with optional status and count bounds.",
+      "family": "job",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    {
+      "operation": "baby.job.wait",
+      "description": "Wait for or poll a durable job terminal state.",
+      "family": "job",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string"
+          },
+          "timeoutMs": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "jobId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.job.cancel",
+      "description": "Persist cancellation and signal an identified job process group.",
+      "family": "job",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string"
+          },
+          "signal": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "jobId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.job.stream.read",
+      "description": "Read stdout or stderr bytes from an exact offset.",
+      "family": "job",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string"
+          },
+          "stream": {
+            "enum": [
+              "stdout",
+              "stderr"
+            ]
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "jobId",
+          "stream"
+        ]
+      }
+    },
+    {
+      "operation": "baby.file.stat",
+      "description": "Return file metadata and a bounded SHA-256 digest.",
+      "family": "file",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    {
+      "operation": "baby.file.read",
+      "description": "Read binary-safe file content from an exact offset.",
+      "family": "file",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "utf8"
+            ]
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    {
+      "operation": "baby.file.write",
+      "description": "Write bounded binary-safe content, optionally at an offset.",
+      "family": "file",
+      "mutation": true,
+      "idempotency": "conditional",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "utf8"
+            ]
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "create": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path",
+          "data"
+        ]
+      },
+      "limitations": [
+        "Whole-file replacement is not compare-and-swap; prefer baby.file.replace when available."
+      ]
+    },
+    {
+      "operation": "baby.file.replace",
+      "description": "Atomically replace a regular file beneath an explicit confinement root with compare-and-swap preconditions.",
+      "family": "file",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "root": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "utf8"
+            ]
+          },
+          "expectedSha256": {
+            "type": "string"
+          },
+          "expectedAbsent": {
+            "type": "boolean"
+          },
+          "preserveMode": {
+            "type": "boolean"
+          },
+          "durable": {
+            "type": "boolean"
+          },
+          "createParents": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "root",
+          "path",
+          "data"
+        ]
+      },
+      "limitations": [
+        "Symlink components are rejected in userspace; kernel openat2 confinement is a later native hardening layer."
+      ]
+    },
+    {
+      "operation": "baby.file.patch",
+      "description": "Apply one or more binary patches at exact offsets.",
+      "family": "file",
+      "mutation": true,
+      "idempotency": "conditional",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "patches": {
+            "type": "array",
+            "minItems": 1
+          }
+        },
+        "required": [
+          "path",
+          "patches"
+        ]
+      }
+    },
+    {
+      "operation": "baby.file.copy",
+      "description": "Copy one file to a destination.",
+      "family": "file",
+      "mutation": true,
+      "idempotency": "conditional",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source",
+          "destination"
+        ]
+      }
+    },
+    {
+      "operation": "baby.file.move",
+      "description": "Move or rename one path.",
+      "family": "file",
+      "mutation": true,
+      "idempotency": "conditional",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "source",
+          "destination"
+        ]
+      }
+    },
+    {
+      "operation": "baby.file.remove",
+      "description": "Remove a file or an explicitly recursive directory.",
+      "family": "file",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "recursive": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    {
+      "operation": "baby.file.list",
+      "description": "List directory entries with recursion and count bounds.",
+      "family": "file",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "recursive": {
+            "type": "boolean"
+          },
+          "maxDepth": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "maxEntries": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    {
+      "operation": "baby.pty.create",
+      "description": "Create a durable tmux-backed interactive PTY.",
+      "family": "pty",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "shell": {
+            "type": "string"
+          },
+          "cwd": {
+            "type": "string"
+          },
+          "cols": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "env": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "operation": "baby.pty.input",
+      "description": "Send raw input bytes to an active PTY.",
+      "family": "pty",
+      "mutation": true,
+      "idempotency": "non_idempotent",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          },
+          "encoding": {
+            "enum": [
+              "base64",
+              "utf8"
+            ]
+          }
+        },
+        "required": [
+          "sessionId",
+          "data"
+        ]
+      }
+    },
+    {
+      "operation": "baby.pty.resize",
+      "description": "Resize an active PTY.",
+      "family": "pty",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "cols": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "sessionId",
+          "cols",
+          "rows"
+        ]
+      }
+    },
+    {
+      "operation": "baby.pty.read",
+      "description": "Read raw terminal output from an exact offset.",
+      "family": "pty",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "sessionId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.pty.close",
+      "description": "Close a durable PTY session.",
+      "family": "pty",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "signal": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "sessionId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.artifact.create",
+      "description": "Capture an artifact from an existing file.",
+      "family": "artifact",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sourcePath": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "sourcePath"
+        ]
+      }
+    },
+    {
+      "operation": "baby.artifact.begin",
+      "description": "Begin a resumable artifact upload with optional expected size and SHA-256.",
+      "family": "artifact",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          },
+          "expectedSize": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "expectedSha256": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "operation": "baby.artifact.upload",
+      "description": "Upload a binary artifact chunk at an exact offset.",
+      "family": "artifact",
+      "mutation": true,
+      "idempotency": "conditional",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "data": {
+            "type": "string"
+          },
+          "encoding": {
+            "enum": [
+              "base64"
+            ]
+          },
+          "finalize": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "artifactId",
+          "offset",
+          "data"
+        ]
+      },
+      "limitations": [
+        "Legacy operation; finalized immutability is enforced by the explicit begin/finalize lifecycle when available."
+      ]
+    },
+    {
+      "operation": "baby.artifact.finalize",
+      "description": "Verify size and SHA-256, then make an upload immutable and digest-addressed.",
+      "family": "artifact",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          },
+          "expectedSize": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "expectedSha256": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifactId",
+          "expectedSize",
+          "expectedSha256"
+        ]
+      }
+    },
+    {
+      "operation": "baby.artifact.abort",
+      "description": "Abort and remove an incomplete artifact upload.",
+      "family": "artifact",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifactId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.artifact.download",
+      "description": "Download artifact bytes from an exact offset.",
+      "family": "artifact",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "artifactId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.artifact.list",
+      "description": "List artifact metadata.",
+      "family": "artifact",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    },
+    {
+      "operation": "baby.artifact.get",
+      "description": "Get artifact metadata by ID.",
+      "family": "artifact",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "artifactId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "artifactId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.release.status",
+      "version": "2.0.0",
+      "description": "Read durable standalone deployment state, products, transitions, and bounded evidence indexes.",
+      "family": "release",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200
+          }
+        }
+      }
+    },
+    {
+      "operation": "baby.release.build",
+      "version": "2.0.0",
+      "description": "Create or resume an exact-source, reproducible, durable coordinated Baby and gateway build.",
+      "family": "release",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "planDigest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sources": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "deploymentId",
+          "generation",
+          "planDigest",
+          "deadline",
+          "sources"
+        ]
+      }
+    },
+    {
+      "operation": "baby.release.stage",
+      "version": "2.0.0",
+      "description": "Verify compatibility, run read-only preflight, and create inactive release targets without pointer mutation.",
+      "family": "release",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "expectedSequence": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "deploymentId",
+          "expectedSequence"
+        ]
+      }
+    },
+    {
+      "operation": "baby.release.verify",
+      "version": "2.0.0",
+      "description": "Verify deployment database integrity, source and product identity, evidence, candidates, guard, and terminal truth.",
+      "family": "release",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "deploymentId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.release.activate",
+      "version": "2.0.0",
+      "description": "Snapshot, arm and read back the independent guard, activate gateway first, accept, mark success, and disarm.",
+      "family": "release",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "expectedSequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "confirmationDigest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "deploymentId",
+          "expectedSequence",
+          "confirmationDigest"
+        ]
+      }
+    },
+    {
+      "operation": "baby.release.rollback",
+      "version": "2.0.0",
+      "description": "Request and reconcile deterministic independent rollback for one exact guarded generation.",
+      "family": "release",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 512
+          }
+        },
+        "required": [
+          "deploymentId",
+          "reason"
+        ]
+      }
+    },
+    {
+      "operation": "baby.release.repair",
+      "version": "2.0.0",
+      "description": "Reconcile incomplete, conflicting, ambiguous, unknown, or rollback-failed deployment state by exact readback.",
+      "family": "release",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "expectedSequence": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "deploymentId",
+          "expectedSequence"
+        ]
+      }
+    },
+    {
+      "operation": "baby.release.prune",
+      "version": "2.0.0",
+      "description": "Prune only unprotected inactive release data under bounded retention and exact reference checks.",
+      "family": "release",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dryRun": {
+            "type": "boolean"
+          },
+          "retain": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "dryRun"
+        ]
+      }
+    },
+    {
+      "operation": "baby.selfhost.source.get",
+      "version": "2.0.0",
+      "description": "Materialize or read back exact Baby and gateway source identities in a deployment-owned workspace.",
+      "family": "selfhost",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "product": {
+            "enum": [
+              "baby-quirt",
+              "baby-quirt-mcp"
+            ]
+          }
+        },
+        "required": [
+          "deploymentId",
+          "product"
+        ]
+      }
+    },
+    {
+      "operation": "baby.selfhost.acceptance.run",
+      "version": "2.0.0",
+      "description": "Run the fixed bounded acceptance profile and persist a signed content-addressed evidence index.",
+      "family": "selfhost",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "medium",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "profile": {
+            "enum": [
+              "preactivation",
+              "postactivation",
+              "full"
+            ]
+          }
+        },
+        "required": [
+          "deploymentId",
+          "profile"
+        ]
+      }
+    },
+    {
+      "operation": "baby.selfhost.evidence.get",
+      "version": "2.0.0",
+      "description": "Read a bounded page of signed content-addressed deployment evidence without private recovery payloads.",
+      "family": "selfhost",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deploymentId": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200
+          }
+        },
+        "required": [
+          "deploymentId"
+        ]
+      }
+    },
+    {
+      "operation": "baby.skill.deploy",
+      "description": "Deploy or idempotently reuse one exact trusted first-party JavaScript skill.",
+      "family": "skill",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string",
+            "pattern": "^StealthEyeLLC/[A-Za-z0-9_.-]{1,100}$"
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "skillPath": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "expectedCommit": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40}$"
+          },
+          "expectedCurrentSetDigest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "smokeOperation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "smokePayload": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "repository",
+          "ref",
+          "skillPath"
+        ]
+      },
+      "output": {
+        "type": "object"
+      },
+      "errors": [
+        "invalid_request",
+        "deployment_conflict",
+        "deployment_integrity_failed",
+        "operation_failed"
+      ],
+      "cancellation": "pre_arm_cleanup_post_arm_rollback",
+      "restartBehavior": "durable_reconcile",
+      "postActionVerification": true
+    },
+    {
+      "operation": "baby.skill.status",
+      "description": "Read the active skill package set, catalog identity, runtime release, and last deployment.",
+      "family": "skill",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "output": {
+        "type": "object"
+      },
+      "errors": [
+        "operation_failed"
+      ],
+      "cancellation": "not_applicable",
+      "restartBehavior": "read_only",
+      "postActionVerification": true
+    },
+    {
+      "operation": "baby.skill.rollback",
+      "description": "Atomically activate the previous immutable skill package set with verified Baby restart.",
+      "family": "skill",
+      "mutation": true,
+      "idempotency": "caller_key",
+      "risk": "high",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expectedCurrentSetDigest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "output": {
+        "type": "object"
+      },
+      "errors": [
+        "invalid_request",
+        "resource_unavailable",
+        "deployment_conflict",
+        "deployment_integrity_failed",
+        "operation_failed"
+      ],
+      "cancellation": "pre_arm_cleanup_post_arm_rollback",
+      "restartBehavior": "durable_reconcile",
+      "postActionVerification": true
+    },
+    {
+      "operation": "baby.skill.list",
+      "description": "List bounded immutable skill bundles and package sets with active and previous flags.",
+      "family": "skill",
+      "mutation": false,
+      "idempotency": "read_only",
+      "risk": "low",
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "output": {
+        "type": "object"
+      },
+      "errors": [
+        "operation_failed"
+      ],
+      "cancellation": "not_applicable",
+      "restartBehavior": "read_only",
+      "postActionVerification": true
+    }
+  ],
+  "paths": {
+    "contract": "paths",
+    "version": "1.1.0",
+    "socketPath": "/run/horsey/baby-quirt.sock",
+    "configRoot": "/etc/baby-quirt",
+    "stateRoot": "/var/lib/baby-quirt",
+    "releaseRoot": "/opt/baby-quirt/releases",
+    "currentLink": "/opt/baby-quirt/current",
+    "previousLink": "/opt/baby-quirt/previous",
+    "artifactUploadRoot": "/var/lib/baby-quirt/artifacts/uploads",
+    "artifactObjectRoot": "/var/lib/baby-quirt/artifacts/sha256"
+  },
+  "receipt": {
+    "contract": "receipt",
+    "version": "2.0.0",
+    "emittedSchemaVersion": "2.0.0",
+    "acceptedSchemaVersions": [
+      "1.0.0",
+      "2.0.0"
+    ],
+    "algorithm": "ed25519",
+    "requestBinding": [
+      "requestDigest",
+      "requestFingerprint"
+    ],
+    "resultBinding": [
+      "resultDigest"
+    ],
+    "runtimeBinding": [
+      "machineIdSha256",
+      "hostname",
+      "release"
+    ],
+    "timingBinding": [
+      "startedAt",
+      "completedAt",
+      "timestamp"
+    ],
+    "secretPolicy": "secret_values_forbidden"
+  },
+  "release": {
+    "contract": "release",
+    "version": "1.0.0",
+    "immutableReleases": true,
+    "manifestRequired": true,
+    "digestAlgorithm": "sha256"
+  },
+  "rollback": {
+    "contract": "rollback",
+    "version": "1.0.0",
+    "previousPointerRequired": true,
+    "automaticOnVerificationFailure": true
+  },
+  "clientInvocation": {
+    "tool": "bbyquirt.call_quirt",
+    "actionDescription": "Run one authorized Baby Quirt operation through the single authenticated Baby Quirt interface and return its durable result with verified signed evidence.",
+    "variableFields": [
+      "operation",
+      "payload",
+      "idempotencyKey"
+    ],
+    "discoveryOperation": "baby.describe",
+    "confirmationAuthority": "chatgpt_platform"
+  },
+  "idempotency": {
+    "contract": "idempotency",
+    "version": "2.0.0",
+    "publicKeySource": "bbyquirt.call_quirt.idempotencyKey",
+    "wireIdentity": "deterministic_requestId",
+    "exactRetry": "replay_original_response_and_receipt",
+    "changedLogicalRequest": "idempotency_conflict",
+    "concurrentExactRequest": "idempotency_in_progress",
+    "reservation": "persisted_before_operation_dispatch",
+    "persistence": "fsync_then_atomic_rename_then_parent_fsync"
+  },
+  "files": {
+    "contract": "files",
+    "version": "1.1.0",
+    "preferredReplacementOperation": "baby.file.replace",
+    "compareAndSwap": [
+      "expectedSha256",
+      "expectedAbsent"
+    ],
+    "confinement": "explicit_root_with_userspace_symlink_component_rejection",
+    "atomicity": "same_directory_exclusive_temp_then_rename",
+    "durability": "file_fsync_and_parent_directory_fsync_by_default",
+    "nativeOpenat2Status": "future_native_hardening_not_yet_claimed"
+  },
+  "artifacts": {
+    "contract": "artifacts",
+    "version": "2.0.0",
+    "lifecycle": [
+      "uploading",
+      "finalized",
+      "aborted"
+    ],
+    "beginOperation": "baby.artifact.begin",
+    "uploadOperation": "baby.artifact.upload",
+    "finalizeOperation": "baby.artifact.finalize",
+    "abortOperation": "baby.artifact.abort",
+    "chunkRule": "contiguous_offsets_only",
+    "finalizationChecks": [
+      "expectedSize",
+      "expectedSha256"
+    ],
+    "finalizedMutability": "immutable",
+    "objectAddressing": "sha256_digest",
+    "deduplication": "identical_digest_reuses_object_path",
+    "legacyManifestMigration": "missing_status_is_finalized"
+  }
+}
