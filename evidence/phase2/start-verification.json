@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "testedCommit": "f8a065b26e74e9447013809c4b41f662d0a5647b",
+  "testedTree": "828a71f1b117da16e8f7cef80e1fbe6092be0493",
+  "startedAt": "2026-08-03T13:47:34Z",
+  "completedAt": "2026-08-03T13:49:14Z",
+  "commands": {
+    "npmCi": 0,
+    "phase1Verify": 0,
+    "check": 0,
+    "test": 0,
+    "build": 0,
+    "gitDiffCheck": 0,
+    "gitStatusShort": 0
+  },
+  "nodeVersion": "v24.18.0",
+  "nodeExactRequiredVersion": "v24.18.0",
+  "nodeExactMatch": true,
+  "nativeAddonSha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7",
+  "phase1EvidenceAggregateSha256": "62011f33cc12f4f617d5f5bb4d39f42577abd07fb77cdd810d5a0b166dcb4192",
+  "gateLog": {
+    "committed": false,
+    "localPath": "/tmp/se-z-phase2-start-gate/gate.log",
+    "sha256": "6346394243275620fd858642426a60f5c50b72e66562dfef5abc3faef4914b93",
+    "bytes": 33447
+  },
+  "workingTreeBefore": "clean",
+  "workingTreeAfter": "clean",
+  "passed": true
+}

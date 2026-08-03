@@ -1,41 +1,54 @@
 # Build Plan
 
+The product canonicals are established. Build execution uses phases; `0.1A`, `0.1B`, and `0.1C` are release milestones, not phase numbers.
+
 ## Phase -1 — Hardware admission
 
-Prove `/dev/kvm`, real KVM acceleration, QMP, nspawn, cgroups v2, systemd scopes, storage headroom, filesystem behavior, pidfds, namespaces, and required host packages. Missing KVM means changing VPS capability; no TCG fallback.
+- verify KVM exposure, nested virtualization, nspawn prerequisites, storage, cgroups, and backup capacity;
+- fail closed on hardware assumptions.
 
 ## Phase 0 — Canonical initialization
 
-Freeze identity, precedence, one-tool schema, SEZ1, OAuth/resource contract, executable requirements, threat model, state ownership, recovery, and acceptance.
+- publish product, protocol, public tool, authority, state-owner, and no-theater contracts;
+- establish exact source, test, build, and acceptance rules.
 
 ## Phase 1 — Extraction and parity
 
-Copy proven Baby mechanics with provenance/license notices, mechanically rename, add parity tests, and only then refactor. Preserve the deployed Baby path as rollback.
+- pin the deployed Baby supervisor and gateway commits, trees, manifests, and source archives;
+- preserve notices and file-level provenance;
+- mechanically extract proven execution, jobs, streams, files, PTYs, artifacts, receipt, gateway, OAuth, release, skills, and GitHub mechanics;
+- measure source and target parity without claiming standalone operation.
 
-## Phase 0.1A — Kernel
+## Phase 2 — Kernel — release milestone 0.1A
 
-Implement supervisor, dual sockets, local CLI, SEZ1, authority generation, raw exec/shell, jobs, durable streams, files, PTYs, artifacts, receipts, replay/idempotency, wait/resume, and restart reconciliation.
+- final SEZ1 framing, strict envelopes, canonical serialization, request/result digests, and Ed25519 receipts;
+- read-only authority-generation provider and pre-dispatch mismatch rejection;
+- distinct gateway and local Unix sockets with real peer identity and gateway signatures;
+- UID-0 supervisor, native CLI, active 0.1A operation catalog, raw host execution, durable jobs and streams, files, PTYs, artifacts, replay, semantic idempotency, wait, resume, and restart reconciliation;
+- immutable candidate packaging, clean systemd-nspawn acceptance, isolated authorized-VPS candidate acceptance, and Baby protected-configuration readback.
 
-## Phase 0.1B — Gateway and control
+Milestone 0.1A does not activate OAuth, a tunnel, public MCP, generic GitHub operations, machine lifecycle, recovery mutation, production release handoff, or permanent cutover.
 
-Implement GitHub OAuth, protected-resource metadata, `WWW-Authenticate`, exact resource propagation, `sez.root` plus refresh lifecycle support, isolated `/var/lib/se-z-gateway` slots, one-tool MCP gateway, Secure MCP Tunnel, generic GitHub App operations, and blue/green release control.
+## Phase 3 — Gateway and control — release milestone 0.1B
 
-## Phase 0.1C — Machines and skills
+- GitHub OAuth with PKCE, exact protected-resource metadata and audience propagation, refresh lifecycle, revocation, and isolated gateway state slots;
+- OpenAI Secure MCP Tunnel and exactly one public `call_sez` tool;
+- generic GitHub App API/git/reconciliation operations with explicit write proofs;
+- blue/green product release control and temporary-app acceptance.
 
-Implement nspawn, bundle exact `z`, pass real KVM lifecycle, implement explicit targets, immutable skills, separately versioned recovery, backup/restore, temporary app testing, permanent app recreation, and Baby decommission.
+## Phase 4 — Machines and recovery — release milestone 0.1C
 
-## Standalone gate
+- native nspawn lifecycle and reconciliation;
+- digest-pinned bundled `z` and real hardware-accelerated KVM lifecycle;
+- skills activation;
+- separately versioned independent recovery, physical writer fencing, authority-generation mutation, backups, and clean-host restore.
 
-The combined system must pass `docs/ACCEPTANCE.md` before a standalone claim.
+## Phase 5 — Integrated acceptance, cutover, and Baby decommission
 
-## Phase 1 extracted-source toolchain
+- execute the complete integrated gate, including reboots, failed upgrades, rollback, repair, restore, and zero-Baby runtime dependency;
+- recreate or republish the permanent ChatGPT app against the accepted `call_sez` catalog;
+- cut over only after acceptance, retain the bounded rollback window, then decommission Baby.
 
-The exact deployed supervisor and gateway manifests and both pinned package engines require Node.js `24.18.0`. Phase 1 therefore pins the target development/build engine to exactly `24.18.0`; this is not a stylistic upgrade from the original `>=22` scaffold range. TypeScript, `tsx`, `node-gyp`, `node-addon-api`, and the Linux C/C++ toolchain are retained solely because the proven supervisor source and native `SO_PEERCRED` addon require them. Gateway source remains ES modules with no package runtime dependency.
+## Rule
 
-Install deterministic development dependencies even on production-configured hosts with:
-
-```bash
-npm ci --include=dev
-```
-
-A host-level `NODE_ENV=production` must not silently omit the Phase 1 compiler or test runner. Runtime packaging later separates build dependencies from the installed product.
+A phase is complete only when its executable gate passes. Later-phase scope is not represented as implemented by earlier milestones.

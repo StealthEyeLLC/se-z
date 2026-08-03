@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "repository": "StealthEyeLLC/se-z",
+  "branch": "build/standalone-0.1",
+  "remoteBranchHead": "f8a065b26e74e9447013809c4b41f662d0a5647b",
+  "startingCommit": "f8a065b26e74e9447013809c4b41f662d0a5647b",
+  "startingTree": "828a71f1b117da16e8f7cef80e1fbe6092be0493",
+  "phase1TestedCommit": "12cc307f28d85df3095ca5a7ca40a5991bfa03e4",
+  "phase1TestedTree": "4a03ef7985fafc3bee4436d03a29435926750534",
+  "mergeBaseWithMain": "4a7c0865b606958f6dca2d9e5b928f47d5e3b45c",
+  "workingTreeStatus": "clean",
+  "nodeVersion": "v24.18.0",
+  "npmVersion": "11.16.0",
+  "kernelVersion": "6.8.0-9001-generic",
+  "systemdVersion": "systemd 255 (255.4-1ubuntu8.16)",
+  "captureTimestamp": "2026-08-03T14:04:58Z"
+}

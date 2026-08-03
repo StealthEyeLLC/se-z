@@ -2,64 +2,357 @@
   "schemaVersion": "1.0.0",
   "entries": [
     {
-      "id":"DELTA-PROTOCOL-001","classification":"CANONICAL_ADAPTATION_REQUIRED","sourceBehavior":"QRT1 framing and envelopes","sourceFileSymbols":["src/protocol/frame.ts:FRAME_MAGIC","src/protocol/frame.ts:encodeFrame"],"sourceTest":["test/frame.test.ts","test/protocol.test.ts"],"targetCanonicalRequirement":"SEZ1 1.0.0 with catalogDigest on every response","targetDestination":"src/protocol/framing/","phaseResponsible":"0.1A","parityExpectation":"framing mechanics remain equivalent after identity normalization; added SEZ1 fields are tested separately","reason":"Protocol identity is mechanical, but the SEZ1 envelope contract adds semantics."
+      "id": "DELTA-PROTOCOL-001",
+      "classification": "CANONICAL_ADAPTATION_REQUIRED",
+      "sourceBehavior": "QRT1 framing and envelopes",
+      "sourceFileSymbols": [
+        "src/protocol/frame.ts:FRAME_MAGIC",
+        "src/protocol/frame.ts:encodeFrame"
+      ],
+      "sourceTest": [
+        "test/frame.test.ts",
+        "test/protocol.test.ts"
+      ],
+      "targetCanonicalRequirement": "SEZ1 1.0.0 with catalogDigest on every response",
+      "targetDestination": "src/protocol/framing/",
+      "phaseResponsible": "0.1A",
+      "parityExpectation": "framing mechanics remain equivalent after identity normalization; added SEZ1 fields are tested separately",
+      "reason": "Protocol identity is mechanical, but the SEZ1 envelope contract adds semantics."
     },
     {
-      "id":"DELTA-AUTHORITY-001","classification":"DEFER_TO_0.1A","sourceBehavior":"Requests do not contain authorityGeneration","sourceFileSymbols":["src/auth/authenticator.ts","src/crypto/canonical.ts:requestHash"],"sourceTest":["test/auth.test.ts","test/crypto.test.ts"],"targetCanonicalRequirement":"Every request contains authorityGeneration and the canonical request digest binds it; stale generation is rejected before mutation","targetDestination":"src/protocol/digest/ and src/supervisor/dispatch/","phaseResponsible":"0.1A","parityExpectation":"source digest parity is preserved as a fixture while target-only authority-generation tests assert the addition","reason":"No honest source parity claim can cover a field that did not exist."
+      "id": "DELTA-AUTHORITY-001",
+      "classification": "DEFER_TO_0.1A",
+      "sourceBehavior": "Requests do not contain authorityGeneration",
+      "sourceFileSymbols": [
+        "src/auth/authenticator.ts",
+        "src/crypto/canonical.ts:requestHash"
+      ],
+      "sourceTest": [
+        "test/auth.test.ts",
+        "test/crypto.test.ts"
+      ],
+      "targetCanonicalRequirement": "Every request contains authorityGeneration and the canonical request digest binds it; stale generation is rejected before mutation",
+      "targetDestination": "src/protocol/digest/ and src/supervisor/dispatch/",
+      "phaseResponsible": "0.1A",
+      "parityExpectation": "source digest parity is preserved as a fixture while target-only authority-generation tests assert the addition",
+      "reason": "No honest source parity claim can cover a field that did not exist."
     },
     {
-      "id":"DELTA-PEERS-001","classification":"DEFER_TO_0.1A","sourceBehavior":"One Unix socket and one peer compatibility model","sourceFileSymbols":["src/net/socket-activation.ts","src/net/peer-cred.ts","src/server.ts"],"sourceTest":["test/socket-activation.test.ts","acceptance/systemd.test.ts"],"targetCanonicalRequirement":"Separate /run/se-z/gateway.sock and /run/se-z/local.sock peer classes; gateway cannot use local socket","targetDestination":"src/supervisor/sockets/ and src/supervisor/peers/","phaseResponsible":"0.1A","parityExpectation":"SO_PEERCRED and socket-activation mechanics are preserved; dual-peer dispatch is target-only","reason":"A dual trust boundary is not a text rename."
+      "id": "DELTA-PEERS-001",
+      "classification": "DEFER_TO_0.1A",
+      "sourceBehavior": "One Unix socket and one peer compatibility model",
+      "sourceFileSymbols": [
+        "src/net/socket-activation.ts",
+        "src/net/peer-cred.ts",
+        "src/server.ts"
+      ],
+      "sourceTest": [
+        "test/socket-activation.test.ts",
+        "acceptance/systemd.test.ts"
+      ],
+      "targetCanonicalRequirement": "Separate /run/se-z/gateway.sock and /run/se-z/local.sock peer classes; gateway cannot use local socket",
+      "targetDestination": "src/supervisor/sockets/ and src/supervisor/peers/",
+      "phaseResponsible": "0.1A",
+      "parityExpectation": "SO_PEERCRED and socket-activation mechanics are preserved; dual-peer dispatch is target-only",
+      "reason": "A dual trust boundary is not a text rename."
     },
     {
-      "id":"DELTA-OUTPUT-001","classification":"DEFER_TO_0.1A","sourceBehavior":"16 MiB frames and a source total-output limit of 64 MiB","sourceFileSymbols":["src/protocol/frame.ts","src/jobs/manager.ts","src/process/spawn.ts"],"sourceTest":["test/frame.test.ts","integration/jobs.test.ts"],"targetCanonicalRequirement":"Frames remain 16 MiB, but complete stdout/stderr are durable and retrievable without a total-output cap","targetDestination":"src/jobs/ and src/streams/","phaseResponsible":"0.1A","parityExpectation":"offset and byte parity through source limits; target-only tests exceed source limits using durable streams","reason":"Frame bounds must not become process-output bounds."
+      "id": "DELTA-OUTPUT-001",
+      "classification": "DEFER_TO_0.1A",
+      "sourceBehavior": "16 MiB frames and a source total-output limit of 64 MiB",
+      "sourceFileSymbols": [
+        "src/protocol/frame.ts",
+        "src/jobs/manager.ts",
+        "src/process/spawn.ts"
+      ],
+      "sourceTest": [
+        "test/frame.test.ts",
+        "integration/jobs.test.ts"
+      ],
+      "targetCanonicalRequirement": "Frames remain 16 MiB, but complete stdout/stderr are durable and retrievable without a total-output cap",
+      "targetDestination": "src/jobs/ and src/streams/",
+      "phaseResponsible": "0.1A",
+      "parityExpectation": "offset and byte parity through source limits; target-only tests exceed source limits using durable streams",
+      "reason": "Frame bounds must not become process-output bounds."
     },
     {
-      "id":"DELTA-CATALOG-001","classification":"DEFER_TO_0.1A","sourceBehavior":"49 installed baby.* operations including one dynamic skill","sourceFileSymbols":["src/operations/definitions.ts","src/operations/registry.ts"],"sourceTest":["test/operations.test.ts","integration/discovery.test.ts"],"targetCanonicalRequirement":"Changing sez.* catalog published by sez.describe; scaffold declarations must not imply implementation or production support","targetDestination":"src/operations/ and src/catalog.mjs","phaseResponsible":"0.1A","parityExpectation":"every source operation is mapped; only integrated and tested operations may enter an active registry","reason":"The target catalog is a canonical specification, not a rename of the installed source count."
+      "id": "DELTA-CATALOG-001",
+      "classification": "DEFER_TO_0.1A",
+      "sourceBehavior": "49 installed baby.* operations including one dynamic skill",
+      "sourceFileSymbols": [
+        "src/operations/definitions.ts",
+        "src/operations/registry.ts"
+      ],
+      "sourceTest": [
+        "test/operations.test.ts",
+        "integration/discovery.test.ts"
+      ],
+      "targetCanonicalRequirement": "Changing sez.* catalog published by sez.describe; scaffold declarations must not imply implementation or production support",
+      "targetDestination": "src/operations/ and src/catalog.mjs",
+      "phaseResponsible": "0.1A",
+      "parityExpectation": "every source operation is mapped; only integrated and tested operations may enter an active registry",
+      "reason": "The target catalog is a canonical specification, not a rename of the installed source count."
     },
     {
-      "id":"DELTA-SCOPE-001","classification":"CANONICAL_ADAPTATION_REQUIRED","sourceBehavior":"baby.apply is the authority-bearing scope","sourceFileSymbols":["gateway/src/config.js","gateway/src/oauth-server.js","gateway/src/tool.js"],"sourceTest":["gateway/test/oauth-server.test.js","gateway/test/tool.test.js"],"targetCanonicalRequirement":"sez.root is the only authority-bearing scope; offline_access grants lifecycle only","targetDestination":"src/auth/oauth/ and src/gateway/mcp/","phaseResponsible":"0.1B","parityExpectation":"scope-validation mechanics remain equivalent after mapping; authority meaning follows target canonicals","reason":"Scope identity changes mechanically, but final OAuth metadata and audience integration are 0.1B."
+      "id": "DELTA-SCOPE-001",
+      "classification": "CANONICAL_ADAPTATION_REQUIRED",
+      "sourceBehavior": "baby.apply is the authority-bearing scope",
+      "sourceFileSymbols": [
+        "gateway/src/config.js",
+        "gateway/src/oauth-server.js",
+        "gateway/src/tool.js"
+      ],
+      "sourceTest": [
+        "gateway/test/oauth-server.test.js",
+        "gateway/test/tool.test.js"
+      ],
+      "targetCanonicalRequirement": "sez.root is the only authority-bearing scope; offline_access grants lifecycle only",
+      "targetDestination": "src/auth/oauth/ and src/gateway/mcp/",
+      "phaseResponsible": "0.1B",
+      "parityExpectation": "scope-validation mechanics remain equivalent after mapping; authority meaning follows target canonicals",
+      "reason": "Scope identity changes mechanically, but final OAuth metadata and audience integration are 0.1B."
     },
     {
-      "id":"DELTA-REFRESH-001","classification":"PRESERVE","sourceBehavior":"OAuth server supports offline_access, refresh families, rotation, and revocation","sourceFileSymbols":["gateway/src/oauth-server.js","gateway/src/oauth-state-durable.js"],"sourceTest":["gateway/test/oauth-server.test.js","gateway/test/oauth-state-durable.test.js"],"targetCanonicalRequirement":"offline_access requests refresh lifecycle support but confers no operation authority","targetDestination":"src/auth/oauth/refresh/ and src/auth/oauth/revocation/","phaseResponsible":"Phase 1 extraction; 0.1B integration","parityExpectation":"rotation, family invalidation, persistence, and revocation retain behavioral parity","reason":"Reusable mechanics are already proven and should not be redesigned."
+      "id": "DELTA-REFRESH-001",
+      "classification": "PRESERVE",
+      "sourceBehavior": "OAuth server supports offline_access, refresh families, rotation, and revocation",
+      "sourceFileSymbols": [
+        "gateway/src/oauth-server.js",
+        "gateway/src/oauth-state-durable.js"
+      ],
+      "sourceTest": [
+        "gateway/test/oauth-server.test.js",
+        "gateway/test/oauth-state-durable.test.js"
+      ],
+      "targetCanonicalRequirement": "offline_access requests refresh lifecycle support but confers no operation authority",
+      "targetDestination": "src/auth/oauth/refresh/ and src/auth/oauth/revocation/",
+      "phaseResponsible": "Phase 1 extraction; 0.1B integration",
+      "parityExpectation": "rotation, family invalidation, persistence, and revocation retain behavioral parity",
+      "reason": "Reusable mechanics are already proven and should not be redesigned."
     },
     {
-      "id":"DELTA-TRANSPORT-001","classification":"DEFER_TO_0.1B","sourceBehavior":"Public HTTPS MCP endpoint at baby-quirt.stealtheye.io","sourceFileSymbols":["gateway/src/config.js","gateway/src/server.js"],"sourceTest":["gateway/test/server.test.js"],"targetCanonicalRequirement":"No public MCP ingress; primary transport is OpenAI Secure MCP Tunnel","targetDestination":"src/gateway/transport/","phaseResponsible":"0.1B","parityExpectation":"MCP and auth mechanics are tested on loopback fixtures; no Phase 1 listener is deployed","reason":"Tunnel resource identity is assigned by final integration and cannot be invented."
+      "id": "DELTA-TRANSPORT-001",
+      "classification": "DEFER_TO_0.1B",
+      "sourceBehavior": "Public HTTPS MCP endpoint at baby-quirt.stealtheye.io",
+      "sourceFileSymbols": [
+        "gateway/src/config.js",
+        "gateway/src/server.js"
+      ],
+      "sourceTest": [
+        "gateway/test/server.test.js"
+      ],
+      "targetCanonicalRequirement": "No public MCP ingress; primary transport is OpenAI Secure MCP Tunnel",
+      "targetDestination": "src/gateway/transport/",
+      "phaseResponsible": "0.1B",
+      "parityExpectation": "MCP and auth mechanics are tested on loopback fixtures; no Phase 1 listener is deployed",
+      "reason": "Tunnel resource identity is assigned by final integration and cannot be invented."
     },
     {
-      "id":"DELTA-OAUTH-STATE-001","classification":"DEFER_TO_0.1B","sourceBehavior":"One gateway OAuth state root/file","sourceFileSymbols":["gateway/src/oauth-state-durable.js","gateway/src/config.js"],"sourceTest":["gateway/test/oauth-state-durable.test.js"],"targetCanonicalRequirement":"Gateway state under /var/lib/se-z-gateway/ with isolated blue/green slots and backup/restore","targetDestination":"src/auth/oauth/state and src/gateway/configuration/","phaseResponsible":"0.1B","parityExpectation":"durability and replay semantics are preserved within each isolated test slot","reason":"Slot isolation changes the state model."
+      "id": "DELTA-OAUTH-STATE-001",
+      "classification": "DEFER_TO_0.1B",
+      "sourceBehavior": "One gateway OAuth state root/file",
+      "sourceFileSymbols": [
+        "gateway/src/oauth-state-durable.js",
+        "gateway/src/config.js"
+      ],
+      "sourceTest": [
+        "gateway/test/oauth-state-durable.test.js"
+      ],
+      "targetCanonicalRequirement": "Gateway state under /var/lib/se-z-gateway/ with isolated blue/green slots and backup/restore",
+      "targetDestination": "src/auth/oauth/state and src/gateway/configuration/",
+      "phaseResponsible": "0.1B",
+      "parityExpectation": "durability and replay semantics are preserved within each isolated test slot",
+      "reason": "Slot isolation changes the state model."
     },
     {
-      "id":"DELTA-STATE-OWNERSHIP-001","classification":"DEFER_TO_0.1A","sourceBehavior":"Source components own state according to the Baby architecture","sourceFileSymbols":["src/state/store.ts","src/jobs/manager.ts","gateway/src/oauth-state-durable.js"],"sourceTest":["test/state.test.ts","gateway/test/oauth-state-durable.test.js"],"targetCanonicalRequirement":"Gateway owns OAuth/transport state; supervisor owns jobs/streams/PTY/artifacts/receipts/replay/idempotency/skills/nspawn/releases/catalog; z alone owns KVM; recovery owns generation/fencing/pointers","targetDestination":"src/state/, src/auth/, src/releases/","phaseResponsible":"0.1A, 0.1B, and 0.1C by owner","parityExpectation":"individual stores retain mechanics; ownership boundaries receive target-only integration tests","reason":"No component may create a competing source of truth."
+      "id": "DELTA-STATE-OWNERSHIP-001",
+      "classification": "DEFER_TO_0.1A",
+      "sourceBehavior": "Source components own state according to the Baby architecture",
+      "sourceFileSymbols": [
+        "src/state/store.ts",
+        "src/jobs/manager.ts",
+        "gateway/src/oauth-state-durable.js"
+      ],
+      "sourceTest": [
+        "test/state.test.ts",
+        "gateway/test/oauth-state-durable.test.js"
+      ],
+      "targetCanonicalRequirement": "Gateway owns OAuth/transport state; supervisor owns jobs/streams/PTY/artifacts/receipts/replay/idempotency/skills/nspawn/releases/catalog; z alone owns KVM; recovery owns generation/fencing/pointers",
+      "targetDestination": "src/state/, src/auth/, src/releases/",
+      "phaseResponsible": "0.1A, 0.1B, and 0.1C by owner",
+      "parityExpectation": "individual stores retain mechanics; ownership boundaries receive target-only integration tests",
+      "reason": "No component may create a competing source of truth."
     },
     {
-      "id":"DELTA-SECRET-001","classification":"REMOVE_FROM_ACTIVE_RUNTIME","sourceBehavior":"Some source paths broadly redact secret-looking values from output or errors","sourceFileSymbols":["src/secrets/redaction.ts","src/server.ts"],"sourceTest":["test/secrets.test.ts"],"targetCanonicalRequirement":"Managed credentials are not automatically injected/logged/receipted; explicit owner-authorized raw output remains byte-exact and may contain sensitive data","targetDestination":"src/supervisor/configuration/credentials/ plus target raw-output tests","phaseResponsible":"0.1A","parityExpectation":"managed-credential hygiene is preserved; broad mutation of arbitrary owner output is not final behavior","reason":"Unrestricted root cannot honestly promise that raw output never contains secrets."
+      "id": "DELTA-SECRET-001",
+      "classification": "REMOVE_FROM_ACTIVE_RUNTIME",
+      "sourceBehavior": "Some source paths broadly redact secret-looking values from output or errors",
+      "sourceFileSymbols": [
+        "src/secrets/redaction.ts",
+        "src/server.ts"
+      ],
+      "sourceTest": [
+        "test/secrets.test.ts"
+      ],
+      "targetCanonicalRequirement": "Managed credentials are not automatically injected/logged/receipted; explicit owner-authorized raw output remains byte-exact and may contain sensitive data",
+      "targetDestination": "src/supervisor/configuration/credentials/ plus target raw-output tests",
+      "phaseResponsible": "0.1A",
+      "parityExpectation": "managed-credential hygiene is preserved; broad mutation of arbitrary owner output is not final behavior",
+      "reason": "Unrestricted root cannot honestly promise that raw output never contains secrets."
     },
     {
-      "id":"DELTA-RECOVERY-001","classification":"DEFER_TO_0.1C","sourceBehavior":"Release/self-hosting mechanics include source recovery and rollback behavior","sourceFileSymbols":["src/release/","src/controller/","src/deployment/"],"sourceTest":["test/release.test.ts","integration/deployment.test.ts"],"targetCanonicalRequirement":"Recovery is a separately versioned product with independent slots, authority generation, fencing, rollback guard, and state","targetDestination":"src/releases/ and future recovery product","phaseResponsible":"0.1C","parityExpectation":"stage/verify/transition/rollback metadata mechanics are traced; independent recovery is not claimed in Phase 1","reason":"Ordinary product releases cannot share fate with rollback authority."
+      "id": "DELTA-RECOVERY-001",
+      "classification": "DEFER_TO_0.1C",
+      "sourceBehavior": "Release/self-hosting mechanics include source recovery and rollback behavior",
+      "sourceFileSymbols": [
+        "src/release/",
+        "src/controller/",
+        "src/deployment/"
+      ],
+      "sourceTest": [
+        "test/release.test.ts",
+        "integration/deployment.test.ts"
+      ],
+      "targetCanonicalRequirement": "Recovery is a separately versioned product with independent slots, authority generation, fencing, rollback guard, and state",
+      "targetDestination": "src/releases/ and future recovery product",
+      "phaseResponsible": "0.1C",
+      "parityExpectation": "stage/verify/transition/rollback metadata mechanics are traced; independent recovery is not claimed in Phase 1",
+      "reason": "Ordinary product releases cannot share fate with rollback authority."
     },
     {
-      "id":"DELTA-GITHUB-001","classification":"DEFER_TO_0.1A","sourceBehavior":"GitHub App verification and ephemeral proof operations only","sourceFileSymbols":["src/github/app-authority.ts","src/operations/definitions.ts"],"sourceTest":["test/github-app.test.ts","integration/github.test.ts"],"targetCanonicalRequirement":"Generic sez.github.api and sez.github.git with explicit write proofs, reconciliation, no token persistence, and no token in logs/receipts","targetDestination":"src/github/","phaseResponsible":"0.1A integration; acceptance later","parityExpectation":"App identity, installation identity, repository identity, minting interface, temporary HOME/credential helper, and cleanup retain parity","reason":"Read verification does not prove generic write authority."
+      "id": "DELTA-GITHUB-001",
+      "classification": "DEFER_TO_0.1B",
+      "sourceBehavior": "GitHub App verification and ephemeral proof operations only",
+      "sourceFileSymbols": [
+        "src/github/app-authority.ts",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTest": [
+        "test/github-app.test.ts",
+        "integration/github.test.ts"
+      ],
+      "targetCanonicalRequirement": "Generic sez.github.api, sez.github.git, and sez.github.reconcile with explicit write proofs, reconciliation, no token persistence, and no token in logs/receipts",
+      "targetDestination": "src/github/",
+      "phaseResponsible": "Phase 3 / release milestone 0.1B",
+      "parityExpectation": "App identity, installation identity, repository identity, minting interface, temporary HOME/credential helper, and cleanup retain parity",
+      "reason": "Higher-precedence build scope assigns generic GitHub authority to gateway and control; Phase 2 retains extracted mechanics without active 0.1A registration."
     },
     {
-      "id":"DELTA-NSPAWN-001","classification":"DEFER_TO_0.1C","sourceBehavior":"Source contains nspawn rehearsal/runner and deployment mechanics","sourceFileSymbols":["src/rehearsal/","ops/rehearsal/"],"sourceTest":["test/nspawn-runner.test.ts"],"targetCanonicalRequirement":"Native nspawn:<id> lifecycle with supervisor as state owner and real acceptance tests","targetDestination":"future src/machines/nspawn/ using preserved mechanics","phaseResponsible":"0.1C","parityExpectation":"source command-plan and cleanup mechanics are traced; native lifecycle is not claimed","reason":"Rehearsal usage is not proof of the final machine lifecycle."
+      "id": "DELTA-NSPAWN-001",
+      "classification": "DEFER_TO_0.1C",
+      "sourceBehavior": "Source contains nspawn rehearsal/runner and deployment mechanics",
+      "sourceFileSymbols": [
+        "src/rehearsal/",
+        "ops/rehearsal/"
+      ],
+      "sourceTest": [
+        "test/nspawn-runner.test.ts"
+      ],
+      "targetCanonicalRequirement": "Native nspawn:<id> lifecycle with supervisor as state owner and real acceptance tests",
+      "targetDestination": "future src/machines/nspawn/ using preserved mechanics",
+      "phaseResponsible": "0.1C",
+      "parityExpectation": "source command-plan and cleanup mechanics are traced; native lifecycle is not claimed",
+      "reason": "Rehearsal usage is not proof of the final machine lifecycle."
     },
     {
-      "id":"DELTA-KVM-001","classification":"DEFER_TO_0.1C","sourceBehavior":"No installed KVM operations","sourceFileSymbols":[],"sourceTest":[],"targetCanonicalRequirement":"Digest-pinned bundled z is the sole KVM state owner; real hardware-accelerated create/start/exec/reboot/stop/snapshot/restore/delete must pass","targetDestination":"bundled z integration","phaseResponsible":"0.1C","parityExpectation":"not applicable to Baby parity; target acceptance only","reason":"Absent source capability cannot be manufactured as parity."
+      "id": "DELTA-KVM-001",
+      "classification": "DEFER_TO_0.1C",
+      "sourceBehavior": "No installed KVM operations",
+      "sourceFileSymbols": [],
+      "sourceTest": [],
+      "targetCanonicalRequirement": "Digest-pinned bundled z is the sole KVM state owner; real hardware-accelerated create/start/exec/reboot/stop/snapshot/restore/delete must pass",
+      "targetDestination": "bundled z integration",
+      "phaseResponsible": "0.1C",
+      "parityExpectation": "not applicable to Baby parity; target acceptance only",
+      "reason": "Absent source capability cannot be manufactured as parity."
     },
     {
-      "id":"DELTA-RESUME-001","classification":"DEFER_TO_0.1A","sourceBehavior":"Source exposes job wait/read operations but some caller guidance treats returned jobId as follow-up work","sourceFileSymbols":["src/jobs/manager.ts","src/operations/definitions.ts"],"sourceTest":["integration/jobs.test.ts"],"targetCanonicalRequirement":"Deterministic server-side wait and resume operations; a job ID is never completion","targetDestination":"src/jobs/ and src/operations/","phaseResponsible":"0.1A","parityExpectation":"job state and wait mechanics retain parity; deterministic request-resume is target-only","reason":"Response loss and long work require server-owned resumability."
+      "id": "DELTA-RESUME-001",
+      "classification": "DEFER_TO_0.1A",
+      "sourceBehavior": "Source exposes job wait/read operations but some caller guidance treats returned jobId as follow-up work",
+      "sourceFileSymbols": [
+        "src/jobs/manager.ts",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTest": [
+        "integration/jobs.test.ts"
+      ],
+      "targetCanonicalRequirement": "Deterministic server-side wait and resume operations; a job ID is never completion",
+      "targetDestination": "src/jobs/ and src/operations/",
+      "phaseResponsible": "0.1A",
+      "parityExpectation": "job state and wait mechanics retain parity; deterministic request-resume is target-only",
+      "reason": "Response loss and long work require server-owned resumability."
     },
     {
-      "id":"DELTA-TOOLCHAIN-001","classification":"PRESERVE","sourceBehavior":"Supervisor requires Node 24.18.0, TypeScript, node-gyp, node-addon-api, and native Linux peer credentials; gateway requires Node >=24.18 <25","sourceFileSymbols":["package.json","binding.gyp","native/src/peer_cred.cc"],"sourceTest":["test/peer-cred.test.ts"],"targetCanonicalRequirement":"Preserve source languages/native implementation until parity; do not silently retain Node >=22 scaffold engine","targetDestination":"package.json, tsconfig.extracted.json, src/native/peercred/","phaseResponsible":"Phase 1","parityExpectation":"exact Node 24.18.0 is used for source and extracted builds","reason":"The exact runtime requirement is proven by both pinned manifests and package engines."
+      "id": "DELTA-TOOLCHAIN-001",
+      "classification": "PRESERVE",
+      "sourceBehavior": "Supervisor requires Node 24.18.0, TypeScript, node-gyp, node-addon-api, and native Linux peer credentials; gateway requires Node >=24.18 <25",
+      "sourceFileSymbols": [
+        "package.json",
+        "binding.gyp",
+        "native/src/peer_cred.cc"
+      ],
+      "sourceTest": [
+        "test/peer-cred.test.ts"
+      ],
+      "targetCanonicalRequirement": "Preserve source languages/native implementation until parity; do not silently retain Node >=22 scaffold engine",
+      "targetDestination": "package.json, tsconfig.extracted.json, src/native/peercred/",
+      "phaseResponsible": "Phase 1",
+      "parityExpectation": "exact Node 24.18.0 is used for source and extracted builds",
+      "reason": "The exact runtime requirement is proven by both pinned manifests and package engines."
     },
     {
-      "id":"DELTA-TOOL-001","classification":"MECHANICAL_RENAME","sourceBehavior":"Exactly one public call_quirt tool with operation, payload, idempotencyKey and no operation enum","sourceFileSymbols":["gateway/src/tool.js"],"sourceTest":["gateway/test/tool.test.js","gateway/test/contract.test.js"],"targetCanonicalRequirement":"Exactly one public call_sez tool with the same exact three-field schema and no operation enumeration","targetDestination":"src/gateway/mcp/tool.js","phaseResponsible":"Phase 1 extraction; 0.1B activation","parityExpectation":"schema structure is byte-equivalent after name/namespace normalization","reason":"This is a proven reusable one-tool mechanic."
+      "id": "DELTA-TOOL-001",
+      "classification": "MECHANICAL_RENAME",
+      "sourceBehavior": "Exactly one public call_quirt tool with operation, payload, idempotencyKey and no operation enum",
+      "sourceFileSymbols": [
+        "gateway/src/tool.js"
+      ],
+      "sourceTest": [
+        "gateway/test/tool.test.js",
+        "gateway/test/contract.test.js"
+      ],
+      "targetCanonicalRequirement": "Exactly one public call_sez tool with the same exact three-field schema and no operation enumeration",
+      "targetDestination": "src/gateway/mcp/tool.js",
+      "phaseResponsible": "Phase 1 extraction; 0.1B activation",
+      "parityExpectation": "schema structure is byte-equivalent after name/namespace normalization",
+      "reason": "This is a proven reusable one-tool mechanic."
     },
     {
-      "id":"DELTA-RELEASE-IDENTITY-001","classification":"CANONICAL_ADAPTATION_REQUIRED","sourceBehavior":"Source receipts and discovery bind Baby release identity","sourceFileSymbols":["src/receipts/receipt.ts","src/release/identity.ts"],"sourceTest":["test/receipts.test.ts","test/release-identity.test.ts"],"targetCanonicalRequirement":"SEZ1 receipts bind se-z release/catalog identity without claiming independent supply-chain assurance from local self-signing","targetDestination":"src/protocol/receipts/ and src/releases/","phaseResponsible":"0.1A","parityExpectation":"signature verification and semantic binding retain parity; trust claims follow target threat model","reason":"Cryptographic integrity is not independent provenance."
+      "id": "DELTA-RELEASE-IDENTITY-001",
+      "classification": "CANONICAL_ADAPTATION_REQUIRED",
+      "sourceBehavior": "Source receipts and discovery bind Baby release identity",
+      "sourceFileSymbols": [
+        "src/receipts/receipt.ts",
+        "src/release/identity.ts"
+      ],
+      "sourceTest": [
+        "test/receipts.test.ts",
+        "test/release-identity.test.ts"
+      ],
+      "targetCanonicalRequirement": "SEZ1 receipts bind se-z release/catalog identity without claiming independent supply-chain assurance from local self-signing",
+      "targetDestination": "src/protocol/receipts/ and src/releases/",
+      "phaseResponsible": "0.1A",
+      "parityExpectation": "signature verification and semantic binding retain parity; trust claims follow target threat model",
+      "reason": "Cryptographic integrity is not independent provenance."
     },
     {
-      "id":"DELTA-GATEWAY-OWNERSHIP-001","classification":"CANONICAL_ADAPTATION_REQUIRED","sourceBehavior":"Gateway transports signed requests and owns source OAuth state","sourceFileSymbols":["gateway/src/client.js","gateway/src/oauth-state-durable.js"],"sourceTest":["gateway/test/client.test.js","gateway/test/oauth-state-durable.test.js"],"targetCanonicalRequirement":"Unprivileged gateway owns only OAuth/transport state; supervisor is sole UID-0 execution authority","targetDestination":"src/gateway/ and src/auth/","phaseResponsible":"Phase 1 extraction; 0.1A/0.1B integration","parityExpectation":"sign/forward/verify and OAuth mechanics retain parity; no execution or supervisor state migrates to gateway","reason":"Privilege and state boundaries are permanent product invariants."
+      "id": "DELTA-GATEWAY-OWNERSHIP-001",
+      "classification": "CANONICAL_ADAPTATION_REQUIRED",
+      "sourceBehavior": "Gateway transports signed requests and owns source OAuth state",
+      "sourceFileSymbols": [
+        "gateway/src/client.js",
+        "gateway/src/oauth-state-durable.js"
+      ],
+      "sourceTest": [
+        "gateway/test/client.test.js",
+        "gateway/test/oauth-state-durable.test.js"
+      ],
+      "targetCanonicalRequirement": "Unprivileged gateway owns only OAuth/transport state; supervisor is sole UID-0 execution authority",
+      "targetDestination": "src/gateway/ and src/auth/",
+      "phaseResponsible": "Phase 1 extraction; 0.1A/0.1B integration",
+      "parityExpectation": "sign/forward/verify and OAuth mechanics retain parity; no execution or supervisor state migrates to gateway",
+      "reason": "Privilege and state boundaries are permanent product invariants."
     }
   ]
 }

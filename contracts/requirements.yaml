@@ -247,3 +247,201 @@ requirements:
     tests: [phase1_claim_is_bounded]
     evidence: [docs/PHASE1_REPORT.md, evidence/phase1/phase1-summary.json]
     releaseGate: mandatory
+
+  # Phase 2 — Kernel — release milestone 0.1A
+  - id: INV-P2-SEZ1-001
+    class: invariant
+    statement: Active transport uses four-byte big-endian length framing followed by strict canonical UTF-8 JSON with a 16 MiB frame maximum.
+    enforcedBy: [src/kernel/protocol.mjs]
+    tests: [phase2_protocol_framing]
+    evidence: [evidence/phase2/protocol-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-SEZ1-002
+    class: invariant
+    statement: Every accepted operation response binds request, result, authority generation, and complete active catalog digest through a signed SEZ1 receipt.
+    enforcedBy: [src/kernel/operations.mjs]
+    tests: [phase2_response_and_receipt_contract]
+    evidence: [evidence/phase2/receipt-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-GENERATION-001
+    class: invariant
+    statement: The supervisor reads recovery-owned authority generation and rejects stale or future requests before request reservation or mutation.
+    enforcedBy: [src/kernel/identity.mjs, src/kernel/operations.mjs]
+    tests: [phase2_generation_pre_dispatch]
+    evidence: [evidence/phase2/generation-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-SOCKET-001
+    class: invariant
+    statement: Gateway and local peer classes are accepted on distinct real Unix sockets whose listener identity is not taken from the envelope.
+    enforcedBy: [src/kernel/server.mjs, packaging/systemd]
+    tests: [phase2_dual_socket_boundary]
+    evidence: [evidence/phase2/socket-authority-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-SOCKET-002
+    class: invariant
+    statement: Gateway requests require the configured SO_PEERCRED process identity and exact Ed25519 request signature; local requests require UID 0 or genuine se-z group membership.
+    enforcedBy: [src/kernel/identity.mjs]
+    tests: [phase2_peer_authority]
+    evidence: [evidence/phase2/socket-authority-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-CATALOG-001
+    class: invariant
+    statement: The active 0.1A catalog contains only complete implemented operation definitions and its digest covers every interpretation-relevant property.
+    enforcedBy: [src/kernel/definitions.mjs]
+    tests: [phase2_catalog_complete]
+    evidence: [evidence/phase2/catalog-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-EXEC-001
+    class: invariant
+    statement: Exact argv and arbitrary shell execution default to unrestricted UID-0 host execution in /root with no timeout unless explicitly requested.
+    enforcedBy: [src/kernel/jobs.mjs]
+    tests: [phase2_raw_execution]
+    evidence: [evidence/phase2/execution-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-JOB-001
+    class: invariant
+    statement: Every execution has a durable job and process identity sufficient to survive supervisor restart and avoid PID-reuse adoption or cancellation.
+    enforcedBy: [src/kernel/jobs.mjs, src/kernel/job-runner.mjs]
+    tests: [phase2_durable_jobs]
+    evidence: [evidence/phase2/job-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-STREAM-001
+    class: invariant
+    statement: Stdout and stderr are separate binary-safe durable streams with deterministic paging and no total output cap.
+    enforcedBy: [src/kernel/job-runner.mjs, src/kernel/jobs.mjs]
+    tests: [phase2_large_binary_stream]
+    evidence: [evidence/phase2/stream-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-IDEMPOTENCY-001
+    class: invariant
+    statement: Semantic idempotency and nonce replay are durable, distinct, and serialized so concurrent identical mutations launch at most once.
+    enforcedBy: [src/kernel/state.mjs]
+    tests: [phase2_concurrent_idempotency]
+    evidence: [evidence/phase2/idempotency-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-RESUME-001
+    class: invariant
+    statement: Response loss is recoverable by original request ID or exact idempotency identity without duplicate mutation.
+    enforcedBy: [src/kernel/state.mjs, src/kernel/operations.mjs]
+    tests: [phase2_response_loss_resume]
+    evidence: [evidence/phase2/resume-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-FILE-001
+    class: invariant
+    statement: The complete 0.1A raw host file family is implemented with paged reads, identity-bound patching, and crash-durable atomic replacement.
+    enforcedBy: [src/kernel/files.mjs]
+    tests: [phase2_file_lifecycle]
+    evidence: [evidence/phase2/file-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-PTY-001
+    class: invariant
+    statement: PTY sessions have stable identities, exact offsets, persistent backing, restart rediscovery, input, resize, read, and honest close or loss states.
+    enforcedBy: [src/kernel/pty.mjs]
+    tests: [phase2_pty_lifecycle]
+    evidence: [evidence/phase2/pty-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-ARTIFACT-001
+    class: invariant
+    statement: Artifacts are binary-safe, resumable, offset-checked, digest-verified, atomically finalized, immutable, paged, and explicitly removable.
+    enforcedBy: [src/kernel/artifacts.mjs]
+    tests: [phase2_artifact_lifecycle]
+    evidence: [evidence/phase2/artifact-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-RECEIPT-001
+    class: invariant
+    statement: Ed25519 receipts bind request, result, generation, catalog, host, release, state, job, stream, and artifact digests without raw output.
+    enforcedBy: [src/kernel/crypto.mjs, src/kernel/operations.mjs]
+    tests: [phase2_receipt_tamper_and_rotation]
+    evidence: [evidence/phase2/receipt-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-CLI-001
+    class: invariant
+    statement: The native se-z CLI uses the local SEZ1 socket, waits deterministically, preserves binary output, resumes requests, and verifies receipts.
+    enforcedBy: [src/bin/se-z.mjs]
+    tests: [phase2_cli_acceptance]
+    evidence: [evidence/phase2/execution-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-RECONCILE-001
+    class: invariant
+    statement: Restart reconciliation uses durable state and actual operating-system process truth and reports lost or ambiguous rather than fabricated success.
+    enforcedBy: [src/kernel/jobs.mjs, src/kernel/pty.mjs, src/kernel/artifacts.mjs]
+    tests: [phase2_restart_reconciliation]
+    evidence: [evidence/phase2/reconciliation-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-STATE-001
+    class: invariant
+    statement: Correctness-bearing supervisor state uses atomic write, file flush, rename, and parent-directory flush under the canonical 0.1A ownership layout.
+    enforcedBy: [src/kernel/util.mjs, src/kernel/state.mjs]
+    tests: [phase2_state_durability_and_corruption]
+    evidence: [evidence/phase2/reconciliation-results.json]
+    releaseGate: mandatory
+  - id: INV-P2-PACKAGE-001
+    class: invariant
+    statement: The immutable digest-addressed 0.1A candidate contains the exact supervisor, CLI, schemas, catalog, native addon, units, tmpfiles, notices, and manifest without private credentials or production state.
+    enforcedBy: [scripts/phase2/package.mjs]
+    tests: [phase2_package_reproducibility]
+    evidence: [evidence/phase2/release-manifest.json]
+    releaseGate: mandatory
+  - id: INV-P2-HOST-001
+    class: invariant
+    statement: An isolated candidate proves signed UID-0 execution, durable streams, restart, file compatibility, and response-loss resume on the authorized VPS while preserving Baby protected configuration.
+    enforcedBy: [scripts/phase2/host-candidate.sh]
+    tests: [phase2_host_candidate_acceptance]
+    evidence: [evidence/phase2/host-candidate-acceptance.json, evidence/phase2/production-readback.json]
+    releaseGate: mandatory
+  - id: ANTI-P2-FALLBACK-001
+    class: anti-invariant
+    statement: Explicit nspawn or KVM targets return target_not_supported and never fall back to host.
+    enforcedBy: [src/kernel/jobs.mjs]
+    tests: [phase2_unsupported_target_no_fallback]
+    evidence: [evidence/phase2/execution-results.json]
+    releaseGate: mandatory
+  - id: ANTI-P2-OUTPUT-CAP-001
+    class: anti-invariant
+    statement: No inherited 64 MiB or other total output cap exists.
+    enforcedBy: [src/kernel/job-runner.mjs]
+    tests: [phase2_output_over_64mib]
+    evidence: [evidence/phase2/stream-results.json]
+    releaseGate: mandatory
+  - id: ANTI-P2-REDACTION-001
+    class: anti-invariant
+    statement: Explicit owner-authorized raw command, file, PTY, and stream bytes are never altered by broad secret-pattern redaction.
+    enforcedBy: [src/kernel/job-runner.mjs, src/kernel/files.mjs, src/kernel/pty.mjs]
+    tests: [phase2_raw_output_byte_exact]
+    evidence: [evidence/phase2/secret-scan.json]
+    releaseGate: mandatory
+  - id: ANTI-P2-INACTIVE-OP-001
+    class: anti-invariant
+    statement: Phase 3, Phase 4, and Phase 5 operation families are absent from the active 0.1A registry.
+    enforcedBy: [src/kernel/definitions.mjs]
+    tests: [phase2_inactive_operations_absent]
+    evidence: [evidence/phase2/catalog-results.json]
+    releaseGate: mandatory
+  - id: ANTI-P2-PUBLIC-001
+    class: anti-invariant
+    statement: Phase 2 creates no TCP, HTTP, tunnel, public MCP, Caddy, or ChatGPT app listener or activation.
+    enforcedBy: [src/kernel/server.mjs, packaging/systemd]
+    tests: [phase2_no_public_listener]
+    evidence: [evidence/phase2/production-readback.json]
+    releaseGate: mandatory
+  - id: ANTI-P2-SUCCESS-001
+    class: anti-invariant
+    statement: Accepted, running, lost, or ambiguous work is never represented as completed success.
+    enforcedBy: [src/kernel/jobs.mjs, src/kernel/operations.mjs]
+    tests: [phase2_running_not_success]
+    evidence: [evidence/phase2/job-results.json]
+    releaseGate: mandatory
+  - id: ANTI-P2-PRODUCTION-001
+    class: anti-invariant
+    statement: Phase 2 candidate testing does not activate se-z production, change Baby protected configuration, or change the current ChatGPT app.
+    enforcedBy: [scripts/phase2/host-candidate.sh]
+    tests: [phase2_baby_before_after_readback]
+    evidence: [evidence/phase2/production-readback.json]
+    releaseGate: mandatory
+  - id: ANTI-P2-THEATER-001
+    class: anti-invariant
+    statement: Phase 2 acceptance inspects implementation and real execution; evidence booleans are never the sole proof.
+    enforcedBy: [scripts/phase2/verify.mjs]
+    tests: [phase2_no_theater_audit]
+    evidence: [evidence/phase2/no-theater-audit.json]
+    releaseGate: mandatory
