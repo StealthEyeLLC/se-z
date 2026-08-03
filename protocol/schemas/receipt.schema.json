@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://se-z.stealtheye.io/schemas/sez1-receipt.json",
+  "title": "SEZ1 receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receiptSchemaVersion", "protocolVersion", "receiptId", "requestId",
+    "operation", "subject", "authorityClass", "authorityGeneration",
+    "requestDigest", "resultDigest", "catalogDigest", "hostname",
+    "machineIdSha256", "release", "startedAt", "completedAt", "keyId",
+    "signature"
+  ],
+  "properties": {
+    "receiptSchemaVersion": {"type": "string"},
+    "protocolVersion": {"type": "string"},
+    "receiptId": {"type": "string"},
+    "requestId": {"type": "string"},
+    "operation": {"type": "string"},
+    "subject": {"type": "string"},
+    "authorityClass": {"const": "unrestricted-owner"},
+    "authorityGeneration": {"type": "integer", "minimum": 1},
+    "requestDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "resultDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "catalogDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "stdoutDigest": {"type": ["string", "null"]},
+    "stderrDigest": {"type": ["string", "null"]},
+    "hostname": {"type": "string"},
+    "machineIdSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "release": {"type": "object"},
+    "startedAt": {"type": "string", "format": "date-time"},
+    "completedAt": {"type": "string", "format": "date-time"},
+    "keyId": {"type": "string"},
+    "signature": {"type": "string"}
+  }
+}

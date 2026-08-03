@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://se-z.stealtheye.io/schemas/sez1-request.json",
+  "title": "SEZ1 request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol", "protocolVersion", "requestId", "operation", "payload",
+    "idempotencyKey", "subject", "authorityClass", "authorityGeneration",
+    "issuedAt", "nonce", "peerClass"
+  ],
+  "properties": {
+    "protocol": {"const": "SEZ1"},
+    "protocolVersion": {"type": "string"},
+    "requestId": {"type": "string", "format": "uuid"},
+    "operation": {"type": "string", "pattern": "^sez\\.[a-z0-9._-]+$"},
+    "payload": {"type": "object"},
+    "idempotencyKey": {"type": "string", "minLength": 8, "maxLength": 256},
+    "subject": {"type": "string"},
+    "authorityClass": {"const": "unrestricted-owner"},
+    "authorityGeneration": {"type": "integer", "minimum": 1},
+    "issuedAt": {"type": "string", "format": "date-time"},
+    "nonce": {"type": "string", "minLength": 16},
+    "peerClass": {"enum": ["gateway-signed", "local-peer"]},
+    "gatewayId": {"type": "string"},
+    "gatewayKeyId": {"type": "string"},
+    "signature": {"type": "string"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"peerClass": {"const": "gateway-signed"}}},
+      "then": {"required": ["gatewayId", "gatewayKeyId", "signature"]}
+    }
+  ]
+}

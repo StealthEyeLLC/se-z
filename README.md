@@ -8,13 +8,13 @@
 
 se-z is an owner-only, standalone, unrestricted UID-0 control system for the authorized StealthEye VPS. Its permanent default is the direct fast lane: authenticated ChatGPT requests execute against the host as root unless the owner explicitly selects another target or mode.
 
-The public ChatGPT contract is permanently one generic tool with exactly three inputs: `operation`, `payload`, and `idempotencyKey`. The installed operation catalog and `catalogDigest` are published through `sez.describe`.
+The public ChatGPT contract is permanently one generic tool with exactly three inputs: `operation`, `payload`, and `idempotencyKey`. The installed operation catalog and its deterministic `catalogDigest` are published by `sez.describe`; every SEZ1 response also carries the digest that governed that response.
 
 ## Status
 
-This repository is initialized with the canonical standalone specification, protocol contract, executable requirements, build plan, threat model, recovery model, OAuth contract, and implementation scaffold. It is not yet a completed standalone release.
+This repository is initialized with the canonical standalone specification, SEZ1 protocol contract, executable requirements, build plan, threat model, recovery model, OAuth contract, schemas, tests, CI, and a zero-dependency Node.js build scaffold. It is not yet a completed standalone release.
 
-The currently deployed Baby-backed app is the verified migration source and rollback path. It is not the final se-z runtime.
+The deployed Baby-backed app is the verified migration source and rollback path. It is not the final se-z runtime.
 
 ## Canonical precedence
 
@@ -33,7 +33,7 @@ npm test
 npm run build
 ```
 
-The initial scaffold intentionally contains no claim that root execution, OAuth, tunnel transport, nspawn, KVM, release activation, recovery, or restore are implemented. Those capabilities become real only when their executable requirements and acceptance evidence pass.
+The initial scaffold intentionally makes no claim that UID-0 execution, GitHub OAuth, Secure MCP Tunnel transport, nspawn, KVM, release activation, recovery, or clean-host restore are implemented. Those capabilities become real only after their executable requirements and acceptance evidence pass.
 
 ## License
 

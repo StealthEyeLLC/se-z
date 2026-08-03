@@ -1,0 +1,16 @@
+export const PRODUCT = 'se-z';
+export const REPOSITORY = 'StealthEyeLLC/se-z';
+export const PUBLIC_TOOL = 'call_sez';
+export const OPERATION_PREFIX = 'sez.';
+export const PROTOCOL = 'SEZ1';
+export const PROTOCOL_VERSION = '1.0.0';
+export const CONTRACT_VERSION = '1.0.0';
+export const VERSION = '0.0.0-dev';
+export const OWNER_SUBJECT = 'stealtheye-owner';
+export const OWNER_GITHUB_ID = 247854506;
+export const AUTHORITY_SCOPE = 'sez.root';
+export const LIFECYCLE_SCOPE = 'offline_access';
+export const FRAME_LIMIT = 16 * 1024 * 1024;
+export const GATEWAY_SOCKET = '/run/se-z/gateway.sock';
+export const LOCAL_SOCKET = '/run/se-z/local.sock';
+export const GATEWAY_STATE = '/var/lib/se-z-gateway';

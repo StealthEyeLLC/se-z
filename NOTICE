@@ -1,0 +1,14 @@
+# Provenance and notices
+
+se-z is a StealthEye LLC product.
+
+The standalone implementation is expected to extract proven mechanics from the
+StealthEye LLC Baby Quirt and Baby Quirt MCP repositories and to bundle a pinned
+copy of the StealthEye LLC `z` KVM backend. Any copied implementation must retain
+applicable copyright, provenance, and license notices at the copied source and
+release-manifest level.
+
+Historical references to Baby Quirt, QRT1, `--z--`, and migration evidence are
+legitimate in provenance, legal, migration, parity-test, and evidence records.
+Standalone status requires eliminating runtime dependencies and active product
+identity leakage; it does not require falsifying history.

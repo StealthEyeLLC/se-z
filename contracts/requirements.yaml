@@ -1,0 +1,178 @@
+version: 1
+product: se-z
+requirements:
+  - id: INV-PUBLIC-001
+    class: invariant
+    statement: The public MCP catalog exposes exactly one tool named call_sez.
+    enforcedBy: [gateway]
+    tests: [public_catalog_exactly_one_tool]
+    evidence: [public-catalog.json]
+    releaseGate: mandatory
+  - id: INV-PUBLIC-002
+    class: invariant
+    statement: The call_sez schema contains only operation, payload, and idempotencyKey and never enumerates operations.
+    enforcedBy: [gateway, ci]
+    tests: [public_tool_schema_frozen]
+    evidence: [tool-schema.json]
+    releaseGate: mandatory
+  - id: INV-FAST-001
+    class: invariant
+    statement: Missing lane, target, user, group, and cwd resolve to fast, host, root, root, and /root.
+    enforcedBy: [supervisor]
+    tests: [fast_lane_defaults]
+    evidence: [fast-default-result.json]
+    releaseGate: mandatory
+  - id: INV-SEZ1-001
+    class: invariant
+    statement: Every SEZ1 request contains authorityGeneration and the canonical request digest binds it.
+    enforcedBy: [gateway, cli, supervisor]
+    tests: [authority_generation_in_schema, authority_generation_digest_vector]
+    evidence: [sez1-test-vectors.json]
+    releaseGate: mandatory
+  - id: INV-SEZ1-002
+    class: invariant
+    statement: Every SEZ1 response contains catalogDigest.
+    enforcedBy: [supervisor, gateway]
+    tests: [catalog_digest_every_response]
+    evidence: [response-samples.json]
+    releaseGate: mandatory
+  - id: INV-STREAM-001
+    class: invariant
+    statement: Process output is captured in durable streams and complete output remains retrievable beyond the 16 MiB frame limit.
+    enforcedBy: [supervisor, job-store]
+    tests: [output_over_frame_limit_round_trip]
+    evidence: [large-stream-proof.json]
+    releaseGate: mandatory
+  - id: INV-CALLER-001
+    class: invariant
+    statement: Catalog caching and automatic wait behavior are caller guidance; deterministic wait and resume operations exist on the server.
+    enforcedBy: [catalog, job-controller]
+    tests: [request_resume_after_response_loss, deterministic_job_wait]
+    evidence: [resume-proof.json]
+    releaseGate: mandatory
+  - id: INV-OAUTH-001
+    class: invariant
+    statement: The tunnel-backed resource publishes protected-resource metadata and returns a WWW-Authenticate challenge with the exact resource metadata URL.
+    enforcedBy: [gateway]
+    tests: [protected_resource_metadata, unauthorized_challenge]
+    evidence: [oauth-discovery.json, unauthorized-response.txt]
+    releaseGate: mandatory
+  - id: INV-OAUTH-002
+    class: invariant
+    statement: The exact protected resource is propagated through authorization and token requests and validated as access-token audience.
+    enforcedBy: [gateway-oauth]
+    tests: [resource_parameter_authorization, resource_parameter_token, audience_mismatch_rejected]
+    evidence: [oauth-resource-binding.json]
+    releaseGate: mandatory
+  - id: INV-OAUTH-003
+    class: invariant
+    statement: sez.root is the only authority scope; offline_access is advertised solely for refresh-token lifecycle support.
+    enforcedBy: [gateway-oauth]
+    tests: [scope_metadata, refresh_rotation, refresh_replay_rejected]
+    evidence: [oauth-scope-proof.json]
+    releaseGate: mandatory
+  - id: INV-OAUTH-004
+    class: invariant
+    statement: Gateway OAuth state is stored under /var/lib/se-z-gateway with isolated blue and green state slots and is included in restore tests.
+    enforcedBy: [gateway, recovery, backup]
+    tests: [gateway_state_slot_isolation, gateway_state_restore]
+    evidence: [gateway-state-layout.json, gateway-restore-proof.json]
+    releaseGate: mandatory
+  - id: INV-SOCKET-001
+    class: invariant
+    statement: Gateway and local operators use separate sockets and peer classes.
+    enforcedBy: [systemd, supervisor]
+    tests: [gateway_cannot_use_local_socket, local_peer_cannot_impersonate_gateway]
+    evidence: [socket-peer-proof.json]
+    releaseGate: mandatory
+  - id: INV-SOCKET-002
+    class: invariant
+    statement: Every gateway-socket request requires both the configured gateway SO_PEERCRED identity and a valid signed envelope.
+    enforcedBy: [supervisor]
+    tests: [unsigned_gateway_request_rejected, wrong_gateway_uid_rejected]
+    evidence: [gateway-auth-proof.json]
+    releaseGate: mandatory
+  - id: INV-STATE-001
+    class: invariant
+    statement: Gateway, supervisor, z, and recovery state ownership never overlaps as competing truth.
+    enforcedBy: [architecture, supervisor, recovery]
+    tests: [state_owner_contract]
+    evidence: [state-owner-readback.json]
+    releaseGate: mandatory
+  - id: INV-FENCE-001
+    class: invariant
+    statement: Authority generation advances only after physical old-supervisor and descendant fencing or explicit job adoption.
+    enforcedBy: [recovery, systemd]
+    tests: [old_cgroup_empty_before_handoff, stale_generation_rejected, adopted_job_identity]
+    evidence: [fencing-evidence.json]
+    releaseGate: mandatory
+  - id: INV-RECOVERY-001
+    class: invariant
+    statement: Recovery is separately versioned and ordinary releases cannot modify its executable or state schema.
+    enforcedBy: [recovery, filesystem-layout, release-controller]
+    tests: [ordinary_release_cannot_replace_recovery, recovery_blue_green_upgrade]
+    evidence: [recovery-independence.json]
+    releaseGate: mandatory
+  - id: INV-TARGET-001
+    class: invariant
+    statement: host, nspawn, and kvm targets never silently fall back to another target or acceleration mode.
+    enforcedBy: [supervisor, machine-adapters]
+    tests: [no_target_fallback, no_tcg_fallback]
+    evidence: [target-failure-proof.json]
+    releaseGate: mandatory
+  - id: INV-KVM-001
+    class: invariant
+    statement: Every release bundles an exact digest-pinned z and KVM is claimed only after the full real-hardware lifecycle passes.
+    enforcedBy: [release-manifest, kvm-adapter]
+    tests: [bundled_z_identity, real_kvm_lifecycle]
+    evidence: [z-identity.json, kvm-acceptance.json]
+    releaseGate: mandatory
+  - id: INV-SECRET-001
+    class: invariant
+    statement: Managed credentials are never automatically injected or exposed, while explicit root-authorized output may contain sensitive owner data.
+    enforcedBy: [gateway, supervisor, evidence-store]
+    tests: [managed_credentials_not_auto_injected, raw_owner_read_remains_possible]
+    evidence: [credential-handling-proof.json]
+    releaseGate: mandatory
+  - id: INV-MIGRATION-001
+    class: invariant
+    statement: Standalone cutover removes Baby runtime dependencies but preserves legitimate provenance and historical evidence.
+    enforcedBy: [build, dependency-scan]
+    tests: [zero_baby_runtime_dependency]
+    evidence: [dependency-scan.json]
+    releaseGate: mandatory
+  - id: ANTI-POLICY-001
+    class: anti-invariant
+    statement: No se-z command allowlist, path allowlist, policy engine, or se-z approval layer exists in the fast lane.
+    enforcedBy: [architecture, ci]
+    tests: [raw_exec_unrestricted_contract]
+    evidence: [fast-lane-contract.json]
+    releaseGate: mandatory
+  - id: ANTI-PUBLIC-MCP-001
+    class: anti-invariant
+    statement: No public MCP ingress is active in the owner-only standalone profile.
+    enforcedBy: [caddy, firewall, tunnel]
+    tests: [public_mcp_route_absent, tunnel_mcp_available]
+    evidence: [network-surface.json]
+    releaseGate: mandatory
+  - id: ANTI-SUCCESS-001
+    class: anti-invariant
+    statement: Accepted or running work is never reported as completed.
+    enforcedBy: [job-controller, gateway]
+    tests: [running_job_not_success]
+    evidence: [job-state-proof.json]
+    releaseGate: mandatory
+  - id: ANTI-SPLIT-001
+    class: anti-invariant
+    statement: Two supervisor generations never mutate shared state concurrently.
+    enforcedBy: [recovery, supervisor]
+    tests: [candidate_active_mutation_race]
+    evidence: [split-brain-proof.json]
+    releaseGate: mandatory
+  - id: ANTI-THEATER-001
+    class: anti-invariant
+    statement: Controls without an enforcement effect, acceptance test, or recovery value are not added.
+    enforcedBy: [canonical-review]
+    tests: [requirements_have_enforcement_and_evidence]
+    evidence: [requirements-audit.json]
+    releaseGate: mandatory

@@ -1,0 +1,18 @@
+{
+  "name": "se-z",
+  "version": "0.0.0-dev",
+  "private": true,
+  "type": "module",
+  "description": "Standalone owner-only unrestricted UID-0 control system for the authorized StealthEye VPS.",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "se-z": "./src/cli.mjs"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node --test",
+    "build": "node scripts/build.mjs"
+  }
+}

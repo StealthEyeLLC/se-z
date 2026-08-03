@@ -1,0 +1,27 @@
+[Unit]
+Description=OpenAI Secure MCP Tunnel for se-z
+After=network-online.target se-z-gateway.service
+Wants=network-online.target
+Requires=se-z-gateway.service
+
+[Service]
+Type=simple
+User=se-z-tunnel
+Group=se-z-tunnel
+LoadCredential=runtime-api-key:/etc/se-z-tunnel/runtime-api-key.cred
+Environment=TUNNEL_CLIENT_PROFILE_FILE=/etc/se-z-tunnel/se-z.yaml
+ExecStart=/usr/local/libexec/tunnel-client run --profile-file /etc/se-z-tunnel/se-z.yaml --control-plane.api-key=file:%d/runtime-api-key
+Restart=always
+RestartSec=2
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+# The profile supplies the exact tunnel ID and main MCP binding, for example a
+# logical loopback URL with unix_socket=/run/se-z/mcp-http.sock. It is generated
+# from the installed tunnel-client version and verified with `tunnel-client doctor`.
+
+[Install]
+WantedBy=multi-user.target

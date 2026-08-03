@@ -1,0 +1,12 @@
+[Unit]
+Description=se-z local SO_PEERCRED operator socket
+
+[Socket]
+ListenStream=/run/se-z/local.sock
+SocketUser=root
+SocketGroup=se-z
+SocketMode=0660
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target

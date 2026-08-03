@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://se-z.stealtheye.io/schemas/sez1-result.json",
+  "title": "SEZ1 result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "requestId", "operation", "state", "terminal", "authorityGeneration",
+    "catalogDigest", "resultDigest", "streams", "receipt"
+  ],
+  "properties": {
+    "requestId": {"type": "string", "format": "uuid"},
+    "operation": {"type": "string"},
+    "state": {"enum": ["accepted", "running", "completed", "failed", "cancelled", "lost", "ambiguous", "reconciled"]},
+    "terminal": {"type": "boolean"},
+    "authorityGeneration": {"type": "integer", "minimum": 1},
+    "catalogDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "result": {},
+    "error": {"type": ["object", "null"]},
+    "jobId": {"type": ["string", "null"]},
+    "resultDigest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "streams": {
+      "type": "object",
+      "required": ["stdout", "stderr"],
+      "properties": {
+        "stdout": {"$ref": "#/$defs/stream"},
+        "stderr": {"$ref": "#/$defs/stream"}
+      }
+    },
+    "receipt": {"type": "object"}
+  },
+  "$defs": {
+    "stream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handle", "inline", "inlineEncoding", "offset", "nextOffset", "sha256", "complete"],
+      "properties": {
+        "handle": {"type": "string"},
+        "inline": {"type": "string"},
+        "inlineEncoding": {"enum": ["utf8", "base64"]},
+        "offset": {"type": "integer", "minimum": 0},
+        "nextOffset": {"type": "integer", "minimum": 0},
+        "size": {"type": ["integer", "null"], "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "complete": {"type": "boolean"}
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[Unit]
+Description=se-z one-tool OAuth/MCP gateway
+After=network-online.target se-z-gateway.socket
+Wants=network-online.target
+Requires=se-z-gateway.socket
+
+[Service]
+Type=notify
+User=se-z-gateway
+Group=se-z-gateway
+ExecStart=/opt/se-z/current/bin/se-z-gateway
+Environment=SEZ_GATEWAY_SOCKET=/run/se-z/gateway.sock
+Environment=SEZ_GATEWAY_STATE_ROOT=/var/lib/se-z-gateway/active
+Restart=on-failure
+RestartSec=1
+UMask=0077
+StateDirectory=se-z-gateway
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/se-z-gateway
+
+[Install]
+WantedBy=multi-user.target

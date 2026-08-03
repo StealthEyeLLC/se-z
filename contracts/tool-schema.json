@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://se-z.stealtheye.io/schemas/call-sez-tool.json",
+  "title": "call_sez input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["operation", "payload", "idempotencyKey"],
+  "properties": {
+    "operation": {
+      "type": "string",
+      "pattern": "^sez\\.[a-z0-9._-]+$",
+      "minLength": 5,
+      "maxLength": 256
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._:-]+$",
+      "minLength": 8,
+      "maxLength": 256
+    }
+  }
+}
