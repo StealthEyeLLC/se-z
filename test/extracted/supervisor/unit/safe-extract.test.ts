@@ -22,7 +22,7 @@ afterEach(() => {
 
 describe('safe archive extraction compatibility wrapper', () => {
   it('installs one strictly verified create-once inactive target', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'bq-safe-wrapper-'));
+    const root = mkdtempSync(join(tmpdir(), 'se-z-safe-wrapper-'));
     roots.push(root);
     const source = join(root, 'source');
     mkdirSync(source);

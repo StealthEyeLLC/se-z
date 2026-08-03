@@ -1006,7 +1006,7 @@ export class FixedNspawnRehearsalRunner {
   }
 
   private machineName(runId: string): string {
-    return `bq-${sha256Hex(runId).slice(0, 8)}`;
+    return `se-z-${sha256Hex(runId).slice(0, 8)}`;
   }
 
   private async withLock<T>(action: () => Promise<T>): Promise<T> {

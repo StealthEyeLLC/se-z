@@ -33,12 +33,12 @@ import {
 } from './helpers/protocol.js';
 
 const REPO_ROOT = join(import.meta.dirname, '..', '..', '..', '..');
-const CANARY = 'bq-selfhost-canary-9e4f1b2a';
+const CANARY = 'se-z-selfhost-canary-9e4f1b2a';
 const RELEASE_V1 = '0.1.0-r1';
 const RELEASE_V2 = '0.1.0-r2';
 
 describe('acceptance: protocol-only self-hosting end-to-end', () => {
-  const sandbox = mkdtempSync(join(tmpdir(), 'bq-selfhost-full-'));
+  const sandbox = mkdtempSync(join(tmpdir(), 'se-z-selfhost-full-'));
   const bareRemote = join(sandbox, 'bare.git');
   const fixtureDir = join(REPO_ROOT, 'test/extracted/supervisor/acceptance/fixtures/local-fixture-pkg');
   const fixtureTgz = join(sandbox, 'local-fixture-pkg-1.0.0.tgz');

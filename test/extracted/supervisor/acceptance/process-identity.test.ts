@@ -15,7 +15,7 @@ import {
 
 describe('acceptance: process identity and PID reuse', () => {
   it('distinguishes live processes from stale PID records', async () => {
-    const dir = mkdtempSync(join(tmpdir(), 'bq-pidreuse-'));
+    const dir = mkdtempSync(join(tmpdir(), 'se-z-pidreuse-'));
     try {
       const config = loadRuntimeConfig({ stateRoot: dir, expectedMachineIdSha256: 'test' });
       const store = new StateStore(config);

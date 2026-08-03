@@ -80,32 +80,32 @@ jobs:
 
       - name: Build candidate A
         run: |
-          mkdir -p /tmp/bq-build-a /tmp/bq-output-a
-          SEZ_BUILD_ROOT=/tmp/bq-build-a SEZ_OUTPUT_DIR=/tmp/bq-output-a \
+          mkdir -p /tmp/se-z-build-a /tmp/se-z-output-a
+          SEZ_BUILD_ROOT=/tmp/se-z-build-a SEZ_OUTPUT_DIR=/tmp/se-z-output-a \
             bash scripts/extracted/supervisor/build-bundle.sh "$SEZ_VERSION"
 
       - name: Build candidate B
         run: |
-          mkdir -p /tmp/bq-build-b /tmp/bq-output-b
-          SEZ_BUILD_ROOT=/tmp/bq-build-b SEZ_OUTPUT_DIR=/tmp/bq-output-b \
+          mkdir -p /tmp/se-z-build-b /tmp/se-z-output-b
+          SEZ_BUILD_ROOT=/tmp/se-z-build-b SEZ_OUTPUT_DIR=/tmp/se-z-output-b \
             bash scripts/extracted/supervisor/build-bundle.sh "$SEZ_VERSION"
 
       - name: Require byte-identical outputs and verify extracted runtime
         run: |
-          cmp "/tmp/bq-output-a/se-z-$SEZ_VERSION.tar.gz" \
-              "/tmp/bq-output-b/se-z-$SEZ_VERSION.tar.gz"
-          cmp "/tmp/bq-output-a/se-z-$SEZ_VERSION.build.json" \
-              "/tmp/bq-output-b/se-z-$SEZ_VERSION.build.json"
+          cmp "/tmp/se-z-output-a/se-z-$SEZ_VERSION.tar.gz" \
+              "/tmp/se-z-output-b/se-z-$SEZ_VERSION.tar.gz"
+          cmp "/tmp/se-z-output-a/se-z-$SEZ_VERSION.build.json" \
+              "/tmp/se-z-output-b/se-z-$SEZ_VERSION.build.json"
           node --import tsx scripts/extracted/supervisor/verify-candidate.ts \
-            --archive "/tmp/bq-output-a/se-z-$SEZ_VERSION.tar.gz" \
-            --build-record "/tmp/bq-output-a/se-z-$SEZ_VERSION.build.json"
+            --archive "/tmp/se-z-output-a/se-z-$SEZ_VERSION.tar.gz" \
+            --build-record "/tmp/se-z-output-a/se-z-$SEZ_VERSION.build.json"
 
       - name: Upload unsigned verified candidate evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: se-z-verified-candidate
           path: |
-            /tmp/bq-output-a/se-z-${{ env.SEZ_VERSION }}.tar.gz
-            /tmp/bq-output-a/se-z-${{ env.SEZ_VERSION }}.build.json
-            /tmp/bq-output-a/se-z-${{ env.SEZ_VERSION }}.sha256
+            /tmp/se-z-output-a/se-z-${{ env.SEZ_VERSION }}.tar.gz
+            /tmp/se-z-output-a/se-z-${{ env.SEZ_VERSION }}.build.json
+            /tmp/se-z-output-a/se-z-${{ env.SEZ_VERSION }}.sha256
           retention-days: 30

@@ -5,6 +5,7 @@ import process from 'node:process';
 
 const root = process.cwd();
 const outputPath = path.join(root, 'evidence/phase1/dependency-scan.json');
+const writeEvidence = !process.argv.includes('--no-write');
 const activeRoots = ['src', 'packaging', 'scripts/extracted'];
 const allowedHistoricalRoots = ['NOTICE','docs/PROVENANCE.md','docs/MIGRATION.md','vendor/baby-provenance','test/parity','evidence/phase1'];
 const patterns = [
@@ -15,7 +16,8 @@ const patterns = [
   { id:'baby-service', re:/\bbaby-quirt(?:-mcp)?\.(?:service|socket)\b/u },
   { id:'legacy-public-tool', re:/\bcall_quirt\b/u },
   { id:'legacy-operation-registration', re:/['"]baby\.[a-z0-9_.-]+['"]/u },
-  { id:'legacy-protocol-identity', re:/['"]QRT1['"]/u }
+  { id:'legacy-protocol-identity', re:/['"]QRT1['"]/u },
+  { id:'legacy-bq-identity', re:/\b(?:bq|BQ)[_-][A-Za-z0-9_.-]+/u }
 ];
 function walk(relative) {
   const full = path.join(root, relative);
@@ -53,7 +55,9 @@ const result = {
   forbiddenFindingCount:findings.length, findings, historicalReferenceCount:historicalReferences,
   passed:findings.length===0
 };
-fs.mkdirSync(path.dirname(outputPath),{recursive:true});
-fs.writeFileSync(outputPath,JSON.stringify(result,null,2)+'\n');
+if (writeEvidence) {
+  fs.mkdirSync(path.dirname(outputPath),{recursive:true});
+  fs.writeFileSync(outputPath,JSON.stringify(result,null,2)+'\n');
+}
 console.log(JSON.stringify(result,null,2));
 if(!result.passed) process.exitCode=1;

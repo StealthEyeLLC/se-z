@@ -19,7 +19,7 @@ import { FileManager } from '../../../../src/files/manager.js';
 import { OperationError } from '../../../../src/operations/errors.js';
 
 describe('file manager', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'bq-files-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-files-'));
   const fm = new FileManager();
   const testFile = join(dir, 'test.txt');
 
@@ -130,7 +130,7 @@ describe('file manager', () => {
   });
 
   it('rejects a symlinked parent component', () => {
-    const outside = mkdtempSync(join(tmpdir(), 'bq-files-outside-'));
+    const outside = mkdtempSync(join(tmpdir(), 'se-z-files-outside-'));
     const link = join(dir, 'linked-parent');
     symlinkSync(outside, link, 'dir');
     try {

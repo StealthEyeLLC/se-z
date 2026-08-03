@@ -6,27 +6,39 @@ import path from 'node:path';
 import process from 'node:process';
 
 const root = process.cwd();
-const worktree = path.join(root, '.phase1-sources', 'target-reference');
-const logRoot = path.join(root, '.phase1-logs', 'extracted');
-const evidencePath = path.join(root, 'evidence', 'phase1', 'extracted-test-results.json');
-fs.mkdirSync(path.dirname(worktree), { recursive: true });
+const worktree = path.join(root, '.phase1-sources/target-reference');
+const sourceSupervisor = path.resolve(process.env.SEZ_PHASE1_SUPERVISOR_SOURCE ?? path.join(root, '.phase1-sources/baby-quirt'));
+const sourceGateway = path.resolve(process.env.SEZ_PHASE1_GATEWAY_SOURCE ?? path.join(root, '.phase1-sources/baby-quirt-mcp'));
+for (const [name, location] of [['supervisor', sourceSupervisor], ['gateway', sourceGateway]]) {
+  if (!fs.existsSync(path.join(location, '.git'))) throw new Error(`${name} source is unavailable at ${location}; run phase1:materialize-source`);
+}
+const logRoot = path.join(root, '.phase1-logs/extracted');
+const evidencePath = path.join(root, 'evidence/phase1/extracted-test-results.json');
+fs.rmSync(logRoot, { recursive: true, force: true });
 fs.mkdirSync(logRoot, { recursive: true });
 fs.mkdirSync(path.dirname(evidencePath), { recursive: true });
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
-const runRaw = (command, args, options = {}) => spawnSync(command, args, {
-  cwd: options.cwd ?? root,
-  env: { ...process.env, CI: '1', NO_COLOR: '1', ...(options.env ?? {}) },
-  encoding: 'utf8', maxBuffer: 256 * 1024 * 1024,
-});
-const git = (args, options = {}) => runRaw('git', ['-C', options.cwd ?? root, ...args], options);
-const parseTap = (text) => {
+function runRaw(command, args, options = {}) {
+  return spawnSync(command, args, {
+    cwd: options.cwd ?? root,
+    env: {
+      ...process.env, CI: '1', NO_COLOR: '1', NODE_ENV: 'development', NPM_CONFIG_PRODUCTION: 'false',
+      SEZ_PHASE1_SUPERVISOR_SOURCE: sourceSupervisor,
+      SEZ_PHASE1_GATEWAY_SOURCE: sourceGateway,
+      ...(options.env ?? {}),
+    },
+    encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, timeout: options.timeout ?? 20 * 60 * 1000,
+  });
+}
+function git(args, cwd = root) { return runRaw('git', ['-C', cwd, ...args], { cwd: root }); }
+function parseTap(text) {
   const summary = {};
   for (const match of text.matchAll(/^(?:#|ℹ)\s+(tests|suites|pass|fail|cancelled|skipped|todo)\s+(\d+)\s*$/gmu)) summary[match[1]] = Number(match[2]);
   const duration = [...text.matchAll(/^(?:#|ℹ)\s+duration_ms\s+([0-9.]+)\s*$/gmu)].at(-1)?.[1];
-  if (duration) summary.durationMs = Number(duration);
+  if (duration !== undefined) summary.durationMs = Number(duration);
   return summary;
-};
-const capture = (name, command, args, kind) => {
+}
+function capture(name, command, args, kind) {
   const startedAt = new Date().toISOString();
   const start = process.hrtime.bigint();
   const result = runRaw(command, args, { cwd: worktree });
@@ -44,19 +56,20 @@ const capture = (name, command, args, kind) => {
     stdoutSha256: sha256(stdout), stderrSha256: sha256(stderr),
     stdoutBytes: Buffer.byteLength(stdout), stderrBytes: Buffer.byteLength(stderr),
     tap: parseTap(`${stdout}\n${stderr}`), passed: result.status === 0,
-    logPaths: [path.relative(root, stdoutPath), path.relative(root, stderrPath)],
+    localLogPaths: [path.relative(root, stdoutPath), path.relative(root, stderrPath)],
   };
-};
+}
 
-git(['worktree', 'remove', '--force', worktree]);
+runRaw('git', ['-C', root, 'worktree', 'remove', '--force', worktree], { timeout: 60_000 });
 fs.rmSync(worktree, { recursive: true, force: true });
-git(['worktree', 'prune']);
-let result = git(['worktree', 'add', '--detach', '--force', worktree, 'HEAD']);
-if (result.status !== 0) throw new Error(result.stderr || result.stdout);
-const commit = git(['rev-parse', 'HEAD'], { cwd: worktree }).stdout.trim();
-const tree = git(['rev-parse', 'HEAD^{tree}'], { cwd: worktree }).stdout.trim();
-const initialStatus = git(['status', '--porcelain=v1'], { cwd: worktree }).stdout;
+runRaw('git', ['-C', root, 'worktree', 'prune'], { timeout: 60_000 });
+const added = runRaw('git', ['-C', root, 'worktree', 'add', '--detach', '--force', worktree, 'HEAD'], { timeout: 60_000 });
+if (added.status !== 0) throw new Error(added.stderr || added.stdout || 'unable to create detached target worktree');
+const commit = git(['rev-parse', 'HEAD'], worktree).stdout.trim();
+const tree = git(['rev-parse', 'HEAD^{tree}'], worktree).stdout.trim();
+const initialStatus = git(['status', '--porcelain=v1'], worktree).stdout;
 if (initialStatus !== '') throw new Error('detached target reference is not clean');
+
 const commands = [
   capture('install', 'npm', ['ci', '--include=dev', '--ignore-scripts', '--no-audit', '--no-fund'], 'install'),
   capture('check', 'npm', ['run', 'check'], 'check'),
@@ -67,14 +80,23 @@ const commands = [
   capture('supervisor-acceptance', 'npm', ['run', 'test:extracted:acceptance'], 'acceptance'),
   capture('gateway', 'npm', ['run', 'test:extracted:gateway'], 'gateway'),
   capture('parity-static', 'npm', ['run', 'test:parity:static'], 'parity'),
+  capture('parity-behavioral', 'npm', ['run', 'test:parity:behavioral'], 'parity'),
 ];
-const finalStatus = git(['status', '--porcelain=v1'], { cwd: worktree }).stdout;
+const finalStatus = git(['status', '--porcelain=v1'], worktree).stdout;
+const countFiles = (directory, suffix) => fs.readdirSync(directory, { recursive: true }).filter((entry) => String(entry).endsWith(suffix)).length;
 const evidence = {
   schemaVersion: '1.0.0', capturedAt: new Date().toISOString(), nodeVersion: process.version,
-  commit, tree, cleanDetachedWorktree: initialStatus === '', worktreeStatusAfterTests: finalStatus,
+  commit, tree,
+  sourceReferences: {
+    supervisorCommit: git(['rev-parse', 'HEAD'], sourceSupervisor).stdout.trim(),
+    gatewayCommit: git(['rev-parse', 'HEAD'], sourceGateway).stdout.trim(),
+  },
+  cleanDetachedWorktree: initialStatus === '', worktreeStatusAfterTests: finalStatus,
   testFileCounts: {
-    supervisor: fs.readdirSync(path.join(worktree, 'test', 'extracted', 'supervisor'), { recursive: true }).filter((entry) => String(entry).endsWith('.test.ts')).length,
-    gateway: fs.readdirSync(path.join(worktree, 'test', 'extracted', 'gateway'), { recursive: true }).filter((entry) => String(entry).endsWith('.test.js')).length,
+    supervisor: countFiles(path.join(worktree, 'test/extracted/supervisor'), '.test.ts'),
+    gateway: countFiles(path.join(worktree, 'test/extracted/gateway'), '.test.js'),
+    parityTypeScript: countFiles(path.join(worktree, 'test/parity'), '.test.ts'),
+    parityStatic: countFiles(path.join(worktree, 'test/parity'), '.test.mjs'),
   },
   commands,
   summary: {
@@ -86,8 +108,11 @@ const evidence = {
     gatewayTests: commands.filter((entry) => entry.kind === 'gateway').reduce((sum, entry) => sum + (entry.tap.tests ?? 0), 0),
     parityTests: commands.filter((entry) => entry.kind === 'parity').reduce((sum, entry) => sum + (entry.tap.tests ?? 0), 0),
   },
-  passed: commands.every((entry) => entry.passed),
+  rawLogsCommitted: false,
+  passed: commands.every((entry) => entry.passed) && finalStatus === '',
 };
 fs.writeFileSync(evidencePath, `${JSON.stringify(evidence, null, 2)}\n`);
-console.log(JSON.stringify(evidence, null, 2));
+console.log(JSON.stringify({ passed: evidence.passed, commit, tree, summary: evidence.summary, commands: commands.map(({ name, exitStatus, tap, stdoutSha256, stderrSha256 }) => ({ name, exitStatus, tap, stdoutSha256, stderrSha256 })) }, null, 2));
+runRaw('git', ['-C', root, 'worktree', 'remove', '--force', worktree], { timeout: 60_000 });
+runRaw('git', ['-C', root, 'worktree', 'prune'], { timeout: 60_000 });
 if (!evidence.passed) process.exitCode = 1;

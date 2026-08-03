@@ -8,7 +8,7 @@ import { StateStore, type JobRecord, type PtySessionRecord } from '../../../../s
 import { loadRuntimeConfig } from '../../../../src/supervisor/configuration/config.js';
 
 function fixture() {
-  const root = mkdtempSync(join(tmpdir(), 'bq-state-store-'));
+  const root = mkdtempSync(join(tmpdir(), 'se-z-state-store-'));
   const config = loadRuntimeConfig({
     stateRoot: root,
     socketPath: join(root, 'sez.sock'),

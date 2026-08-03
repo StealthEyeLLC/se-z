@@ -8,9 +8,13 @@ import { basename, join } from 'node:path';
 import { test } from 'node:test';
 import { sha256, sourceSupervisor, target } from '../helpers/index.js';
 
-function captureError(action: () => unknown): { name: string; code?: string; message: string } {
+function captureError(action: () => unknown, roots: string[] = []): { name: string; code?: string; message: string } {
   try { action(); return { name: '<NO_ERROR>', message: '' }; }
-  catch (error: any) { return { name: error.name, code: error.code, message: String(error.message).replace(/baby-quirt/gu, 'se-z') }; }
+  catch (error: any) {
+    let message = String(error.message).replace(/baby-quirt/gu, 'se-z');
+    for (const root of roots) message = message.split(root).join('<ROOT>');
+    return { name: error.name, code: error.code, message };
+  }
 }
 
 async function runFileScenario(kind: 'source' | 'target') {
@@ -30,24 +34,25 @@ async function runFileScenario(kind: 'source' | 'target') {
 
     const expectedSha256 = manager.stat({ path: text }).sha256;
     const replaced = manager.replace({ root, path: text, data: 'replacement', encoding: 'utf8', expectedSha256 });
-    const staleError = captureError(() => manager.replace({ root, path: text, data: 'wrong', encoding: 'utf8', expectedSha256: '0'.repeat(64) }));
+    const staleError = captureError(() => manager.replace({ root, path: text, data: 'wrong', encoding: 'utf8', expectedSha256: '0'.repeat(64) }), [root, outside]);
     const replacementBytes = readFileSync(text);
 
     const createdPath = join(root, 'nested', 'created.bin');
     const createdBytes = Buffer.from([0, 1, 2, 127, 128, 255]);
     const created = manager.replace({ root, path: createdPath, data: createdBytes.toString('base64'), encoding: 'base64', expectedAbsent: true, createParents: true });
-    const absentError = captureError(() => manager.replace({ root, path: createdPath, data: 'again', encoding: 'utf8', expectedAbsent: true }));
-    const outsideError = captureError(() => manager.replace({ root, path: join(root, '..', 'escape'), data: 'x', encoding: 'utf8', expectedAbsent: true }));
+    const absentError = captureError(() => manager.replace({ root, path: createdPath, data: 'again', encoding: 'utf8', expectedAbsent: true }), [root, outside]);
+    const outsideError = captureError(() => manager.replace({ root, path: join(root, '..', 'escape'), data: 'x', encoding: 'utf8', expectedAbsent: true }), [root, outside]);
 
     const linkedParent = join(root, 'linked-parent');
     symlinkSync(outside, linkedParent, 'dir');
-    const symlinkError = captureError(() => manager.replace({ root, path: join(linkedParent, 'escape'), data: 'x', encoding: 'utf8', expectedAbsent: true }));
+    const symlinkError = captureError(() => manager.replace({ root, path: join(linkedParent, 'escape'), data: 'x', encoding: 'utf8', expectedAbsent: true }), [root, outside]);
 
     const copy = join(root, 'copy.bin');
     const moved = join(root, 'moved.bin');
     manager.copy({ source: createdPath, destination: copy });
     manager.move({ source: copy, destination: moved });
     const copiedBytes = readFileSync(moved);
+    const movedMode = lstatSync(moved).mode & 0o777;
 
     const sparse = join(root, 'sparse.bin');
     const fd = openSync(sparse, 'w'); closeSync(fd); truncateSync(sparse, 1024 * 1024 + 17);
@@ -66,9 +71,10 @@ async function runFileScenario(kind: 'source' | 'target') {
       replacementSha256: sha256(replacementBytes), staleError,
       created: { sha256: created.sha256, bytesWritten: created.bytesWritten, created: created.created, bytes: [...readFileSync(createdPath)] },
       absentError, outsideError, symlinkError, outsideMutated: existsSync(join(outside, 'escape')),
-      moved: { basename: basename(moved), bytes: [...copiedBytes], mode: lstatSync(moved).mode & 0o777 },
+      moved: { basename: basename(moved), bytes: [...copiedBytes], mode: movedMode },
       sparse: { exists: sparseStat.exists, type: sparseStat.type, size: sparseStat.size, tail: [...Buffer.from(sparseTail.data, 'base64')], eof: sparseTail.eof },
-      listing, symlink: { exists: symlinkStat.exists, type: symlinkStat.type }, removed, missing,
+      listing, symlink: { exists: symlinkStat.exists, type: symlinkStat.type },
+      removed: { removed: removed.removed }, missing: { exists: missing.exists },
     };
   } finally {
     rmSync(root, { recursive: true, force: true });

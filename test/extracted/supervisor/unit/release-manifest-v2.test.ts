@@ -30,7 +30,7 @@ afterEach(() => {
 });
 
 function workspace(): string {
-  const value = mkdtempSync(join(tmpdir(), 'bq-release-manifest-'));
+  const value = mkdtempSync(join(tmpdir(), 'se-z-release-manifest-'));
   roots.push(value);
   return value;
 }

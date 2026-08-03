@@ -353,7 +353,7 @@ async function hostAssertions() {
     '--reuid=997', '--regid=997', '--clear-groups', '/usr/bin/cat', uidFile,
   ]);
   const lifecycle = await runCommand('systemd UID 997 transient service', '/usr/bin/systemd-run', [
-    '--quiet', '--wait', '--pipe', '--collect', '--unit=bq-cert-uid997',
+    '--quiet', '--wait', '--pipe', '--collect', '--unit=se-z-cert-uid997',
     '--property=User=se-z-cert', '--property=Group=se-z-cert', '/usr/bin/id', '-u',
   ]);
   const peer = await runCommand('SO_PEERCRED UID 997 probe', '/usr/bin/python3', [

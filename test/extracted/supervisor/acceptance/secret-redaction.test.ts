@@ -8,7 +8,7 @@ import { startTestServer, stopTestServer, type TestServerContext } from '../unit
 import { createTestClient } from '../unit/helpers/client.js';
 import { assertNoSecretLeak, readStream } from './helpers/protocol.js';
 
-const CANARY = 'bq-canary-secret-value-7f3a9c2d';
+const CANARY = 'se-z-canary-secret-value-7f3a9c2d';
 
 describe('acceptance: secret redaction', () => {
   let ctx: TestServerContext;

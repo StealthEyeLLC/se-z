@@ -24,7 +24,7 @@ afterEach(() => {
 });
 
 function makePath(): string {
-  const root = mkdtempSync(join(tmpdir(), 'bq-deployment-db-'));
+  const root = mkdtempSync(join(tmpdir(), 'se-z-deployment-db-'));
   roots.push(root);
   return join(root, 'state', 'deployment-state.sqlite');
 }

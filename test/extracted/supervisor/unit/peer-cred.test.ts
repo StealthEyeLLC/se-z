@@ -9,7 +9,7 @@ import { getSocketPeerCred } from '../../../../src/supervisor/peers/peer-cred.js
 
 describe('peer-cred native addon', () => {
   it('returns peer UID over a live unix socket', async () => {
-    const dir = mkdtempSync(join(tmpdir(), 'bq-peercred-'));
+    const dir = mkdtempSync(join(tmpdir(), 'se-z-peercred-'));
     const socketPath = join(dir, 'peer.sock');
     const server = createServer({ path: socketPath });
     await new Promise<void>((resolve) => server.listen(socketPath, resolve));

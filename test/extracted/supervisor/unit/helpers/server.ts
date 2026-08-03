@@ -25,7 +25,7 @@ export async function startTestServer(
   overrides: Parameters<typeof loadRuntimeConfig>[0] = {},
 ): Promise<TestServerContext> {
   setupTestEnv();
-  const dir = mkdtempSync(join(tmpdir(), 'bq-test-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-test-'));
   const socketPath = join(dir, 'test.sock');
   const configRoot = join(dir, 'config');
   const stateRoot = join(dir, 'state');

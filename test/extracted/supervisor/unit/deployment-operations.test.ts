@@ -18,7 +18,7 @@ afterEach(() => {
 });
 
 function fixture(stopAfterState?: 'guard_armed') {
-  const root = mkdtempSync(join(tmpdir(), 'bq-release-ops-'));
+  const root = mkdtempSync(join(tmpdir(), 'se-z-release-ops-'));
   roots.push(root);
   const config = loadRuntimeConfig({ stateRoot: join(root, 'state'), configRoot: join(root, 'config') });
   return {

@@ -14,7 +14,7 @@ afterEach(() => {
 });
 
 function makeStore(): { store: ReplayStore; stateRoot: string } {
-  const root = mkdtempSync(join(tmpdir(), 'bq-idempotency-'));
+  const root = mkdtempSync(join(tmpdir(), 'se-z-idempotency-'));
   roots.push(root);
   const stateRoot = join(root, 'state');
   const config = loadRuntimeConfig({

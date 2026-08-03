@@ -146,13 +146,22 @@ for (const record of sourceMap.records) {
     record.notes = 'Source-only repository architecture or release-layout assertions are executed by the exact source harness; target paths and architecture follow higher-precedence se-z canonicals and receive dedicated target tests.';
   }
 }
+const expectedPortedKeys = new Set();
+for (const component of selected) {
+  const repo = componentRepo[component];
+  for (const sourcePath of tracked(sourceRoots[component])) {
+    const destinationPath = testDestination(component, sourcePath);
+    if (destinationPath) expectedPortedKeys.add(`${repo}:${sourcePath}:${destinationPath}`);
+  }
+}
 fileMap.records = fileMap.records.filter((entry) => {
   if (!selectedRepos.has(entry.sourceRepository)) return true;
   if (entry.transformationType !== 'test fixture derived from source') return true;
   if (entry.destinationPath.startsWith('test/parity/fixtures/source-contracts/')) return true;
-  return false;
+  return expectedPortedKeys.has(`${entry.sourceRepository}:${entry.sourcePath}:${entry.destinationPath}`);
 });
 
+const portRunAt = new Date().toISOString();
 const copied=[];
 for (const component of selected) {
   const sourceRoot=sourceRoots[component];
@@ -182,30 +191,33 @@ for (const component of selected) {
     fs.mkdirSync(path.dirname(full),{recursive:true});
     fs.writeFileSync(full,targetBytes);
     const targetDigest=sha256(targetBytes);
+    let mapEntry=fileMap.records.find((entry)=>entry.sourceRepository===repo&&entry.sourcePath===sourcePath&&entry.destinationPath===destinationPath);
+    const mapEntryCreated = !mapEntry;
+    if (!mapEntry) {
+      mapEntry={sourceRepository:repo,sourcePath,sourceCommit:identity.commit,sourceTree:identity.tree,sourceDigest:sourceRecord.sourceDigest,destinationPath,transformationType:'test fixture derived from source',applicableLicense:repo.endsWith('baby-quirt-mcp')?'StealthEye LLC proprietary; NOTICE.md preserved centrally':'StealthEye LLC proprietary; target NOTICE and provenance apply'};
+      fileMap.records.push(mapEntry);
+    }
+    const mappingChanged = mapEntryCreated || mapEntry.targetDigest !== targetDigest || mapEntry.extractionStatus !== 'EXTRACTED';
     sourceRecord.destinationPath=destinationPath;
     sourceRecord.copyStatus='COPIED';
     sourceRecord.renameStatus=targetDigest===sourceRecord.sourceDigest?'NOT_REQUIRED':'APPLIED';
     sourceRecord.transformationType='test fixture derived from source';
     sourceRecord.parityTestStatus='PORTED_PENDING_EXECUTION';
     sourceRecord.notes='Mechanically ported against relocated se-z implementation; canonical-only differences remain classified.';
-    let mapEntry=fileMap.records.find((entry)=>entry.sourceRepository===repo&&entry.sourcePath===sourcePath&&entry.destinationPath===destinationPath);
-    if (!mapEntry) {
-      mapEntry={sourceRepository:repo,sourcePath,sourceCommit:identity.commit,sourceTree:identity.tree,sourceDigest:sourceRecord.sourceDigest,destinationPath,transformationType:'test fixture derived from source',applicableLicense:repo.endsWith('baby-quirt-mcp')?'StealthEye LLC proprietary; NOTICE.md preserved centrally':'StealthEye LLC proprietary; target NOTICE and provenance apply'};
-      fileMap.records.push(mapEntry);
-    }
     mapEntry.targetDigest=targetDigest;
     mapEntry.extractionStatus='EXTRACTED';
-    mapEntry.extractedAt=new Date().toISOString();
-    copied.push({component,sourcePath,destinationPath,sourceDigest:sourceRecord.sourceDigest,targetDigest});
+    if (mappingChanged || !mapEntry.extractedAt) mapEntry.extractedAt=portRunAt;
+    copied.push({component,sourcePath,destinationPath,sourceDigest:sourceRecord.sourceDigest,targetDigest,mappingChanged});
   }
 }
+const mappingsChanged = copied.some((entry)=>entry.mappingChanged);
 sourceMap.extractedRecordCount=sourceMap.records.filter((r)=>r.copyStatus==='COPIED').length;
 sourceMap.portedTestRecordCount=sourceMap.records.filter((r)=>r.transformationType==='test fixture derived from source'&&r.copyStatus==='COPIED').length;
-sourceMap.testsPortedAt=new Date().toISOString();
+if (mappingsChanged || !sourceMap.testsPortedAt) sourceMap.testsPortedAt=portRunAt;
 fileMap.records.sort((a,b)=>a.sourceRepository.localeCompare(b.sourceRepository)||a.sourcePath.localeCompare(b.sourcePath)||a.destinationPath.localeCompare(b.destinationPath));
 fileMap.extractedRecordCount=fileMap.records.filter((r)=>r.extractionStatus==='EXTRACTED').length;
 fileMap.portedTestRecordCount=fileMap.records.filter((r)=>r.transformationType==='test fixture derived from source'&&r.extractionStatus==='EXTRACTED').length;
-fileMap.testsPortedAt=sourceMap.testsPortedAt;
+if (mappingsChanged || !fileMap.testsPortedAt) fileMap.testsPortedAt=portRunAt;
 fs.writeFileSync(sourceMapPath,JSON.stringify(sourceMap,null,2)+'\n');
 fs.writeFileSync(fileMapPath,JSON.stringify(fileMap,null,2)+'\n');
 fs.mkdirSync(path.join(root,'evidence/phase1'),{recursive:true});

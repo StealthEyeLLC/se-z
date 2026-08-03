@@ -8,7 +8,7 @@ import {
 } from '../../../../src/supervisor/configuration/credentials/provider.js';
 import { redactSecrets } from '../../../../src/protocol/canonical/canonical.js';
 
-const CANARY = 'bq-canary-secret-value-7f3a9c2d';
+const CANARY = 'se-z-canary-secret-value-7f3a9c2d';
 
 describe('secret references', () => {
   it('resolves references and persists redacted metadata only', async () => {

@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { atomicSwapSymlinks, rollbackSymlinks, symlinkExists } from '../../../../src/selfhost/install/symlinks.js';
 
 describe('acceptance: deployment symlink integrity', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'bq-deploy-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-deploy-'));
   const current = join(dir, 'current');
   const previous = join(dir, 'previous');
   const releaseA = join(dir, 'releases', '0.1.0');

@@ -13,7 +13,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
 describe('signing', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'bq-sign-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-sign-'));
   const publicKeyPath = join(dir, 'public.pem');
   const privateKeyPath = join(dir, 'private.pem');
 

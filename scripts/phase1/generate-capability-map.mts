@@ -269,10 +269,17 @@ const result = {
   internalCapabilities: internals,
 };
 
-fs.writeFileSync(outputJson, `${JSON.stringify(result, null, 2)}\n`);
+const generatedJson = `${JSON.stringify(result, null, 2)}\n`;
 const rows = operations.map((item) => `| \`${item.sourceOperation}\` | \`${item.targetOperation}\` | ${item.sourceFamily} | ${item.state} | ${item.canonicalDelta.length ? item.canonicalDelta.map((id) => `\`${id}\``).join(', ') : 'none'} |`).join('\n');
 const internalRows = internals.map((item) => `| ${item.capability} | ${item.family} | ${item.state} | \`${item.destinationImplementation}\` | ${item.canonicalDelta.length ? item.canonicalDelta.map((id) => `\`${id}\``).join(', ') : 'none'} |`).join('\n');
 const markdown = `# Phase 1 Capability Parity\n\n## Result\n\nThe signed installed source catalog contains **${result.installedOperationCount} operations**: ${result.coreOperationCount} pinned core definitions plus one dynamically loaded proof skill operation. This map contains all ${operations.length}; no installed operation is omitted. Phase 1 records extraction state, not standalone production support. No target operation in this map is marked production-supported.\n\nSource identity: \`${SOURCE_IDENTITIES.supervisor.repository}@${SOURCE_IDENTITIES.supervisor.commit}\` (tree \`${SOURCE_IDENTITIES.supervisor.tree}\`). Installed catalog digest: \`${result.sourceIdentity.installedCatalogDigest}\`.\n\n## State meanings\n\n- **MECHANICALLY_RENAMED**: proven mechanics and definition are present under active se-z identity with parity coverage, but are not exposed by a production se-z supervisor in Phase 1.\n- **EXTRACTED_NOT_INTEGRATED**: source mechanics are present and testable, while final supervisor/gateway registration or activation remains a later build generation.\n- **DEFERRED_TO_0.1C**: source mechanics are traced, but the canonical separately versioned recovery architecture owns final implementation.\n- **SUPERSEDED_BY_CANONICAL_TARGET**: source behavior remains traceable, while the canonical final transport or owner contract replaces it.
 - **INTENTIONALLY_NOT_CARRIED**: the source behavior is documented and deliberately excluded from active target semantics.\n\n## Installed operation map\n\n| Source operation | Target operation | Family | Phase 1 state | Canonical delta |\n|---|---|---|---|---|\n${rows}\n\n## Meaningful internal capability map\n\n| Capability | Family | Phase 1 state | Destination | Canonical delta |\n|---|---|---|---|---|\n${internalRows}\n\n## Retention conclusion\n\nRaw execution, durable jobs, streams, files, PTYs, and artifacts are mechanically retained and tested. Release, self-hosting, skills, GitHub App, gateway, and OAuth mechanics are traced and testable without activation. The map explicitly assigns nonmechanical work to the canonical-delta register; it does not turn the extracted operation definitions into a running catalog or a standalone claim.\n`;
-fs.writeFileSync(outputMarkdown, markdown);
+if (process.argv.includes('--check')) {
+  const currentJson = fs.readFileSync(outputJson, 'utf8');
+  const currentMarkdown = fs.readFileSync(outputMarkdown, 'utf8');
+  if (currentJson !== generatedJson || currentMarkdown !== markdown) throw new Error('Phase 1 capability map is stale');
+} else {
+  fs.writeFileSync(outputJson, generatedJson);
+  fs.writeFileSync(outputMarkdown, markdown);
+}
 console.log(JSON.stringify({ outputJson: path.relative(root, outputJson), outputMarkdown: path.relative(root, outputMarkdown), operations: operations.length, internalCapabilities: internals.length, summary: result.summary, passed: result.completeness.everyInstalledOperationMapped }, null, 2));

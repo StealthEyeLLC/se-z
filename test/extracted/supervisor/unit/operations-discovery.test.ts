@@ -17,7 +17,7 @@ import { ReplayStore } from '../../../../src/state/replay/store.js';
 import { StateStore } from '../../../../src/state/store/store.js';
 import type { AuthenticatedRequest } from '../../../../src/supervisor/dispatch/auth/authenticator.js';
 
-const root = mkdtempSync(join(tmpdir(), 'bq-discovery-'));
+const root = mkdtempSync(join(tmpdir(), 'se-z-discovery-'));
 const config = loadRuntimeConfig({
   stateRoot: join(root, 'state'),
   configRoot: join(root, 'config'),

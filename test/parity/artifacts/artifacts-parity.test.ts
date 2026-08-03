@@ -15,7 +15,7 @@ function record(record: any) {
   return {
     name: record.name, status: record.status, sha256: record.sha256, size: record.size,
     expectedSize: record.expectedSize ?? null, expectedSha256: record.expectedSha256 ?? null,
-    finalBasename: record.path ? basename(record.path) : '', pathPresent: Boolean(record.path),
+    finalBasename: record.path ? (record.status === 'uploading' ? '<UPLOAD>.upload' : basename(record.path)) : '', pathPresent: Boolean(record.path),
   };
 }
 
@@ -41,10 +41,11 @@ async function runArtifactScenario(kind: 'source' | 'target') {
     const resumed = manager.uploadChunk({ artifactId: upload.artifactId, offset: 5, data: expected.subarray(5).toString('base64') });
     const corruptionError = captureError(() => manager.finalize({ artifactId: upload.artifactId, expectedSize: expected.length, expectedSha256: '0'.repeat(64) }));
     const finalized = manager.finalize({ artifactId: upload.artifactId, expectedSize: expected.length, expectedSha256: digest(expected) });
-    const downloadFirst = manager.download({ artifactId: finalized.artifactId, offset: 0, limit: 4 });
-    const downloadRepeat = manager.download({ artifactId: finalized.artifactId, offset: 0, limit: 4 });
-    const downloadRest = manager.download({ artifactId: finalized.artifactId, offset: 4 });
-    const immutableFinalizeError = captureError(() => manager.finalize({ artifactId: finalized.artifactId }));
+    const stripDownloadId = ({ artifactId: _artifactId, ...result }: any) => result;
+    const downloadFirst = stripDownloadId(manager.download({ artifactId: finalized.artifactId, offset: 0, limit: 4 }));
+    const downloadRepeat = stripDownloadId(manager.download({ artifactId: finalized.artifactId, offset: 0, limit: 4 }));
+    const downloadRest = stripDownloadId(manager.download({ artifactId: finalized.artifactId, offset: 4 }));
+    const immutableFinalizeError = captureError(() => manager.finalize({ artifactId: finalized.artifactId, expectedSize: expected.length, expectedSha256: digest(expected) }));
 
     const abortUpload = manager.beginUpload({ name: 'abort.bin' });
     const abortPath = abortUpload.path;

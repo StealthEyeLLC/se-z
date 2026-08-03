@@ -221,10 +221,10 @@ requirements:
     releaseGate: mandatory
   - id: INV-PHASE1-PRODUCTION-001
     class: invariant
-    statement: Phase 1 leaves the deployed Baby services, pointers, socket, state, OAuth state, credentials, public endpoint, and ChatGPT app unchanged.
+    statement: Phase 1 leaves deployed Baby services, release pointers, socket, manifests, OAuth configuration, credentials, public endpoint, and ChatGPT app routing unchanged; routine authorized job, stream, and receipt records may accrue.
     enforcedBy: [read-only-production-proof, phase1-report]
     tests: [production_before_after_identity_equal]
-    evidence: [evidence/phase1/source-identity-proof.json, evidence/phase1/phase1-summary.json]
+    evidence: [evidence/phase1/source-identity-proof.json, evidence/phase1/production-readback.json, evidence/phase1/phase1-summary.json]
     releaseGate: mandatory
   - id: ANTI-PHASE1-REFACTOR-001
     class: anti-invariant

@@ -8,8 +8,8 @@ import { pathToFileURL } from 'node:url';
 import { applyMechanicalIdentity } from '../../../scripts/phase1/source-layout.mjs';
 
 export const REPOSITORY_ROOT = process.cwd();
-export const SOURCE_SUPERVISOR_ROOT = path.join(REPOSITORY_ROOT, '.phase1-sources/baby-quirt');
-export const SOURCE_GATEWAY_ROOT = path.join(REPOSITORY_ROOT, '.phase1-sources/baby-quirt-mcp');
+export const SOURCE_SUPERVISOR_ROOT = path.resolve(process.env.SEZ_PHASE1_SUPERVISOR_SOURCE ?? path.join(REPOSITORY_ROOT, '.phase1-sources/baby-quirt'));
+export const SOURCE_GATEWAY_ROOT = path.resolve(process.env.SEZ_PHASE1_GATEWAY_SOURCE ?? path.join(REPOSITORY_ROOT, '.phase1-sources/baby-quirt-mcp'));
 
 export async function sourceSupervisor(relativePath: string): Promise<Record<string, any>> {
   return import(pathToFileURL(path.join(SOURCE_SUPERVISOR_ROOT, relativePath)).href);

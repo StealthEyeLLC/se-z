@@ -30,7 +30,7 @@ afterEach(() => {
 });
 
 function root(): string {
-  const value = mkdtempSync(join(tmpdir(), 'bq-strict-archive-'));
+  const value = mkdtempSync(join(tmpdir(), 'se-z-strict-archive-'));
   roots.push(value);
   return value;
 }

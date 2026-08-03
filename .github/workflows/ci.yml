@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24.18.0'
@@ -20,12 +22,19 @@ jobs:
       - run: npm run check
       - run: npm run build
       - run: npm run test:scaffold
+      - run: npm run test:extracted:unit
+      - run: npm run test:extracted:integration
+      - run: npm run test:extracted:gateway
       - run: npm run test:parity:static
-      - run: npm run phase1:dependency-scan
-      - run: npm run phase1:secret-scan
+      - run: npm run test:parity:behavioral
+      - run: npm run phase1:capability-map:check
+      - run: npm run phase1:requirements-audit:check
+      - run: npm run phase1:dependency-scan:check
+      - run: npm run phase1:secret-scan:check
+      - run: npm run phase1:verify
+      - run: test -f dist/manifest.json
       - name: Authorized acceptance boundary
         run: |
           printf '%s\n' \
-            'Pinned private-source suites, UID-0/systemd acceptance, and production readback are not run in untrusted CI.' \
-            'They are measured separately by phase1:source-test, phase1:extracted-test, and authorized final verification evidence.'
-      - run: test -f dist/manifest.json
+            'Exact private-source suites, live UID-0/systemd acceptance, and production readback are represented by committed content-addressed evidence.' \
+            'Untrusted CI verifies that evidence and reruns all source-independent target checks; it does not receive production credentials.'

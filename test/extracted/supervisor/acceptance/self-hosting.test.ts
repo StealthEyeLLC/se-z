@@ -12,7 +12,7 @@ import { verifyReceipt } from '../../../../src/protocol/receipts/verify.js';
 describe('acceptance: self-hosting workflow', () => {
   let ctx: TestServerContext;
   let client: SezTestClient;
-  const workspace = mkdtempSync(join(tmpdir(), 'bq-selfhost-'));
+  const workspace = mkdtempSync(join(tmpdir(), 'se-z-selfhost-'));
 
   before(async () => {
     ctx = await startTestServer();
@@ -78,7 +78,7 @@ describe('acceptance: self-hosting workflow', () => {
 describe('acceptance: artifact bounds', () => {
   let ctx: TestServerContext;
   let client: SezTestClient;
-  const workspace = mkdtempSync(join(tmpdir(), 'bq-artifact-'));
+  const workspace = mkdtempSync(join(tmpdir(), 'se-z-artifact-'));
 
   before(async () => {
     ctx = await startTestServer();

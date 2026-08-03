@@ -325,7 +325,7 @@ class OAuthStateStore {
 
 function publicJwk(privateKey) {
   const jwk = createPublicKey(privateKey).export({ format: 'jwk' });
-  const kid = `bq-oauth-${sha256Hex(`${jwk.kty}:${jwk.crv}:${jwk.x}`).slice(0, 20)}`;
+  const kid = `se-z-oauth-${sha256Hex(`${jwk.kty}:${jwk.crv}:${jwk.x}`).slice(0, 20)}`;
   return Object.freeze({ ...jwk, kid, use: 'sig', alg: 'EdDSA' });
 }
 
@@ -519,7 +519,7 @@ export class OAuthAuthorizationServer {
       oauthError(response, 400, 'invalid_client_metadata', 'Only public PKCE clients are supported.');
       return;
     }
-    const clientId = `bq_${token(24)}`;
+    const clientId = `sez_${token(24)}`;
     const client = {
       clientId,
       clientName: typeof body.client_name === 'string' ? body.client_name.slice(0, 200) : 'ChatGPT',

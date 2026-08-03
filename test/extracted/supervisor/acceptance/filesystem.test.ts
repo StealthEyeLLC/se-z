@@ -10,7 +10,7 @@ import { FileManager } from '../../../../src/files/manager.js';
 
 describe('acceptance: hostile filesystem', () => {
   const fm = new FileManager();
-  const dir = mkdtempSync(join(tmpdir(), 'bq-hostile-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-hostile-'));
 
   before(() => {
     mkdirSync(join(dir, 'nested'), { recursive: true });
@@ -39,7 +39,7 @@ describe('acceptance: hostile filesystem', () => {
 describe('acceptance: large binary transfer', () => {
   let ctx: TestServerContext;
   let client: SezTestClient;
-  const testDir = mkdtempSync(join(tmpdir(), 'bq-binary-'));
+  const testDir = mkdtempSync(join(tmpdir(), 'se-z-binary-'));
 
   before(async () => {
     ctx = await startTestServer();

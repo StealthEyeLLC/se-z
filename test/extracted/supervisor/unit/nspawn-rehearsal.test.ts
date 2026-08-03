@@ -204,7 +204,7 @@ class FakeExecutor implements NspawnCommandExecutor {
   }
 
   private machineName(): string {
-    return `bq-${sha256Hex(this.plan.runId).slice(0, 8)}`;
+    return `se-z-${sha256Hex(this.plan.runId).slice(0, 8)}`;
   }
 }
 

@@ -14,7 +14,7 @@ import { redactSecrets } from '../../../../src/protocol/canonical/canonical.js';
 import { FileManager } from '../../../../src/files/manager.js';
 
 describe('symlink utilities', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'bq-symlink-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-symlink-'));
   const current = join(dir, 'current');
   const previous = join(dir, 'previous');
   const target = join(dir, 'release');
@@ -64,7 +64,7 @@ describe('redactSecrets', () => {
 
 describe('file manager symlink stat', () => {
   const fm = new FileManager();
-  const dir = mkdtempSync(join(tmpdir(), 'bq-lstat-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-lstat-'));
 
   it('detects symlink type', () => {
     mkdirSync(dir, { recursive: true });

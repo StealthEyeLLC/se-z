@@ -27,7 +27,7 @@ function sha256(data: string): string {
 }
 
 function makeManager(): { manager: ArtifactManager; root: string; store: StateStore } {
-  const root = mkdtempSync(join(tmpdir(), 'bq-artifacts-'));
+  const root = mkdtempSync(join(tmpdir(), 'se-z-artifacts-'));
   roots.push(root);
   const config = loadRuntimeConfig({ stateRoot: join(root, 'state'), configRoot: join(root, 'config') });
   const store = new StateStore(config);

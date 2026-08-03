@@ -10,7 +10,7 @@ import { ReplayStore } from '../../../../src/state/replay/store.js';
 import { JobManager } from '../../../../src/jobs/manager.js';
 
 describe('job manager', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'bq-jobs-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-jobs-'));
   const config = loadRuntimeConfig({ stateRoot: dir, expectedMachineIdSha256: 'test' });
   const store = new StateStore(config);
   const jobs = new JobManager(config, store);
@@ -46,7 +46,7 @@ describe('job manager', () => {
 });
 
 describe('replay store', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'bq-replay-'));
+  const dir = mkdtempSync(join(tmpdir(), 'se-z-replay-'));
   const config = loadRuntimeConfig({ stateRoot: dir });
   const replay = new ReplayStore(config);
 

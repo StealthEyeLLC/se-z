@@ -38,7 +38,7 @@ describe('acceptance: reproducible release builds', () => {
       /npm ci --omit=dev .*--bin-links=false/u,
       'bundle builder must disable npm bin symlinks without relying on ambient npm configuration',
     );
-    const workspace = mkdtempSync(join(tmpdir(), 'bq-repro-'));
+    const workspace = mkdtempSync(join(tmpdir(), 'se-z-repro-'));
     const buildA = join(workspace, 'build-a');
     const buildB = join(workspace, 'build-b');
     const outputA = join(workspace, 'output-a');

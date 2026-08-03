@@ -69,7 +69,7 @@ describe('acceptance: auth adversarial', () => {
 
 describe('acceptance: replay store ordering', () => {
   it('stores idempotent responses after authenticated execution', () => {
-    const store = new ReplayStore(loadRuntimeConfig({ stateRoot: '/tmp/bq-replay-order', expectedMachineIdSha256: 'test' }));
+    const store = new ReplayStore(loadRuntimeConfig({ stateRoot: '/tmp/se-z-replay-order', expectedMachineIdSha256: 'test' }));
     const hash = 'semantic-hash-1';
     store.storeIdempotentResponse(hash, { ok: true });
     assert.equal(store.getIdempotentResponse(hash)?.ok, true);
