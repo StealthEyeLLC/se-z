@@ -71,6 +71,7 @@ export class KernelOperations {
     this.artifacts = new ArtifactOperations(config, state);
     this.socketStatusProvider = () => ({ local: false, gateway: false });
     this.initialized = false;
+    this.finalizations = new Map();
     this.reconciliation = null;
   }
 
@@ -139,6 +140,9 @@ export class KernelOperations {
     const requestRecord = reservation.request;
     try {
       const execution = await this.execute(requestRecord, request.operation, request.payload);
+      if (execution.job?.terminal && execution.job.requestId === requestRecord.requestId) {
+        return await this.finalizeJobRequest(execution.job);
+      }
       const response = await this.buildResponse({
         requestRecord,
         state: execution.state ?? 'completed',
@@ -193,6 +197,20 @@ export class KernelOperations {
   }
 
   async responseForExisting(record, metadata = {}) {
+    // A concurrent identical caller may observe the durable reservation in the
+    // narrow interval before the winning caller binds its job.  Wait for that
+    // durable progress rather than returning an accepted response with no
+    // resumable job identity.  The wait is bounded so a crashed pre-launch
+    // reservation remains diagnosable instead of hanging a caller forever.
+    if (!record.response && !record.jobId && !record.terminal) {
+      const deadline = Date.now() + 5_000;
+      while (Date.now() < deadline) {
+        await new Promise((resolve) => setTimeout(resolve, 10));
+        const refreshed = await this.state.getRequest(record.requestId);
+        record = refreshed;
+        if (record.response || record.jobId || record.terminal) break;
+      }
+    }
     if (record.response?.terminal) return record.response;
     if (record.jobId) {
       const job = await this.jobs.get(record.jobId);
@@ -214,6 +232,16 @@ export class KernelOperations {
 
   async finalizeJobRequest(job) {
     if (!job?.terminal) return null;
+    const existing = this.finalizations.get(job.requestId);
+    if (existing) return await existing;
+    const finalization = this.finalizeJobRequestOnce(job).finally(() => {
+      if (this.finalizations.get(job.requestId) === finalization) this.finalizations.delete(job.requestId);
+    });
+    this.finalizations.set(job.requestId, finalization);
+    return await finalization;
+  }
+
+  async finalizeJobRequestOnce(job) {
     const requestRecord = await this.state.getRequest(job.requestId);
     if (requestRecord.response?.terminal) return requestRecord.response;
     const response = await this.buildResponse({
@@ -226,8 +254,8 @@ export class KernelOperations {
       acceptedAt: requestRecord.acceptedAt,
       terminalAt: job.terminalAt,
     });
-    await this.state.storeRequestResponse(requestRecord.requestId, response);
-    return response;
+    const stored = await this.state.storeRequestResponse(requestRecord.requestId, response);
+    return stored.response ?? response;
   }
 
   async buildResponse({ requestRecord, state, terminal, result, error, job = null, acceptedAt, terminalAt, persistReceipt = true }) {

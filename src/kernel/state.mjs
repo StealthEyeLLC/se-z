@@ -133,6 +133,7 @@ export class KernelState {
         terminal: false,
         jobId: null,
         response: null,
+        completedAt: null,
       };
       await atomicWriteJson(this.requestPath(request.requestId), record);
       await atomicWriteJson(idempotencyPath, {
@@ -188,13 +189,18 @@ export class KernelState {
   }
 
   async storeRequestResponse(requestId, response) {
-    return await this.updateRequest(requestId, (record) => ({
-      ...record,
-      state: response.state,
-      terminal: response.terminal,
-      response,
-      completedAt: response.terminal ? new Date().toISOString() : record.completedAt,
-    }));
+    return await this.updateRequest(requestId, (record) => {
+      // Request publication is monotonic. A delayed initial response or a
+      // concurrent retry may never replace an already durable terminal result.
+      if (record.response?.terminal) return record;
+      return {
+        ...record,
+        state: response.state,
+        terminal: response.terminal,
+        response,
+        completedAt: response.terminal ? (response.receipt?.terminalAt ?? new Date().toISOString()) : (record.completedAt ?? null),
+      };
+    });
   }
 
   async saveReceipt(receipt) {

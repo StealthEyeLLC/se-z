@@ -127,6 +127,25 @@ test('request reservation is durable, concurrent, replay-aware, and semantically
   const fields = { request, requestDigest: requestDigest(request), semanticDigest: semanticDigest(request), resolvedTarget: 'host', catalogDigest: CATALOG_DIGEST, authorityGeneration: 1 };
   const [a, b] = await Promise.all([state.reserveRequest(fields), state.reserveRequest(fields)]);
   assert.deepEqual(new Set([a.kind, b.kind]), new Set(['new', 'idempotent-reuse']));
+  const runningResponse = {
+    requestId: request.requestId,
+    operation: request.operation,
+    state: 'running',
+    terminal: false,
+    authorityGeneration: 1,
+    catalogDigest: CATALOG_DIGEST,
+    result: { accepted: true },
+    error: null,
+    jobId: crypto.randomUUID(),
+    stdout: null,
+    stderr: null,
+    resultDigest: '0'.repeat(64),
+    receipt: { receiptId: 'test-running' },
+  };
+  const runningRecord = await state.storeRequestResponse(request.requestId, runningResponse);
+  assert.equal(runningRecord.state, 'running');
+  assert.equal(runningRecord.completedAt, null);
+  assert.equal((await state.getRequest(request.requestId)).response.state, 'running');
   const changedRequest = { ...request, requestId: crypto.randomUUID(), payload: { argv: ['/bin/false'] }, nonce: crypto.randomBytes(24).toString('base64url') };
   await assert.rejects(() => state.reserveRequest({ ...fields, request: changedRequest, requestDigest: requestDigest(changedRequest), semanticDigest: semanticDigest(changedRequest) }), (error) => error.code === 'idempotency_conflict');
   const nonceConflict = { ...request, requestId: crypto.randomUUID(), idempotencyKey: 'different', operation: 'sez.shell', payload: { command: 'true' } };

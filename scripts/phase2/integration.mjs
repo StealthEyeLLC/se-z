@@ -4,13 +4,15 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import os from 'node:os';
+import net from 'node:net';
 import path from 'node:path';
 import { spawn, execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { SezClient } from '../../src/kernel/client.mjs';
+import { FrameDecoder, decodeFrameJson } from '../../src/kernel/protocol.mjs';
 import { loadPublicKey, verifyReceipt } from '../../src/kernel/crypto.mjs';
-import { atomicWriteJson, sha256Hex, sleep } from '../../src/kernel/util.mjs';
+import { atomicWriteJson, sha256Hex, sleep, MAX_FRAME_SIZE } from '../../src/kernel/util.mjs';
 import { testKeys, testConfig } from '../../test/phase2/helpers.mjs';
 
 const execFileAsync = promisify(execFile);
@@ -62,6 +64,35 @@ async function waitFor(predicate, timeoutMs = 10000, stepMs = 25) {
   }
   throw last ?? new Error(`waitFor timed out after ${timeoutMs} ms`);
 }
+async function probeWelcome(socketPath, timeoutMs = 1_000) {
+  return await new Promise((resolve, reject) => {
+    const socket = net.createConnection({ path: socketPath });
+    const decoder = new FrameDecoder(MAX_FRAME_SIZE);
+    let settled = false;
+    const finish = (error, value) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      socket.destroy();
+      if (error) reject(error); else resolve(value);
+    };
+    const timer = setTimeout(() => finish(new Error(`SEZ1 welcome timed out for ${socketPath}`)), timeoutMs);
+    socket.once('error', (error) => finish(error));
+    socket.on('data', (chunk) => {
+      try {
+        for (const payload of decoder.feed(chunk)) {
+          const value = decodeFrameJson(payload);
+          if (value?.type !== 'welcome' || value.protocol !== 'SEZ1' || value.protocolVersion !== '1.0.0') {
+            finish(new Error(`invalid SEZ1 welcome from ${socketPath}`));
+            return;
+          }
+          finish(null, value);
+          return;
+        }
+      } catch (error) { finish(error); }
+    });
+  });
+}
 async function findNativeAddon() {
   const root = path.join(repo, 'src/native/peercred/build');
   const stack = [root];
@@ -99,9 +130,19 @@ async function removeLinuxIdentities() {
     await execFileAsync('/usr/sbin/groupdel', [group]).catch(() => {});
   }
 }
-async function writePeerHelper(root) {
+async function stagePeerClient(root) {
+  const directory = path.join(root, 'peer-kernel');
+  await fsp.mkdir(directory, { recursive: true, mode: 0o755 });
+  for (const name of ['client.mjs', 'crypto.mjs', 'protocol.mjs', 'util.mjs']) {
+    const destination = path.join(directory, name);
+    await fsp.copyFile(path.join(repo, 'src/kernel', name), destination);
+    await fsp.chmod(destination, 0o644);
+  }
+  return path.join(directory, 'client.mjs');
+}
+async function writePeerHelper(root, clientPath) {
   const file = path.join(root, 'peer-client.mjs');
-  const clientUrl = new URL('../../src/kernel/client.mjs', import.meta.url).href;
+  const clientUrl = pathToFileURL(clientPath).href;
   const source = `import { SezClient } from ${JSON.stringify(clientUrl)};\n` +
 `const [mode,socketPath,operation,payloadJson,privateKeyPath,keyId,gatewayId]=process.argv.slice(2);\n` +
 `const payload=JSON.parse(payloadJson);\n` +
@@ -151,7 +192,8 @@ async function createHarness() {
   await fsp.chmod(config.runtimeRoot, 0o755);
   const configPath = path.join(root, 'config.json');
   await fsp.writeFile(configPath, `${JSON.stringify(config)}\n`, { mode: 0o600 });
-  const helper = await writePeerHelper(root);
+  const stagedClientPath = await stagePeerClient(root);
+  const helper = await writePeerHelper(root, stagedClientPath);
   let supervisor;
   const stderrPath = path.join(root, 'supervisor.stderr.log');
   const stdoutPath = path.join(root, 'supervisor.stdout.log');
@@ -168,8 +210,8 @@ async function createHarness() {
     resources.supervisor = supervisor;
     await waitFor(async () => {
       if (supervisor.exitCode !== null) throw new Error(`supervisor exited ${supervisor.exitCode}: ${await fsp.readFile(stderrPath, 'utf8').catch(() => '')}`);
-      const stats = await Promise.all([config.localSocket, config.gatewaySocket].map((file) => fsp.stat(file).catch(() => null)));
-      return stats.every((stat) => stat?.isSocket());
+      const welcomes = await Promise.all([config.localSocket, config.gatewaySocket].map((file) => probeWelcome(file).catch(() => null)));
+      return welcomes.every((welcome) => welcome?.type === 'welcome');
     }, 15000);
     await fsp.chmod(config.runtimeRoot, 0o755);
   }
