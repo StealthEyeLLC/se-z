@@ -7281,14 +7281,14 @@
         "C/C++ toolchain"
       ],
       "sourceTests": [],
-      "destinationPath": "test/extracted/supervisor/unit/nspawn-bootstrap.test.ts",
-      "copyStatus": "COPIED",
-      "renameStatus": "APPLIED",
+      "destinationPath": null,
+      "copyStatus": "SOURCE_REFERENCE_ONLY",
+      "renameStatus": "NOT_APPLICABLE",
       "canonicalDeltaStatus": "NO_KNOWN_NONMECHANICAL_DELTA",
-      "parityTestStatus": "PORTED_PENDING_EXECUTION",
+      "parityTestStatus": "SOURCE_HARNESS_CANONICAL_SUPERSEDED",
       "transformationType": "test fixture derived from source",
       "parityExpectation": "source-reference verification",
-      "notes": "Mechanically ported against relocated se-z implementation; canonical-only differences remain classified."
+      "notes": "Source-only repository architecture or release-layout assertions are executed by the exact source harness; target paths and architecture follow higher-precedence se-z canonicals and receive dedicated target tests."
     },
     {
       "sourceRepository": "StealthEyeLLC/baby-quirt",
@@ -9867,7 +9867,7 @@
     }
   ],
   "extractedAt": "2026-08-03T12:04:55.859Z",
-  "extractedRecordCount": 196,
-  "portedTestRecordCount": 71,
-  "testsPortedAt": "2026-08-03T11:54:37.372Z"
+  "extractedRecordCount": 195,
+  "portedTestRecordCount": 70,
+  "testsPortedAt": "2026-08-03T12:14:11.159Z"
 }

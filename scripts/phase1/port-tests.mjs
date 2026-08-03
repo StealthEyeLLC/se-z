@@ -27,7 +27,7 @@ function readBytes(sourceRoot,sourcePath) {
   return stat.isSymbolicLink()?Buffer.from(fs.readlinkSync(full)):fs.readFileSync(full);
 }
 function isSourceOnlyTest(component, sourcePath) {
-  if (component === 'supervisor') return sourcePath === 'test/standalone-architecture.test.ts';
+  if (component === 'supervisor') return ['test/nspawn-bootstrap.test.ts', 'test/standalone-architecture.test.ts'].includes(sourcePath);
   if (component === 'gateway') return [
     'test/deployment.test.js',
     'test/release-v2.test.js',

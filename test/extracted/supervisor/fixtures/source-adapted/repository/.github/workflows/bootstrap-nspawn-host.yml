@@ -115,7 +115,7 @@ jobs:
           npm ci --include=dev --no-audit --no-fund
           npm run lint
           node --import tsx --test \
-            test/extracted/supervisor/unit/nspawn-bootstrap.test.ts \
+            test/nspawn-bootstrap.test.ts \
             test/extracted/supervisor/unit/nspawn-input.test.ts
           sudo "$(command -v node)" --import tsx --test \
             test/extracted/supervisor/unit/nspawn-rehearsal.test.ts

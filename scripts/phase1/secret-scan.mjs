@@ -24,6 +24,7 @@ const findings = [];
 const fileDigests = [];
 for (const relative of files) {
   const full = path.join(root,relative);
+  if (!fs.existsSync(full)) continue; // Deleted tracked paths contain no repository bytes to scan.
   const stat = fs.lstatSync(full);
   if (!stat.isFile()) continue;
   const bytes = fs.readFileSync(full);
