@@ -24,7 +24,13 @@ const requiredFiles = [
 for (const relative of requiredFiles) if (!fs.existsSync(path.join(root, relative))) failures.push(`missing required file: ${relative}`);
 function read(relative) { return JSON.parse(fs.readFileSync(path.join(root, relative), 'utf8')); }
 function sha256(relative) { return createHash('sha256').update(fs.readFileSync(path.join(root, relative))).digest('hex'); }
-function git(args) { return spawnSync('git', ['-C', root, ...args], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }); }
+function sha256Bytes(bytes) { return createHash('sha256').update(bytes).digest('hex'); }
+function git(args, options = {}) { return spawnSync('git', ['-C', root, ...args], { encoding: options.encoding ?? 'utf8', maxBuffer: 16 * 1024 * 1024 }); }
+function gitBlob(commit, relative) {
+  const value = git(['show', `${commit}:${relative}`], { encoding: 'buffer' });
+  if (value.status !== 0) throw new Error(value.stderr?.toString().trim() || `unable to read ${relative} at ${commit}`);
+  return value.stdout;
+}
 function check(condition, message) { if (!condition) failures.push(message); }
 if (failures.length === 0) {
   const materialization = read('evidence/phase1/source-materialization.json');
@@ -61,15 +67,34 @@ if (failures.length === 0) {
   check(summary.productionActivated === false, 'summary incorrectly claims production activation');
   check(summary.standaloneClaim === false, 'summary incorrectly claims standalone completion');
   check(summary.testedCommit === extracted.commit && summary.testedTree === extracted.tree, 'summary is not bound to extracted-test commit/tree');
-  for (const [relative, expected] of Object.entries(summary.evidenceDigests)) check(sha256(relative) === expected, `evidence digest mismatch: ${relative}`);
-  const ancestor = git(['merge-base', '--is-ancestor', summary.testedCommit, 'HEAD']);
-  check(ancestor.status === 0, 'tested commit is not an ancestor of HEAD');
-  const postTest = git(['diff', '--name-only', `${summary.testedCommit}..HEAD`]);
-  if (postTest.status !== 0) failures.push(postTest.stderr.trim() || 'unable to inspect post-test changes');
-  else {
-    const unexpected = postTest.stdout.trim().split('\n').filter(Boolean).filter((relative) => !(relative.startsWith('evidence/phase1/') || relative === 'docs/PHASE1_REPORT.md'));
-    check(unexpected.length === 0, `code or contract changed after tested commit: ${unexpected.join(', ')}`);
+  const evidenceBoundaryResult = git(['log', '--diff-filter=A', '--format=%H', '--', 'evidence/phase1/phase1-summary.json']);
+  const evidenceBoundary = evidenceBoundaryResult.stdout.trim().split('\n').filter(Boolean).at(-1);
+  check(Boolean(evidenceBoundary), 'unable to locate immutable Phase 1 evidence commit');
+  if (evidenceBoundary) {
+    check(git(['merge-base', '--is-ancestor', summary.testedCommit, evidenceBoundary]).status === 0, 'Phase 1 evidence commit does not descend from tested commit');
+    check(git(['merge-base', '--is-ancestor', evidenceBoundary, 'HEAD']).status === 0, 'Phase 1 evidence commit is not an ancestor of HEAD');
+    for (const [relative, expected] of Object.entries(summary.evidenceDigests)) {
+      try { check(sha256Bytes(gitBlob(evidenceBoundary, relative)) === expected, `historical evidence digest mismatch: ${relative}`); }
+      catch (error) { failures.push(error.message); }
+    }
+    const immutableHistoricalPaths = [
+      ...requiredFiles.filter((relative) => relative.startsWith('evidence/phase1/')),
+      'docs/PHASE1_REPORT.md',
+      'contracts/phase1-capability-map.json',
+    ];
+    for (const relative of immutableHistoricalPaths) {
+      try { check(sha256Bytes(gitBlob(evidenceBoundary, relative)) === sha256(relative), `immutable Phase 1 evidence changed after ${evidenceBoundary}: ${relative}`); }
+      catch (error) { failures.push(error.message); }
+    }
+    const evidenceOnly = git(['diff', '--name-only', `${summary.testedCommit}..${evidenceBoundary}`]);
+    if (evidenceOnly.status !== 0) failures.push(evidenceOnly.stderr.trim() || 'unable to inspect Phase 1 evidence-only commit');
+    else {
+      const unexpected = evidenceOnly.stdout.trim().split('\n').filter(Boolean).filter((relative) => !(relative.startsWith('evidence/phase1/') || relative === 'docs/PHASE1_REPORT.md'));
+      check(unexpected.length === 0, `Phase 1 evidence commit changed implementation: ${unexpected.join(', ')}`);
+    }
   }
+  const testedTree = git(['rev-parse', `${summary.testedCommit}^{tree}`]);
+  check(testedTree.status === 0 && testedTree.stdout.trim() === summary.testedTree, 'tested commit tree no longer matches immutable Phase 1 summary');
   const report = fs.readFileSync(path.join(root, 'docs/PHASE1_REPORT.md'), 'utf8');
   check(report.includes(summary.testedCommit), 'Phase 1 report does not identify the tested commit');
   check(report.includes('Standalone claim: No'), 'Phase 1 report does not preserve the standalone boundary');

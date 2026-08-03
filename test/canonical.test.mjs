@@ -30,7 +30,8 @@ test('SEZ1 request includes authorityGeneration', async () => {
 test('result requires catalogDigest and durable streams', async () => {
   const schema = await json('protocol/schemas/result.schema.json');
   assert.ok(schema.required.includes('catalogDigest'));
-  assert.ok(schema.required.includes('streams'));
+  assert.ok(schema.required.includes('stdout'));
+  assert.ok(schema.required.includes('stderr'));
   assert.ok(schema.$defs.stream.required.includes('handle'));
   assert.ok(schema.$defs.stream.required.includes('nextOffset'));
 });
