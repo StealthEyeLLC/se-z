@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-03T13:16:07.937Z",
+  "nodeVersion": "v24.18.0",
+  "npmVersion": "11.16.0",
+  "materialization": [
+    {
+      "component": "supervisor",
+      "repository": "StealthEyeLLC/baby-quirt",
+      "commit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+      "tree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+      "archiveSha256": "539dc742bbd832cb5644674da19b19261d2ae373f3929d50331e1cc1e27a22bf",
+      "destination": ".phase1-sources/baby-quirt"
+    },
+    {
+      "component": "gateway",
+      "repository": "StealthEyeLLC/baby-quirt-mcp",
+      "commit": "0bfcd99757afe198151e96b18771626388914205",
+      "tree": "d0598af304c8cda8df3bb538d703d9db6c7dcb04",
+      "archiveSha256": "5867084e488a4f5d2b8ebaf316007661fd2a775527848e4bb09cb8c942ad1308",
+      "destination": ".phase1-sources/baby-quirt-mcp"
+    }
+  ],
+  "sourceTestFiles": {
+    "supervisorUnit": 34,
+    "supervisorIntegration": 1,
+    "supervisorAcceptance": 13,
+    "gatewayUnit": 11
+  },
+  "commands": [
+    {
+      "name": "supervisor-install",
+      "kind": "dependency-install",
+      "command": [
+        "npm",
+        "ci",
+        "--include=dev",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": ".phase1-sources/baby-quirt",
+      "startedAt": "2026-08-03T13:14:35.759Z",
+      "completedAt": "2026-08-03T13:14:36.933Z",
+      "durationMs": 1174.394148,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "812ea7c938b4cbe1be6170a01556c0a0e73e3e681e348e095b0d6e23e375665c",
+      "stderrSha256": "a1ab140886f7dbf44e318ef38a91f8cb99cf0ff72528a5199609cb92c49f7088",
+      "stdoutBytes": 26,
+      "stderrBytes": 330,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/supervisor-install.stdout.log",
+        ".phase1-logs/source/supervisor-install.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-contracts",
+      "kind": "contracts",
+      "command": [
+        "npm",
+        "run",
+        "test:contracts"
+      ],
+      "cwd": ".phase1-sources/baby-quirt",
+      "startedAt": "2026-08-03T13:14:36.934Z",
+      "completedAt": "2026-08-03T13:14:37.210Z",
+      "durationMs": 275.424743,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "f83def244728ac4511876d4d49bd0f3da7f51b9d404f209f4a2cd5f6aa2e1ea3",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 191,
+      "stderrBytes": 53,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/supervisor-contracts.stdout.log",
+        ".phase1-logs/source/supervisor-contracts.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-native-build",
+      "kind": "native-build",
+      "command": [
+        "npm",
+        "run",
+        "build:native"
+      ],
+      "cwd": ".phase1-sources/baby-quirt",
+      "startedAt": "2026-08-03T13:14:37.210Z",
+      "completedAt": "2026-08-03T13:14:40.422Z",
+      "durationMs": 3212.421501,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "7bc664e3cd959034b80107fc6c6d4a11fcd49d5707bc8d9969bac3b7cccaa58f",
+      "stderrSha256": "1b37730c20182d6bcb2b7c274b4065c28eb7acef4009586a81645b41b5777339",
+      "stdoutBytes": 383,
+      "stderrBytes": 1660,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/supervisor-native-build.stdout.log",
+        ".phase1-logs/source/supervisor-native-build.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-build",
+      "kind": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": ".phase1-sources/baby-quirt",
+      "startedAt": "2026-08-03T13:14:40.422Z",
+      "completedAt": "2026-08-03T13:14:43.468Z",
+      "durationMs": 3045.800302,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "0816dae53230015703477144fd33154158b473fb3caecc1204a15e4e9a93ceb3",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 50,
+      "stderrBytes": 53,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/supervisor-build.stdout.log",
+        ".phase1-logs/source/supervisor-build.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-unit",
+      "kind": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": ".phase1-sources/baby-quirt",
+      "startedAt": "2026-08-03T13:14:43.468Z",
+      "completedAt": "2026-08-03T13:14:46.755Z",
+      "durationMs": 3287.135411,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "ab93832f783fdd0537e9d0cb0de126a5798ae03a74c509d9d1c31377830d90d0",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 16393,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 176,
+        "suites": 40,
+        "pass": 176,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 3111.342036
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/supervisor-unit.stdout.log",
+        ".phase1-logs/source/supervisor-unit.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-integration",
+      "kind": "integration",
+      "command": [
+        "npm",
+        "run",
+        "test:integration"
+      ],
+      "cwd": ".phase1-sources/baby-quirt",
+      "startedAt": "2026-08-03T13:14:46.756Z",
+      "completedAt": "2026-08-03T13:14:47.267Z",
+      "durationMs": 510.836688,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "7539536d9433f24bae90c3e6bb32e359de728a4064ddc201f5495c734c2d5b55",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 635,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 5,
+        "suites": 1,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 330.411983
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/supervisor-integration.stdout.log",
+        ".phase1-logs/source/supervisor-integration.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-acceptance",
+      "kind": "acceptance",
+      "command": [
+        "npm",
+        "run",
+        "test:acceptance"
+      ],
+      "cwd": ".phase1-sources/baby-quirt",
+      "startedAt": "2026-08-03T13:14:47.267Z",
+      "completedAt": "2026-08-03T13:16:06.536Z",
+      "durationMs": 79268.571426,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "d61682ab9b4b59dafe4c9bb76c102ce572d03351c88451792752ea57ffff630d",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 5626,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 28,
+        "suites": 17,
+        "pass": 28,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 79092.377326
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/supervisor-acceptance.stdout.log",
+        ".phase1-logs/source/supervisor-acceptance.stderr.log"
+      ]
+    },
+    {
+      "name": "gateway-install",
+      "kind": "dependency-install",
+      "command": [
+        "npm",
+        "ci",
+        "--include=dev",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": ".phase1-sources/baby-quirt-mcp",
+      "startedAt": "2026-08-03T13:16:06.536Z",
+      "completedAt": "2026-08-03T13:16:06.861Z",
+      "durationMs": 325.37236,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "ae6334e4d7a9bafdecaafcd4201919c8090e25a6bdc765d37950f209f4d5d069",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 21,
+      "stderrBytes": 53,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/gateway-install.stdout.log",
+        ".phase1-logs/source/gateway-install.stderr.log"
+      ]
+    },
+    {
+      "name": "gateway-check",
+      "kind": "check",
+      "command": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "cwd": ".phase1-sources/baby-quirt-mcp",
+      "startedAt": "2026-08-03T13:16:06.861Z",
+      "completedAt": "2026-08-03T13:16:07.072Z",
+      "durationMs": 210.825529,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "9695828f66715c6cd316e5cfc20112e5e78a5d53194881d2d68e96a5d8f7709b",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 127,
+      "stderrBytes": 53,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/gateway-check.stdout.log",
+        ".phase1-logs/source/gateway-check.stderr.log"
+      ]
+    },
+    {
+      "name": "gateway-unit",
+      "kind": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": ".phase1-sources/baby-quirt-mcp",
+      "startedAt": "2026-08-03T13:16:07.072Z",
+      "completedAt": "2026-08-03T13:16:07.937Z",
+      "durationMs": 864.526739,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "87a7525b6c6433af46e1433ffd088c2a11fea043f05e3762d030da5f4dd6408a",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 4764,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 43,
+        "suites": 12,
+        "pass": 43,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 687.39913
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/source/gateway-unit.stdout.log",
+        ".phase1-logs/source/gateway-unit.stderr.log"
+      ]
+    }
+  ],
+  "summary": {
+    "commandCount": 10,
+    "passedCommands": 10,
+    "failedCommands": 0,
+    "unitTests": 219,
+    "integrationTests": 5,
+    "acceptanceTests": 28,
+    "skippedTests": 0
+  },
+  "rawLogsCommitted": false,
+  "passed": true
+}

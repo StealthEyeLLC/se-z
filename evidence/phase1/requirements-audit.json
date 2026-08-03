@@ -1,0 +1,688 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-03T13:18:16.651Z",
+  "source": "contracts/requirements.yaml",
+  "requirementCount": 35,
+  "requiredPhase1Ids": [
+    "INV-PHASE1-SOURCE-001",
+    "INV-PHASE1-PROVENANCE-001",
+    "INV-PHASE1-PARITY-001",
+    "INV-PHASE1-CAPABILITY-001",
+    "INV-PHASE1-IDENTITY-001",
+    "INV-PHASE1-RUNTIME-DEPENDENCY-001",
+    "INV-PHASE1-PRODUCTION-001",
+    "ANTI-PHASE1-REFACTOR-001",
+    "ANTI-PHASE1-SECRET-001",
+    "ANTI-PHASE1-CLAIM-001"
+  ],
+  "missingPhase1Ids": [],
+  "duplicates": [],
+  "requirements": [
+    {
+      "id": "INV-PUBLIC-001",
+      "class": "invariant",
+      "statement": "The public MCP catalog exposes exactly one tool named call_sez.",
+      "enforcedBy": [
+        "gateway"
+      ],
+      "tests": [
+        "public_catalog_exactly_one_tool"
+      ],
+      "evidence": [
+        "public-catalog.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-PUBLIC-002",
+      "class": "invariant",
+      "statement": "The call_sez schema contains only operation, payload, and idempotencyKey and never enumerates operations.",
+      "enforcedBy": [
+        "gateway",
+        "ci"
+      ],
+      "tests": [
+        "public_tool_schema_frozen"
+      ],
+      "evidence": [
+        "tool-schema.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-FAST-001",
+      "class": "invariant",
+      "statement": "Missing lane, target, user, group, and cwd resolve to fast, host, root, root, and /root.",
+      "enforcedBy": [
+        "supervisor"
+      ],
+      "tests": [
+        "fast_lane_defaults"
+      ],
+      "evidence": [
+        "fast-default-result.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-SEZ1-001",
+      "class": "invariant",
+      "statement": "Every SEZ1 request contains authorityGeneration and the canonical request digest binds it.",
+      "enforcedBy": [
+        "gateway",
+        "cli",
+        "supervisor"
+      ],
+      "tests": [
+        "authority_generation_in_schema",
+        "authority_generation_digest_vector"
+      ],
+      "evidence": [
+        "sez1-test-vectors.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-SEZ1-002",
+      "class": "invariant",
+      "statement": "Every SEZ1 response contains catalogDigest.",
+      "enforcedBy": [
+        "supervisor",
+        "gateway"
+      ],
+      "tests": [
+        "catalog_digest_every_response"
+      ],
+      "evidence": [
+        "response-samples.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-STREAM-001",
+      "class": "invariant",
+      "statement": "Process output is captured in durable streams and complete output remains retrievable beyond the 16 MiB frame limit.",
+      "enforcedBy": [
+        "supervisor",
+        "job-store"
+      ],
+      "tests": [
+        "output_over_frame_limit_round_trip"
+      ],
+      "evidence": [
+        "large-stream-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-CALLER-001",
+      "class": "invariant",
+      "statement": "Catalog caching and automatic wait behavior are caller guidance; deterministic wait and resume operations exist on the server.",
+      "enforcedBy": [
+        "catalog",
+        "job-controller"
+      ],
+      "tests": [
+        "request_resume_after_response_loss",
+        "deterministic_job_wait"
+      ],
+      "evidence": [
+        "resume-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-OAUTH-001",
+      "class": "invariant",
+      "statement": "The tunnel-backed resource publishes protected-resource metadata and returns a WWW-Authenticate challenge with the exact resource metadata URL.",
+      "enforcedBy": [
+        "gateway"
+      ],
+      "tests": [
+        "protected_resource_metadata",
+        "unauthorized_challenge"
+      ],
+      "evidence": [
+        "oauth-discovery.json",
+        "unauthorized-response.txt"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-OAUTH-002",
+      "class": "invariant",
+      "statement": "The exact protected resource is propagated through authorization and token requests and validated as access-token audience.",
+      "enforcedBy": [
+        "gateway-oauth"
+      ],
+      "tests": [
+        "resource_parameter_authorization",
+        "resource_parameter_token",
+        "audience_mismatch_rejected"
+      ],
+      "evidence": [
+        "oauth-resource-binding.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-OAUTH-003",
+      "class": "invariant",
+      "statement": "sez.root is the only authority scope; offline_access is advertised solely for refresh-token lifecycle support.",
+      "enforcedBy": [
+        "gateway-oauth"
+      ],
+      "tests": [
+        "scope_metadata",
+        "refresh_rotation",
+        "refresh_replay_rejected"
+      ],
+      "evidence": [
+        "oauth-scope-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-OAUTH-004",
+      "class": "invariant",
+      "statement": "Gateway OAuth state is stored under /var/lib/se-z-gateway with isolated blue and green state slots and is included in restore tests.",
+      "enforcedBy": [
+        "gateway",
+        "recovery",
+        "backup"
+      ],
+      "tests": [
+        "gateway_state_slot_isolation",
+        "gateway_state_restore"
+      ],
+      "evidence": [
+        "gateway-state-layout.json",
+        "gateway-restore-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-SOCKET-001",
+      "class": "invariant",
+      "statement": "Gateway and local operators use separate sockets and peer classes.",
+      "enforcedBy": [
+        "systemd",
+        "supervisor"
+      ],
+      "tests": [
+        "gateway_cannot_use_local_socket",
+        "local_peer_cannot_impersonate_gateway"
+      ],
+      "evidence": [
+        "socket-peer-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-SOCKET-002",
+      "class": "invariant",
+      "statement": "Every gateway-socket request requires both the configured gateway SO_PEERCRED identity and a valid signed envelope.",
+      "enforcedBy": [
+        "supervisor"
+      ],
+      "tests": [
+        "unsigned_gateway_request_rejected",
+        "wrong_gateway_uid_rejected"
+      ],
+      "evidence": [
+        "gateway-auth-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-STATE-001",
+      "class": "invariant",
+      "statement": "Gateway, supervisor, z, and recovery state ownership never overlaps as competing truth.",
+      "enforcedBy": [
+        "architecture",
+        "supervisor",
+        "recovery"
+      ],
+      "tests": [
+        "state_owner_contract"
+      ],
+      "evidence": [
+        "state-owner-readback.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-FENCE-001",
+      "class": "invariant",
+      "statement": "Authority generation advances only after physical old-supervisor and descendant fencing or explicit job adoption.",
+      "enforcedBy": [
+        "recovery",
+        "systemd"
+      ],
+      "tests": [
+        "old_cgroup_empty_before_handoff",
+        "stale_generation_rejected",
+        "adopted_job_identity"
+      ],
+      "evidence": [
+        "fencing-evidence.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-RECOVERY-001",
+      "class": "invariant",
+      "statement": "Recovery is separately versioned and ordinary releases cannot modify its executable or state schema.",
+      "enforcedBy": [
+        "recovery",
+        "filesystem-layout",
+        "release-controller"
+      ],
+      "tests": [
+        "ordinary_release_cannot_replace_recovery",
+        "recovery_blue_green_upgrade"
+      ],
+      "evidence": [
+        "recovery-independence.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-TARGET-001",
+      "class": "invariant",
+      "statement": "host, nspawn, and kvm targets never silently fall back to another target or acceleration mode.",
+      "enforcedBy": [
+        "supervisor",
+        "machine-adapters"
+      ],
+      "tests": [
+        "no_target_fallback",
+        "no_tcg_fallback"
+      ],
+      "evidence": [
+        "target-failure-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-KVM-001",
+      "class": "invariant",
+      "statement": "Every release bundles an exact digest-pinned z and KVM is claimed only after the full real-hardware lifecycle passes.",
+      "enforcedBy": [
+        "release-manifest",
+        "kvm-adapter"
+      ],
+      "tests": [
+        "bundled_z_identity",
+        "real_kvm_lifecycle"
+      ],
+      "evidence": [
+        "z-identity.json",
+        "kvm-acceptance.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-SECRET-001",
+      "class": "invariant",
+      "statement": "Managed credentials are never automatically injected or exposed, while explicit root-authorized output may contain sensitive owner data.",
+      "enforcedBy": [
+        "gateway",
+        "supervisor",
+        "evidence-store"
+      ],
+      "tests": [
+        "managed_credentials_not_auto_injected",
+        "raw_owner_read_remains_possible"
+      ],
+      "evidence": [
+        "credential-handling-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-MIGRATION-001",
+      "class": "invariant",
+      "statement": "Standalone cutover removes Baby runtime dependencies but preserves legitimate provenance and historical evidence.",
+      "enforcedBy": [
+        "build",
+        "dependency-scan"
+      ],
+      "tests": [
+        "zero_baby_runtime_dependency"
+      ],
+      "evidence": [
+        "dependency-scan.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "ANTI-POLICY-001",
+      "class": "anti-invariant",
+      "statement": "No se-z command allowlist, path allowlist, policy engine, or se-z approval layer exists in the fast lane.",
+      "enforcedBy": [
+        "architecture",
+        "ci"
+      ],
+      "tests": [
+        "raw_exec_unrestricted_contract"
+      ],
+      "evidence": [
+        "fast-lane-contract.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "ANTI-PUBLIC-MCP-001",
+      "class": "anti-invariant",
+      "statement": "No public MCP ingress is active in the owner-only standalone profile.",
+      "enforcedBy": [
+        "caddy",
+        "firewall",
+        "tunnel"
+      ],
+      "tests": [
+        "public_mcp_route_absent",
+        "tunnel_mcp_available"
+      ],
+      "evidence": [
+        "network-surface.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "ANTI-SUCCESS-001",
+      "class": "anti-invariant",
+      "statement": "Accepted or running work is never reported as completed.",
+      "enforcedBy": [
+        "job-controller",
+        "gateway"
+      ],
+      "tests": [
+        "running_job_not_success"
+      ],
+      "evidence": [
+        "job-state-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "ANTI-SPLIT-001",
+      "class": "anti-invariant",
+      "statement": "Two supervisor generations never mutate shared state concurrently.",
+      "enforcedBy": [
+        "recovery",
+        "supervisor"
+      ],
+      "tests": [
+        "candidate_active_mutation_race"
+      ],
+      "evidence": [
+        "split-brain-proof.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "ANTI-THEATER-001",
+      "class": "anti-invariant",
+      "statement": "Controls without an enforcement effect, acceptance test, or recovery value are not added.",
+      "enforcedBy": [
+        "canonical-review"
+      ],
+      "tests": [
+        "requirements_have_enforcement_and_evidence"
+      ],
+      "evidence": [
+        "requirements-audit.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-PHASE1-SOURCE-001",
+      "class": "invariant",
+      "statement": "Exact deployed Baby supervisor and gateway commits, trees, manifests, and source archives are pinned before extraction.",
+      "enforcedBy": [
+        "source-identity",
+        "materialize-source",
+        "phase1-verify"
+      ],
+      "tests": [
+        "source_identity_exact_commits_and_trees",
+        "pinned_source_materialization"
+      ],
+      "evidence": [
+        "evidence/phase1/source-identity-proof.json",
+        "evidence/phase1/source-materialization.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-PHASE1-PROVENANCE-001",
+      "class": "invariant",
+      "statement": "Every copied or substantially derived file has an exact source mapping and applicable notice classification.",
+      "enforcedBy": [
+        "provenance-map",
+        "phase1-verify"
+      ],
+      "tests": [
+        "provenance_complete_for_every_destination"
+      ],
+      "evidence": [
+        "vendor/baby-provenance/file-map.json",
+        "vendor/baby-provenance/license-map.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-PHASE1-PARITY-001",
+      "class": "invariant",
+      "statement": "Pinned source suites and mechanically ported target suites measure retained behavior, with every discrepancy explicitly classified.",
+      "enforcedBy": [
+        "source-test",
+        "extracted-test",
+        "parity",
+        "canonical-delta"
+      ],
+      "tests": [
+        "phase1_static_parity",
+        "phase1_behavioral_parity"
+      ],
+      "evidence": [
+        "evidence/phase1/source-test-results.json",
+        "evidence/phase1/extracted-test-results.json",
+        "evidence/phase1/parity-results.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-PHASE1-CAPABILITY-001",
+      "class": "invariant",
+      "statement": "Every installed source operation and meaningful internal capability is represented in the Phase 1 capability map; none disappears silently.",
+      "enforcedBy": [
+        "capability-map",
+        "phase1-verify"
+      ],
+      "tests": [
+        "capability_map_all_installed_operations",
+        "capability_map_no_silent_disappearances"
+      ],
+      "evidence": [
+        "contracts/phase1-capability-map.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-PHASE1-IDENTITY-001",
+      "class": "invariant",
+      "statement": "Active target runtime identity is se-z, call_sez, sez.*, and SEZ1; historical Baby identities remain only in allowed provenance, tests, and evidence.",
+      "enforcedBy": [
+        "dependency-scan",
+        "canonical-check"
+      ],
+      "tests": [
+        "active_identity_is_se_z",
+        "historical_identity_exemptions_are_bounded"
+      ],
+      "evidence": [
+        "evidence/phase1/dependency-scan.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-PHASE1-RUNTIME-DEPENDENCY-001",
+      "class": "invariant",
+      "statement": "Extracted target runtime code intentionally depends on no Baby checkout, service, socket, state, key, endpoint, public tool, operation namespace, or QRT1 product identity.",
+      "enforcedBy": [
+        "dependency-scan",
+        "phase1-verify"
+      ],
+      "tests": [
+        "zero_active_baby_runtime_dependency"
+      ],
+      "evidence": [
+        "evidence/phase1/dependency-scan.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "INV-PHASE1-PRODUCTION-001",
+      "class": "invariant",
+      "statement": "Phase 1 leaves deployed Baby services, release pointers, socket, manifests, OAuth configuration, credentials, public endpoint, and ChatGPT app routing unchanged; routine authorized job, stream, and receipt records may accrue.",
+      "enforcedBy": [
+        "read-only-production-proof",
+        "phase1-report"
+      ],
+      "tests": [
+        "production_before_after_identity_equal"
+      ],
+      "evidence": [
+        "evidence/phase1/source-identity-proof.json",
+        "evidence/phase1/production-readback.json",
+        "evidence/phase1/phase1-summary.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "ANTI-PHASE1-REFACTOR-001",
+      "class": "anti-invariant",
+      "statement": "Proven implementation mechanics are not substantively redesigned before source pinning, provenance, build, tests, and measured parity.",
+      "enforcedBy": [
+        "commit-order",
+        "provenance-map",
+        "canonical-delta"
+      ],
+      "tests": [
+        "mechanical_extraction_precedes_refactor"
+      ],
+      "evidence": [
+        "docs/PROVENANCE.md",
+        "docs/PHASE1_CANONICAL_DELTA.md"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "ANTI-PHASE1-SECRET-001",
+      "class": "anti-invariant",
+      "statement": "No production private key, token, OAuth secret, tunnel credential, backup credential, live environment file, or arbitrary credential payload enters the repository.",
+      "enforcedBy": [
+        "secret-scan",
+        "git-review"
+      ],
+      "tests": [
+        "phase1_repository_secret_scan"
+      ],
+      "evidence": [
+        "evidence/phase1/secret-scan.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    },
+    {
+      "id": "ANTI-PHASE1-CLAIM-001",
+      "class": "anti-invariant",
+      "statement": "Phase 1 is never represented as standalone completion or as activation of call_sez, final SEZ1, nspawn, KVM, tunnel, recovery, or production cutover.",
+      "enforcedBy": [
+        "phase1-report",
+        "documentation-consistency"
+      ],
+      "tests": [
+        "phase1_claim_is_bounded"
+      ],
+      "evidence": [
+        "docs/PHASE1_REPORT.md",
+        "evidence/phase1/phase1-summary.json"
+      ],
+      "releaseGate": "mandatory",
+      "missing": [],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-03T13:18:15.550Z",
+  "nodeVersion": "v24.18.0",
+  "commit": "12cc307f28d85df3095ca5a7ca40a5991bfa03e4",
+  "tree": "4a03ef7985fafc3bee4436d03a29435926750534",
+  "sourceReferences": {
+    "supervisorCommit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+    "gatewayCommit": "0bfcd99757afe198151e96b18771626388914205"
+  },
+  "cleanDetachedWorktree": true,
+  "worktreeStatusAfterTests": "",
+  "testFileCounts": {
+    "supervisor": 46,
+    "gateway": 8,
+    "parityTypeScript": 14,
+    "parityStatic": 19
+  },
+  "commands": [
+    {
+      "name": "install",
+      "kind": "install",
+      "command": [
+        "npm",
+        "ci",
+        "--include=dev",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:16:08.303Z",
+      "completedAt": "2026-08-03T13:16:09.395Z",
+      "durationMs": 1091.178704,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "58f2a9f03500fe102aff5f5ce0caea5efc427d8b028073e1ab282d3b42fcbc70",
+      "stderrSha256": "a1ab140886f7dbf44e318ef38a91f8cb99cf0ff72528a5199609cb92c49f7088",
+      "stdoutBytes": 29,
+      "stderrBytes": 330,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/install.stdout.log",
+        ".phase1-logs/extracted/install.stderr.log"
+      ]
+    },
+    {
+      "name": "check",
+      "kind": "check",
+      "command": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:16:09.396Z",
+      "completedAt": "2026-08-03T13:16:13.744Z",
+      "durationMs": 4348.085844,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "bc41774565193df14814bfc519862f14ed78d5ccd7d148cdaff07b6c40a602a2",
+      "stderrSha256": "a5364c848965dd6b50d968cc7739c2cf851bed91046be08aeb23a82bcd36e34c",
+      "stdoutBytes": 242,
+      "stderrBytes": 159,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/check.stdout.log",
+        ".phase1-logs/extracted/check.stderr.log"
+      ]
+    },
+    {
+      "name": "build",
+      "kind": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:16:13.744Z",
+      "completedAt": "2026-08-03T13:16:20.217Z",
+      "durationMs": 6473.060132,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "95f765332b327fbb8c9f025003909a7f8a4634dedb5710aa60b4a09c4db03d8f",
+      "stderrSha256": "414b1bc8884e709b50dc3507a9f397e9a32667bb72f7221ca0ffa0175d6c85ac",
+      "stdoutBytes": 738,
+      "stderrBytes": 1954,
+      "tap": {},
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/build.stdout.log",
+        ".phase1-logs/extracted/build.stderr.log"
+      ]
+    },
+    {
+      "name": "scaffold",
+      "kind": "unit",
+      "command": [
+        "npm",
+        "run",
+        "test:scaffold"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:16:20.217Z",
+      "completedAt": "2026-08-03T13:16:20.490Z",
+      "durationMs": 273.09381,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "57cc43b556a1fc40e8ae120cbe9de6417b38b65e37004d01e5dc559f632aa09b",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 527,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 6,
+        "suites": 0,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 90.741038
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/scaffold.stdout.log",
+        ".phase1-logs/extracted/scaffold.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-unit",
+      "kind": "unit",
+      "command": [
+        "npm",
+        "run",
+        "test:extracted:unit"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:16:20.491Z",
+      "completedAt": "2026-08-03T13:16:24.506Z",
+      "durationMs": 4015.123034,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "4146eaff565b7086aceedee2c0b53c9badf6d0588919f00c7ecbdb0e4d09c80a",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 15500,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 168,
+        "suites": 38,
+        "pass": 168,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 3749.837957
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/supervisor-unit.stdout.log",
+        ".phase1-logs/extracted/supervisor-unit.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-integration",
+      "kind": "integration",
+      "command": [
+        "npm",
+        "run",
+        "test:extracted:integration"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:16:24.506Z",
+      "completedAt": "2026-08-03T13:16:25.179Z",
+      "durationMs": 672.606713,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "011b5297e4ef58f02cd00c55ba8d47c12bb15519962695831c6da173a469f051",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 638,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 5,
+        "suites": 1,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 381.249092
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/supervisor-integration.stdout.log",
+        ".phase1-logs/extracted/supervisor-integration.stderr.log"
+      ]
+    },
+    {
+      "name": "supervisor-acceptance",
+      "kind": "acceptance",
+      "command": [
+        "npm",
+        "run",
+        "test:extracted:acceptance"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:16:25.179Z",
+      "completedAt": "2026-08-03T13:18:06.038Z",
+      "durationMs": 100858.679441,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "732e0304a095a096ee11588d57286cc916c9727166f114a6e70c518f9acd530f",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 5512,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 28,
+        "suites": 17,
+        "pass": 28,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 100562.194842
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/supervisor-acceptance.stdout.log",
+        ".phase1-logs/extracted/supervisor-acceptance.stderr.log"
+      ]
+    },
+    {
+      "name": "gateway",
+      "kind": "gateway",
+      "command": [
+        "npm",
+        "run",
+        "test:extracted:gateway"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:18:06.038Z",
+      "completedAt": "2026-08-03T13:18:06.852Z",
+      "durationMs": 814.320889,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "349c2633533dd1e0e09c83bfc55208c7479e7380978ee2e6d7f35918706a9c85",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 3146,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 28,
+        "suites": 9,
+        "pass": 28,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 635.584065
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/gateway.stdout.log",
+        ".phase1-logs/extracted/gateway.stderr.log"
+      ]
+    },
+    {
+      "name": "parity-static",
+      "kind": "parity",
+      "command": [
+        "npm",
+        "run",
+        "test:parity:static"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:18:06.853Z",
+      "completedAt": "2026-08-03T13:18:07.400Z",
+      "durationMs": 547.3951,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "45c9d0795aef6abab0a74c08cda172a657abf95310f965581bdebcbf9631309b",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 2885,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 34,
+        "suites": 0,
+        "pass": 34,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 332.347582
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/parity-static.stdout.log",
+        ".phase1-logs/extracted/parity-static.stderr.log"
+      ]
+    },
+    {
+      "name": "parity-behavioral",
+      "kind": "parity",
+      "command": [
+        "npm",
+        "run",
+        "test:parity:behavioral"
+      ],
+      "cwd": ".phase1-sources/target-reference-91377",
+      "startedAt": "2026-08-03T13:18:07.400Z",
+      "completedAt": "2026-08-03T13:18:15.544Z",
+      "durationMs": 8144.152412,
+      "exitStatus": 0,
+      "signal": null,
+      "stdoutSha256": "1574ca4d95d606889da38a432aa1c6566e919bfed07f5a8ed7aa23b0d154b0bc",
+      "stderrSha256": "be373507976c21dd0d87488b1a32a2ddefbdf784333a1f41b7db9d576fd6a129",
+      "stdoutBytes": 3227,
+      "stderrBytes": 53,
+      "tap": {
+        "tests": 26,
+        "suites": 1,
+        "pass": 26,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 7900.756653
+      },
+      "passed": true,
+      "localLogPaths": [
+        ".phase1-logs/extracted/parity-behavioral.stdout.log",
+        ".phase1-logs/extracted/parity-behavioral.stderr.log"
+      ]
+    }
+  ],
+  "summary": {
+    "commandCount": 10,
+    "passedCommands": 10,
+    "failedCommands": 0,
+    "unitTests": 174,
+    "integrationTests": 5,
+    "acceptanceTests": 28,
+    "gatewayTests": 28,
+    "parityTests": 60
+  },
+  "rawLogsCommitted": false,
+  "passed": true
+}

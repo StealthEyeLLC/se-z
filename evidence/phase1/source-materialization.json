@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-03T13:14:35.753Z",
+  "materializedRoot": ".phase1-sources",
+  "components": [
+    {
+      "component": "supervisor",
+      "repository": "StealthEyeLLC/baby-quirt",
+      "sourceMethod": "verified-local-git-object-store",
+      "destination": ".phase1-sources/baby-quirt",
+      "checkout": ".phase1-sources/baby-quirt",
+      "commit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+      "expectedCommit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+      "tree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+      "expectedTree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+      "archiveSha256": "539dc742bbd832cb5644674da19b19261d2ae373f3929d50331e1cc1e27a22bf",
+      "expectedArchiveSha256": "539dc742bbd832cb5644674da19b19261d2ae373f3929d50331e1cc1e27a22bf",
+      "trackedFileCount": 182,
+      "expectedTrackedFileCount": 182,
+      "inventoryRecordCount": 182,
+      "sourceDigestMismatchCount": 0,
+      "sourceDigestMismatches": [],
+      "trackedFilesClean": true,
+      "passed": true
+    },
+    {
+      "component": "gateway",
+      "repository": "StealthEyeLLC/baby-quirt-mcp",
+      "sourceMethod": "verified-local-git-object-store",
+      "destination": ".phase1-sources/baby-quirt-mcp",
+      "checkout": ".phase1-sources/baby-quirt-mcp",
+      "commit": "0bfcd99757afe198151e96b18771626388914205",
+      "expectedCommit": "0bfcd99757afe198151e96b18771626388914205",
+      "tree": "d0598af304c8cda8df3bb538d703d9db6c7dcb04",
+      "expectedTree": "d0598af304c8cda8df3bb538d703d9db6c7dcb04",
+      "archiveSha256": "5867084e488a4f5d2b8ebaf316007661fd2a775527848e4bb09cb8c942ad1308",
+      "expectedArchiveSha256": "5867084e488a4f5d2b8ebaf316007661fd2a775527848e4bb09cb8c942ad1308",
+      "trackedFileCount": 48,
+      "expectedTrackedFileCount": 48,
+      "inventoryRecordCount": 48,
+      "sourceDigestMismatchCount": 0,
+      "sourceDigestMismatches": [],
+      "trackedFilesClean": true,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

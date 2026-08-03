@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-03T13:18:17.303Z",
+  "status": "PASSED",
+  "phase": "Phase 1 — extraction and parity",
+  "branch": "build/standalone-0.1",
+  "testedCommit": "12cc307f28d85df3095ca5a7ca40a5991bfa03e4",
+  "testedTree": "4a03ef7985fafc3bee4436d03a29435926750534",
+  "summaryGeneratedAtCommit": "12cc307f28d85df3095ca5a7ca40a5991bfa03e4",
+  "sourceIdentities": {
+    "supervisor": {
+      "repository": "StealthEyeLLC/baby-quirt",
+      "commit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+      "tree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+      "manifestSha256": "315606a6e6c0738b39387cb5cccae1ec1d79834a576da6c46c0099eaa8992f1d",
+      "archiveSha256": "539dc742bbd832cb5644674da19b19261d2ae373f3929d50331e1cc1e27a22bf"
+    },
+    "gateway": {
+      "repository": "StealthEyeLLC/baby-quirt-mcp",
+      "commit": "0bfcd99757afe198151e96b18771626388914205",
+      "tree": "d0598af304c8cda8df3bb538d703d9db6c7dcb04",
+      "manifestSha256": "f116ea7012a1bc8a4c40ca3993a02fb26544badca0c47454c47181fdb3622f4e",
+      "archiveSha256": "5867084e488a4f5d2b8ebaf316007661fd2a775527848e4bb09cb8c942ad1308"
+    }
+  },
+  "sourceTests": {
+    "unit": 219,
+    "integration": 5,
+    "acceptance": 28,
+    "commands": 10,
+    "skipped": 0
+  },
+  "targetTests": {
+    "unit": 174,
+    "integration": 5,
+    "acceptance": 28,
+    "gateway": 28,
+    "parity": 60,
+    "commands": 10
+  },
+  "capabilityMap": {
+    "installedOperationCount": 49,
+    "mappedOperationCount": 49,
+    "coreOperationCount": 48,
+    "dynamicOperationCount": 1,
+    "operationStates": {
+      "MECHANICALLY_RENAMED": 33,
+      "EXTRACTED_NOT_INTEGRATED": 16
+    },
+    "internalCapabilityCount": 33,
+    "silentDisappearances": []
+  },
+  "canonicalDeltas": [
+    "DELTA-PROTOCOL-001",
+    "DELTA-AUTHORITY-001",
+    "DELTA-PEERS-001",
+    "DELTA-OUTPUT-001",
+    "DELTA-CATALOG-001",
+    "DELTA-SCOPE-001",
+    "DELTA-REFRESH-001",
+    "DELTA-TRANSPORT-001",
+    "DELTA-OAUTH-STATE-001",
+    "DELTA-STATE-OWNERSHIP-001",
+    "DELTA-SECRET-001",
+    "DELTA-RECOVERY-001",
+    "DELTA-GITHUB-001",
+    "DELTA-NSPAWN-001",
+    "DELTA-KVM-001",
+    "DELTA-RESUME-001",
+    "DELTA-TOOLCHAIN-001",
+    "DELTA-TOOL-001",
+    "DELTA-RELEASE-IDENTITY-001",
+    "DELTA-GATEWAY-OWNERSHIP-001"
+  ],
+  "scans": {
+    "dependencyFindings": 0,
+    "activeRuntimeFilesScanned": 128,
+    "secretFindings": 0,
+    "repositoryFilesScannedForSecrets": 341,
+    "requirementCount": 35
+  },
+  "production": {
+    "baselineCapturedAt": "2026-08-03T11:15:56Z",
+    "configurationReadbackPassed": true,
+    "mismatches": [],
+    "routineOperationalRecordsMayAccrue": true,
+    "releaseOrServiceActivationPerformed": false
+  },
+  "checks": {
+    "sourceIdentity": true,
+    "sourceSuites": true,
+    "extractedSuites": true,
+    "parity": true,
+    "capabilityCompleteness": true,
+    "zeroBabyRuntimeDependency": true,
+    "zeroRepositorySecrets": true,
+    "requirements": true,
+    "productionConfigurationUnchanged": true
+  },
+  "evidenceDigests": {
+    "evidence/phase1/source-identity-proof.json": "15ac9e63781327adc701afb2d14dc03abc976614cae47d63294566341e336d99",
+    "evidence/phase1/production-baseline.json": "52137f57d2648b23f34d08ae056e69d3dc5b92b5af50ad0277855072933d88bb",
+    "evidence/phase1/source-materialization.json": "d9e88f51b660e6f7c1089e048fdd58a148404cb406e70d165df62e16dcf70cf5",
+    "evidence/phase1/source-test-results.json": "f6f5766928748d3344a0c019f61ca9d0c6abad20a1c45d9ac6c89122cbbd321a",
+    "evidence/phase1/extracted-test-results.json": "54bff07719143489f5e9bb8bc60bb95555cab5a8b74b261adf433c96edb4ff5f",
+    "evidence/phase1/parity-results.json": "2387c9afc937cca56248cfa713fb45d1956b749342adbe99f21f3473f329858d",
+    "evidence/phase1/dependency-scan.json": "be27c0ba5800fc9db59a0bbdbc272d3e9247a27b2caa69fc2ab3483bc186a3ff",
+    "evidence/phase1/secret-scan.json": "24cfb5a2a6dc4fbc418c33f001e0aa1d12f123456df3d73d37226b5d3cfca413",
+    "evidence/phase1/requirements-audit.json": "2dcf9318dccbe6e70e1a6cac95bbb5dd44d563d37ac5dcbac61fe41fad12d115",
+    "evidence/phase1/production-readback.json": "e089dcc5ff57eccef6cd2360451c6efde4526b5639298e692065f6a0dda7b5c4",
+    "contracts/phase1-capability-map.json": "e2e16cfda43659a400b3a008d88fbddd0dd515c6dd408844793813df57618b92",
+    "contracts/phase1-canonical-delta.json": "757da79b2fd96dd9a63d1ee771490f6cb33f874cfdec5adb11178be8ccfbd7e0"
+  },
+  "phase1Complete": true,
+  "productionActivated": false,
+  "standaloneClaim": false,
+  "nextBuildGeneration": "0.1A"
+}

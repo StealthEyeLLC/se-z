@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-03T13:18:16.252Z",
+  "strategy": "exact pinned source suites plus mechanically ported suites, source-versus-target behavioral tests, family lineage assertions, and explicit canonical-delta classification",
+  "staticTestFiles": [
+    "test/parity/artifacts/artifacts-parity.test.mjs",
+    "test/parity/catalog/capability-completeness.test.mjs",
+    "test/parity/catalog/capability-map.test.mjs",
+    "test/parity/catalog/catalog-parity.test.mjs",
+    "test/parity/execution/execution-parity.test.mjs",
+    "test/parity/family-coverage.test.mjs",
+    "test/parity/files/files-parity.test.mjs",
+    "test/parity/gateway/gateway-parity.test.mjs",
+    "test/parity/gateway/one-tool.test.mjs",
+    "test/parity/github/github-parity.test.mjs",
+    "test/parity/jobs/jobs-parity.test.mjs",
+    "test/parity/normalization/normalization.test.mjs",
+    "test/parity/oauth/oauth-parity.test.mjs",
+    "test/parity/protocol/contract-delta.test.mjs",
+    "test/parity/protocol/protocol-parity.test.mjs",
+    "test/parity/pty/pty-parity.test.mjs",
+    "test/parity/releases/releases-parity.test.mjs",
+    "test/parity/skills/skills-parity.test.mjs",
+    "test/parity/streams/streams-parity.test.mjs"
+  ],
+  "staticParityTestDigest": "fbf006012143ac9eb41e4fb290c1fbf3b30a76754d2f41a6334c23335415e6bf",
+  "sourceTestEvidenceSha256": "f6f5766928748d3344a0c019f61ca9d0c6abad20a1c45d9ac6c89122cbbd321a",
+  "extractedTestEvidenceSha256": "54bff07719143489f5e9bb8bc60bb95555cab5a8b74b261adf433c96edb4ff5f",
+  "normalization": [
+    "UUIDs",
+    "timestamps",
+    "temporary paths",
+    "PIDs",
+    "job/session/artifact/receipt IDs",
+    "nonces",
+    "fixture key IDs",
+    "signatures",
+    "release paths",
+    "hostnames",
+    "machine identities",
+    "stream handles"
+  ],
+  "retainedSemantics": [
+    "state",
+    "terminal status",
+    "exit code",
+    "signal",
+    "stdout bytes",
+    "stderr bytes",
+    "stream offsets",
+    "stream completion",
+    "file bytes",
+    "modes",
+    "digests",
+    "error type",
+    "idempotency",
+    "replay",
+    "receipt verification",
+    "operation schemas",
+    "cleanup state"
+  ],
+  "families": [
+    {
+      "family": "protocol",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/protocol/framing/frame.ts",
+        "src/protocol/canonical/canonical.ts",
+        "src/protocol/signatures/signing.ts",
+        "src/protocol/receipts/receipt.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/frame.test.ts",
+        "test/extracted/supervisor/unit/canonical.test.ts",
+        "test/extracted/supervisor/unit/signing.test.ts",
+        "test/extracted/supervisor/unit/receipts.test.ts",
+        "test/extracted/supervisor/acceptance/auth.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "execution",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/jobs/manager.ts",
+        "src/execution/process/identity.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/process-identity.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "jobs",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/jobs/manager.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/cancellation.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "streams",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/jobs/manager.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "files",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/files/manager.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/unit/symlinks.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "pty",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/pty/manager.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/acceptance/pty.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "artifacts",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/artifacts/manager.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/artifacts.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "skills",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/skills/service.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/skill-loader.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "releases",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/releases/deployment/service.ts",
+        "src/releases/package-release.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/snapshot-rollback.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts",
+        "test/extracted/supervisor/acceptance/deployment.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "github",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/github/app-authority.ts"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/github-app-authority.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "gateway",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/gateway/mcp/tool.js",
+        "src/gateway/mcp/server.js",
+        "src/gateway/transport/client.js"
+      ],
+      "testFiles": [
+        "test/extracted/gateway/contract.test.js",
+        "test/extracted/gateway/server.test.js",
+        "test/extracted/gateway/integration.test.js"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "oauth",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/auth/oauth/server.js",
+        "src/auth/oauth/state-durable.js",
+        "src/auth/oauth/tokens.js"
+      ],
+      "testFiles": [
+        "test/extracted/gateway/oauth-server.test.js",
+        "test/extracted/gateway/github-login.test.js",
+        "test/extracted/gateway/config.test.js"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "family": "catalog",
+      "sourceReferencePassed": true,
+      "extractedPassed": true,
+      "behavioralParityPassed": true,
+      "implementationFiles": [
+        "src/operations/definitions.ts",
+        "src/operations/registry.ts",
+        "src/gateway/mcp/catalog.js"
+      ],
+      "testFiles": [
+        "test/extracted/supervisor/unit/operations-discovery.test.ts",
+        "test/extracted/gateway/contract.test.js",
+        "test/parity/catalog/capability-map.test.mjs"
+      ],
+      "status": "PASSED"
+    }
+  ],
+  "canonicalDeltaCount": 20,
+  "canonicalDeltaIds": [
+    "DELTA-PROTOCOL-001",
+    "DELTA-AUTHORITY-001",
+    "DELTA-PEERS-001",
+    "DELTA-OUTPUT-001",
+    "DELTA-CATALOG-001",
+    "DELTA-SCOPE-001",
+    "DELTA-REFRESH-001",
+    "DELTA-TRANSPORT-001",
+    "DELTA-OAUTH-STATE-001",
+    "DELTA-STATE-OWNERSHIP-001",
+    "DELTA-SECRET-001",
+    "DELTA-RECOVERY-001",
+    "DELTA-GITHUB-001",
+    "DELTA-NSPAWN-001",
+    "DELTA-KVM-001",
+    "DELTA-RESUME-001",
+    "DELTA-TOOLCHAIN-001",
+    "DELTA-TOOL-001",
+    "DELTA-RELEASE-IDENTITY-001",
+    "DELTA-GATEWAY-OWNERSHIP-001"
+  ],
+  "installedOperationCount": 49,
+  "mappedOperationCount": 49,
+  "silentDisappearances": [],
+  "passed": true
+}

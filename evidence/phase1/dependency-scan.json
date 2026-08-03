@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-03T13:18:16.475Z",
+  "activeRoots": [
+    "src",
+    "packaging",
+    "scripts/extracted"
+  ],
+  "allowedHistoricalRoots": [
+    "NOTICE",
+    "docs/PROVENANCE.md",
+    "docs/MIGRATION.md",
+    "vendor/baby-provenance",
+    "test/parity",
+    "evidence/phase1"
+  ],
+  "activeFileCount": 128,
+  "packageRuntimeDependencies": [
+    "node-addon-api"
+  ],
+  "forbiddenFindingCount": 0,
+  "findings": [],
+  "historicalReferenceCount": 954,
+  "passed": true
+}
