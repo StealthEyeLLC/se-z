@@ -4,7 +4,9 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync, mkdirSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
-import { identityNormalize, sourceSupervisor, target } from '../helpers/index.js';
+import { identityNormalize, SOURCE_SUPERVISOR_ROOT, sourceSupervisor, target } from '../helpers/index.js';
+
+const proofSkillRoot = join(SOURCE_SUPERVISOR_ROOT, 'examples/skills/proof-echo');
 
 async function loaders() {
   return {
@@ -15,7 +17,7 @@ async function loaders() {
 
 test('skill manifest validation and exported mechanics remain mechanically equivalent', async () => {
   const { source, target: targetLoader } = await loaders();
-  const sourceManifest = JSON.parse(readFileSync('.phase1-sources/baby-quirt/examples/skills/proof-echo/skill.json', 'utf8'));
+  const sourceManifest = JSON.parse(readFileSync(join(proofSkillRoot, 'skill.json'), 'utf8'));
   const targetManifest = identityNormalize(sourceManifest);
   assert.deepEqual(identityNormalize(source.validateSkillManifest(sourceManifest)), targetLoader.validateSkillManifest(targetManifest));
   assert.deepEqual(
@@ -34,9 +36,9 @@ test('bundle identity is deterministic, byte-sensitive, verifiable, and catalog-
   const { source, target: targetLoader } = await loaders();
   const roots = [mkdtempSync(join(tmpdir(), 'sez-parity-source-skill-')), mkdtempSync(join(tmpdir(), 'sez-parity-target-skill-'))];
   try {
-    const sourceManifest = JSON.parse(readFileSync('.phase1-sources/baby-quirt/examples/skills/proof-echo/skill.json', 'utf8'));
+    const sourceManifest = JSON.parse(readFileSync(join(proofSkillRoot, 'skill.json'), 'utf8'));
     const targetManifest = identityNormalize(sourceManifest);
-    const handler = readFileSync('.phase1-sources/baby-quirt/examples/skills/proof-echo/index.mjs', 'utf8');
+    const handler = readFileSync(join(proofSkillRoot, 'index.mjs'), 'utf8');
     for (const [index, manifest] of [sourceManifest, targetManifest].entries()) {
       mkdirSync(roots[index], { recursive: true });
       writeFileSync(join(roots[index], 'skill.json'), `${JSON.stringify(manifest, null, 2)}\n`);
