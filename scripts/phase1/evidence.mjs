@@ -3,8 +3,30 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { fileURLToPath } from 'node:url';
 
 const root = process.cwd();
+const kernelLockPath = path.join(root, '.phase1-sources/phase1-evidence.lock');
+if (process.env.SEZ_PHASE1_KERNEL_LOCK_HELD !== '1') {
+  fs.mkdirSync(path.dirname(kernelLockPath), { recursive: true, mode: 0o700 });
+  const locked = spawnSync('flock', [
+    '--exclusive',
+    '--nonblock',
+    '--conflict-exit-code',
+    '75',
+    kernelLockPath,
+    process.execPath,
+    fileURLToPath(import.meta.url),
+  ], {
+    cwd: root,
+    env: { ...process.env, SEZ_PHASE1_KERNEL_LOCK_HELD: '1' },
+    stdio: 'inherit',
+  });
+  if (locked.status === 75) {
+    process.stderr.write('Phase 1 evidence is already running under the kernel lock.\n');
+  }
+  process.exit(locked.status ?? 1);
+}
 const lockRoot = path.join(root, '.phase1-sources/.locks');
 const lockPath = path.join(lockRoot, 'phase1-evidence');
 const ownerPath = path.join(lockPath, 'owner.json');
