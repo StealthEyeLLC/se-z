@@ -1,0 +1,1979 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedFromCapturedAt": "2026-08-03T11:15:56Z",
+  "sourceIdentity": {
+    "repository": "StealthEyeLLC/baby-quirt",
+    "commit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+    "tree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+    "version": "0.1.0",
+    "installedCatalogDigest": "444356b24912f157f29057479f0a1eb5ad3bcebdf6f1a451be8e861ecbf66fb1",
+    "installedSkillSetDigest": "1a7e8fa37ec56fe4842b598914fb784f2153d8c35ac95e938f4b8993f80491d5"
+  },
+  "targetIdentity": {
+    "repository": "StealthEyeLLC/se-z",
+    "branch": "build/standalone-0.1",
+    "product": "se-z",
+    "operationNamespace": "sez.*",
+    "publicTool": "call_sez",
+    "protocol": "SEZ1"
+  },
+  "installedOperationCount": 49,
+  "coreOperationCount": 48,
+  "dynamicOperationCount": 1,
+  "completeness": {
+    "everyInstalledOperationMapped": true,
+    "silentDisappearances": [],
+    "blocked": [],
+    "intentionallyNotCarried": []
+  },
+  "summary": {
+    "operationStates": {
+      "MECHANICALLY_RENAMED": 33,
+      "EXTRACTED_NOT_INTEGRATED": 16
+    },
+    "allCapabilityStates": {
+      "MECHANICALLY_RENAMED": 48,
+      "EXTRACTED_NOT_INTEGRATED": 28,
+      "PRESERVED_DIRECTLY": 1,
+      "DEFERRED_TO_0.1C": 3,
+      "SUPERSEDED_BY_CANONICAL_TARGET": 1,
+      "INTENTIONALLY_NOT_CARRIED": 1
+    }
+  },
+  "operations": [
+    {
+      "sourceOperation": "baby.describe",
+      "sourceFamily": "discovery",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "sourceDefinitionDigest": "40ab123434498dd54c3295bcc604c41fc48651e3b1875b2fdac7ea4b831865d0",
+      "targetOperation": "sez.describe",
+      "targetFamily": "discovery",
+      "targetSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "targetDefinitionDigest": "35b169e8416f1e1fe9c522cf8640c9a7438c6095842572903a2bc71b51da64d0",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/operations/definitions.ts",
+        "src/operations/registry.ts",
+        "src/supervisor/server/server.ts"
+      ],
+      "sourceTests": [
+        "test/operations-discovery.test.ts",
+        "integration/server.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/catalog/catalog-parity.test.ts",
+        "test/extracted/supervisor/unit/operations-discovery.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-PROTOCOL-001",
+        "DELTA-CATALOG-001"
+      ],
+      "notes": "Extracted catalog mechanics; target canonical catalog remains specification-only until 0.1A integration."
+    },
+    {
+      "sourceOperation": "baby.health",
+      "sourceFamily": "health",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "sourceDefinitionDigest": "c4a0139235a3cb4c8743cac135924e4e2f7074ba11ad32867a22602cc522616c",
+      "targetOperation": "sez.health",
+      "targetFamily": "health",
+      "targetSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "targetDefinitionDigest": "4092482bc7dbbe065a6672564a64e9ef7222d9eb56a183802b23530743988aeb",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/operations/definitions.ts",
+        "src/supervisor/server/server.ts"
+      ],
+      "sourceTests": [
+        "integration/server.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/catalog/catalog-parity.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Health mechanics are extracted; no production se-z listener is activated in Phase 1."
+    },
+    {
+      "sourceOperation": "baby.github.app.verify",
+      "sourceFamily": "github",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "2af6ebdd7fb4d8429fbd16fc520a2ddf9cb944ed916224083a5c417bfd6b012b",
+      "sourceDefinitionDigest": "52c00bc8a5a1ddd15696181f957bc72e709cf39af149fbfaed390743b80182ac",
+      "targetOperation": "sez.github.app.verify",
+      "targetFamily": "github",
+      "targetSchemaDigest": "2af6ebdd7fb4d8429fbd16fc520a2ddf9cb944ed916224083a5c417bfd6b012b",
+      "targetDefinitionDigest": "11da9df843436de8e59be5cfb4f95d84fecf4777727d0c8a7c217b6dcedbd1b2",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/github/app-authority.ts",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/github-app-authority.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/github/github-parity.test.ts",
+        "test/extracted/supervisor/unit/github-app-authority.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-GITHUB-001"
+      ],
+      "notes": "The proven verification/proof operations are retained. Generic sez.github.api and sez.github.git remain 0.1A work."
+    },
+    {
+      "sourceOperation": "baby.github.app.proof",
+      "sourceFamily": "github",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "9e08dc35e1689702dd18c165fdb23fafbff3fb6c8332f554b1d2c2fc74999f5c",
+      "sourceDefinitionDigest": "6dfa7f094d390afbe90cd807e939735b027cc0b7586b431fd05067ccde64ccb8",
+      "targetOperation": "sez.github.app.proof",
+      "targetFamily": "github",
+      "targetSchemaDigest": "9e08dc35e1689702dd18c165fdb23fafbff3fb6c8332f554b1d2c2fc74999f5c",
+      "targetDefinitionDigest": "1bc15fa2680b0997390bde5cf4c880a7a70b19c0f1e6c1fe0d18f9c5dbef1aaa",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/github/app-authority.ts",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/github-app-authority.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/github/github-parity.test.ts",
+        "test/extracted/supervisor/unit/github-app-authority.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-GITHUB-001"
+      ],
+      "notes": "The proven verification/proof operations are retained. Generic sez.github.api and sez.github.git remain 0.1A work."
+    },
+    {
+      "sourceOperation": "baby.exec",
+      "sourceFamily": "execution",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "6febf1220f891a173ad545f5da623d1d6e650b2e6aa11cc6747f9475437cc76a",
+      "sourceDefinitionDigest": "0c678cf16448d4f3677f2e09b85faaf107db61990b499736b48f7edefe765611",
+      "targetOperation": "sez.exec",
+      "targetFamily": "execution",
+      "targetSchemaDigest": "6febf1220f891a173ad545f5da623d1d6e650b2e6aa11cc6747f9475437cc76a",
+      "targetDefinitionDigest": "9bd28aa039d58d827f38d551eb1e376bfa08771c77aaf4b1d1fd0efcb805b47e",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/jobs/manager.ts",
+        "src/execution/process/identity.ts"
+      ],
+      "sourceTests": [
+        "test/jobs.test.ts",
+        "acceptance/jobs.test.ts",
+        "acceptance/process-identity.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/execution/execution-parity.test.ts",
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/process-identity.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001"
+      ],
+      "notes": "Exact argv and shell mechanics are retained. Durable unlimited output is assigned to 0.1A."
+    },
+    {
+      "sourceOperation": "baby.shell",
+      "sourceFamily": "execution",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "debe2ac9fe81c14bd029b2823a8b692b96b34e91b9284c086e87e97c2cb5820e",
+      "sourceDefinitionDigest": "727f9113d633250f30e391579db779994f9d116b30b00cbb2c14e340e4334c40",
+      "targetOperation": "sez.shell",
+      "targetFamily": "execution",
+      "targetSchemaDigest": "debe2ac9fe81c14bd029b2823a8b692b96b34e91b9284c086e87e97c2cb5820e",
+      "targetDefinitionDigest": "fe23d647a6e09f193b45a6df5deca59a8144f0ec2b5fb28677d441f738319c8f",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/jobs/manager.ts",
+        "src/execution/process/identity.ts"
+      ],
+      "sourceTests": [
+        "test/jobs.test.ts",
+        "acceptance/jobs.test.ts",
+        "acceptance/process-identity.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/execution/execution-parity.test.ts",
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/process-identity.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001"
+      ],
+      "notes": "Exact argv and shell mechanics are retained. Durable unlimited output is assigned to 0.1A."
+    },
+    {
+      "sourceOperation": "baby.job.get",
+      "sourceFamily": "job",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "f118817bbb39de8ab5a9a22cb378a5d83fa97d2e7690679ca650729f18f0962d",
+      "sourceDefinitionDigest": "f582098b3c1b4e05c7aedcf05ae8fe2b39fc60056a763ffddd1ba35c6bb327b8",
+      "targetOperation": "sez.job.get",
+      "targetFamily": "job",
+      "targetSchemaDigest": "f118817bbb39de8ab5a9a22cb378a5d83fa97d2e7690679ca650729f18f0962d",
+      "targetDefinitionDigest": "322b57fc4bea656985140a6aab058121c24119ade83b30cf044ae358e0b79863",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/jobs/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "test/jobs.test.ts",
+        "test/idempotency.test.ts",
+        "acceptance/jobs.test.ts",
+        "acceptance/cancellation.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/jobs/jobs-parity.test.ts",
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/unit/idempotency.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/cancellation.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001",
+        "DELTA-RESUME-001"
+      ],
+      "notes": "Durable job mechanics are retained; deterministic server-side request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.job.list",
+      "sourceFamily": "job",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "b44d84c88a1ce4d45b48577de0d27a848fbfc9ae07c8f281ab385c1d3fdffb96",
+      "sourceDefinitionDigest": "3c9503d3fadaed2d84b99b97b30c78d5d21ca9210c666ffaa80154734f7b7d96",
+      "targetOperation": "sez.job.list",
+      "targetFamily": "job",
+      "targetSchemaDigest": "b44d84c88a1ce4d45b48577de0d27a848fbfc9ae07c8f281ab385c1d3fdffb96",
+      "targetDefinitionDigest": "59c7207ec85c3a1c27b3f4bcd1416a97e2f49eeb78ea523de956dc7c0638b5f0",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/jobs/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "test/jobs.test.ts",
+        "test/idempotency.test.ts",
+        "acceptance/jobs.test.ts",
+        "acceptance/cancellation.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/jobs/jobs-parity.test.ts",
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/unit/idempotency.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/cancellation.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001",
+        "DELTA-RESUME-001"
+      ],
+      "notes": "Durable job mechanics are retained; deterministic server-side request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.job.wait",
+      "sourceFamily": "job",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "1d3b6a6d427b5207296d4345289ff8069e548d3906b33afe221b2837c9212688",
+      "sourceDefinitionDigest": "a4104a9bb730a81b531bb038611e160f3c972ebeba0572b14096249ab23849c2",
+      "targetOperation": "sez.job.wait",
+      "targetFamily": "job",
+      "targetSchemaDigest": "1d3b6a6d427b5207296d4345289ff8069e548d3906b33afe221b2837c9212688",
+      "targetDefinitionDigest": "233a485311e1f20d33f7037381147840dc215653eccd50dca5dd34527fd0b634",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/jobs/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "test/jobs.test.ts",
+        "test/idempotency.test.ts",
+        "acceptance/jobs.test.ts",
+        "acceptance/cancellation.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/jobs/jobs-parity.test.ts",
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/unit/idempotency.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/cancellation.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001",
+        "DELTA-RESUME-001"
+      ],
+      "notes": "Durable job mechanics are retained; deterministic server-side request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.job.cancel",
+      "sourceFamily": "job",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "dba75d26e95265ad3169f956cae4d5dc0883f072aa6102725fe48ee081238424",
+      "sourceDefinitionDigest": "b033d03a9fe7ad9b4233d6b30f9cf68f733aa7191340b1fe49b8c48a93fca458",
+      "targetOperation": "sez.job.cancel",
+      "targetFamily": "job",
+      "targetSchemaDigest": "dba75d26e95265ad3169f956cae4d5dc0883f072aa6102725fe48ee081238424",
+      "targetDefinitionDigest": "a676111f0af148bcae7eae7077567bd04c1b617b185e65e4101d98dac14f93ca",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/jobs/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "test/jobs.test.ts",
+        "test/idempotency.test.ts",
+        "acceptance/jobs.test.ts",
+        "acceptance/cancellation.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/jobs/jobs-parity.test.ts",
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/unit/idempotency.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/cancellation.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001",
+        "DELTA-RESUME-001"
+      ],
+      "notes": "Durable job mechanics are retained; deterministic server-side request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.job.stream.read",
+      "sourceFamily": "job",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "7d4bfedc54179e5a616c79e51e80c4c82daa61c164ba231007ffc76479e26bed",
+      "sourceDefinitionDigest": "160d68c01ecd717bf9f780da8d82d24c92b8bb8b2268d66473d6657fea5e0a5a",
+      "targetOperation": "sez.job.stream.read",
+      "targetFamily": "job",
+      "targetSchemaDigest": "7d4bfedc54179e5a616c79e51e80c4c82daa61c164ba231007ffc76479e26bed",
+      "targetDefinitionDigest": "29cf19b64dc9d8d4ba1ae7cc59d70c126669a3cfb92585cb2f5c5e4b79c5f61b",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/jobs/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "test/jobs.test.ts",
+        "test/idempotency.test.ts",
+        "acceptance/jobs.test.ts",
+        "acceptance/cancellation.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/jobs/jobs-parity.test.ts",
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/unit/idempotency.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/cancellation.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001",
+        "DELTA-RESUME-001"
+      ],
+      "notes": "Durable job mechanics are retained; deterministic server-side request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.file.stat",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "39b714704935190561ed407980480b9a4a0b346b97346e0bff71fb9ace820194",
+      "sourceDefinitionDigest": "088b8cf644efb599db22ab5ec77f7d095e1b77b6e931055b90e4127eb905bf8c",
+      "targetOperation": "sez.file.stat",
+      "targetFamily": "file",
+      "targetSchemaDigest": "39b714704935190561ed407980480b9a4a0b346b97346e0bff71fb9ace820194",
+      "targetDefinitionDigest": "3403c15c7e1dfb544f5732fad8e250996104e0f8a6f0ec6e6f71f7c592e94a02",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.file.read",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "3ea9f56c80ac76680b6438bf67532a0f7f59be60eff5ac151a0c6c222e5d7ba9",
+      "sourceDefinitionDigest": "687b3c73aa2553b2ae9a75ed7780d6ab9a84034ac926ffaa177dcdc1ae47aa6f",
+      "targetOperation": "sez.file.read",
+      "targetFamily": "file",
+      "targetSchemaDigest": "3ea9f56c80ac76680b6438bf67532a0f7f59be60eff5ac151a0c6c222e5d7ba9",
+      "targetDefinitionDigest": "054626f5cf82c4edfa137a40c168765aec0919cae82116be3f4424867356d06c",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.file.write",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "cf2f6c6e967c4595ae4243fe64031bba2a88723991f236ac597b97a3ae6a2384",
+      "sourceDefinitionDigest": "a94dfc786f3a36fb42f797eabef6a55da9425025c5ff6140ced0d5b40dced215",
+      "targetOperation": "sez.file.write",
+      "targetFamily": "file",
+      "targetSchemaDigest": "cf2f6c6e967c4595ae4243fe64031bba2a88723991f236ac597b97a3ae6a2384",
+      "targetDefinitionDigest": "bdc22a6ab024f45c43856aa8c080952cf6edc02e66122c90d7c9b6abcc1b6cde",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.file.replace",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "f3481279fc8db2d10074da363d6c45c3784fb4988071e68690401136a29ac9ca",
+      "sourceDefinitionDigest": "2e73a0948a0fa23054192b3e917438f04a4a955dd754301b34eb4ae3ccc51582",
+      "targetOperation": "sez.file.replace",
+      "targetFamily": "file",
+      "targetSchemaDigest": "f3481279fc8db2d10074da363d6c45c3784fb4988071e68690401136a29ac9ca",
+      "targetDefinitionDigest": "bf4d5bd788f723a410c8c52bfe5ae89dcb76cc3a8b2aa12de115a3d354a7351a",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.file.patch",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "4f646b4821bf28a35d3d9b2089c310ac41c759e24b7de8a5ffde9824fb63a2b3",
+      "sourceDefinitionDigest": "a7c7f96722dc680c440d3a0f1d3dde3160a737fe594b6f6fe810f674fa43dcfa",
+      "targetOperation": "sez.file.patch",
+      "targetFamily": "file",
+      "targetSchemaDigest": "4f646b4821bf28a35d3d9b2089c310ac41c759e24b7de8a5ffde9824fb63a2b3",
+      "targetDefinitionDigest": "af900bf452db3f0b4cd698ca6a42c83651abb6cc6b1a8403faa0c55e05b5a918",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.file.copy",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "3c85f673912c09d9acfb0cb5bc30f03e9eb4b7eb32bda12619df6997745b8de2",
+      "sourceDefinitionDigest": "9e4ba2d4e74dcdb7e508f4ce97788160604cf05277fa7e1999b94833b9222f2c",
+      "targetOperation": "sez.file.copy",
+      "targetFamily": "file",
+      "targetSchemaDigest": "3c85f673912c09d9acfb0cb5bc30f03e9eb4b7eb32bda12619df6997745b8de2",
+      "targetDefinitionDigest": "1051e1d39af0fda13548b11af7a8888d8b9fbf49f12d9af1b09f4c3d307eed77",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.file.move",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "3c85f673912c09d9acfb0cb5bc30f03e9eb4b7eb32bda12619df6997745b8de2",
+      "sourceDefinitionDigest": "115300f5af806ed5dbbf940878bc4bc836840d754cc4d6547a7bf2089af5f019",
+      "targetOperation": "sez.file.move",
+      "targetFamily": "file",
+      "targetSchemaDigest": "3c85f673912c09d9acfb0cb5bc30f03e9eb4b7eb32bda12619df6997745b8de2",
+      "targetDefinitionDigest": "57c80c4eca851e887f86b8b4cf9a38bf6b1cf7e4560ddd539e7ff6b0c2a9646a",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.file.remove",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "885b6e944ae574e25d7c71887c127cf826445d3e00d152f76f26b3b6d5361562",
+      "sourceDefinitionDigest": "dcd4669c532d8825cd0eec3124a0ed767e86dd39718b073ff107328dec12ba99",
+      "targetOperation": "sez.file.remove",
+      "targetFamily": "file",
+      "targetSchemaDigest": "885b6e944ae574e25d7c71887c127cf826445d3e00d152f76f26b3b6d5361562",
+      "targetDefinitionDigest": "4337bd94416411d666a0929e4f6eaa15d47ee6de087f626a53f02c9974a1a11b",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.file.list",
+      "sourceFamily": "file",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "ff227dc4c0b198117639534af4aa403f094efeb0ad5769867aebf8a93ca1ca48",
+      "sourceDefinitionDigest": "76cb2acd645d0618eddbfca0f76e32ce7511ef07ead31c5a6a1650282e8abc7c",
+      "targetOperation": "sez.file.list",
+      "targetFamily": "file",
+      "targetSchemaDigest": "ff227dc4c0b198117639534af4aa403f094efeb0ad5769867aebf8a93ca1ca48",
+      "targetDefinitionDigest": "e3018e8cb42bc4728e0444e891ba8fdd5c3a2b04a895fa5b8236e88e824c2feb",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/files/manager.ts"
+      ],
+      "sourceTests": [
+        "test/files.test.ts",
+        "acceptance/filesystem.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/files/files-parity.test.ts",
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Raw file mechanics are retained with temporary-root parity coverage."
+    },
+    {
+      "sourceOperation": "baby.pty.create",
+      "sourceFamily": "pty",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "ff28b7b4b1206ed4afb9a7633ac66c2345db91c2a7d27470cbf8571c1c1d3a5c",
+      "sourceDefinitionDigest": "a3b09e286a03e02801534020691ed920078680794cc008bc9514ec0a987cc5dc",
+      "targetOperation": "sez.pty.create",
+      "targetFamily": "pty",
+      "targetSchemaDigest": "ff28b7b4b1206ed4afb9a7633ac66c2345db91c2a7d27470cbf8571c1c1d3a5c",
+      "targetDefinitionDigest": "7716afcd0abf7b5386e08f249ae2d6622e318a5f56a38dd1aaa12d5d381dbbce",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/pty/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "acceptance/pty.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/pty/pty-parity.test.ts",
+        "test/extracted/supervisor/acceptance/pty.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RESUME-001"
+      ],
+      "notes": "PTY mechanics and restart discovery are retained; final deterministic request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.pty.input",
+      "sourceFamily": "pty",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "d93f3122fdeada884bf55bae0ebb3109d7296a26d22cfe6a79cc55e8d4c925d2",
+      "sourceDefinitionDigest": "74517ad05d9821e3d6a929458ea465214e1451c4e765097eea89355479d7a3f9",
+      "targetOperation": "sez.pty.input",
+      "targetFamily": "pty",
+      "targetSchemaDigest": "d93f3122fdeada884bf55bae0ebb3109d7296a26d22cfe6a79cc55e8d4c925d2",
+      "targetDefinitionDigest": "6cbd6e4b0dbb734df28ff6bbd9abad95616b3d0754c7740c282523fa2b199026",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/pty/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "acceptance/pty.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/pty/pty-parity.test.ts",
+        "test/extracted/supervisor/acceptance/pty.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RESUME-001"
+      ],
+      "notes": "PTY mechanics and restart discovery are retained; final deterministic request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.pty.resize",
+      "sourceFamily": "pty",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "a10594a66e635df4585854ff3b28e1934c878451bddf0c37568dfa9b0d408248",
+      "sourceDefinitionDigest": "c0619fa40c91a4a7c896ec02e0b884aee297d5814ed05b5d0ec5ffd232cbd5e0",
+      "targetOperation": "sez.pty.resize",
+      "targetFamily": "pty",
+      "targetSchemaDigest": "a10594a66e635df4585854ff3b28e1934c878451bddf0c37568dfa9b0d408248",
+      "targetDefinitionDigest": "3b10b18c018a3d5ff2725c9755b36147003acb15444d912d36728ac50d0ca3b4",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/pty/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "acceptance/pty.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/pty/pty-parity.test.ts",
+        "test/extracted/supervisor/acceptance/pty.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RESUME-001"
+      ],
+      "notes": "PTY mechanics and restart discovery are retained; final deterministic request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.pty.read",
+      "sourceFamily": "pty",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "e1e71f131405f3340d85151b353284ba8890a23cb29dcc8db6b6a35e229f3117",
+      "sourceDefinitionDigest": "7870e8c2572d929b796c183838a8b02f7406bb5e4e9d31d7222bc24191e5f5e3",
+      "targetOperation": "sez.pty.read",
+      "targetFamily": "pty",
+      "targetSchemaDigest": "e1e71f131405f3340d85151b353284ba8890a23cb29dcc8db6b6a35e229f3117",
+      "targetDefinitionDigest": "6c0f80167cf58a5a369e50091d7e47265f213d4adfe20c4a4133d54028f2716d",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/pty/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "acceptance/pty.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/pty/pty-parity.test.ts",
+        "test/extracted/supervisor/acceptance/pty.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RESUME-001"
+      ],
+      "notes": "PTY mechanics and restart discovery are retained; final deterministic request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.pty.close",
+      "sourceFamily": "pty",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "60ead5ba95969b7c04d4e0d8002c55be4021f4f13e4d0f16e7879eaddab94d89",
+      "sourceDefinitionDigest": "deb9576f44dc6e9dc0b4f3c39579100d8ae3c0313b5b8142862841603b1e5ab0",
+      "targetOperation": "sez.pty.close",
+      "targetFamily": "pty",
+      "targetSchemaDigest": "60ead5ba95969b7c04d4e0d8002c55be4021f4f13e4d0f16e7879eaddab94d89",
+      "targetDefinitionDigest": "d12026fbc5b657b3239391fbe9ff2d6cc22cecefb22866e514a26b01d54f9efb",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/pty/manager.ts",
+        "src/state/store/store.ts"
+      ],
+      "sourceTests": [
+        "acceptance/pty.test.ts",
+        "acceptance/restart.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/pty/pty-parity.test.ts",
+        "test/extracted/supervisor/acceptance/pty.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RESUME-001"
+      ],
+      "notes": "PTY mechanics and restart discovery are retained; final deterministic request resume remains 0.1A."
+    },
+    {
+      "sourceOperation": "baby.artifact.create",
+      "sourceFamily": "artifact",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "ef365066b16bf1d1f8b71ea6f645a0a778020a9007ada34a7086b16af4ece6dc",
+      "sourceDefinitionDigest": "f6e624759408538c2d32cf9ce1f2f32e6696e618d190c565c9b22b9eda992d47",
+      "targetOperation": "sez.artifact.create",
+      "targetFamily": "artifact",
+      "targetSchemaDigest": "ef365066b16bf1d1f8b71ea6f645a0a778020a9007ada34a7086b16af4ece6dc",
+      "targetDefinitionDigest": "8fc9e75c7f6002a36139954a346cc82bb432617d0b56c682559c7f00eb471185",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "sourceTests": [
+        "test/artifacts.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/artifacts/artifacts-parity.test.ts",
+        "test/extracted/supervisor/unit/artifacts.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Artifact upload, resume, digest, immutable finalize, download, list, and abort mechanics are retained."
+    },
+    {
+      "sourceOperation": "baby.artifact.begin",
+      "sourceFamily": "artifact",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "1f8edfdb2fe1270e0d7ba0a070fc92710295305dbe16a29cb1050489175fc40d",
+      "sourceDefinitionDigest": "7efa355b403296dd47231c3d72be72a2378b2559ffe8a0512866fd9f19fd5d5b",
+      "targetOperation": "sez.artifact.begin",
+      "targetFamily": "artifact",
+      "targetSchemaDigest": "1f8edfdb2fe1270e0d7ba0a070fc92710295305dbe16a29cb1050489175fc40d",
+      "targetDefinitionDigest": "a6866d3864292892b3b7b57dccc850833a5145b6ef0e5e0313b998743f197239",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "sourceTests": [
+        "test/artifacts.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/artifacts/artifacts-parity.test.ts",
+        "test/extracted/supervisor/unit/artifacts.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Artifact upload, resume, digest, immutable finalize, download, list, and abort mechanics are retained."
+    },
+    {
+      "sourceOperation": "baby.artifact.upload",
+      "sourceFamily": "artifact",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "1665c0d407ea0b1f6a018a17d0c850c8ab22def4c5dea4cb2c73478081ddca16",
+      "sourceDefinitionDigest": "23dc680d3a2228ad9ba3dc2620a1c109d043e2693bee07c1c2e901b586789b6f",
+      "targetOperation": "sez.artifact.upload",
+      "targetFamily": "artifact",
+      "targetSchemaDigest": "1665c0d407ea0b1f6a018a17d0c850c8ab22def4c5dea4cb2c73478081ddca16",
+      "targetDefinitionDigest": "08a67492baaf2ee677cb9968e1e05056c9a16521bdc747ae576aaf701cad2fa1",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "sourceTests": [
+        "test/artifacts.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/artifacts/artifacts-parity.test.ts",
+        "test/extracted/supervisor/unit/artifacts.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Artifact upload, resume, digest, immutable finalize, download, list, and abort mechanics are retained."
+    },
+    {
+      "sourceOperation": "baby.artifact.finalize",
+      "sourceFamily": "artifact",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "b99d8e375d2a8c422c7761d8e7d603dcd0d84fa3423919ee12159b177c8bc104",
+      "sourceDefinitionDigest": "e85706f6b3f402a73a9ae9b4e18408969ee4b9297156f3a99cf1c5351bf50df1",
+      "targetOperation": "sez.artifact.finalize",
+      "targetFamily": "artifact",
+      "targetSchemaDigest": "b99d8e375d2a8c422c7761d8e7d603dcd0d84fa3423919ee12159b177c8bc104",
+      "targetDefinitionDigest": "5d1a07dec1be8a1b8e9a2f1ec2cc24288c1269b6ad92cefb3f30228595f0293e",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "sourceTests": [
+        "test/artifacts.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/artifacts/artifacts-parity.test.ts",
+        "test/extracted/supervisor/unit/artifacts.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Artifact upload, resume, digest, immutable finalize, download, list, and abort mechanics are retained."
+    },
+    {
+      "sourceOperation": "baby.artifact.abort",
+      "sourceFamily": "artifact",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "df5c44c16307130a2e9e3eab07b385a796d90771d57b783953b52d21329ae6d3",
+      "sourceDefinitionDigest": "e7aea5950d0a654c2174517128a4325896c4d7dd7db46fb240d2b8951e5d363d",
+      "targetOperation": "sez.artifact.abort",
+      "targetFamily": "artifact",
+      "targetSchemaDigest": "df5c44c16307130a2e9e3eab07b385a796d90771d57b783953b52d21329ae6d3",
+      "targetDefinitionDigest": "c454ba4a54e4b880042f4e883147b88484192d86379ae774a8a7538309547695",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "sourceTests": [
+        "test/artifacts.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/artifacts/artifacts-parity.test.ts",
+        "test/extracted/supervisor/unit/artifacts.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Artifact upload, resume, digest, immutable finalize, download, list, and abort mechanics are retained."
+    },
+    {
+      "sourceOperation": "baby.artifact.download",
+      "sourceFamily": "artifact",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "cf2adab1f117690eb943fd6cb04d30b34816534216bb83addb36053007af8556",
+      "sourceDefinitionDigest": "5dc81fc24981a3a1277b74769343baf947c49868b886f2eabeb1cdf7b9aa62e0",
+      "targetOperation": "sez.artifact.download",
+      "targetFamily": "artifact",
+      "targetSchemaDigest": "cf2adab1f117690eb943fd6cb04d30b34816534216bb83addb36053007af8556",
+      "targetDefinitionDigest": "afe08becbdd5877f15a3503e24055f572b072a3d955be1deff956ae6ad054de7",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "sourceTests": [
+        "test/artifacts.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/artifacts/artifacts-parity.test.ts",
+        "test/extracted/supervisor/unit/artifacts.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Artifact upload, resume, digest, immutable finalize, download, list, and abort mechanics are retained."
+    },
+    {
+      "sourceOperation": "baby.artifact.list",
+      "sourceFamily": "artifact",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "sourceDefinitionDigest": "97c45074f70a2ad5c21daa8c0eafa0a3210b45ce52ccc64269b91c27abc0bf85",
+      "targetOperation": "sez.artifact.list",
+      "targetFamily": "artifact",
+      "targetSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "targetDefinitionDigest": "413ae89579520536f4b08a0ad0fe76f776b7a49695d4a39c9fcf9f36d0fdb1da",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "sourceTests": [
+        "test/artifacts.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/artifacts/artifacts-parity.test.ts",
+        "test/extracted/supervisor/unit/artifacts.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Artifact upload, resume, digest, immutable finalize, download, list, and abort mechanics are retained."
+    },
+    {
+      "sourceOperation": "baby.artifact.get",
+      "sourceFamily": "artifact",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "df5c44c16307130a2e9e3eab07b385a796d90771d57b783953b52d21329ae6d3",
+      "sourceDefinitionDigest": "91546a0bc922b8b7b7850b7a5fdc012578ed1a55e1a498affb0358e4ab2c46a6",
+      "targetOperation": "sez.artifact.get",
+      "targetFamily": "artifact",
+      "targetSchemaDigest": "df5c44c16307130a2e9e3eab07b385a796d90771d57b783953b52d21329ae6d3",
+      "targetDefinitionDigest": "d07c7a3a01af19ac0bea9b9dcc89140af1ee63feb79765c92e85476d837eef8e",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "sourceTests": [
+        "test/artifacts.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/artifacts/artifacts-parity.test.ts",
+        "test/extracted/supervisor/unit/artifacts.test.ts"
+      ],
+      "state": "MECHANICALLY_RENAMED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [],
+      "notes": "Artifact upload, resume, digest, immutable finalize, download, list, and abort mechanics are retained."
+    },
+    {
+      "sourceOperation": "baby.release.status",
+      "sourceFamily": "release",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "456ad5e05831c4664ae9e61bdcb40c1a4d2ec446c4e27214f9679e2a9f3c043b",
+      "sourceDefinitionDigest": "f5c5cd46ad1a7a0bf36598e076ec2783c9064cb1b8a47293f17bdb581d8bdedf",
+      "targetOperation": "sez.release.status",
+      "targetFamily": "release",
+      "targetSchemaDigest": "456ad5e05831c4664ae9e61bdcb40c1a4d2ec446c4e27214f9679e2a9f3c043b",
+      "targetDefinitionDigest": "79bdc5ccf6e75b4006994d29b772b04df6f5ae71cc3267ac63af0a7f60391f88",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/releases/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/deployment-state-machine-v2.test.ts",
+        "test/deployment-operations.test.ts",
+        "test/release-manifest-v2.test.ts",
+        "acceptance/release.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "notes": "Isolated release mechanics are retained. Final separately versioned recovery and activation transaction are 0.1C."
+    },
+    {
+      "sourceOperation": "baby.release.build",
+      "sourceFamily": "release",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "7029db2109284e6a95904eb60a957e81da85c189ef4264ba2f86797043b6e4a1",
+      "sourceDefinitionDigest": "4cdef12e7bacede51e3cf55c64ae12521eab1a9338f51112a94e73dacae8e3c6",
+      "targetOperation": "sez.release.build",
+      "targetFamily": "release",
+      "targetSchemaDigest": "5b49f5c9a6804762565923c750dcb162738ad31cf2f42fee8e59a9e54fd014f5",
+      "targetDefinitionDigest": "cd54c0b1abe74254d051adf1a31b2b36cd84f87e9f9f845582b40b1c1eb53027",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/releases/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/deployment-state-machine-v2.test.ts",
+        "test/deployment-operations.test.ts",
+        "test/release-manifest-v2.test.ts",
+        "acceptance/release.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "notes": "Isolated release mechanics are retained. Final separately versioned recovery and activation transaction are 0.1C."
+    },
+    {
+      "sourceOperation": "baby.release.stage",
+      "sourceFamily": "release",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "490b5f6489d395312c47cf6053fc43b6397eb182b8717c13f679cc85f9a33286",
+      "sourceDefinitionDigest": "f9e79803f1a15cb9db5a75b4f1a72c59bb5a3a3d123bad3981cad6916cb70a93",
+      "targetOperation": "sez.release.stage",
+      "targetFamily": "release",
+      "targetSchemaDigest": "490b5f6489d395312c47cf6053fc43b6397eb182b8717c13f679cc85f9a33286",
+      "targetDefinitionDigest": "952ffc9823cf0d7c9a1baa7badb0a32d7b7a93da5fc32f4b86477d0ddbac9095",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/releases/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/deployment-state-machine-v2.test.ts",
+        "test/deployment-operations.test.ts",
+        "test/release-manifest-v2.test.ts",
+        "acceptance/release.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "notes": "Isolated release mechanics are retained. Final separately versioned recovery and activation transaction are 0.1C."
+    },
+    {
+      "sourceOperation": "baby.release.verify",
+      "sourceFamily": "release",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "9e59d7bba688938bd7b807882ea3fabda84417b82f2ccb29ff95c0cf46129f6c",
+      "sourceDefinitionDigest": "26f374b8164c2c8480b8d933b250dffe9ea6987e3af604b0158c1d75af658f3d",
+      "targetOperation": "sez.release.verify",
+      "targetFamily": "release",
+      "targetSchemaDigest": "9e59d7bba688938bd7b807882ea3fabda84417b82f2ccb29ff95c0cf46129f6c",
+      "targetDefinitionDigest": "224281c317998e22d50907f8b87c1401916835ad1470db17b1875a53a6e5d2cb",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/releases/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/deployment-state-machine-v2.test.ts",
+        "test/deployment-operations.test.ts",
+        "test/release-manifest-v2.test.ts",
+        "acceptance/release.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "notes": "Isolated release mechanics are retained. Final separately versioned recovery and activation transaction are 0.1C."
+    },
+    {
+      "sourceOperation": "baby.release.activate",
+      "sourceFamily": "release",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "f2cf3e7d1cbbe775f73d6a0b5fd26a71d50f02d86d66966ac51ebb35a485afb6",
+      "sourceDefinitionDigest": "697a0e03424a8b09618561a4107a77148818b2317e3673078289924e1b147570",
+      "targetOperation": "sez.release.activate",
+      "targetFamily": "release",
+      "targetSchemaDigest": "f2cf3e7d1cbbe775f73d6a0b5fd26a71d50f02d86d66966ac51ebb35a485afb6",
+      "targetDefinitionDigest": "88939aaaa87179b1b304ae42e12fac3bbed056667b344a6b0328d00ebc6ea6ab",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/releases/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/deployment-state-machine-v2.test.ts",
+        "test/deployment-operations.test.ts",
+        "test/release-manifest-v2.test.ts",
+        "acceptance/release.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "notes": "Isolated release mechanics are retained. Final separately versioned recovery and activation transaction are 0.1C."
+    },
+    {
+      "sourceOperation": "baby.release.rollback",
+      "sourceFamily": "release",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "dc73622d31eec0de4b9b1e8bb1beb5a3bf3f086c4f7431995fc3e224a422704b",
+      "sourceDefinitionDigest": "161ce95f16c6112ef81f10ee33da7987c8b097ba1a3a0a593b11780417e05e6f",
+      "targetOperation": "sez.release.rollback",
+      "targetFamily": "release",
+      "targetSchemaDigest": "dc73622d31eec0de4b9b1e8bb1beb5a3bf3f086c4f7431995fc3e224a422704b",
+      "targetDefinitionDigest": "12e5931d0a506e5e7fcb8211751358b835139fd90977599b517d901a054e56ee",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/releases/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/deployment-state-machine-v2.test.ts",
+        "test/deployment-operations.test.ts",
+        "test/release-manifest-v2.test.ts",
+        "acceptance/release.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "notes": "Isolated release mechanics are retained. Final separately versioned recovery and activation transaction are 0.1C."
+    },
+    {
+      "sourceOperation": "baby.release.repair",
+      "sourceFamily": "release",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "490b5f6489d395312c47cf6053fc43b6397eb182b8717c13f679cc85f9a33286",
+      "sourceDefinitionDigest": "46bfbb8468e770d2123f6ec946a7976e386a0b02922e10a18334d17a2dc0da65",
+      "targetOperation": "sez.release.repair",
+      "targetFamily": "release",
+      "targetSchemaDigest": "490b5f6489d395312c47cf6053fc43b6397eb182b8717c13f679cc85f9a33286",
+      "targetDefinitionDigest": "9c7c6eacaf58b8598cf0fe30b2ecbf2e48755c6032bf76be57665863f787f493",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/releases/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/deployment-state-machine-v2.test.ts",
+        "test/deployment-operations.test.ts",
+        "test/release-manifest-v2.test.ts",
+        "acceptance/release.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "notes": "Isolated release mechanics are retained. Final separately versioned recovery and activation transaction are 0.1C."
+    },
+    {
+      "sourceOperation": "baby.release.prune",
+      "sourceFamily": "release",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "9b33dc2eb4e6fa86a7b248ea906bf8959c33f035eade08bcca89e9ea9e9b4aec",
+      "sourceDefinitionDigest": "775e5eeed0f915f26357c02f39165026b23f9b0b9aa59c5778c2fc66434ddf43",
+      "targetOperation": "sez.release.prune",
+      "targetFamily": "release",
+      "targetSchemaDigest": "9b33dc2eb4e6fa86a7b248ea906bf8959c33f035eade08bcca89e9ea9e9b4aec",
+      "targetDefinitionDigest": "87579dd291924dd47d9aeaaf41b86950390bda2b59dd7f252ae721d2c36cc62f",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/releases/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/deployment-state-machine-v2.test.ts",
+        "test/deployment-operations.test.ts",
+        "test/release-manifest-v2.test.ts",
+        "acceptance/release.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/deployment-state-machine-v2.test.ts",
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/release-manifest-v2.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "notes": "Isolated release mechanics are retained. Final separately versioned recovery and activation transaction are 0.1C."
+    },
+    {
+      "sourceOperation": "baby.selfhost.source.get",
+      "sourceFamily": "selfhost",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "c794d6174c24793726dd6560d9620a2435263aee0e90b1ef213bcf8d0ade2b7f",
+      "sourceDefinitionDigest": "42157ec835227702af68d4dc6b71d235e0a83e807517051e2158707bd3eb2846",
+      "targetOperation": "sez.selfhost.source.get",
+      "targetFamily": "selfhost",
+      "targetSchemaDigest": "2cc4ebf74b24d25d5713e017cbbfefec8cc3b32038b21f3fadedb5fdfd6bf083",
+      "targetDefinitionDigest": "c680890c0a1933d82800c695b21b2cf131109806b15aad40c174f86654c7bb4d",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/selfhost/",
+        "scripts/extracted/supervisor/"
+      ],
+      "sourceTests": [
+        "test/controller-bootstrap.test.ts",
+        "test/controller-guard.test.ts",
+        "acceptance/self-hosting.test.ts",
+        "acceptance/self-hosting-full.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/controller-bootstrap.test.ts",
+        "test/extracted/supervisor/unit/controller-guard.test.ts",
+        "test/extracted/supervisor/acceptance/self-hosting.test.ts",
+        "test/extracted/supervisor/acceptance/self-hosting-full.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-TOOLCHAIN-001"
+      ],
+      "notes": "Self-hosting mechanics are extracted and testable in fixtures, not activated in production."
+    },
+    {
+      "sourceOperation": "baby.selfhost.acceptance.run",
+      "sourceFamily": "selfhost",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "5cafe3077172a6d28190cb19ce895bd2c90e8243e8aed8582f67915d751e0ea3",
+      "sourceDefinitionDigest": "0696ef44b9046291b3d151567de1433485a9783ac9415ea6db67903cbc717620",
+      "targetOperation": "sez.selfhost.acceptance.run",
+      "targetFamily": "selfhost",
+      "targetSchemaDigest": "5cafe3077172a6d28190cb19ce895bd2c90e8243e8aed8582f67915d751e0ea3",
+      "targetDefinitionDigest": "c683f703722e6e5d7539658cd15c85cf5c42ba1070109f37472700f7e509ac71",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/selfhost/",
+        "scripts/extracted/supervisor/"
+      ],
+      "sourceTests": [
+        "test/controller-bootstrap.test.ts",
+        "test/controller-guard.test.ts",
+        "acceptance/self-hosting.test.ts",
+        "acceptance/self-hosting-full.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/controller-bootstrap.test.ts",
+        "test/extracted/supervisor/unit/controller-guard.test.ts",
+        "test/extracted/supervisor/acceptance/self-hosting.test.ts",
+        "test/extracted/supervisor/acceptance/self-hosting-full.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-TOOLCHAIN-001"
+      ],
+      "notes": "Self-hosting mechanics are extracted and testable in fixtures, not activated in production."
+    },
+    {
+      "sourceOperation": "baby.selfhost.evidence.get",
+      "sourceFamily": "selfhost",
+      "sourceVersion": "2.0.0",
+      "sourceSchemaDigest": "c7529e5d6c023c52f80a446847d7c51420fcd7f681c0f485918f08d56ffacb7c",
+      "sourceDefinitionDigest": "b323af52b8bb051919677a19d19db69343d0a600c7c7a1777f68ed1ab1a28a9d",
+      "targetOperation": "sez.selfhost.evidence.get",
+      "targetFamily": "selfhost",
+      "targetSchemaDigest": "c7529e5d6c023c52f80a446847d7c51420fcd7f681c0f485918f08d56ffacb7c",
+      "targetDefinitionDigest": "17bd55313be338005cef237dd9dfd8422d98edf0d7297b536d884904b6616b86",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/selfhost/",
+        "scripts/extracted/supervisor/"
+      ],
+      "sourceTests": [
+        "test/controller-bootstrap.test.ts",
+        "test/controller-guard.test.ts",
+        "acceptance/self-hosting.test.ts",
+        "acceptance/self-hosting-full.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/releases/releases-parity.test.ts",
+        "test/extracted/supervisor/unit/controller-bootstrap.test.ts",
+        "test/extracted/supervisor/unit/controller-guard.test.ts",
+        "test/extracted/supervisor/acceptance/self-hosting.test.ts",
+        "test/extracted/supervisor/acceptance/self-hosting-full.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001",
+        "DELTA-TOOLCHAIN-001"
+      ],
+      "notes": "Self-hosting mechanics are extracted and testable in fixtures, not activated in production."
+    },
+    {
+      "sourceOperation": "baby.skill.deploy",
+      "sourceFamily": "skill",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "c9d4433c4a756dcc25e88013dfecb7d8d2f5989ec886ee136cf379140494154b",
+      "sourceDefinitionDigest": "0275f10c967c14933ec780fffde1dd0f9829b8156fb1d27eda2f2d81383b8498",
+      "targetOperation": "sez.skill.deploy",
+      "targetFamily": "skill",
+      "targetSchemaDigest": "c9d4433c4a756dcc25e88013dfecb7d8d2f5989ec886ee136cf379140494154b",
+      "targetDefinitionDigest": "97bb000a0f4d48d241000a1b1aae84fb0b06df95c357387b294858099328f477",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/skills/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/skill-loader.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/skills/skills-parity.test.ts",
+        "test/extracted/supervisor/unit/skill-loader.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-CATALOG-001"
+      ],
+      "notes": "Immutable bundle/set mechanics are retained; no target skill set is activated in Phase 1."
+    },
+    {
+      "sourceOperation": "baby.skill.status",
+      "sourceFamily": "skill",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "sourceDefinitionDigest": "7e0659e11c3d532573cf63322206ec842216762ee779e7b2bfdf3253aa38b33b",
+      "targetOperation": "sez.skill.status",
+      "targetFamily": "skill",
+      "targetSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "targetDefinitionDigest": "5f3e6bb0d1e6c8519322b9114760bbeacc690f5d38803a0e68123a48d75ce82b",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/skills/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/skill-loader.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/skills/skills-parity.test.ts",
+        "test/extracted/supervisor/unit/skill-loader.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-CATALOG-001"
+      ],
+      "notes": "Immutable bundle/set mechanics are retained; no target skill set is activated in Phase 1."
+    },
+    {
+      "sourceOperation": "baby.skill.rollback",
+      "sourceFamily": "skill",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "87c07796f08dcf69cfe46634751619ff3bccaf99297503efb34016a46786a4de",
+      "sourceDefinitionDigest": "975f0249ac1e9e425b42c1038e4a2adede6597126fb4a158327744818e3cb388",
+      "targetOperation": "sez.skill.rollback",
+      "targetFamily": "skill",
+      "targetSchemaDigest": "87c07796f08dcf69cfe46634751619ff3bccaf99297503efb34016a46786a4de",
+      "targetDefinitionDigest": "a2fb28e8dc18145eb6149b9e14f82b024d7d9668edf2137d2398b8256adcd96b",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/skills/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/skill-loader.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/skills/skills-parity.test.ts",
+        "test/extracted/supervisor/unit/skill-loader.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-CATALOG-001"
+      ],
+      "notes": "Immutable bundle/set mechanics are retained; no target skill set is activated in Phase 1."
+    },
+    {
+      "sourceOperation": "baby.skill.list",
+      "sourceFamily": "skill",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "sourceDefinitionDigest": "4fde00c10377d6744701e361e9e0acf2f36d103df6200dc9e7b6335d12060617",
+      "targetOperation": "sez.skill.list",
+      "targetFamily": "skill",
+      "targetSchemaDigest": "99334726611ccf58a148b0814696bfa6fe08c1b2d027e946beccf5a74331c9aa",
+      "targetDefinitionDigest": "768eae846d5459d72c2aeed25a8671facda088da9ac4e9c0958ad37dd14bb797",
+      "targetSchemaStatus": "SCHEMA_EQUIVALENT_AFTER_MECHANICAL_IDENTITY_NORMALIZATION",
+      "destinationImplementation": [
+        "src/skills/",
+        "src/operations/definitions.ts"
+      ],
+      "sourceTests": [
+        "test/skill-loader.test.ts"
+      ],
+      "targetParityTests": [
+        "test/parity/skills/skills-parity.test.ts",
+        "test/extracted/supervisor/unit/skill-loader.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-CATALOG-001"
+      ],
+      "notes": "Immutable bundle/set mechanics are retained; no target skill set is activated in Phase 1."
+    },
+    {
+      "sourceOperation": "baby.skill.proof.echo",
+      "sourceFamily": "skill",
+      "sourceVersion": "1.0.0",
+      "sourceSchemaDigest": "529feae38d8aacd60ccfc094bda061bf531fdf7e6072df29801fdd4609b74afe",
+      "sourceDefinitionDigest": "ef6b7cd94bb1bc3c9f99ebdee7b71e48cfe06512e53b0b02fd3e366db3145bd7",
+      "targetOperation": "sez.skill.proof.echo",
+      "targetFamily": "skill",
+      "targetSchemaDigest": "529feae38d8aacd60ccfc094bda061bf531fdf7e6072df29801fdd4609b74afe",
+      "targetDefinitionDigest": null,
+      "targetSchemaStatus": "EXTRACTED_SKILL_FIXTURE_NOT_ACTIVATED",
+      "destinationImplementation": [
+        "src/skills/",
+        "test/parity/fixtures/skills/proof-echo/"
+      ],
+      "sourceTests": [
+        "test/skill-loader.test.ts",
+        "examples/skills/proof-echo/skill.json"
+      ],
+      "targetParityTests": [
+        "test/parity/skills/skills-parity.test.ts",
+        "test/extracted/supervisor/unit/skill-loader.test.ts"
+      ],
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "integratedOperation": false,
+      "productionSupportedOperation": false,
+      "canonicalDelta": [
+        "DELTA-CATALOG-001"
+      ],
+      "notes": "The installed dynamic proof operation is represented and its source fixture is pinned; no se-z skill set is activated in Phase 1."
+    }
+  ],
+  "internalCapabilities": [
+    {
+      "capability": "protocol framing",
+      "family": "protocol",
+      "sourcePath": "src/protocol/frame.ts",
+      "destinationImplementation": "src/protocol/framing/frame.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-PROTOCOL-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "canonical encoding",
+      "family": "canonical encoding",
+      "sourcePath": "src/crypto/canonical.ts",
+      "destinationImplementation": "src/protocol/canonical/canonical.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-AUTHORITY-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "peer authorization",
+      "family": "peer authorization",
+      "sourcePath": "src/net/peer-cred.ts",
+      "destinationImplementation": "src/supervisor/peers/peer-cred.ts",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-PEERS-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "native SO_PEERCRED addon",
+      "family": "native addon",
+      "sourcePath": "native/src/peer_cred.cc",
+      "destinationImplementation": "src/native/peercred/src/peer_cred.cc",
+      "state": "PRESERVED_DIRECTLY",
+      "canonicalDelta": [],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "request authentication",
+      "family": "request authentication",
+      "sourcePath": "src/auth/authenticator.ts",
+      "destinationImplementation": "src/supervisor/dispatch/auth/authenticator.ts",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-AUTHORITY-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "request signatures and keys",
+      "family": "signatures and keys",
+      "sourcePath": "src/crypto/signing.ts",
+      "destinationImplementation": "src/protocol/signatures/signing.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-AUTHORITY-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "signed receipts",
+      "family": "receipts",
+      "sourcePath": "src/receipts/",
+      "destinationImplementation": "src/protocol/receipts/",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "nonce replay",
+      "family": "replay",
+      "sourcePath": "src/state/replay-store.ts",
+      "destinationImplementation": "src/state/replay/store.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "semantic idempotency",
+      "family": "idempotency",
+      "sourcePath": "src/jobs/manager.ts",
+      "destinationImplementation": "src/jobs/manager.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "durable state store",
+      "family": "state storage",
+      "sourcePath": "src/state/store.ts",
+      "destinationImplementation": "src/state/store/store.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-STATE-OWNERSHIP-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "exact argv and shell execution",
+      "family": "raw execution",
+      "sourcePath": "src/jobs/manager.ts",
+      "destinationImplementation": "src/jobs/manager.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "durable jobs",
+      "family": "jobs",
+      "sourcePath": "src/jobs/manager.ts",
+      "destinationImplementation": "src/jobs/manager.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-RESUME-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "stdout and stderr streams",
+      "family": "streams",
+      "sourcePath": "src/jobs/manager.ts",
+      "destinationImplementation": "src/jobs/manager.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-OUTPUT-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "raw files",
+      "family": "files",
+      "sourcePath": "src/files/manager.ts",
+      "destinationImplementation": "src/files/manager.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "PTY sessions",
+      "family": "PTY",
+      "sourcePath": "src/pty/manager.ts",
+      "destinationImplementation": "src/pty/manager.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-RESUME-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "artifacts",
+      "family": "artifacts",
+      "sourcePath": "src/artifacts/manager.ts",
+      "destinationImplementation": "src/artifacts/manager.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "operation registry",
+      "family": "operation registry",
+      "sourcePath": "src/operations/registry.ts",
+      "destinationImplementation": "src/operations/registry.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-CATALOG-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "dynamic catalog",
+      "family": "catalog",
+      "sourcePath": "src/operations/registry.ts",
+      "destinationImplementation": "src/operations/registry.ts",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-CATALOG-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "immutable skills",
+      "family": "skills",
+      "sourcePath": "src/skills/",
+      "destinationImplementation": "src/skills/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-CATALOG-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "release lifecycle",
+      "family": "release lifecycle",
+      "sourcePath": "src/release/ and src/deployment/",
+      "destinationImplementation": "src/releases/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "self-hosting",
+      "family": "self-hosting",
+      "sourcePath": "src/controller/ and src/install/",
+      "destinationImplementation": "src/selfhost/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "recovery source mechanics",
+      "family": "recovery source mechanics",
+      "sourcePath": "src/deployment/ and src/cli/repair.ts",
+      "destinationImplementation": "src/releases/ and src/supervisor/cli/repair.ts",
+      "state": "DEFERRED_TO_0.1C",
+      "canonicalDelta": [
+        "DELTA-RECOVERY-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "GitHub App authority",
+      "family": "GitHub authority",
+      "sourcePath": "src/github/app-authority.ts",
+      "destinationImplementation": "src/github/app-authority.ts",
+      "state": "MECHANICALLY_RENAMED",
+      "canonicalDelta": [
+        "DELTA-GITHUB-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "MCP one-tool gateway",
+      "family": "MCP gateway",
+      "sourcePath": "baby-quirt-mcp/src/tool.js and src/server.js",
+      "destinationImplementation": "src/gateway/mcp/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-TOOL-001",
+        "DELTA-TRANSPORT-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "OAuth and token lifecycle",
+      "family": "OAuth",
+      "sourcePath": "baby-quirt-mcp/src/oauth-server.js",
+      "destinationImplementation": "src/auth/oauth/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-SCOPE-001",
+        "DELTA-REFRESH-001",
+        "DELTA-OAUTH-STATE-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "configuration",
+      "family": "configuration",
+      "sourcePath": "src/config.ts and gateway src/config.js",
+      "destinationImplementation": "src/supervisor/configuration/ and src/gateway/configuration/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-PEERS-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "CLI mechanics",
+      "family": "CLI",
+      "sourcePath": "src/cli/ and gateway bin/",
+      "destinationImplementation": "src/supervisor/cli/ and src/gateway/cli/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "packaging",
+      "family": "packaging",
+      "sourcePath": "scripts/ and release source",
+      "destinationImplementation": "scripts/extracted/ and packaging/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-RELEASE-IDENTITY-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "systemd assets",
+      "family": "systemd",
+      "sourcePath": "ops/systemd/",
+      "destinationImplementation": "packaging/systemd/",
+      "state": "EXTRACTED_NOT_INTEGRATED",
+      "canonicalDelta": [
+        "DELTA-PEERS-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "Caddy assets",
+      "family": "Caddy",
+      "sourcePath": "baby-quirt-mcp/ops/caddy/",
+      "destinationImplementation": "packaging/caddy/",
+      "state": "SUPERSEDED_BY_CANONICAL_TARGET",
+      "canonicalDelta": [
+        "DELTA-TRANSPORT-001"
+      ],
+      "parityExpectation": "historical mechanics remain traceable; canonical target behavior is explicit"
+    },
+    {
+      "capability": "source broad secret redaction",
+      "family": "raw output policy",
+      "sourcePath": "src/crypto/canonical.ts and selected error paths",
+      "destinationImplementation": "historical source tests and docs/PHASE1_CANONICAL_DELTA.md",
+      "state": "INTENTIONALLY_NOT_CARRIED",
+      "canonicalDelta": [
+        "DELTA-SECRET-001"
+      ],
+      "parityExpectation": "historical mechanics remain traceable; canonical target behavior is explicit"
+    },
+    {
+      "capability": "nspawn rehearsal and deployment mechanics",
+      "family": "nspawn",
+      "sourcePath": "src/rehearsal/ and deployment source",
+      "destinationImplementation": "src/releases/rehearsal/ and isolated release fixtures",
+      "state": "DEFERRED_TO_0.1C",
+      "canonicalDelta": [
+        "DELTA-NSPAWN-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    },
+    {
+      "capability": "KVM lifecycle",
+      "family": "KVM",
+      "sourcePath": "not present in the installed source catalog",
+      "destinationImplementation": "future bundled z integration",
+      "state": "DEFERRED_TO_0.1C",
+      "canonicalDelta": [
+        "DELTA-KVM-001"
+      ],
+      "parityExpectation": "mechanics traced and tested without production activation"
+    }
+  ]
+}
