@@ -80,8 +80,13 @@ export class KernelState {
       idempotencyKey: request.idempotencyKey,
     }));
     const nonceScope = sha256Hex(Buffer.from(request.nonce, 'utf8'));
-    const requestLock = path.join(this.locks, `idempotency-${idempotencyScope}.lock`);
-    return await withDirectoryLock(requestLock, async () => {
+    // Request reservation is one transaction boundary across request ID,
+    // semantic idempotency, nonce replay, and durable sequence allocation.
+    // A per-idempotency lock is insufficient because the same nonce can race
+    // under two distinct idempotency keys. Serializing this short metadata-only
+    // critical section prevents both duplicate mutations and split replay truth.
+    const reservationLock = path.join(this.locks, 'request-reservation.lock');
+    return await withDirectoryLock(reservationLock, async () => {
       const idempotencyPath = path.join(this.idempotency, `${idempotencyScope}.json`);
       const existingIdempotency = await readJsonIfExists(idempotencyPath, 'idempotency record');
       if (existingIdempotency) {

@@ -150,6 +150,23 @@ test('request reservation is durable, concurrent, replay-aware, and semantically
   await assert.rejects(() => state.reserveRequest({ ...fields, request: changedRequest, requestDigest: requestDigest(changedRequest), semanticDigest: semanticDigest(changedRequest) }), (error) => error.code === 'idempotency_conflict');
   const nonceConflict = { ...request, requestId: crypto.randomUUID(), idempotencyKey: 'different', operation: 'sez.shell', payload: { command: 'true' } };
   await assert.rejects(() => state.reserveRequest({ ...fields, request: nonceConflict, requestDigest: requestDigest(nonceConflict), semanticDigest: semanticDigest(nonceConflict) }), (error) => error.code === 'replay_detected');
+
+  const sharedNonce = crypto.randomBytes(24).toString('base64url');
+  const concurrentA = baseRequest({ requestId: crypto.randomUUID(), idempotencyKey: 'nonce-race-a', nonce: sharedNonce, payload: { argv: ['/bin/true'] } });
+  const concurrentB = baseRequest({ requestId: crypto.randomUUID(), idempotencyKey: 'nonce-race-b', nonce: sharedNonce, operation: 'sez.shell', payload: { command: 'true' } });
+  const reserve = (candidate) => state.reserveRequest({
+    request: candidate,
+    requestDigest: requestDigest(candidate),
+    semanticDigest: semanticDigest(candidate),
+    resolvedTarget: 'host',
+    catalogDigest: CATALOG_DIGEST,
+    authorityGeneration: 1,
+  });
+  const raced = await Promise.allSettled([reserve(concurrentA), reserve(concurrentB)]);
+  assert.equal(raced.filter((entry) => entry.status === 'fulfilled').length, 1);
+  assert.equal(raced.filter((entry) => entry.status === 'rejected' && entry.reason?.code === 'replay_detected').length, 1);
+  const winner = raced.find((entry) => entry.status === 'fulfilled').value.request.requestId;
+  assert.ok([concurrentA.requestId, concurrentB.requestId].includes(winner));
   assert.ok(fs.existsSync(state.requestPath(request.requestId)));
 });
 
