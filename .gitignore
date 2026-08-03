@@ -6,3 +6,8 @@ coverage/
 .env
 .env.*
 !.env.example
+
+# Phase 1 local reference material
+.phase1-sources/
+.phase1-logs/
+evidence/phase1/local-logs/

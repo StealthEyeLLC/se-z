@@ -1,0 +1,12 @@
+{
+  "repository": "StealthEyeLLC/se-z",
+  "mainCommit": "4a7c0865b606958f6dca2d9e5b928f47d5e3b45c",
+  "mainTree": "d9b7cdbadbc29e79a8a2799377f276b665035155",
+  "workingBranch": "build/standalone-0.1",
+  "workingBranchCommit": "4a7c0865b606958f6dca2d9e5b928f47d5e3b45c",
+  "workingBranchTree": "d9b7cdbadbc29e79a8a2799377f276b665035155",
+  "mergeBase": "4a7c0865b606958f6dca2d9e5b928f47d5e3b45c",
+  "branchComparison": "identical",
+  "workingTreeStatus": "",
+  "capturedAt": "2026-08-03T11:08:09Z"
+}

@@ -1,0 +1,34 @@
+{
+  "capturedAt": "2026-08-03T11:08:09Z",
+  "nodeVersion": "v24.18.0",
+  "npmVersion": "11.16.0",
+  "commands": [
+    {
+      "name": "check",
+      "command": "npm run check",
+      "exitStatus": 0,
+      "stdoutSha256": "4a67e9e98b67d1b0f5b7cb0ad35b114cb378c10d7f3ced5b19bafb8a4a2a1f34",
+      "stderrSha256": "28d8cd21b009ccb3704b4ea8b0ec52030110de6b30a214fefac8e5b3f5a68a82"
+    },
+    {
+      "name": "test",
+      "command": "npm test",
+      "exitStatus": 0,
+      "stdoutSha256": "5d33433795410fec1a6d1cb5a61496a35d1ea495f813fd05cdc5306206beb961",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "build",
+      "command": "npm run build",
+      "exitStatus": 0,
+      "stdoutSha256": "7cfaadbe27ad8770925232b7fec113360266fb6ac4e82cfeb598879ddb4cf86a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "generatedManifest": {
+    "path": "dist/manifest.json",
+    "sha256": "c4e54a1b761bbf55a194f375668eb3621eed7b66a8eea0d0c36236d5894874e1",
+    "exists": true
+  },
+  "baselinePassed": true
+}

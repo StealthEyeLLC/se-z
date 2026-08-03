@@ -1,0 +1,19 @@
+{
+  "capturedAt": "2026-08-03T11:15:56Z",
+  "inspectionMode": "read-only product configuration and service metadata",
+  "hostname": "vps-c9f04f5e",
+  "services": {
+    "baby-quirt.service": {"activeState":"active","subState":"running","user":"root","group":"root","execStart":"/opt/baby-quirt/current/bin/baby-quirt-daemon"},
+    "baby-quirt-mcp.service": {"activeState":"active","subState":"running","user":"fix-mcp","group":"horsey","execStart":"/opt/node-v24.18.0-linux-x64/bin/node /opt/baby-quirt-mcp/current/src/main.js"},
+    "baby-quirt.socket": {"activeState":"active"}
+  },
+  "pointers": {
+    "supervisorCurrent": "/opt/baby-quirt/releases/b3a7119fb9321d74fee9a730517f519ed0d351c4",
+    "gatewayCurrent": "/opt/baby-quirt-mcp/releases/0.2.3",
+    "gatewayPrevious": "/opt/baby-quirt-mcp/releases/0.1.6-20260721063135.942dbfef"
+  },
+  "socket": {"path":"/run/horsey/baby-quirt.sock","mode":"0660","owner":"root","group":"horsey"},
+  "publicEndpoint": "https://baby-quirt.stealtheye.io/mcp",
+  "productionMutationAuthorizedForPhase1": false,
+  "secretValuesCaptured": false
+}

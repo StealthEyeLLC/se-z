@@ -1,0 +1,99 @@
+{
+  "capturedAt": "2026-08-03T11:15:56Z",
+  "authorityOrderApplied": [
+    "installed active-release manifest",
+    "signed runtime discovery",
+    "active release pointer",
+    "matching GitHub commit and tree",
+    "repository documentation",
+    "current main head"
+  ],
+  "supervisor": {
+    "installedManifest": {
+      "path": "/opt/baby-quirt/current/manifest.json",
+      "sha256": "315606a6e6c0738b39387cb5cccae1ec1d79834a576da6c46c0099eaa8992f1d",
+      "version": "0.1.0",
+      "commit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+      "tree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+      "sourceDateEpoch": 1785157347
+    },
+    "signedRuntime": {
+      "product": "baby-quirt",
+      "protocol": "QRT1",
+      "protocolVersion": "1.0.0",
+      "catalogDigest": "444356b24912f157f29057479f0a1eb5ad3bcebdf6f1a451be8e861ecbf66fb1",
+      "activeSkillSetDigest": "1a7e8fa37ec56fe4842b598914fb784f2153d8c35ac95e938f4b8993f80491d5",
+      "receiptKeyId": "supervisor-receipt-v1",
+      "hostname": "vps-c9f04f5e",
+      "machineIdSha256": "cd189817b39fea60d338b73878240a6fe7db71374c7a0f35ad60f8eb641e8817",
+      "operationCount": 49,
+      "receiptVerified": true
+    },
+    "github": {
+      "repository": "StealthEyeLLC/baby-quirt",
+      "commitExists": true,
+      "resolvedCommit": "b3a7119fb9321d74fee9a730517f519ed0d351c4",
+      "resolvedTree": "9ebab95f7f136c8480495f812796ac0bdc558a21",
+      "treeMatchesManifest": true,
+      "sourceComplete": true,
+      "trackedFileCount": 182,
+      "archiveSha256": "539dc742bbd832cb5644674da19b19261d2ae373f3929d50331e1cc1e27a22bf"
+    }
+  },
+  "gateway": {
+    "activePointer": "/opt/baby-quirt-mcp/releases/0.2.3",
+    "installedManifest": {
+      "path": "/opt/baby-quirt-mcp/current/release.json",
+      "sha256": "f116ea7012a1bc8a4c40ca3993a02fb26544badca0c47454c47181fdb3622f4e",
+      "version": "0.1.0",
+      "releaseDirectoryVersion": "0.2.3",
+      "commit": "0bfcd99757afe198151e96b18771626388914205",
+      "tree": "d0598af304c8cda8df3bb538d703d9db6c7dcb04",
+      "sourceDateEpoch": 1784784328,
+      "nodeVersion": "24.18.0"
+    },
+    "publicContract": {
+      "tool": "call_quirt",
+      "service": "baby-quirt-mcp.service",
+      "oauthIssuer": "https://baby-quirt.stealtheye.io",
+      "protectedResource": "https://baby-quirt.stealtheye.io/mcp",
+      "requiredScope": "baby.apply",
+      "gatewayKeyId": "gateway-authority-v1",
+      "receiptKeyId": "supervisor-receipt-v1",
+      "publicEndpoint": "https://baby-quirt.stealtheye.io/mcp"
+    },
+    "github": {
+      "repository": "StealthEyeLLC/baby-quirt-mcp",
+      "commitExists": true,
+      "resolvedCommit": "0bfcd99757afe198151e96b18771626388914205",
+      "resolvedTree": "d0598af304c8cda8df3bb538d703d9db6c7dcb04",
+      "treeMatchesManifest": true,
+      "sourceComplete": true,
+      "trackedFileCount": 48,
+      "archiveSha256": "5867084e488a4f5d2b8ebaf316007661fd2a775527848e4bb09cb8c942ad1308"
+    }
+  },
+  "discrepancies": [
+    {
+      "kind": "gateway-release-label-versus-package-version",
+      "installedReleaseDirectory": "0.2.3",
+      "manifestPackageVersion": "0.1.0",
+      "resolution": "preserved as distinct fields"
+    },
+    {
+      "kind": "coordinated-release-manifest-is-not-gateway-source-manifest",
+      "path": "/etc/baby-quirt/release-manifests/0.2.3.json",
+      "observedIdentity": {
+        "repository": "StealthEyeLLC/baby-quirt",
+        "commit": "29fa50b4a47b799d3067485eedfe400fd5126e99",
+        "tree": "70d17901e40c2c695dc49299e8b97cc434d55fe0"
+      },
+      "resolution": "excluded from gateway source authority; active release.json governs"
+    },
+    {
+      "kind": "deployed-commits-versus-current-heads",
+      "resolution": "exact deployed commits pinned; branch heads not substituted"
+    }
+  ],
+  "secretsIncluded": false
+}
