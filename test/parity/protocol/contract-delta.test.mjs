@@ -1,0 +1,5 @@
+import assert from 'node:assert/strict'; import fs from 'node:fs'; import test from 'node:test';
+const deltas=JSON.parse(fs.readFileSync('contracts/phase1-canonical-delta.json','utf8')).entries;
+const required=['DELTA-PROTOCOL-001','DELTA-AUTHORITY-001','DELTA-PEERS-001','DELTA-OUTPUT-001','DELTA-CATALOG-001','DELTA-SCOPE-001','DELTA-REFRESH-001','DELTA-TRANSPORT-001','DELTA-OAUTH-STATE-001','DELTA-STATE-OWNERSHIP-001','DELTA-SECRET-001','DELTA-RECOVERY-001','DELTA-GITHUB-001','DELTA-NSPAWN-001','DELTA-KVM-001','DELTA-RESUME-001','DELTA-TOOLCHAIN-001'];
+test('all mandatory nonmechanical differences are classified',()=>{const ids=new Set(deltas.map((entry)=>entry.id)); for(const id of required) assert.ok(ids.has(id),id);});
+test('SEZ1 target request and response additions are explicit',()=>{const request=JSON.parse(fs.readFileSync('protocol/schemas/request.schema.json','utf8'));const result=JSON.parse(fs.readFileSync('protocol/schemas/result.schema.json','utf8'));assert.ok(request.required.includes('authorityGeneration'));assert.ok(result.required.includes('catalogDigest'));});

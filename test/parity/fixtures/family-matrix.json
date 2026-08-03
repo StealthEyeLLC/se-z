@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.0.0",
+  "families": {
+    "protocol": {
+      "implementation": [
+        "src/protocol/framing/frame.ts",
+        "src/protocol/canonical/canonical.ts",
+        "src/protocol/signatures/signing.ts",
+        "src/protocol/receipts/receipt.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/frame.test.ts",
+        "test/extracted/supervisor/unit/canonical.test.ts",
+        "test/extracted/supervisor/unit/signing.test.ts",
+        "test/extracted/supervisor/unit/receipts.test.ts",
+        "test/extracted/supervisor/acceptance/auth.test.ts"
+      ]
+    },
+    "execution": {
+      "implementation": [
+        "src/jobs/manager.ts",
+        "src/execution/process/identity.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/process-identity.test.ts"
+      ]
+    },
+    "jobs": {
+      "implementation": [
+        "src/jobs/manager.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/cancellation.test.ts",
+        "test/extracted/supervisor/acceptance/restart.test.ts"
+      ]
+    },
+    "streams": {
+      "implementation": [
+        "src/jobs/manager.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/jobs.test.ts",
+        "test/extracted/supervisor/acceptance/jobs.test.ts"
+      ]
+    },
+    "files": {
+      "implementation": [
+        "src/files/manager.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/files.test.ts",
+        "test/extracted/supervisor/unit/symlinks.test.ts",
+        "test/extracted/supervisor/acceptance/filesystem.test.ts"
+      ]
+    },
+    "pty": {
+      "implementation": [
+        "src/pty/manager.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/acceptance/pty.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ]
+    },
+    "artifacts": {
+      "implementation": [
+        "src/artifacts/manager.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/artifacts.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ]
+    },
+    "skills": {
+      "implementation": [
+        "src/skills/service.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/skill-loader.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ]
+    },
+    "releases": {
+      "implementation": [
+        "src/releases/deployment/service.ts",
+        "src/releases/package-release.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/deployment-operations.test.ts",
+        "test/extracted/supervisor/unit/snapshot-rollback.test.ts",
+        "test/extracted/supervisor/acceptance/release.test.ts",
+        "test/extracted/supervisor/acceptance/deployment.test.ts"
+      ]
+    },
+    "github": {
+      "implementation": [
+        "src/github/app-authority.ts"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/github-app-authority.test.ts",
+        "test/extracted/supervisor/integration/server.test.ts"
+      ]
+    },
+    "gateway": {
+      "implementation": [
+        "src/gateway/mcp/tool.js",
+        "src/gateway/mcp/server.js",
+        "src/gateway/transport/client.js"
+      ],
+      "tests": [
+        "test/extracted/gateway/contract.test.js",
+        "test/extracted/gateway/server.test.js",
+        "test/extracted/gateway/integration.test.js"
+      ]
+    },
+    "oauth": {
+      "implementation": [
+        "src/auth/oauth/server.js",
+        "src/auth/oauth/state-durable.js",
+        "src/auth/oauth/tokens.js"
+      ],
+      "tests": [
+        "test/extracted/gateway/oauth-server.test.js",
+        "test/extracted/gateway/github-login.test.js",
+        "test/extracted/gateway/config.test.js"
+      ]
+    },
+    "catalog": {
+      "implementation": [
+        "src/operations/definitions.ts",
+        "src/operations/registry.ts",
+        "src/gateway/mcp/catalog.js"
+      ],
+      "tests": [
+        "test/extracted/supervisor/unit/operations-discovery.test.ts",
+        "test/extracted/gateway/contract.test.js",
+        "test/parity/catalog/capability-map.test.mjs"
+      ]
+    }
+  }
+}

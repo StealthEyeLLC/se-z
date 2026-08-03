@@ -12,7 +12,7 @@
   },
   "scripts": {
     "check": "npm run check:scaffold && npm run check:extracted",
-    "test": "node --test",
+    "test": "npm run test:scaffold && npm run test:extracted && npm run test:parity:static",
     "build": "npm run build:scaffold && npm run build:extracted && npm run build:native",
     "build:extracted": "tsc -p tsconfig.extracted.json",
     "build:native": "node-gyp rebuild --directory src/native/peercred",
@@ -24,7 +24,19 @@
     "build:scaffold": "node scripts/build.mjs",
     "test:extracted:supervisor": "node --import tsx --test --test-concurrency=1 test/extracted/supervisor/**/*.test.ts",
     "test:extracted:gateway": "node --test test/extracted/gateway/*.test.js",
-    "test:extracted": "npm run build:native && npm run test:extracted:supervisor && npm run test:extracted:gateway"
+    "test:extracted": "npm run build:native && npm run test:extracted:supervisor && npm run test:extracted:gateway",
+    "phase1:inventory": "node scripts/phase1/inventory-source.mjs",
+    "phase1:materialize-source": "node scripts/phase1/materialize-source.mjs",
+    "phase1:source-test": "node scripts/phase1/test-source.mjs",
+    "phase1:extracted-test": "node scripts/phase1/test-extracted.mjs",
+    "phase1:capability-map": "tsx scripts/phase1/generate-capability-map.mts",
+    "phase1:capability-map:check": "tsx scripts/phase1/generate-capability-map.mts --check",
+    "phase1:parity": "node scripts/phase1/parity.mjs",
+    "phase1:parity:static": "node --test test/parity/normalization/normalization.test.mjs test/parity/family-coverage.test.mjs test/parity/protocol/contract-delta.test.mjs test/parity/gateway/one-tool.test.mjs test/parity/catalog/capability-map.test.mjs",
+    "phase1:dependency-scan": "node scripts/phase1/dependency-scan.mjs",
+    "phase1:secret-scan": "node scripts/phase1/secret-scan.mjs",
+    "test:scaffold": "node --test test/canonical.test.mjs",
+    "test:parity:static": "node --test $(find test/parity -type f -name \"*.test.mjs\" | sort)"
   },
   "dependencies": {
     "node-addon-api": "8.9.0"
