@@ -18,7 +18,7 @@
     "build:native": "node-gyp rebuild --directory src/native/peercred",
     "test:extracted:unit": "tsx --test test/extracted/supervisor/unit/*.test.ts",
     "test:extracted:integration": "tsx --test test/extracted/supervisor/integration/*.test.ts",
-    "test:extracted:acceptance": "tsx --test test/extracted/supervisor/acceptance/*.test.ts"
+    "test:extracted:acceptance": "tsx --test --test-concurrency=1 test/extracted/supervisor/acceptance/*.test.ts"
   },
   "dependencies": {
     "node-addon-api": "8.9.0"
