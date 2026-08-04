@@ -1,1 +1,25 @@
-{"remaining":[{"gate":"OpenAI Secure MCP Tunnel","classification":"external_openai_platform","mandatory":true},{"gate":"temporary ChatGPT app scan, OAuth, and tool calls","classification":"external_openai_platform","mandatory":true},{"gate":"full Ubuntu 24.04 nspawn and isolated VPS candidate matrix","classification":"incomplete_acceptance","mandatory":true}]}
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-04T02:21:40.687Z",
+  "independentWorkComplete": true,
+  "remaining": [
+    {
+      "gate": "canonical auth.se-z.stealtheye.io DNS resolution and authorization route",
+      "classification": "external_dns",
+      "mandatory": true,
+      "evidence": "evidence/phase3/dns-results.json"
+    },
+    {
+      "gate": "actual OpenAI Secure MCP Tunnel",
+      "classification": "external_openai_platform",
+      "mandatory": true,
+      "evidence": "evidence/phase3/tunnel-results.json"
+    },
+    {
+      "gate": "actual temporary ChatGPT app scan, browser OAuth, and real call_sez tool calls",
+      "classification": "external_openai_platform",
+      "mandatory": true,
+      "evidence": "evidence/phase3/temp-app-acceptance.json"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "passed": true,
+  "implementationCommit": "056c548e53e2df669fdf051908edbd23d4da2b71",
+  "implementationTree": "dd78ca3b3bea4d0f4bd9949fd8bf79f164d33890",
+  "archive": "se-z-0.1B-final-47b9c2fe724a.tar.gz",
+  "sha256": "47b9c2fe724aa276e2d1db79fe55763c90e160fb279cd98254cbf073b7500312",
+  "size": 44351016,
+  "releaseId": "e0eb6a4ba4354acb7f89d0bdf20f33e19c0d272b4e720a1ebffcd7d6c56bc7ef",
+  "base01aSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "catalogDigest": "f7e21ad8aa45df13f0c5f138bbe2e0cc704f1057a6497a586c892c388d5eb0ce",
+  "operationCount": 52,
+  "candidate": true,
+  "productionActive": false,
+  "standaloneComplete": false
+}

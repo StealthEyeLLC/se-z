@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-08-04T02:21:40.687Z",
+  "hostname": "auth.se-z.stealtheye.io",
+  "resolved": false,
+  "mandatory": true,
+  "classification": "external_dns",
+  "caddyBabyRouteChanged": false,
+  "reason": "No A or AAAA resolution was returned during final acceptance; no authorized DNS administration surface was available in the execution environment."
+}

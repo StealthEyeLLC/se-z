@@ -1,6 +1,12 @@
 {
+  "schemaVersion": "1.0.0",
   "passed": true,
-  "sha256": "17a992b110c5640a1963fa51189f9e72f7f8eb1a14155f614dff2bb8a5111af9",
-  "size": 77906,
-  "archive": "/root/se-z-phase2/dist/se-z-0.1B-5ee830f87d73.tar.gz"
+  "builds": 2,
+  "byteIdentical": true,
+  "implementationCommit": "056c548e53e2df669fdf051908edbd23d4da2b71",
+  "implementationTree": "dd78ca3b3bea4d0f4bd9949fd8bf79f164d33890",
+  "archive": "se-z-0.1B-final-47b9c2fe724a.tar.gz",
+  "sha256": "47b9c2fe724aa276e2d1db79fe55763c90e160fb279cd98254cbf073b7500312",
+  "size": 44351016,
+  "base01aSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189"
 }

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "passed": true,
+  "implementationCommit": "056c548e53e2df669fdf051908edbd23d4da2b71",
+  "implementationTree": "dd78ca3b3bea4d0f4bd9949fd8bf79f164d33890",
+  "completedAt": "2026-08-04T02:20:21.295Z",
+  "checks": {
+    "phase1Verifier": true,
+    "phase2Verifier": true,
+    "check": true,
+    "test": true,
+    "build": true,
+    "phase3Unit": true,
+    "phase3Integration": true,
+    "oauth": true,
+    "github": true,
+    "release": true,
+    "failureInjection": true,
+    "package": true,
+    "packageReproducibility": true,
+    "nspawn": true,
+    "hostCandidate": true,
+    "audit": true
+  },
+  "consecutiveVerifierPasses": 2,
+  "stdout": {
+    "sha256": "efd821b46f9a0696bc08c00424a1a0a4637230c7c65adb8c2bcd824efe8faefd",
+    "bytes": 72421
+  },
+  "stderr": {
+    "sha256": "06a551e00c7c95d873e2c3da1d3b66191fac1c361307766e2506b30005dac573",
+    "bytes": 4146
+  },
+  "detachedStatus": [
+    "M evidence/phase3/package-reproducibility.json",
+    "?? evidence/phase3/host-candidate.json",
+    "?? evidence/phase3/nspawn-acceptance.json"
+  ],
+  "implementationDiffClean": true,
+  "generatedEvidenceOnly": true
+}

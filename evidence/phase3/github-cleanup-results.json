@@ -1,1 +1,26 @@
-{"passed":true,"resource":"refs/heads/baby-quirt-authority-proof-1785805990682-e4b11185e80e","absenceStatus":404}
+{
+  "schemaVersion": "1.0.0",
+  "passed": true,
+  "checkedAt": "2026-08-04T02:21:40.687Z",
+  "resources": [
+    {
+      "type": "git_ref",
+      "name": "refs/heads/baby-quirt-authority-proof-1785805990682-e4b11185e80e",
+      "absent": true,
+      "verifiedBy": [
+        "GitHub branch search",
+        "git ls-remote"
+      ]
+    },
+    {
+      "type": "git_ref",
+      "name": "refs/heads/sez-proof/phase3/5ee830f87d73/bf20f410-90b7-463a-8ebb-9464ec306245",
+      "absent": true,
+      "verifiedBy": [
+        "GitHub branch search",
+        "git ls-remote"
+      ]
+    }
+  ],
+  "tokenPersisted": false
+}

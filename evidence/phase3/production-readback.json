@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "phase2-baby-protected-configuration-readback",
+  "capturedAt": "2026-08-04T02:21:40.628Z",
+  "baselineCapturedAt": "2026-08-03T11:15:56Z",
+  "inspectionMode": "read-only service, pointer, socket, manifest, and endpoint configuration comparison",
+  "hostname": "vps-c9f04f5e",
+  "units": {
+    "baby-quirt.service": {
+      "ExecStart": "{ path=/opt/baby-quirt/current/bin/baby-quirt-daemon ; argv[]=/opt/baby-quirt/current/bin/baby-quirt-daemon ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+      "User": "root",
+      "Group": "root",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/etc/systemd/system/baby-quirt.service",
+      "DropInPaths": "/etc/systemd/system/baby-quirt.service.d/90-unrestricted-host-write.conf /etc/systemd/system/baby-quirt.service.d/95-oauth-issuer-bridge.conf /etc/systemd/system/baby-quirt.service.d/97-release-manifest-overlay.conf"
+    },
+    "baby-quirt-mcp.service": {
+      "ExecStart": "{ path=/opt/node-v24.18.0-linux-x64/bin/node ; argv[]=/opt/node-v24.18.0-linux-x64/bin/node /opt/baby-quirt-mcp/current/src/main.js ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+      "User": "fix-mcp",
+      "Group": "horsey",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/etc/systemd/system/baby-quirt-mcp.service",
+      "DropInPaths": ""
+    },
+    "baby-quirt.socket": {
+      "User": "",
+      "Group": "",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/etc/systemd/system/baby-quirt.socket",
+      "DropInPaths": ""
+    }
+  },
+  "pointers": {
+    "supervisorCurrent": "/opt/baby-quirt/releases/b3a7119fb9321d74fee9a730517f519ed0d351c4",
+    "gatewayCurrent": "/opt/baby-quirt-mcp/releases/0.2.3",
+    "gatewayPrevious": "/opt/baby-quirt-mcp/releases/0.1.6-20260721063135.942dbfef"
+  },
+  "socket": {
+    "path": "/run/horsey/baby-quirt.sock",
+    "mode": "0660",
+    "owner": "root",
+    "group": "horsey"
+  },
+  "manifests": {
+    "supervisor": {
+      "path": "/opt/baby-quirt/current/manifest.json",
+      "sha256": "315606a6e6c0738b39387cb5cccae1ec1d79834a576da6c46c0099eaa8992f1d"
+    },
+    "gateway": {
+      "path": "/opt/baby-quirt-mcp/current/release.json",
+      "sha256": "f116ea7012a1bc8a4c40ca3993a02fb26544badca0c47454c47181fdb3622f4e"
+    }
+  },
+  "publicEndpoint": "https://baby-quirt.stealtheye.io/mcp",
+  "endpointConfigured": true,
+  "configurationFiles": [
+    {
+      "path": "/etc/caddy/Caddyfile",
+      "sha256": "f3d5c04edd4e13507e81de5a0ea1c53506f03a28625bcd23facd61a9c275bd4f",
+      "modifiedAt": "2026-07-31T19:28:01.134Z",
+      "mode": "0644"
+    },
+    {
+      "path": "/etc/systemd/system/baby-quirt-mcp.service",
+      "sha256": "2179f45e2be367a54c1b08fcad07fe7642d6d091c63d90481949277e3aca9bc6",
+      "modifiedAt": "2026-07-21T04:16:13.627Z",
+      "mode": "0644"
+    },
+    {
+      "path": "/etc/systemd/system/baby-quirt.service",
+      "sha256": "2e7f6c1ab7493009e1e5db747e85264726ae4d196d0cbe5af2a0328cd2ba8bef",
+      "modifiedAt": "2026-07-27T10:37:59.667Z",
+      "mode": "0644"
+    },
+    {
+      "path": "/etc/systemd/system/baby-quirt.service.d/90-unrestricted-host-write.conf",
+      "sha256": "68ec0bf47c148fb5583569935b7a6083d59c973cdad80fd42cb7f5d6f4a89d9b",
+      "modifiedAt": "2026-07-23T07:40:36.241Z",
+      "mode": "0644"
+    },
+    {
+      "path": "/etc/systemd/system/baby-quirt.service.d/95-oauth-issuer-bridge.conf",
+      "sha256": "33eec90b9018581ee887f2e799548a52b8301b5325be5f978278754e8cee5539",
+      "modifiedAt": "2026-07-23T13:52:30.859Z",
+      "mode": "0644"
+    },
+    {
+      "path": "/etc/systemd/system/baby-quirt.service.d/97-release-manifest-overlay.conf",
+      "sha256": "ff9a13abd9d3dfeb33fcecce93a8c9fe6618b257fea096c66213fe938ee85906",
+      "modifiedAt": "2026-07-27T13:09:50.459Z",
+      "mode": "0644"
+    },
+    {
+      "path": "/etc/systemd/system/baby-quirt.socket",
+      "sha256": "6fdc80aad23f28e209ea0096f20c008beda4c8f9871790ad971a0b5814e616bb",
+      "modifiedAt": "2026-07-22T08:37:40.863Z",
+      "mode": "0644"
+    }
+  ],
+  "modifiedAfterBaseline": [],
+  "routineOperationalJobStreamAndReceiptRecordsExcludedFromConfigurationEquality": true,
+  "protectedConfigurationReadback": {
+    "unitDefinitions": true,
+    "dropIns": true,
+    "releasePointers": true,
+    "socketMetadata": true,
+    "installedManifestDigests": true,
+    "publicEndpointPresence": true,
+    "credentialContentsRead": false,
+    "credentialValuesCaptured": false
+  },
+  "secretsReadOrCaptured": false,
+  "mismatches": [],
+  "passed": true
+}

@@ -1,1 +1,27 @@
-{"releaseMilestone":"0.1B","implementationCommit":"5ee830f87d7339c8a945f904bf8197171f70fd4a","implementationTree":"f7a6d55022330b9ce442fe45b5ddb7c59a33e252","package":"dist/se-z-0.1B-5ee830f87d73.tar.gz","sha256":"17a992b110c5640a1963fa51189f9e72f7f8eb1a14155f614dff2bb8a5111af9","size":77906,"catalogDigest":"6fb474b37c376b7f580d3ec4abdf1bf6a478f5bbf94c17c6cadd0a08f0b2cc3f","protocolVersion":"1.0.0","supervisorStateSchema":"0.1A.1","gatewayStateSchema":"0.1B.1","candidate":true,"productionActive":false}
+{
+  "schemaVersion": "1.0.0",
+  "releaseMilestone": "0.1B",
+  "implementationCommit": "056c548e53e2df669fdf051908edbd23d4da2b71",
+  "implementationTree": "dd78ca3b3bea4d0f4bd9949fd8bf79f164d33890",
+  "package": {
+    "archive": "se-z-0.1B-final-47b9c2fe724a.tar.gz",
+    "sha256": "47b9c2fe724aa276e2d1db79fe55763c90e160fb279cd98254cbf073b7500312",
+    "size": 44351016,
+    "releaseId": "e0eb6a4ba4354acb7f89d0bdf20f33e19c0d272b4e720a1ebffcd7d6c56bc7ef"
+  },
+  "base01aSha256": "75bad6893807f549c999d81f7d3c8b396faac88731ef48969ec43767dd29e189",
+  "catalogDigest": "f7e21ad8aa45df13f0c5f138bbe2e0cc704f1057a6497a586c892c388d5eb0ce",
+  "operationCount": 52,
+  "protocolVersion": "1.0.0",
+  "supervisorStateSchema": "0.1A.1",
+  "gatewayStateSchema": "0.1B.1",
+  "toolSchemaSha256": "e01408c93fe446fe601b4afc4bdde69a5a5d32135b12ef87e09b26bc8b4d1daa",
+  "operationDefinitionSha256": "7d2731c9fac21c7a3bd6da1c4e4119682f6231ac033838915a390692480cb4c1",
+  "nativeAddonSha256": "acf45d2f31dc16e06caa87ff9ea50b9118b6cb0b0315299ef87017ce6b3a48f7",
+  "nodeVersion": "v24.18.0",
+  "nodeSha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+  "candidate": true,
+  "productionActive": false,
+  "standaloneComplete": false,
+  "tunnelClientIdentityRequirement": "current official OpenAI Secure MCP Tunnel client, verified at runtime"
+}
