@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+"$root/install/install-package.core"
+getent group se-z-tunnel >/dev/null || groupadd --system se-z-tunnel
+id se-z-tunnel >/dev/null 2>&1 || useradd --system --gid se-z-tunnel --home-dir /var/lib/se-z-tunnel --shell /usr/sbin/nologin se-z-tunnel
+install -d -m 0750 -o root -g se-z-gateway /etc/se-z-gateway
+install -d -m 0700 -o root -g root /etc/se-z-gateway/credentials
+install -m 0644 /opt/se-z/current/share/systemd/se-z-gateway.service /etc/systemd/system/se-z-gateway.service
+install -m 0644 /opt/se-z/current/share/systemd/se-z-tunnel.service /etc/systemd/system/se-z-tunnel.service
+install -m 0644 /opt/se-z/current/share/tmpfiles/se-z-gateway.conf /usr/lib/tmpfiles.d/se-z-gateway.conf
+systemd-tmpfiles --create /usr/lib/tmpfiles.d/se-z-gateway.conf
+systemctl daemon-reload
+systemctl restart se-z-local.socket se-z-gateway.socket se-z.service
+systemctl enable se-z-gateway.socket >/dev/null
+printf '{"installed":true,"releaseMilestone":"0.1B","gatewayStarted":false,"tunnelStarted":false}\n'
