@@ -69,6 +69,7 @@ export class KernelOperations {
     this.files = new FileOperations(config);
     this.ptys = new PtyOperations(config, state);
     this.artifacts = new ArtifactOperations(config, state);
+    this.phase3ControlPlane = config.phase3ControlPlane ?? null;
     this.socketStatusProvider = () => ({ local: false, gateway: false });
     this.initialized = false;
     this.finalizations = new Map();
@@ -112,6 +113,7 @@ export class KernelOperations {
   }
 
   setSocketStatusProvider(provider) { this.socketStatusProvider = provider; }
+  setPhase3ControlPlane(provider) { this.phase3ControlPlane = provider; }
 
   activeOperations() { return ACTIVE_OPERATION_SET; }
 
@@ -362,6 +364,20 @@ export class KernelOperations {
       case 'sez.artifact.get': return { result: await this.artifacts.get(payload) };
       case 'sez.artifact.list': return { result: await this.artifacts.list(payload) };
       case 'sez.artifact.remove': return { result: await this.artifacts.remove(payload) };
+      case 'sez.github.app.verify':
+      case 'sez.github.api':
+      case 'sez.github.git':
+      case 'sez.github.reconcile':
+      case 'sez.release.status':
+      case 'sez.release.build':
+      case 'sez.release.stage':
+      case 'sez.release.verify':
+      case 'sez.release.activate':
+      case 'sez.release.rollback':
+      case 'sez.release.repair': {
+        if (!this.phase3ControlPlane) throw new SezError('resource_unavailable', 'Phase 3 control plane is unavailable');
+        return { result: await this.phase3ControlPlane.execute(operation, payload, requestRecord) };
+      }
       default: throw new SezError('unknown_operation', `Unknown operation: ${operation}`);
     }
   }

@@ -5,6 +5,7 @@ import { KernelState } from '../kernel/state.mjs';
 import { KernelOperations } from '../kernel/operations.mjs';
 import { SezKernelServer } from '../kernel/server.mjs';
 import { sanitizeDiagnostic } from '../kernel/util.mjs';
+import { Phase3SupervisorControlPlane } from '../kernel/phase3-control-plane.mjs';
 
 let server;
 async function main() {
@@ -12,6 +13,7 @@ async function main() {
   const authority = new AuthorityGenerationProvider(config.authorityGenerationPath);
   const state = new KernelState(config);
   const operations = new KernelOperations(config, state, authority);
+  operations.setPhase3ControlPlane(Phase3SupervisorControlPlane.fromEnvironment(config));
   server = new SezKernelServer(config, operations, authority);
   await server.start();
   process.stdout.write(`${JSON.stringify({ component: 'se-z-supervisor', status: 'ready', localSocket: config.localSocket, gatewaySocket: config.gatewaySocket, pid: process.pid })}\n`);

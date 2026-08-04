@@ -87,6 +87,17 @@ export const ACTIVE_OPERATION_DEFINITIONS = Object.freeze([
   definition({ name: 'sez.artifact.get', description: 'Read artifact metadata without raw data.', inputSchema: objectSchema({ artifactId: string }, ['artifactId']), typedErrors: ['not_found'] }),
   definition({ name: 'sez.artifact.list', description: 'List bounded artifact metadata pages.', inputSchema: objectSchema({ state: string, offset: integer, limit: integer }, []) }),
   definition({ name: 'sez.artifact.remove', description: 'Explicitly delete artifact data and retain a removed metadata tombstone.', inputSchema: objectSchema({ artifactId: string }, ['artifactId']), mutating: true, typedErrors: ['not_found'] }),
+  definition({ name: 'sez.github.app.verify', description: 'Verify the configured GitHub App, installation, repository and ephemeral token authority.', inputSchema: objectSchema({ repository: string }, ['repository']), typedErrors: ['github_app_unavailable','github_installation_mismatch','github_permission_missing'] }),
+  definition({ name: 'sez.github.api', description: 'Perform a generic GitHub REST request with internally injected ephemeral installation authority.', inputSchema: { type:'object', additionalProperties:true }, mutating: true, typedErrors: ['github_request_failed','github_write_ambiguous'] }),
+  definition({ name: 'sez.github.git', description: 'Perform generic Git transport with an operation-owned HOME and protected credential helper.', inputSchema: { type:'object', additionalProperties:true }, mutating: true, typedErrors: ['github_request_failed','github_cleanup_failed'] }),
+  definition({ name: 'sez.github.reconcile', description: 'Reconcile an uncertain GitHub write without repeating the mutation.', inputSchema: { type:'object', additionalProperties:true }, typedErrors: ['github_write_ambiguous','github_cleanup_failed'] }),
+  definition({ name: 'sez.release.status', description: 'Read durable 0.1B release transaction, candidate, slot, fencing and repair state.', inputSchema: objectSchema({ deploymentId: string }, ['deploymentId']) }),
+  definition({ name: 'sez.release.build', description: 'Build or resume an exact-source deterministic 0.1B candidate.', inputSchema: { type:'object', additionalProperties:true }, mutating: true, typedErrors: ['release_stage_failed'] }),
+  definition({ name: 'sez.release.stage', description: 'Stage an inactive supervisor, gateway and isolated gateway state slot.', inputSchema: objectSchema({ deploymentId: string }, ['deploymentId']), mutating: true, typedErrors: ['release_stage_failed'] }),
+  definition({ name: 'sez.release.verify', description: 'Verify candidate manifests, identities, schemas, services and signing paths.', inputSchema: { type:'object', additionalProperties:true }, typedErrors: ['release_verify_failed'] }),
+  definition({ name: 'sez.release.activate', description: 'Activate through the required fencing authority; production fails closed without Recovery.', inputSchema: { type:'object', additionalProperties:true }, mutating: true, typedErrors: ['release_recovery_unavailable','release_activation_failed'] }),
+  definition({ name: 'sez.release.rollback', description: 'Fence and roll an isolated candidate back while preserving monotonic OAuth security truth.', inputSchema: { type:'object', additionalProperties:true }, mutating: true, typedErrors: ['release_rollback_failed'] }),
+  definition({ name: 'sez.release.repair', description: 'Repair interrupted or ambiguous release state by actual pointer, writer and slot readback.', inputSchema: objectSchema({ deploymentId: string }, ['deploymentId']), mutating: true, typedErrors: ['release_repair_required'] }),
 ]);
 
 export const ACTIVE_OPERATION_NAMES = Object.freeze(ACTIVE_OPERATION_DEFINITIONS.map((entry) => entry.name));
@@ -94,8 +105,9 @@ export const ACTIVE_OPERATION_SET = new Set(ACTIVE_OPERATION_NAMES);
 export const CATALOG_DIGEST = digestCatalog(ACTIVE_OPERATION_DEFINITIONS);
 
 export const EXTRACTED_INACTIVE_FAMILIES = Object.freeze([
-  'sez.github.*', 'sez.release.*', 'sez.skill.*', 'sez.selfhost.*',
+  'sez.skill.*', 'sez.selfhost.*',
 ]);
 export const FUTURE_CANONICAL_FAMILIES = Object.freeze([
   'sez.machine.*', 'sez.recovery.*', 'sez.backup.*', 'sez.evidence.*',
+
 ]);
