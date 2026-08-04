@@ -16,6 +16,7 @@ const cp=(src,dst)=>{fs.mkdirSync(path.dirname(dst),{recursive:true});fs.cpSync(
 cp('src/phase3',path.join(root,'payload/libexec/phase3'));
 cp('src/kernel',path.join(root,'payload/libexec/kernel'));
 cp('src/bin',path.join(root,'payload/bin'));
+cp('packaging/phase2/install/verify-install.mjs',path.join(root,'payload/libexec/install/verify-install.mjs'));
 for(const f of fs.readdirSync('packaging/phase3/systemd'))cp(path.join('packaging/phase3/systemd',f),path.join(root,'payload/share/systemd',f));
 cp('packaging/phase3/tmpfiles/se-z-gateway.conf',path.join(root,'payload/share/tmpfiles/se-z-gateway.conf'));
 cp('packaging/phase3/install/openai-tunnel-launcher',path.join(root,'payload/libexec/phase3/openai-tunnel-launcher'));
