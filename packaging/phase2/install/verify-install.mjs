@@ -158,11 +158,11 @@ try {
   assert.equal(gatewayResponse?.error, null);
   check('expected unprivileged gateway UID/GID/executable and Ed25519 signature are authorized', { uid: gatewayUid, gid: gatewayGid, receiptId: gatewayResponse.receipt.receiptId });
 
-  const localOnGateway = await runAs(operatorUid, operatorGid, '/usr/local/bin/se-z', ['--socket', '/run/se-z/gateway.sock', 'health']);
+  const localOnGateway = await runAs(operatorUid, operatorGid, [localGroup], '/usr/local/bin/se-z', ['--socket', '/run/se-z/gateway.sock', 'health']);
   assert.notEqual(localOnGateway.code, 0);
   const localOnGatewayError = parseResponse(`${localOnGateway.stdout}\n${localOnGateway.stderr}`);
   assert.ok(['peer_class_mismatch', 'EACCES'].includes(localOnGatewayError?.code ?? localOnGatewayError?.error?.code));
-  const gatewayOnLocal = await runAs(gatewayUid, gatewayGid, '/usr/local/bin/se-z-gateway', ['--socket', '/run/se-z/local.sock', 'sez.health', '--json', '{}']);
+  const gatewayOnLocal = await runAs(gatewayUid, gatewayGid, [], '/usr/local/bin/se-z-gateway', ['--socket', '/run/se-z/local.sock', 'sez.health', '--json', '{}']);
   assert.notEqual(gatewayOnLocal.code, 0);
   const gatewayOnLocalError = parseResponse(`${gatewayOnLocal.stdout}\n${gatewayOnLocal.stderr}`);
   assert.ok(['peer_class_mismatch', 'EACCES'].includes(gatewayOnLocalError?.code ?? gatewayOnLocalError?.error?.code));
