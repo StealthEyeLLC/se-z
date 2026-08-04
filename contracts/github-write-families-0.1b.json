@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "0.1B.1",
+  "families": [
+    "git_ref_rest",
+    "git_push_ref"
+  ],
+  "proofRequired": true
+}

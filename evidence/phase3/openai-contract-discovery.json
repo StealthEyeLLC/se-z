@@ -1,0 +1,1 @@
+{"capturedAt":"2026-08-04T01:16:00Z","resolved":{"customAppRequiresAuthenticatedChatGPTWorkspaceSurface":true,"privateServerRequiresSecureMcpTunnel":true,"cloudflareTunnelIsNotAcceptedSubstitute":true},"installed":{"openaiSecureMcpTunnel":null,"cloudflared":"/usr/local/bin/cloudflared"},"credentialsCommitted":false}

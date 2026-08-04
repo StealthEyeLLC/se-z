@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenAI Secure MCP Tunnel for se-z
+After=network-online.target se-z-gateway.service
+Requires=se-z-gateway.service
+[Service]
+Type=simple
+User=se-z-tunnel
+Group=se-z-tunnel
+ExecStart=/usr/local/libexec/se-z/openai-secure-mcp-tunnel --profile /etc/se-z-gateway/tunnel-profile.json --credential-file ${CREDENTIALS_DIRECTORY}/tunnel-credential
+LoadCredential=tunnel-credential:/etc/se-z-gateway/credentials/tunnel-credential
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+Restart=always
+RestartSec=5s
+[Install]
+WantedBy=multi-user.target

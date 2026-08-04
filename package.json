@@ -61,7 +61,18 @@
     "test:parity:static": "node scripts/phase1/static-parity.mjs",
     "test:scaffold": "node --test test/canonical.test.mjs",
     "phase2:audit": "node scripts/phase2/audits.mjs",
-    "phase2:evidence": "node scripts/phase2/summarize.mjs"
+    "phase2:evidence": "node scripts/phase2/summarize.mjs",
+    "phase3:unit": "node --test test/phase3/phase3.test.mjs",
+    "phase3:integration": "node --test test/phase3/http.test.mjs",
+    "phase3:oauth": "node --test test/phase3/phase3.test.mjs",
+    "phase3:github": "node --test test/phase3/github.test.mjs",
+    "phase3:release": "node --test test/phase3/phase3.test.mjs",
+    "phase3:failure": "node --test test/phase3/failure.test.mjs",
+    "phase3:package": "node scripts/phase3/package.mjs",
+    "phase3:package-reproducibility": "node scripts/phase3/package-reproducibility.mjs",
+    "phase3:audit": "node scripts/phase3/audit.mjs",
+    "phase3:summarize": "node scripts/phase3/summarize.mjs",
+    "phase3:verify": "node scripts/phase3/verify.mjs"
   },
   "devDependencies": {
     "@types/node": "24.13.3",

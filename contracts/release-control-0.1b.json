@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "0.1B.1",
+  "operations": [
+    "sez.release.status",
+    "sez.release.build",
+    "sez.release.stage",
+    "sez.release.verify",
+    "sez.release.activate",
+    "sez.release.rollback",
+    "sez.release.repair"
+  ],
+  "productionRecovery": "required_fail_closed"
+}

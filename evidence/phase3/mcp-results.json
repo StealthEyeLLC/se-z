@@ -1,0 +1,1 @@
+{"passed":true,"toolCount":1,"toolName":"call_sez","inputFields":["operation","payload","idempotencyKey"],"operationEnum":false,"loopbackOnly":true,"anonymousMode":false}

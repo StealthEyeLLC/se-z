@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "0.1B.1",
+  "operations": [
+    "sez.github.app.verify",
+    "sez.github.api",
+    "sez.github.git",
+    "sez.github.reconcile"
+  ],
+  "tokens": "ephemeral"
+}

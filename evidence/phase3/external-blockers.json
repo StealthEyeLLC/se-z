@@ -1,0 +1,1 @@
+{"remaining":[{"gate":"OpenAI Secure MCP Tunnel","classification":"external_openai_platform","mandatory":true},{"gate":"temporary ChatGPT app scan, OAuth, and tool calls","classification":"external_openai_platform","mandatory":true},{"gate":"full Ubuntu 24.04 nspawn and isolated VPS candidate matrix","classification":"incomplete_acceptance","mandatory":true}]}

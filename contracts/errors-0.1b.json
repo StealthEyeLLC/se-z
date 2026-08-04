@@ -1,0 +1,385 @@
+{
+  "schemaVersion": "0.1B.1",
+  "errors": [
+    {
+      "code": "oauth_invalid_client",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "oauth_invalid_client",
+      "internalDiagnosticClass": "oauth_invalid_client",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": "invalid_client"
+    },
+    {
+      "code": "oauth_invalid_request",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "oauth_invalid_request",
+      "internalDiagnosticClass": "oauth_invalid_request",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": "invalid_request"
+    },
+    {
+      "code": "oauth_invalid_grant",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "oauth_invalid_grant",
+      "internalDiagnosticClass": "oauth_invalid_grant",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": "invalid_grant"
+    },
+    {
+      "code": "oauth_invalid_scope",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "oauth_invalid_scope",
+      "internalDiagnosticClass": "oauth_invalid_scope",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": "invalid_scope"
+    },
+    {
+      "code": "oauth_unauthorized_client",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "oauth_unauthorized_client",
+      "internalDiagnosticClass": "oauth_unauthorized_client",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": "unauthorized_client"
+    },
+    {
+      "code": "oauth_access_denied",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "oauth_access_denied",
+      "internalDiagnosticClass": "oauth_access_denied",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": "access_denied"
+    },
+    {
+      "code": "oauth_temporarily_unavailable",
+      "retryable": true,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "oauth_temporarily_unavailable",
+      "internalDiagnosticClass": "oauth_temporarily_unavailable",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": "temporarily_unavailable"
+    },
+    {
+      "code": "pkce_required",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "pkce_required",
+      "internalDiagnosticClass": "pkce_required",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "pkce_invalid",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "pkce_invalid",
+      "internalDiagnosticClass": "pkce_invalid",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "redirect_uri_mismatch",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "redirect_uri_mismatch",
+      "internalDiagnosticClass": "redirect_uri_mismatch",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "resource_mismatch",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "resource_mismatch",
+      "internalDiagnosticClass": "resource_mismatch",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "token_invalid",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "token_invalid",
+      "internalDiagnosticClass": "token_invalid",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "token_expired",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "token_expired",
+      "internalDiagnosticClass": "token_expired",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "token_revoked",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "token_revoked",
+      "internalDiagnosticClass": "token_revoked",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "token_replay",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "token_replay",
+      "internalDiagnosticClass": "token_replay",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "refresh_family_revoked",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "refresh_family_revoked",
+      "internalDiagnosticClass": "refresh_family_revoked",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "github_identity_mismatch",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "github_identity_mismatch",
+      "internalDiagnosticClass": "github_identity_mismatch",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "github_oauth_failed",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "github_oauth_failed",
+      "internalDiagnosticClass": "github_oauth_failed",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "mcp_unauthorized",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "mcp_unauthorized",
+      "internalDiagnosticClass": "mcp_unauthorized",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "mcp_forbidden",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "mcp_forbidden",
+      "internalDiagnosticClass": "mcp_forbidden",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "mcp_protocol_error",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "mcp_protocol_error",
+      "internalDiagnosticClass": "mcp_protocol_error",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "tunnel_unavailable",
+      "retryable": true,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "tunnel_unavailable",
+      "internalDiagnosticClass": "tunnel_unavailable",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "tunnel_identity_mismatch",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "tunnel_identity_mismatch",
+      "internalDiagnosticClass": "tunnel_identity_mismatch",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "gateway_receipt_invalid",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "gateway_receipt_invalid",
+      "internalDiagnosticClass": "gateway_receipt_invalid",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "github_app_unavailable",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "github_app_unavailable",
+      "internalDiagnosticClass": "github_app_unavailable",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "github_installation_mismatch",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "github_installation_mismatch",
+      "internalDiagnosticClass": "github_installation_mismatch",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "github_permission_missing",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "github_permission_missing",
+      "internalDiagnosticClass": "github_permission_missing",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "github_request_failed",
+      "retryable": true,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "github_request_failed",
+      "internalDiagnosticClass": "github_request_failed",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "github_write_ambiguous",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "github_write_ambiguous",
+      "internalDiagnosticClass": "github_write_ambiguous",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "github_cleanup_failed",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "github_cleanup_failed",
+      "internalDiagnosticClass": "github_cleanup_failed",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "release_recovery_unavailable",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "release_recovery_unavailable",
+      "internalDiagnosticClass": "release_recovery_unavailable",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "release_stage_failed",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "release_stage_failed",
+      "internalDiagnosticClass": "release_stage_failed",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "release_verify_failed",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "release_verify_failed",
+      "internalDiagnosticClass": "release_verify_failed",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "release_activation_failed",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "release_activation_failed",
+      "internalDiagnosticClass": "release_activation_failed",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "release_rollback_failed",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "release_rollback_failed",
+      "internalDiagnosticClass": "release_rollback_failed",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "release_repair_required",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "release_repair_required",
+      "internalDiagnosticClass": "release_repair_required",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "gateway_state_corrupt",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "gateway_state_corrupt",
+      "internalDiagnosticClass": "gateway_state_corrupt",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    },
+    {
+      "code": "gateway_state_incompatible",
+      "retryable": false,
+      "terminalBehavior": "typed_failure",
+      "safePublicMessage": "gateway_state_incompatible",
+      "internalDiagnosticClass": "gateway_state_incompatible",
+      "receiptBehavior": "signed_error",
+      "mcpMapping": "structured_error",
+      "oauthMapping": null
+    }
+  ]
+}

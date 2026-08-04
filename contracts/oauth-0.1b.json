@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "0.1B.1",
+  "issuer": "https://auth.se-z.stealtheye.io",
+  "scopes": [
+    "sez.root",
+    "offline_access"
+  ],
+  "pkce": "S256",
+  "ownerGithubId": 247854506
+}

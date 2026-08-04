@@ -1,0 +1,1 @@
+{"passed":false,"mandatory":true,"classification":"external_openai_platform","openaiTunnelBinary":null,"cloudflaredDiscovered":true,"cloudflaredSubstituted":false,"reason":"No verified current OpenAI Secure MCP Tunnel binary, profile, credential, or authenticated workspace administration surface was available."}

@@ -1,0 +1,1 @@
+{"passed":false,"mandatory":true,"classification":"external_openai_platform","mocked":false,"reason":"No authenticated ChatGPT web workspace app-administration surface was exposed to this execution session."}

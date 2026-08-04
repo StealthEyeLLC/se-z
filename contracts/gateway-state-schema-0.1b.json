@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "0.1B.1",
+  "root": "/var/lib/se-z-gateway",
+  "slots": [
+    "blue",
+    "green"
+  ],
+  "isolatedWritableStores": true,
+  "fields": [
+    "clients",
+    "authorizationRequests",
+    "githubLogins",
+    "authorizationCodes",
+    "refreshFamilies",
+    "revocations",
+    "replayEvents",
+    "tokenIds",
+    "migration"
+  ]
+}

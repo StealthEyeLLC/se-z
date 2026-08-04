@@ -445,3 +445,222 @@ requirements:
     tests: [phase2_no_theater_audit]
     evidence: [evidence/phase2/no-theater-audit.json]
     releaseGate: mandatory
+
+# Phase 3 stable gates
+- id: INV-P3-MCP-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-OAUTH-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-RESOURCE-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-PKCE-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-OWNER-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-REFRESH-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-REVOCATION-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-GATEWAY-STATE-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-TUNNEL-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-GATEWAY-SIGNING-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-GITHUB-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-GITHUB-API-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-GITHUB-GIT-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-GITHUB-RECONCILE-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-RELEASE-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-RELEASE-ROLLBACK-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-RELEASE-REPAIR-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-TEMP-APP-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: INV-P3-PACKAGE-001
+  class: invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-PUBLIC-MCP-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-EXTRA-TOOL-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-WRONG-AUDIENCE-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-REFRESH-REPLAY-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-TOKEN-PERSISTENCE-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-GITHUB-TOKEN-LEAK-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-DUAL-WRITER-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-FAKE-FENCING-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-PRODUCTION-CUTOVER-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-BABY-MUTATION-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-THEATER-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B
+- id: ANTI-P3-PARTIAL-COMPLETE-001
+  class: anti-invariant
+  statement: Phase 3 control enforced by integrated implementation and executable acceptance.
+  enforcedBy: [src/phase3]
+  tests: [test/phase3]
+  evidence: [evidence/phase3]
+  releaseGate: 0.1B

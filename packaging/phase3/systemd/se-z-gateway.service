@@ -1,0 +1,22 @@
+[Unit]
+Description=se-z unprivileged OAuth and MCP gateway
+After=network-online.target se-z-gateway.socket
+Requires=se-z-gateway.socket
+[Service]
+Type=simple
+User=se-z-gateway
+Group=se-z-gateway
+ExecStart=/opt/se-z/current/bin/se-z-gateway --config /etc/se-z-gateway/config.json
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/se-z-gateway /run/se-z
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LoadCredential=gateway-request-key:/etc/se-z-gateway/credentials/gateway-request-key
+LoadCredential=oauth-signing-key:/etc/se-z-gateway/credentials/oauth-signing-key
+LoadCredential=refresh-hash-key:/etc/se-z-gateway/credentials/refresh-hash-key
+LoadCredential=github-oauth-client-secret:/etc/se-z-gateway/credentials/github-oauth-client-secret
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

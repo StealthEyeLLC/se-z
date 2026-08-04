@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": {
+    "oneTool": true,
+    "noPublicBind": true,
+    "gatewayUnprivileged": true,
+    "noEnvironmentSecrets": true,
+    "noPrivateKeys": true,
+    "gatewaySocketOnly": true
+  }
+}
