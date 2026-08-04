@@ -109,7 +109,9 @@ try {
   assert.equal(describe.result.product, 'se-z');
   assert.equal(describe.result.protocol, 'SEZ1');
   assert.equal(describe.result.releaseMilestone, '0.1A');
-  assert.equal(describe.result.activeOperations.length, 41);
+  const installedDefinitions = await import('file:///opt/se-z/current/libexec/kernel/definitions.mjs');
+  assert.equal(describe.result.activeOperations.length, installedDefinitions.ACTIVE_OPERATION_NAMES.length);
+  assert.equal(describe.catalogDigest, installedDefinitions.CATALOG_DIGEST);
   assert.equal(describe.catalogDigest, describe.result.catalogDigest);
   check('installed discovery is signed SEZ1 with exact 0.1A catalog', { catalogDigest: describe.catalogDigest });
 
