@@ -1,0 +1,4 @@
+se-z-gateway.service: Failed to create se-z-gateway.service/start: Unit se-z-gateway.socket not found.
+se-z-gateway.service: Command /opt/se-z/current/bin/se-z-gateway is not executable: No such file or directory
+se-z-tunnel.service: Failed to create se-z-tunnel.service/start: Unit se-z-gateway.socket not found.
+se-z-tunnel.service: Command /usr/local/libexec/se-z/openai-secure-mcp-tunnel is not executable: No such file or directory

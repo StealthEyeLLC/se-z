@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+identity=/etc/se-z-gateway/tunnel-client.identity
+[[ -r $identity ]] || { echo 'tunnel identity unavailable' >&2; exit 69; }
+read -r binary expected_sha expected_version < "$identity"
+[[ $binary == /* && -x $binary ]] || { echo 'tunnel client unavailable' >&2; exit 69; }
+actual_sha=$(sha256sum "$binary" | awk '{print $1}')
+[[ $actual_sha == "$expected_sha" ]] || { echo 'tunnel client identity mismatch' >&2; exit 70; }
+actual_version=$($binary --version 2>&1 | head -n1)
+[[ $actual_version == *"$expected_version"* ]] || { echo 'tunnel client version mismatch' >&2; exit 70; }
+exec "$binary" --profile /etc/se-z-gateway/tunnel-profile.json --credential-file "${CREDENTIALS_DIRECTORY}/tunnel-credential"
