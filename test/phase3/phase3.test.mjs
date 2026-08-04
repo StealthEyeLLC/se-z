@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {mkdtempSync,writeFileSync,symlinkSync,mkdirSync} from 'node:fs';import {tmpdir} from 'node:os';import {join} from 'node:path';import {generateKeyPairSync,sign} from 'node:crypto';
-import {GatewayState} from '../../src/phase3/atomic-state.mjs';import {OAuthAuthority,generateOAuthKey,pkceChallenge,authorizationServerMetadata,protectedResourceMetadata,bearerChallenge} from '../../src/phase3/oauth.mjs';import {TOOL,validateCall,mcpDispatch} from '../../src/phase3/mcp.mjs';import {PHASE3,CALL_SEZ_SCHEMA} from '../../src/phase3/constants.mjs';import {GatewaySez1Client,digest} from '../../src/phase3/sez1-gateway.mjs';import {AcceptanceFencer,RecoveryUnavailable,ReleaseController} from '../../src/phase3/release-control.mjs';import {validateGatewayConfig} from '../../src/phase3/config.mjs';
+import {GatewayState} from '../../src/phase3/atomic-state.mjs';import {OAuthAuthority,generateOAuthKey,pkceChallenge,authorizationServerMetadata,protectedResourceMetadata,bearerChallenge,markLegacyChatGptPublicClients} from '../../src/phase3/oauth.mjs';import {TOOL,validateCall,mcpDispatch} from '../../src/phase3/mcp.mjs';import {PHASE3,CALL_SEZ_SCHEMA} from '../../src/phase3/constants.mjs';import {GatewaySez1Client,digest} from '../../src/phase3/sez1-gateway.mjs';import {AcceptanceFencer,RecoveryUnavailable,ReleaseController} from '../../src/phase3/release-control.mjs';import {validateGatewayConfig} from '../../src/phase3/config.mjs';
 function fixture(nowRef={value:1800000000000}){const root=mkdtempSync(join(tmpdir(),'sez-p3-')),state=new GatewayState(root,{hashSecret:Buffer.alloc(32,7),now:()=>nowRef.value}),keys=generateOAuthKey(),resource='https://candidate.example.invalid/mcp',auth=new OAuthAuthority({state,slot:'blue',resource,privateKey:keys.privateKey,now:()=>nowRef.value});return{root,state,keys,auth,resource,nowRef};}
 function flow(f){const verifier='A'.repeat(43),reg=f.auth.register({redirect_uris:['https://chatgpt.com/aip/callback'],grant_types:['authorization_code','refresh_token'],response_types:['code'],token_endpoint_auth_method:'none',client_name:'candidate'}),begin=f.auth.beginAuthorization({response_type:'code',client_id:reg.client_id,redirect_uri:reg.redirect_uris[0],scope:'sez.root offline_access',state:'state-12345678',code_challenge:pkceChallenge(verifier),code_challenge_method:'S256',resource:f.resource}),code=f.auth.completeGithubIdentity(begin.transactionId,{id:247854506}),token=f.auth.exchangeCode({code,client_id:reg.client_id,redirect_uri:reg.redirect_uris[0],code_verifier:verifier,resource:f.resource});return{reg,begin,code,token,verifier};}
 test('metadata and exact one tool',()=>{const f=fixture();assert.equal(authorizationServerMetadata().issuer,PHASE3.issuer);assert.deepEqual(protectedResourceMetadata(f.resource),{resource:f.resource,authorization_servers:[PHASE3.issuer],bearer_methods_supported:['header'],scopes_supported:['sez.root','offline_access']});assert.equal(bearerChallenge(f.resource),`Bearer resource_metadata="${f.resource}/.well-known/oauth-protected-resource", scope="sez.root offline_access"`);assert.equal(TOOL.name,'call_sez');assert.deepEqual(TOOL.inputSchema,CALL_SEZ_SCHEMA);assert.equal(Object.hasOwn(TOOL.inputSchema.properties.operation,'enum'),false);});
@@ -31,4 +31,26 @@ test('ChatGPT tunnel DCR is confidential when the beta client omits PKCE, while 
   assert.equal(publicClient.token_endpoint_auth_method,'none');
   assert.equal(publicClient.client_secret,undefined);
   assert.throws(()=>f.auth.beginAuthorization({response_type:'code',client_id:publicClient.client_id,redirect_uri:publicClient.redirect_uris[0],scope:'sez.root',state:'public-state-1234',resource:f.resource}),/pkce_required/);
+});
+
+test('persisted pre-fix ChatGPT public clients are narrowly migrated and remain bound to the exact connector callback',()=>{
+  const f=fixture(),callback='https://chatgpt.com/connector/oauth/legacy-callback',base={redirect_uris:[callback],grant_types:['authorization_code','refresh_token'],response_types:['code'],token_endpoint_auth_method:'none',client_name:'Other client'};
+  const legacy=f.auth.register(base);
+  f.state.transaction('blue',d=>{const c=d.clients[legacy.client_id];c.client_name='ChatGPT';c.publicMetadata.client_name='ChatGPT';});
+  assert.throws(()=>f.auth.beginAuthorization({response_type:'code',client_id:legacy.client_id,redirect_uri:callback,scope:'sez.root offline_access',state:'legacy-before-migration',resource:f.resource}),/pkce_required/);
+  assert.equal(markLegacyChatGptPublicClients(f.state,'blue',f.nowRef.value),1);
+  assert.equal(markLegacyChatGptPublicClients(f.state,'blue',f.nowRef.value),0);
+  const stored=f.state.read('blue').clients[legacy.client_id];
+  assert.equal(stored.legacyChatGPTNoPkce,true);
+  assert.equal(stored.legacyChatGPTNoPkceMarkedAt,f.nowRef.value);
+  const begin=f.auth.beginAuthorization({response_type:'code',client_id:legacy.client_id,redirect_uri:callback,scope:'sez.root offline_access',state:'legacy-after-migration',resource:f.resource}),code=f.auth.completeGithubIdentity(begin.transactionId,{id:247854506}),token=f.auth.exchangeCode({code,client_id:legacy.client_id,redirect_uri:callback,resource:f.resource});
+  assert.equal(f.auth.verifyAccess(token.access_token).client_id,legacy.client_id);
+  assert.ok(token.refresh_token);
+  const ordinary=f.auth.register({...base,client_name:'Other client',redirect_uris:['https://chatgpt.com/connector/oauth/ordinary-public']});
+  assert.equal(markLegacyChatGptPublicClients(f.state,'blue',f.nowRef.value),0);
+  assert.throws(()=>f.auth.beginAuthorization({response_type:'code',client_id:ordinary.client_id,redirect_uri:ordinary.redirect_uris[0],scope:'sez.root',state:'ordinary-public-state',resource:f.resource}),/pkce_required/);
+  const wrongHost=f.auth.register({...base,client_name:'ChatGPT',redirect_uris:['https://client.example/callback'],token_endpoint_auth_method:'none'});
+  assert.equal(wrongHost.token_endpoint_auth_method,'none');
+  assert.equal(markLegacyChatGptPublicClients(f.state,'blue',f.nowRef.value),0);
+  assert.throws(()=>f.auth.beginAuthorization({response_type:'code',client_id:wrongHost.client_id,redirect_uri:wrongHost.redirect_uris[0],scope:'sez.root',state:'wrong-host-state',resource:f.resource}),/pkce_required/);
 });
