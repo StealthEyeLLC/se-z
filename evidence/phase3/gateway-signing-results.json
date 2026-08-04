@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase2-integration",
+  "startedAt": "2026-08-04T01:21:50.758Z",
+  "completedAt": "2026-08-04T01:22:37.789Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "dual socket modes and groups",
+      "passed": true,
+      "localGid": 988,
+      "gatewayGid": 65534
+    },
+    {
+      "name": "core discovery health version doctor",
+      "passed": true,
+      "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+      "operationCount": 41
+    },
+    {
+      "name": "genuine non-root local group peer accepted",
+      "passed": true,
+      "uid": 995,
+      "gid": 988
+    },
+    {
+      "name": "unrelated local user rejected",
+      "passed": true
+    },
+    {
+      "name": "expected gateway UID/GID executable and Ed25519 signature accepted",
+      "passed": true
+    },
+    {
+      "name": "wrong gateway UID rejected",
+      "passed": true
+    },
+    {
+      "name": "invalid gateway signature rejected",
+      "passed": true
+    },
+    {
+      "name": "valid gateway class rejected on local socket",
+      "passed": true
+    },
+    {
+      "name": "exact argv and binary-safe separate streams",
+      "passed": true,
+      "jobId": "fcc3bf3e-5c05-4dfd-b759-6abb87915b08",
+      "receiptId": "550b4aac9c45ac2d953a710a24699ade52612ab807ceff09961994fd5211794b"
+    },
+    {
+      "name": "arbitrary shell exact default invocation",
+      "passed": true,
+      "jobId": "40ed9ede-93b3-436c-b763-75881380c087"
+    },
+    {
+      "name": "explicit user and group execution",
+      "passed": true
+    },
+    {
+      "name": "unsupported targets fail without host fallback",
+      "passed": true
+    },
+    {
+      "name": "durable job get and list",
+      "passed": true
+    },
+    {
+      "name": "exact durable job cancellation",
+      "passed": true,
+      "jobId": "394bda15-8898-4bc2-9f9d-4dba1d491b9d",
+      "state": "cancelled"
+    },
+    {
+      "name": "concurrent semantic idempotency launches once",
+      "passed": true,
+      "jobId": "77c7beec-46ab-400b-b951-fbb4ee8b226c"
+    },
+    {
+      "name": "response loss retry and deterministic resume",
+      "passed": true,
+      "requestId": "53d40e81-bd82-470e-82b2-4c5c6ec22982",
+      "jobId": "b3072d0b-cbcc-44d7-880f-887d25661112",
+      "state": "completed"
+    },
+    {
+      "name": "exact replay resumes and changed-content nonce replay rejects",
+      "passed": true
+    },
+    {
+      "name": "complete paged binary file lifecycle and metadata",
+      "passed": true
+    },
+    {
+      "name": "resumable immutable artifact lifecycle across restart",
+      "passed": true,
+      "artifactId": "691e9ea2-31dd-456c-ae72-f68fc69b9817",
+      "digest": "ad1e12b318be19dad3aabb800536a8fe283a452239db8638a30c59a2df61ac52"
+    },
+    {
+      "name": "persistent PTY input resize read close and restart rediscovery",
+      "passed": true,
+      "sessionId": "14a88061-0ee8-4112-ab42-862c8fd5dda8"
+    },
+    {
+      "name": "job completes during supervisor outage and reconciles",
+      "passed": true,
+      "jobId": "9c943958-4e62-4cf7-9d03-0a24e95f1291",
+      "requestId": "9b50afbf-7146-47a8-88e3-45757b768fdd"
+    },
+    {
+      "name": "stale and future authority generation rejected before mutation/reservation",
+      "passed": true
+    },
+    {
+      "name": "all active 0.1A operations exercised through real Unix sockets",
+      "passed": true,
+      "covered": 41
+    }
+  ],
+  "checkCount": 23,
+  "operationCoverage": [
+    "sez.artifact.abort",
+    "sez.artifact.begin",
+    "sez.artifact.create",
+    "sez.artifact.download",
+    "sez.artifact.finalize",
+    "sez.artifact.get",
+    "sez.artifact.list",
+    "sez.artifact.remove",
+    "sez.artifact.upload",
+    "sez.describe",
+    "sez.doctor",
+    "sez.exec",
+    "sez.file.chmod",
+    "sez.file.chown",
+    "sez.file.copy",
+    "sez.file.link",
+    "sez.file.list",
+    "sez.file.mkdir",
+    "sez.file.move",
+    "sez.file.patch",
+    "sez.file.read",
+    "sez.file.remove",
+    "sez.file.replace",
+    "sez.file.stat",
+    "sez.file.symlink",
+    "sez.file.truncate",
+    "sez.file.write",
+    "sez.health",
+    "sez.job.cancel",
+    "sez.job.get",
+    "sez.job.list",
+    "sez.job.stream.read",
+    "sez.job.wait",
+    "sez.pty.close",
+    "sez.pty.create",
+    "sez.pty.input",
+    "sez.pty.read",
+    "sez.pty.resize",
+    "sez.request.resume",
+    "sez.shell",
+    "sez.version"
+  ],
+  "operationCoverageCount": 41,
+  "catalogDigest": "d31be1b36035d16662b54daf6315492e373732d0d7c9936be65c4f0d1ae5d1e9",
+  "nativeAddonPath": "/root/se-z-phase2/src/native/peercred/build/Release/peer_cred.node",
+  "root": "/var/tmp/se-z-p2-integration-zIDFnr",
+  "supervisorStdoutSha256": "ddd59e4a8c402616d51dbde1d933384e0e379d105f352c5464f4474d217f4b63",
+  "supervisorStderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "actualUnprivilegedUid": 65534,
+  "actualGid": 65534,
+  "loopbackPort": 36807,
+  "publicBind": false,
+  "resource": "https://candidate.invalid/mcp",
+  "slot": "blue",
+  "writerLockRemovedOnCleanup": false,
+  "candidateRemoved": true
+}
