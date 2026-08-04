@@ -58,8 +58,8 @@ async function waitTerminal(client, jobId, timeoutMs = 30_000) {
   throw new Error(`job did not become terminal: ${jobId}`);
 }
 
-async function runAs(uid, gid, executable, argv) {
-  return await command('/usr/bin/setpriv', [`--reuid=${uid}`, `--regid=${gid}`, '--init-groups', executable, ...argv]);
+async function runAs(user, executable, argv) {
+  return await command('/usr/sbin/runuser', ['--user', user, '--', executable, ...argv]);
 }
 
 const startedAt = new Date().toISOString();
@@ -132,7 +132,7 @@ try {
   operatorCreated = true;
   const operatorUid = await identity(operator, '-u');
   const operatorGid = await identity(operator, '-g');
-  const operatorHealth = await runAs(operatorUid, operatorGid, '/usr/local/bin/se-z', ['health']);
+  const operatorHealth = await runAs(operator, '/usr/local/bin/se-z', ['health']);
   assert.equal(operatorHealth.code, 0, operatorHealth.stderr);
   assert.equal(parseResponse(operatorHealth.stdout)?.result?.healthy, true);
   check('genuine non-root supplementary se-z group member is authorized', { uid: operatorUid, gid: operatorGid });
@@ -142,7 +142,7 @@ try {
   unrelatedCreated = true;
   const unrelatedUid = await identity(unrelated, '-u');
   const unrelatedGid = await identity(unrelated, '-g');
-  const unrelatedHealth = await runAs(unrelatedUid, unrelatedGid, '/usr/local/bin/se-z', ['health']);
+  const unrelatedHealth = await runAs(unrelated, '/usr/local/bin/se-z', ['health']);
   assert.notEqual(unrelatedHealth.code, 0);
   const unrelatedError = parseResponse(`${unrelatedHealth.stdout}\n${unrelatedHealth.stderr}`);
   assert.ok(['unauthorized_peer', 'invalid_frame', 'EACCES'].includes(unrelatedError?.code ?? unrelatedError?.error?.code));
@@ -150,7 +150,7 @@ try {
 
   const gatewayUid = await identity('se-z-gateway', '-u');
   const gatewayGid = await identity('se-z-gateway', '-g');
-  const gatewayHealth = await runAs(gatewayUid, gatewayGid, '/usr/local/bin/se-z-gateway', ['sez.health', '--json', '{}']);
+  const gatewayHealth = await runAs('se-z-gateway', '/usr/local/bin/se-z-gateway', ['sez.health', '--json', '{}']);
   assert.equal(gatewayHealth.code, 0, gatewayHealth.stderr);
   const gatewayResponse = parseResponse(gatewayHealth.stdout);
   assert.equal(gatewayResponse?.result?.healthy, true);
