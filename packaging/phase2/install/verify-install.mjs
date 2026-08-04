@@ -59,7 +59,7 @@ async function waitTerminal(client, jobId, timeoutMs = 30_000) {
 }
 
 async function runAs(user, executable, argv) {
-  return await command('/usr/sbin/runuser', ['--user', user, '--', executable, ...argv]);
+  return await command('/usr/bin/setpriv', [`--reuid=${user}`, `--regid=${user}`, '--init-groups', executable, ...argv]);
 }
 
 const startedAt = new Date().toISOString();
