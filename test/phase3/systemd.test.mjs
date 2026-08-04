@@ -11,3 +11,11 @@ test('gateway systemd unit invokes the bundled Node runtime', () => {
   );
   assert.doesNotMatch(execStart, /^ExecStart=\/usr\/bin\/env\s+node\b/);
 });
+
+
+test('gateway shutdown closes keep-alive connections so the writer lease is released', () => {
+  const entrypoint = fs.readFileSync('src/phase3/gateway-entrypoint.mjs', 'utf8');
+  assert.match(entrypoint, /process\.on\('exit',\(\)=>releaseWriter\(\)\)/);
+  assert.match(entrypoint, /server\.closeAllConnections\?\.\(\)/);
+  assert.match(entrypoint, /if\(shuttingDown\)return/);
+});
